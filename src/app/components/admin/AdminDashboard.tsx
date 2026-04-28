@@ -61,17 +61,32 @@ export default function AdminDashboard() {
   };
 
   // 🔥 HERO UPDATE
-  const handleHeroUpdate = async () => {
-    setHeroLoading(true);
+const handleHeroUpdate = async () => {
+  console.log("🚀 [UPDATE] Sending data:", hero);
 
-    const { error } = await updateHero(hero);
+  setHeroLoading(true);
 
-    if (error) alert("❌ Update failed");
-    else alert("✅ Hero updated");
+  const { data, error } = await updateHero(hero);
 
-    setHeroLoading(false);
-  };
+  console.log("📦 [UPDATE RESULT]:", { data, error });
 
+  if (error) {
+    console.error("❌ Update failed:", error);
+    alert("❌ Update failed");
+  } else {
+    console.log("✅ Update success");
+
+    // 🔥 IMPORTANT
+    const { data: newHero } = await getHero();
+
+    console.log("🔄 [REFETCH]:", newHero);
+
+    setHero(newHero);
+    alert("✅ Hero updated");
+  }
+
+  setHeroLoading(false);
+};
   // 🚪 LOGOUT
   const logout = async () => {
     await supabase.auth.signOut();

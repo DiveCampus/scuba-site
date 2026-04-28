@@ -14,94 +14,48 @@ import { BookingForm } from './components/BookingForm';
 import { Footer } from './components/Footer';
 import Login from './components/Login';
 
-import { AdvancedOpenWater } from './components/pages/AdvancedOpenWater';
-import { ReviewsPage } from './components/ReviewsPage';
-import { AboutDiveCampus } from './components/pages/AboutDiveCampus';
-import { SpecialtyCourses } from './components/pages/SpecialtyCourses';
-import { PadiRescueDiver } from './components/pages/PadiRescueDiver';
-import { PadiOpenDiver } from './components/pages/PadiOpenDiver';
-import { PadiOpenWater } from './components/pages/PadiOpenWater';
-
 import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 
-// ✅ NEW IMPORTS
-import PriceLogin from './components/admin/PriceLogin';
-import PriceManager from './components/admin/PriceManager';
-import PadIDivemaster from './divemaster/PadIDivemaster';
-
 export default function App() {
+  const location = useLocation();
+
   const [isLoggedIn, setIsLoggedIn] = useState(
     localStorage.getItem('auth') === 'true'
   );
 
-  const location = useLocation();
-
   const isAdminAuth = localStorage.getItem("adminAuth") === "true";
-  const isPriceAuth = localStorage.getItem("priceAuth") === "true";
 
-  // 🔥 HANDLE ADMIN ROUTES FIRST
+  // 🔥 ADMIN ROUTES
   if (location.pathname.startsWith("/admin")) {
 
-    // Admin Login
     if (location.pathname === "/admin") {
       return <AdminLogin />;
     }
 
-    // Admin Dashboard
     if (location.pathname === "/admin/dashboard") {
       return isAdminAuth ? <AdminDashboard /> : <AdminLogin />;
-    }
-
-    // Price Login
-    if (location.pathname === "/admin/price-login") {
-      return <PriceLogin />;
-    }
-
-    // Price Manager
-    if (location.pathname === "/admin/prices") {
-      return isPriceAuth ? <PriceManager /> : <PriceLogin />;
     }
 
     return null;
   }
 
-  // 🔥 NORMAL USER FLOW
+  // 🔥 USER ROUTES
   return (
     <>
       {isLoggedIn ? (
-        <div className="min-h-screen bg-[#0a0e27] overflow-x-hidden">
+        <div className="min-h-screen bg-[#0a0e27]">
           <Navbar />
-
-          {location.pathname === "/about" ? (
-            <AboutDiveCampus />
-          ) : location.pathname === "/advanced-open-water" ? (
-            <AdvancedOpenWater />
-          ) : location.pathname === "/specialty-courses" ? (
-            <SpecialtyCourses />
-          ) : location.pathname === "/padi-divemaster" ? (
-            <PadIDivemaster />
-          ) : location.pathname === "/rescue-diver" ? (
-            <PadiRescueDiver />
-          ) : location.pathname === "/padi-open-diver" ? (
-            <PadiOpenDiver />
-          ) : location.pathname === "/padi-open-water" ? (
-            <PadiOpenWater />
-          ) : (
-            <>
-              <Hero />
-              <DivingCourses />
-              <FeaturedExperiences />
-              <Testimonials />
-              <BookingForm />
-              <ReviewsPage />
-              <WhyChooseUs />
-              <Gallery />
-              <Pricing />
-              <FAQ />
-              <Footer />
-            </>
-          )}
+          <Hero />
+          <DivingCourses />
+          <FeaturedExperiences />
+          <Testimonials />
+          <BookingForm />
+          <WhyChooseUs />
+          <Gallery />
+          <Pricing />
+          <FAQ />
+          <Footer />
         </div>
       ) : (
         <Login onLogin={() => setIsLoggedIn(true)} />

@@ -20,5 +20,7 @@ export const updateHero = async (data: any) => {
       price: data.price,
       old_price: data.old_price,
     })
-    .eq("id", data.id);
+    .eq("id", data.id)
+    .select()
+    .single(); // 🔥 return updated row
 };
