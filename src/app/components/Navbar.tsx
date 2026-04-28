@@ -2,8 +2,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+
 export function Navbar() {
   const navigate = useNavigate();
+
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [navbarHover, setNavbarHover] = useState(false);
@@ -15,11 +17,22 @@ export function Navbar() {
   const navText =
     "text-[13px] uppercase tracking-[2px] text-white transition duration-300";
 
+  // ✅ 🔥 FINAL NAVIGATION HANDLER
   const handleNavigation = (path: string) => {
-    window.location.href = path;
+    // 👉 SECTION SCROLL
+    if (path.startsWith("#")) {
+      const el = document.querySelector(path);
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+      return;
+    }
+
+    // 👉 NORMAL ROUTE
+    navigate(path);
   };
 
-  // 🔥 ROUTE MAPPING
+  // 🔥 ROUTES
   const routeMap: any = {
     "Advanced Open Water": "/advanced-open-water",
     "Specialty Courses": "/specialty-courses",
@@ -33,23 +46,14 @@ export function Navbar() {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
 
-      if (currentScroll < window.innerHeight * 0.8) {
-        setIsHero(true);
-      } else {
-        setIsHero(false);
-      }
+      setIsHero(currentScroll < window.innerHeight * 0.8);
 
       if (currentScroll < 100) {
         setShowNavbar(true);
         return;
       }
 
-      if (currentScroll > lastScrollRef.current) {
-        setShowNavbar(false);
-      } else {
-        setShowNavbar(true);
-      }
-
+      setShowNavbar(currentScroll < lastScrollRef.current);
       lastScrollRef.current = currentScroll;
     };
 
@@ -83,25 +87,12 @@ export function Navbar() {
       <motion.div
         onMouseEnter={() => setNavbarHover(true)}
         onMouseLeave={() => setNavbarHover(false)}
-        animate={{
-          backgroundColor: isHero
-            ? navbarHover
-              ? "rgba(5, 38, 60, 0.9)"
-              : "rgba(5, 38, 60, 0)"
-            : "rgba(5, 38, 60, 0.9)",
-          backdropFilter: isHero
-            ? navbarHover
-              ? "blur(20px)"
-              : "blur(0px)"
-            : "blur(20px)",
-        }}
-        transition={{ duration: 0.3 }}
-        className="flex items-center justify-between px-10 py-4 w-full"
+        className="flex items-center justify-between px-10 py-4 w-full bg-[#05263c]/90 backdrop-blur"
       >
-        {/* ✅ LOGO = BACK BUTTON */}
+        {/* ✅ LOGO FIX */}
         <div
           className="flex items-center h-[50px] cursor-pointer"
-          onClick={() => navigate(-1)}
+          onClick={() => navigate("/")}
         >
           <img src="/logow.svg" className="h-full object-contain" />
         </div>
@@ -117,7 +108,7 @@ export function Navbar() {
             >
               {"dropdown" in item ? (
                 <>
-                  <button className={`${navText}`}>
+                  <button className={navText}>
                     {item.label.toUpperCase()}
                   </button>
 
@@ -145,7 +136,7 @@ export function Navbar() {
               ) : (
                 <button
                   onClick={() => handleNavigation(item.href)}
-                  className={`${navText}`}
+                  className={navText}
                 >
                   {item.label.toUpperCase()}
                 </button>
