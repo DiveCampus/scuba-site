@@ -1,6 +1,7 @@
+// src/admin/AdminDashboard.tsx
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
 import {
   PieChart,
   Pie,
@@ -15,9 +16,6 @@ import {
 
 import { saveAs } from "file-saver";
 import { Document, Packer, Paragraph, TextRun } from "docx";
-import { supabase } from "@/lib/supabaseClient";
-
-import { getHero, updateHero } from "@/services/heroService";
 
 const COLORS = ["#00d4ff", "#06b6d4", "#3b82f6", "#6366f1"];
 
@@ -25,16 +23,23 @@ export default function AdminDashboard() {
   const navigate = useNavigate();
 
   const [leads, setLeads] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  // 🔥 HERO STATE
-  const [hero, setHero] = useState<any>(null);
-  const [heroLoading, setHeroLoading] = useState(false);
 
   useEffect(() => {
-    checkUser();
-    fetchLeads();
-    fetchHero();
+    const isAuth = localStorage.getItem("adminAuth");
+
+    if (!isAuth) {
+      navigate("/admin");
+    }
+
+    // 🔥 TEMP MOCK DATA (later supabase connect)
+    const mockData = [
+      { name: "Ali", phone: "9715000001", course: "Open Water", date: "2026-04-21" },
+      { name: "John", phone: "9715000002", course: "Advanced", date: "2026-04-21" },
+      { name: "Sara", phone: "9715000003", course: "Rescue", date: "2026-04-20" },
+      { name: "Ahmed", phone: "9715000004", course: "Open Water", date: "2026-04-19" },
+    ];
+
+    setLeads(mockData);
   }, []);
 
   // 🔐 AUTH
@@ -61,32 +66,17 @@ export default function AdminDashboard() {
   };
 
   // 🔥 HERO UPDATE
-const handleHeroUpdate = async () => {
-  console.log("🚀 [UPDATE] Sending data:", hero);
+  const handleHeroUpdate = async () => {
+    setHeroLoading(true);
 
-  setHeroLoading(true);
+    const { error } = await updateHero(hero);
 
-  const { data, error } = await updateHero(hero);
+    if (error) alert("❌ Update failed");
+    else alert("✅ Hero updated");
 
-  console.log("📦 [UPDATE RESULT]:", { data, error });
+    setHeroLoading(false);
+  };
 
-  if (error) {
-    console.error("❌ Update failed:", error);
-    alert("❌ Update failed");
-  } else {
-    console.log("✅ Update success");
-
-    // 🔥 IMPORTANT
-    const { data: newHero } = await getHero();
-
-    console.log("🔄 [REFETCH]:", newHero);
-
-    setHero(newHero);
-    alert("✅ Hero updated");
-  }
-
-  setHeroLoading(false);
-};
   // 🚪 LOGOUT
   const logout = async () => {
     await supabase.auth.signOut();
@@ -116,7 +106,7 @@ const handleHeroUpdate = async () => {
     leads: dateCount[date],
   }));
 
-  // 📄 EXPORT
+  // 📄 DOCX DOWNLOAD
   const downloadDoc = async () => {
     const doc = new Document({
       sections: [
@@ -125,7 +115,9 @@ const handleHeroUpdate = async () => {
             (l) =>
               new Paragraph({
                 children: [
-                  new TextRun(`${l.name} | ${l.phone} | ${l.course} | ${l.date}`),
+                  new TextRun(
+                    `${l.name} | ${l.phone} | ${l.course} | ${l.date}`
+                  ),
                 ],
               })
           ),
@@ -137,112 +129,62 @@ const handleHeroUpdate = async () => {
     saveAs(blob, "leads.docx");
   };
 
-  if (loading) {
-    return (
-      <div className="h-screen flex items-center justify-center text-white bg-black">
-        Loading...
-      </div>
-    );
-  }
-
   return (
-    <div className="min-h-screen bg-[#020617] text-white p-10 space-y-12">
+    <div className="min-h-screen bg-gradient-to-br from-[#0a0e27] to-[#020617] text-white p-10">
 
       {/* HEADER */}
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center mb-10">
         <h1 className="text-4xl font-bold">Admin Dashboard</h1>
 
         <div className="flex gap-4">
-          <button onClick={downloadDoc} className="bg-cyan-400 px-4 py-2 text-black rounded">
-            Export
+          <button
+            onClick={downloadDoc}
+            className="bg-cyan-400 text-black px-4 py-2 rounded-lg"
+          >
+            Download DOCX
           </button>
 
-          <button onClick={logout} className="bg-red-500 px-4 py-2 rounded">
+          <button
+            onClick={logout}
+            className="bg-red-500 px-4 py-2 rounded-lg"
+          >
             Logout
           </button>
         </div>
       </div>
 
-      {/* HERO EDITOR 🔥 */}
-      {hero && (
-        <div className="bg-white/10 p-6 rounded-xl backdrop-blur">
-          <h2 className="text-2xl mb-4">Hero Section Editor</h2>
-
-          <div className="space-y-3">
-
-            <input
-              value={hero.title}
-              onChange={(e) => setHero({ ...hero, title: e.target.value })}
-              className="w-full p-2 bg-black/50 rounded"
-              placeholder="Title"
-            />
-
-            <input
-              value={hero.subtitle}
-              onChange={(e) => setHero({ ...hero, subtitle: e.target.value })}
-              className="w-full p-2 bg-black/50 rounded"
-              placeholder="Subtitle"
-            />
-
-            <textarea
-              value={hero.description}
-              onChange={(e) => setHero({ ...hero, description: e.target.value })}
-              className="w-full p-2 bg-black/50 rounded"
-            />
-
-            <input
-              type="number"
-              value={hero.price}
-              onChange={(e) => setHero({ ...hero, price: Number(e.target.value) })}
-              className="w-full p-2 bg-black/50 rounded"
-              placeholder="Price"
-            />
-
-            <input
-              type="number"
-              value={hero.old_price}
-              onChange={(e) => setHero({ ...hero, old_price: Number(e.target.value) })}
-              className="w-full p-2 bg-black/50 rounded"
-              placeholder="Old Price"
-            />
-
-            <button
-              onClick={handleHeroUpdate}
-              className="bg-cyan-400 text-black px-4 py-2 rounded"
-            >
-              {heroLoading ? "Updating..." : "Save Hero"}
-            </button>
-          </div>
-        </div>
-      )}
-
       {/* STATS */}
-      <div className="grid grid-cols-3 gap-6">
-        <div className="bg-white/10 p-6 rounded">
-          <p>Total Leads</p>
-          <h2 className="text-3xl">{leads.length}</h2>
+      <div className="grid grid-cols-3 gap-6 mb-10">
+        <div className="p-6 rounded-xl bg-white/10 backdrop-blur-lg">
+          <h2 className="text-lg text-white/60">Total Leads</h2>
+          <p className="text-3xl font-bold">{leads.length}</p>
         </div>
 
-        <div className="bg-white/10 p-6 rounded">
-          <p>Courses</p>
-          <h2 className="text-3xl">{pieData.length}</h2>
+        <div className="p-6 rounded-xl bg-white/10 backdrop-blur-lg">
+          <h2 className="text-lg text-white/60">Bookings Today</h2>
+          <p className="text-3xl font-bold">
+            {graphData.find((g) => g.date === "2026-04-21")?.leads || 0}
+          </p>
         </div>
 
-        <div className="bg-white/10 p-6 rounded">
-          <p>Latest</p>
-          <h2>{leads[0]?.name || "-"}</h2>
+        <div className="p-6 rounded-xl bg-white/10 backdrop-blur-lg">
+          <h2 className="text-lg text-white/60">Courses</h2>
+          <p className="text-3xl font-bold">{pieData.length}</p>
         </div>
       </div>
 
       {/* CHARTS */}
-      <div className="grid grid-cols-2 gap-8">
+      <div className="grid grid-cols-2 gap-8 mb-10">
 
-        <div className="bg-white/10 p-6 rounded">
+        {/* PIE */}
+        <div className="p-6 bg-white/10 rounded-xl backdrop-blur">
+          <h2 className="mb-4">Course Distribution</h2>
+
           <ResponsiveContainer width="100%" height={250}>
             <PieChart>
               <Pie data={pieData} dataKey="value">
-                {pieData.map((_, i) => (
-                  <Cell key={i} fill={COLORS[i % COLORS.length]} />
+                {pieData.map((_, index) => (
+                  <Cell key={index} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
               <Tooltip />
@@ -250,17 +192,46 @@ const handleHeroUpdate = async () => {
           </ResponsiveContainer>
         </div>
 
-        <div className="bg-white/10 p-6 rounded">
+        {/* GRAPH */}
+        <div className="p-6 bg-white/10 rounded-xl backdrop-blur">
+          <h2 className="mb-4">Leads Over Time</h2>
+
           <ResponsiveContainer width="100%" height={250}>
             <LineChart data={graphData}>
               <XAxis dataKey="date" stroke="#ccc" />
               <YAxis />
               <Tooltip />
-              <Line dataKey="leads" stroke="#00d4ff" />
+              <Line type="monotone" dataKey="leads" stroke="#00d4ff" />
             </LineChart>
           </ResponsiveContainer>
         </div>
+      </div>
 
+      {/* TABLE */}
+      <div className="bg-white/10 backdrop-blur rounded-xl p-6">
+        <h2 className="mb-4 text-xl">Bookings</h2>
+
+        <table className="w-full text-left">
+          <thead>
+            <tr className="text-white/60">
+              <th>Name</th>
+              <th>Phone</th>
+              <th>Course</th>
+              <th>Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {leads.map((l, i) => (
+              <tr key={i} className="border-t border-white/10">
+                <td>{l.name}</td>
+                <td>{l.phone}</td>
+                <td>{l.course}</td>
+                <td>{l.date}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
     </div>

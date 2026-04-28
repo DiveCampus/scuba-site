@@ -1,104 +1,99 @@
-import { supabase } from "@/lib/supabaseClient";
+// src/admin/AdminLogin.tsx
+
 import { useState } from "react";
 
 export default function AdminLogin() {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
-    console.log("🚀 [STEP 1] Login started");
+    console.log("🚀 Login started");
     console.log("📧 Email:", email);
 
     setLoading(true);
 
-    // 🔐 AUTH LOGIN
-    console.log("🔐 [STEP 2] Calling Supabase auth...");
+    // 🔐 Step 1: Auth login
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
 
-    console.log("📦 [STEP 2 RESULT] Auth response:", { data, error });
+    console.log("🔐 Auth response:", { data, error });
 
     if (error) {
-      console.error("❌ [ERROR] Login failed:", error.message);
+      console.error("❌ Login error:", error.message);
       alert("Login failed: " + error.message);
       setLoading(false);
       return;
     }
 
     const user = data.user;
-    console.log("✅ [STEP 3] User received:", user);
+    console.log("✅ User logged in:", user);
 
     if (!user) {
-      console.error("❌ [ERROR] No user returned after login");
+      console.error("❌ No user returned after login");
       setLoading(false);
       return;
     }
 
-    // 🔎 FETCH PROFILE
-    console.log("🔍 [STEP 4] Fetching profile for user ID:", user.id);
+    // 🔎 Step 2: Fetch profile
+    console.log("🔍 Fetching profile for user ID:", user.id);
 
     const { data: profile, error: roleError } = await supabase
       .from("profiles")
       .select("role")
       .eq("id", user.id)
-      .maybeSingle();
+      .single();
 
-    console.log("📦 [STEP 4 RESULT] Profile response:", {
-      profile,
-      roleError,
-    });
+    console.log("📦 Profile response:", { profile, roleError });
 
     if (roleError) {
-      console.error("❌ [ERROR] Profile fetch error:", roleError.message);
+      console.error("❌ Profile fetch error:", roleError.message);
     }
 
-    // 🔒 ROLE CHECK
-    console.log("🔐 [STEP 5] Checking role...");
+    // 🔒 Step 3: Role check
+    console.log("🔐 Checking role...");
 
     if (!profile) {
-      console.error("❌ [ERROR] Profile not found");
+      console.error("❌ Profile not found");
       alert("Profile not found");
       await supabase.auth.signOut();
       setLoading(false);
       return;
     }
 
-    console.log("👤 [STEP 6] User role:", profile.role);
+    console.log("👤 User role:", profile.role);
 
     if (profile.role !== "admin") {
-      console.warn("⚠️ [WARNING] Not an admin user");
+      console.warn("⚠️ Not an admin user");
       alert("Not authorized as admin");
       await supabase.auth.signOut();
       setLoading(false);
       return;
     }
 
-    // ✅ SUCCESS
-    console.log("🎉 [STEP 7] Admin login successful!");
+    // ✅ Step 4: Success
+    console.log("🎉 Admin login successful!");
 
     localStorage.setItem("adminAuth", "true");
-    console.log("💾 [STEP 8] adminAuth saved to localStorage");
 
-    console.log("➡️ [STEP 9] Redirecting to dashboard...");
-    window.location.href = "/admin/dashboard";
+    setLoading(false);
+    navigate("/admin/dashboard");
   };
 
   return (
     <div className="h-screen flex items-center justify-center bg-black text-white">
-      <div className="p-8 bg-white/10 rounded-xl w-[320px] backdrop-blur">
-        <h2 className="text-xl mb-6 text-center font-semibold">
-          Admin Login
-        </h2>
+      <div className="p-8 bg-white/10 rounded-xl w-[300px]">
+        <h2 className="text-xl mb-4">Admin Login</h2>
 
         <input
           type="email"
           placeholder="Email"
           className="w-full p-2 mb-3 bg-black/50 rounded"
           onChange={(e) => {
-            console.log("📧 [INPUT] Email:", e.target.value);
+            console.log("📧 Email input:", e.target.value);
             setEmail(e.target.value);
           }}
         />
@@ -108,17 +103,17 @@ export default function AdminLogin() {
           placeholder="Password"
           className="w-full p-2 mb-4 bg-black/50 rounded"
           onChange={(e) => {
-            console.log("🔑 [INPUT] Password changed");
-            setPassword(e?.target?.value);
+            console.log("🔑 Password input changed");
+            setPassword(e.target.value);
           }}
         />
 
         <button
           onClick={handleLogin}
           disabled={loading}
-          className="w-full bg-cyan-400 text-black p-2 rounded font-semibold"
+          className="w-full bg-cyan-400 text-black p-2 rounded font-semibold hover:opacity-80"
         >
-          {loading ? "Logging in..." : "Login"}
+          Login
         </button>
       </div>
     </div>
