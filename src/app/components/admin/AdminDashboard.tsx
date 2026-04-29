@@ -1,211 +1,237 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-
-import {
-  PieChart,
-  Pie,
-  Cell,
-  LineChart,
-  Line,
-  XAxis,
-  YAxis,
-  Tooltip,
-  ResponsiveContainer,
-} from "recharts";
-
-import { saveAs } from "file-saver";
-import { Document, Packer, Paragraph, TextRun } from "docx";
 import { supabase } from "@/lib/supabaseClient";
 
 import { getHero, updateHero } from "@/services/heroService";
-import CourseManager from "./CourseManager";
-
-const COLORS = ["#00d4ff", "#06b6d4", "#3b82f6", "#6366f1"];
+import CoursesPage from "./CoursesPage";
 
 export default function AdminDashboard() {
   const navigate = useNavigate();
 
-  const [leads, setLeads] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  // 🔥 HERO STATE
   const [hero, setHero] = useState<any>(null);
-  const [heroLoading, setHeroLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+
+  // 🔥 EDIT STATES (SAFE UX)
+  const [editingField, setEditingField] = useState<string | null>(null);
 
   useEffect(() => {
     checkUser();
-    fetchLeads();
     fetchHero();
   }, []);
 
-  // 🔐 AUTH
   const checkUser = async () => {
     const { data } = await supabase.auth.getUser();
     if (!data.user) navigate("/admin");
   };
 
-  // 📊 LEADS
-  const fetchLeads = async () => {
-    const { data } = await supabase
-      .from("leads")
-      .select("*")
-      .order("date", { ascending: false });
-
-    setLeads(data || []);
-    setLoading(false);
-  };
-
-  // 🔥 HERO FETCH
   const fetchHero = async () => {
     const { data } = await getHero();
     setHero(data);
+    setLoading(false);
   };
 
-  // 🔥 HERO UPDATE
-  const handleHeroUpdate = async () => {
-    setHeroLoading(true);
+  const handleSave = async () => {
+    setSaving(true);
 
     const { error } = await updateHero(hero);
 
     if (error) alert("❌ Update failed");
-    else alert("✅ Hero updated");
+    else alert("✅ Updated successfully");
 
-    setHeroLoading(false);
+    setSaving(false);
   };
 
-  // 🚪 LOGOUT
-  const logout = async () => {
-    await supabase.auth.signOut();
-    localStorage.removeItem("adminAuth");
-    navigate("/admin");
-  };
-
-  // 📊 PIE DATA
-  const courseCount: any = {};
-  leads.forEach((l) => {
-    courseCount[l.course] = (courseCount[l.course] || 0) + 1;
-  });
-
-  const pieData = Object.keys(courseCount).map((key) => ({
-    name: key,
-    value: courseCount[key],
-  }));
-
-  // 📈 GRAPH DATA
-  const dateCount: any = {};
-  leads.forEach((l) => {
-    dateCount[l.date] = (dateCount[l.date] || 0) + 1;
-  });
-
-  const graphData = Object.keys(dateCount).map((date) => ({
-    date,
-    leads: dateCount[date],
-  }));
-
-  // 📄 EXPORT
-  const downloadDoc = async () => {
-    const doc = new Document({
-      sections: [
-        {
-          children: leads.map(
-            (l) =>
-              new Paragraph({
-                children: [
-                  new TextRun(`${l.name} | ${l.phone} | ${l.course} | ${l.date}`),
-                ],
-              })
-          ),
-        },
-      ],
-    });
-
-    const blob = await Packer.toBlob(doc);
-    saveAs(blob, "leads.docx");
-  };
-
-  if (loading) {
+  if (loading || !hero) {
     return (
-      <div className="h-screen flex items-center justify-center text-white bg-black">
+      <div className="h-screen flex items-center justify-center bg-black text-white">
         Loading...
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white p-10 space-y-12">
+    <><>  </>
+    <div className="bg-[#020617] text-white min-h-screen">
 
-      {/* HEADER */}
-      <div className="flex justify-between">
-        <h1 className="text-4xl font-bold">Admin Dashboard</h1>
+      {/* 🔥 HERO VISUAL EDITOR */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden font-habara">
 
-        <div className="flex gap-4">
-          <button onClick={downloadDoc} className="bg-cyan-400 px-4 py-2 text-black rounded">
-            Export
-          </button>
+        {/* BACKGROUND */}
+        <div className="absolute inset-0 z-0">
 
-          <button onClick={logout} className="bg-red-500 px-4 py-2 rounded">
-            Logout
-          </button>
+          {/* BASE LIGHT OVERLAY */}
+          <div className="absolute inset-0 bg-[#02182b]/50" />
+
+          {/* GRADIENT (LIGHTER) */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0ea5e9]/20 via-transparent to-[#1e3a8a]/30" />
+
+          {/* GLOW EFFECTS */}
+          <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-400/20 blur-[120px] rounded-full" />
+          <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-500/20 blur-[120px] rounded-full" />
+
         </div>
-      </div>
 
-      {/* HERO EDITOR 🔥 */}
-      {hero && (
-        <div className="bg-white/10 p-6 rounded-xl backdrop-blur">
-          <h2 className="text-2xl mb-4">Hero Section Editor</h2>
+        {/* CONTENT */}
+        <div className="relative z-10 text-center px-6 max-w-5xl">
 
-          <div className="space-y-3">
-
+          {/* 🔥 TOP TEXT (FIXED) */}
+          {editingField === "top_text" ? (
             <input
-              value={hero.title}
-              onChange={(e) => setHero({ ...hero, title: e.target.value })}
-              className="w-full p-2 bg-black/50 rounded"
-              placeholder="Title"
-            />
+              value={hero.top_text || ""}
+              onChange={(e) => setHero({ ...hero, top_text: e.target.value })}
+              onBlur={() => setEditingField(null)}
+              autoFocus
+              className="uppercase tracking-[6px] text-cyan-300 text-[12px] mb-5 bg-black/40 px-3 py-1 rounded text-center" />
+          ) : (
+            <p
+              onClick={() => setEditingField("top_text")}
+              className="uppercase tracking-[6px] text-cyan-300 text-[12px] mb-5 cursor-pointer"
+            >
+              {hero.top_text || "Dive Campus Diving Club"}
+            </p>
+          )}
 
-            <input
-              value={hero.subtitle}
-              onChange={(e) => setHero({ ...hero, subtitle: e.target.value })}
-              className="w-full p-2 bg-black/50 rounded"
-              placeholder="Subtitle"
-            />
+          {/* 🔥 TITLE */}
+          <h1 className="text-white text-4xl md:text-6xl font-semibold leading-tight">
 
+            {/* TITLE */}
+            {editingField === "title" ? (
+              <input
+                value={hero.title}
+                onChange={(e) => setHero({ ...hero, title: e.target.value })}
+                onBlur={() => setEditingField(null)}
+                autoFocus
+                className="bg-black/40 px-2 rounded" />
+            ) : (
+              <span
+                onClick={() => setEditingField("title")}
+                className="cursor-pointer"
+              >
+                {hero.title}
+              </span>
+            )}
+
+            {" "}
+
+            {/* SUBTITLE */}
+            {editingField === "subtitle" ? (
+              <input
+                value={hero.subtitle}
+                onChange={(e) => setHero({ ...hero, subtitle: e.target.value })}
+                onBlur={() => setEditingField(null)}
+                autoFocus
+                className="bg-black/40 px-2 rounded text-cyan-400" />
+            ) : (
+              <span
+                onClick={() => setEditingField("subtitle")}
+                className="text-cyan-400 cursor-pointer"
+              >
+                {hero.subtitle}
+              </span>
+            )}
+          </h1>
+
+          {/* 🔥 DESCRIPTION */}
+          {editingField === "description" ? (
             <textarea
               value={hero.description}
               onChange={(e) => setHero({ ...hero, description: e.target.value })}
-              className="w-full p-2 bg-black/50 rounded"
-            />
-
-            <input
-              type="number"
-              value={hero.price}
-              onChange={(e) => setHero({ ...hero, price: Number(e.target.value) })}
-              className="w-full p-2 bg-black/50 rounded"
-              placeholder="Price"
-            />
-
-            <input
-              type="number"
-              value={hero.old_price}
-              onChange={(e) => setHero({ ...hero, old_price: Number(e.target.value) })}
-              className="w-full p-2 bg-black/50 rounded"
-              placeholder="Old Price"
-            />
-
-            <button
-              onClick={handleHeroUpdate}
-              className="bg-cyan-400 text-black px-4 py-2 rounded"
+              onBlur={() => setEditingField(null)}
+              autoFocus
+              className="mt-6 bg-black/40 p-2 rounded w-full text-center" />
+          ) : (
+            <p
+              onClick={() => setEditingField("description")}
+              className="mt-6 text-white/85 max-w-3xl mx-auto cursor-pointer"
             >
-              {heroLoading ? "Updating..." : "Save Hero"}
+              {hero.description}
+            </p>
+          )}
+
+          {/* 🔥 PRICE */}
+          <div className="mt-6">
+
+            {/* OLD PRICE */}
+            {editingField === "old_price" ? (
+              <input
+                type="number"
+                value={hero.old_price}
+                onChange={(e) => setHero({ ...hero, old_price: Number(e.target.value) })}
+                onBlur={() => setEditingField(null)}
+                autoFocus
+                className="bg-black/40 px-2 rounded" />
+            ) : (
+              <p
+                onClick={() => setEditingField("old_price")}
+                className="text-white/50 line-through cursor-pointer"
+              >
+                AED {hero.old_price}
+              </p>
+            )}
+
+            {/* PRICE */}
+            {editingField === "price" ? (
+              <input
+                type="number"
+                value={hero.price}
+                onChange={(e) => setHero({ ...hero, price: Number(e.target.value) })}
+                onBlur={() => setEditingField(null)}
+                autoFocus
+                className="bg-black/40 px-2 rounded text-cyan-400" />
+            ) : (
+              <p
+                onClick={() => setEditingField("price")}
+                className="text-3xl font-bold text-cyan-400 cursor-pointer"
+              >
+                AED {hero.price}
+              </p>
+            )}
+          </div>
+
+          {/* 🔥 CTA BUTTON (NOW DYNAMIC) */}
+          <div className="mt-10">
+            {editingField === "cta_text" ? (
+              <input
+                value={hero.cta_text || ""}
+                onChange={(e) => setHero({ ...hero, cta_text: e.target.value })}
+                onBlur={() => setEditingField(null)}
+                autoFocus
+                className="bg-white/20 px-4 py-2 rounded text-white outline-none border border-cyan-400/30" />
+            ) : (
+              <button
+                onClick={() => setEditingField("cta_text")}
+                className="px-10 py-4 bg-cyan-400 text-black rounded-full cursor-pointer"
+              >
+                {hero.cta_text || "Get Certified →"}
+              </button>
+            )}
+          </div>
+
+          {/* SAVE BUTTON */}
+          <div className="mt-12">
+            <button
+              onClick={handleSave}
+              className="px-8 py-3 bg-green-400 text-black rounded-full font-semibold"
+            >
+              {saving ? "Saving..." : "Save Changes"}
             </button>
           </div>
+          <CoursesPage />
+
         </div>
-      )}
-      <CourseManager />
+      </section>
+    </div></>
+  );
+}
+
+{/* <CourseManager /> */ }
 
 
-      {/* STATS */}
-      <div className="grid grid-cols-3 gap-6">
+{/* STATS */ }
+{/* <div className="grid grid-cols-3 gap-6">
         <div className="bg-white/10 p-6 rounded">
           <p>Total Leads</p>
           <h2 className="text-3xl">{leads.length}</h2>
@@ -220,10 +246,10 @@ export default function AdminDashboard() {
           <p>Latest</p>
           <h2>{leads[0]?.name || "-"}</h2>
         </div>
-      </div>
+      </div> */}
 
-      {/* CHARTS */}
-      <div className="grid grid-cols-2 gap-8">
+{/* CHARTS */ }
+{/* <div className="grid grid-cols-2 gap-8">
 
         <div className="bg-white/10 p-6 rounded">
           <ResponsiveContainer width="100%" height={250}>
@@ -247,10 +273,6 @@ export default function AdminDashboard() {
               <Line dataKey="leads" stroke="#00d4ff" />
             </LineChart>
           </ResponsiveContainer>
-        </div>
+        </div> */}
 
-      </div>
-
-    </div>
-  );
-}
+{/* </div> */ }

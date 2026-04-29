@@ -1,3 +1,5 @@
+"use client";
+
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -14,7 +16,10 @@ export function Hero() {
   }, []);
 
   const fetchHero = async () => {
-    const { data } = await getHero();
+    const { data, error } = await getHero();
+
+    console.log("🔥 HERO FRONTEND DATA:", data, error);
+
     setHero(data);
   };
 
@@ -42,44 +47,50 @@ export function Hero() {
       {/* CONTENT */}
       <div className="relative z-10 text-center px-6 max-w-5xl">
 
+        {/* 🔥 TOP TEXT (NOW DYNAMIC) */}
         <p className="uppercase tracking-[6px] text-cyan-300 text-[12px] mb-5">
-          Dive Campus Diving Club
+          {hero?.top_text || "Dive Campus Diving Club"}
         </p>
 
-        {/* 🔥 DYNAMIC TEXT */}
+        {/* 🔥 TITLE */}
         <h1 className="text-white text-4xl md:text-6xl font-semibold leading-tight">
-          {hero.title}{" "}
+          {hero?.title}{" "}
           <span className="text-[#38BDF8]">
-            {hero.subtitle}
+            {hero?.subtitle}
           </span>
         </h1>
 
+        {/* 🔥 DESCRIPTION */}
         <p className="mt-6 text-white/85 max-w-3xl mx-auto">
-          {hero.description}
+          {hero?.description}
         </p>
 
-        {/* 🔥 DYNAMIC PRICE */}
+        {/* 🔥 PRICE */}
         <div className="mt-6">
           <p className="text-white/50 line-through">
-            AED {hero.old_price}
+            AED {hero?.old_price}
           </p>
 
           <p className="text-3xl font-bold text-cyan-400">
-            AED {hero.price}
+            AED {hero?.price}
           </p>
         </div>
 
-        {/* BUTTON */}
+        {/* 🔥 CTA BUTTON (NOW DYNAMIC) */}
         <div className="mt-10">
           <button className="px-10 py-4 bg-cyan-400 text-black rounded-full">
-            Get Certified →
+            {hero?.cta_text || "Get Certified →"}
           </button>
         </div>
 
         {/* LOCATIONS */}
         <div className="mt-10 flex gap-6 justify-center text-white/80">
-          <div className="flex items-center gap-2"><MapPin size={12}/>Dubai</div>
-          <div className="flex items-center gap-2"><MapPin size={12}/>Khor Fakkan</div>
+          <div className="flex items-center gap-2">
+            <MapPin size={12} /> Dubai
+          </div>
+          <div className="flex items-center gap-2">
+            <MapPin size={12} /> Khor Fakkan
+          </div>
         </div>
       </div>
 
