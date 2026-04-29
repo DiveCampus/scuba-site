@@ -4,12 +4,14 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { OpenDiverBooking } from "./OpenDiverBooking";
+import { Navbar } from "../Navbar";
 
 export function PadIDivemasterHero() {
     const [open, setOpen] = useState(false);
 
     return (
         <>
+        <Navbar />
             <section className="relative min-h-screen w-full overflow-hidden font-habara text-white">
 
                 {/* BACKGROUND */}

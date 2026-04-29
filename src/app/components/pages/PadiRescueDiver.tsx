@@ -1,6 +1,7 @@
 // PadiRescueDiver.tsx
 "use client";
 
+import { Navbar } from "../Navbar";
 import { DiveTrainingShowcase } from "./DiveTrainingShowcase";
 import { LocationFooterSection } from "./LocationFooterSection";
 import { MasterScubaCTA } from "./MasterScubaCTA";
@@ -15,6 +16,7 @@ import { SimulationToReality } from "./SimulationToReality";
 export function PadiRescueDiver() {
   return (
     <>
+     <Navbar/>
       <Rescue  />
       <RescueCapabilities />
       <RescueComparison />

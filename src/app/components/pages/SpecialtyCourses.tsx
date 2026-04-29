@@ -1,20 +1,22 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Navbar } from "../Navbar";
 
 export function SpecialtyCourses() {
 
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden font-habara">
+    <><>  
+    <Navbar />
+    </><section className="relative min-h-screen w-full overflow-hidden font-habara">
 
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0">
         <img
           src="/1.avif"
           alt="scuba"
-          className="w-full h-full object-cover"
-        />
+          className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-[#02182b]/60" />
       </div>
 
@@ -36,8 +38,7 @@ export function SpecialtyCourses() {
               repeatDelay: 3,
               ease: "easeInOut",
             }}
-            className="absolute top-0 left-0 w-[40%] h-full bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent blur-md opacity-80"
-          />
+            className="absolute top-0 left-0 w-[40%] h-full bg-gradient-to-r from-transparent via-cyan-300/70 to-transparent blur-md opacity-80" />
         </div>
 
         {/* SUB TEXT */}
@@ -91,6 +92,6 @@ export function SpecialtyCourses() {
           <span>✔ Deep Diving</span>
         </div>
       </div>
-    </section>
+    </section></>
   );
 }

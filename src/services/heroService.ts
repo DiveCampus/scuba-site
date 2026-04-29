@@ -22,5 +22,5 @@ export const updateHero = async (data: any) => {
     })
     .eq("id", data.id)
     .select()
-    .single(); // 🔥 return updated row
+    .single();
 };

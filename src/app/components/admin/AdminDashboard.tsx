@@ -18,6 +18,7 @@ import { Document, Packer, Paragraph, TextRun } from "docx";
 import { supabase } from "@/lib/supabaseClient";
 
 import { getHero, updateHero } from "@/services/heroService";
+import CourseManager from "./CourseManager";
 
 const COLORS = ["#00d4ff", "#06b6d4", "#3b82f6", "#6366f1"];
 
@@ -200,6 +201,8 @@ export default function AdminDashboard() {
           </div>
         </div>
       )}
+      <CourseManager />
+
 
       {/* STATS */}
       <div className="grid grid-cols-3 gap-6">

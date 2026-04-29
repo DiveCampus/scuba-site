@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { BookingModal } from "./BookingModal";
+import { Navbar } from "../Navbar";
 
 export function HeroSection() {
   const [open, setOpen] = useState(false);
@@ -10,9 +11,10 @@ export function HeroSection() {
   return (
     <>
       {/* ================= HERO ================= */}
+      <Navbar />
       <section
         className="relative min-h-screen w-full overflow-hidden text-white"
-        style={{ fontFamily: "Harabara, sans-serif" }} // ✅ FORCE FONT
+        style={{ fontFamily: "Harabara, sans-serif" }}
       >
 
         {/* BACKGROUND */}
