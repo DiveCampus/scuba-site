@@ -2,56 +2,93 @@ import { supabase } from "@/lib/supabaseClient";
 
 // ✅ GET ALL COURSES
 export const getCourses = async () => {
-  return await supabase
+  const { data, error } = await supabase
     .from("courses")
     .select("*")
     .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error("❌ GET COURSES ERROR:", error);
+    return { data: [], error };
+  }
+
+  return { data, error: null };
 };
 
 // ✅ GET SINGLE COURSE
 export const getCourseById = async (id: string) => {
-  return await supabase
+  const { data, error } = await supabase
     .from("courses")
     .select("*")
     .eq("id", id)
     .single();
+
+  if (error) {
+    console.error("❌ GET SINGLE ERROR:", error);
+    return { data: null, error };
+  }
+
+  return { data, error: null };
 };
 
 // ✅ CREATE COURSE
-export const createCourse = async (data: any) => {
-  return await supabase
+export const createCourse = async (payload: any) => {
+  const { data, error } = await supabase
     .from("courses")
     .insert([
       {
-        title: data.title,
-        description: data.description,
-        price: data.price,
-        old_price: data.old_price,
-        image: data.image, // 🔥 image URL
+        title: payload.title || "",
+        description: payload.description || "",
+        price: payload.price || 0,
+        old_price: payload.old_price || null,
+        image: payload.image || "", // 🔥 URL
       },
     ])
-    .select();
+    .select()
+    .single(); // 🔥 important
+
+  if (error) {
+    console.error("❌ CREATE ERROR:", error);
+    return { data: null, error };
+  }
+
+  return { data, error: null };
 };
 
 // ✅ UPDATE COURSE
-export const updateCourse = async (id: string, data: any) => {
-  return await supabase
+export const updateCourse = async (id: string, payload: any) => {
+  const { data, error } = await supabase
     .from("courses")
     .update({
-      title: data.title,
-      description: data.description,
-      price: data.price,
-      old_price: data.old_price,
-      image: data.image,
+      title: payload.title,
+      description: payload.description,
+      price: payload.price,
+      old_price: payload.old_price,
+      image: payload.image,
     })
     .eq("id", id)
-    .select();
+    .select()
+    .single(); // 🔥 important
+
+  if (error) {
+    console.error("❌ UPDATE ERROR:", error);
+    return { data: null, error };
+  }
+
+  return { data, error: null };
 };
 
 // ✅ DELETE COURSE
 export const deleteCourse = async (id: string) => {
-  return await supabase
+  const { error } = await supabase
     .from("courses")
     .delete()
     .eq("id", id);
+
+  if (error) {
+    console.error("❌ DELETE ERROR:", error);
+    return { error };
+  }
+
+  return { error: null };
 };
