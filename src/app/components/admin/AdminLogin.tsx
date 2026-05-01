@@ -44,7 +44,7 @@ export default function AdminLogin() {
       .from("profiles")
       .select("role")
       .eq("id", user.id)
-      .maybeSingle();
+      .single();
 
     console.log("📦 [STEP 4 RESULT] Profile response:", {
       profile,

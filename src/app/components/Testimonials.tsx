@@ -1,74 +1,40 @@
+"use client";
+
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getTestimonials } from "@/services/testimonialService";
 
 export function Testimonials() {
   const [activeMainTab, setActiveMainTab] = useState("training environment");
+  const [data, setData] = useState<any[]>([]);
 
-  // ================= DATA =================
+  // ================= LOAD =================
+  useEffect(() => {
+    load();
+  }, []);
 
-  const trainingData = [
-    {
-      feature: "Dive Tank",
-      others: "Shallow 1.5–2m outdoor pools",
-      diveCampus:
-        "4m deep indoor tank · temperature controlled · underwater mirror",
-    },
-    {
-      feature: "Location",
-      others: "40–60 min travel",
-      diveCampus: "Central Dubai · 20–30 min from most areas",
-    },
-    {
-      feature: "Boat Time",
-      others: "30–40 min ride", 
-      diveCampus: "5–7 min to reef",
-    },
-  ];
+  const load = async () => {
+    console.log("📡 Fetching testimonials...");
 
-  const instructorData = [
-    {
-      feature: "Student Ratio",
-      others: "3–8 per instructor",
-      diveCampus: "Max 2 students per instructor",
-    },
-    {
-      feature: "Instructor Type",
-      others: "Freelancers",
-      diveCampus: "In-house PADI professionals",
-    },
-    {
-      feature: "Languages",
-      others: "Limited",
-      diveCampus: "English · Arabic · Hindi · French",
-    },
-  ];
+    const { data, error } = await getTestimonials();
 
-  const inclusionData = [
-    {
-      feature: "Gear Quality",
-      others: "Low quality / extra charges",
-      diveCampus: "Premium gear included",
-    },
-    {
-      feature: "Learning Material",
-      others: "Hidden charges",
-      diveCampus: "Included in fee",
-    },
-    {
-      feature: "Parking",
-      others: "Paid / public",
-      diveCampus: "Free parking",
-    },
-    {
-      feature: "Bring a Friend",
-      others: "Not included",
-      diveCampus: "Free try dive included",
-    },
-  ];
+    console.log("📦 DATA:", data);
+    console.log("❌ ERROR:", error);
 
-  // ================= TABLE COMPONENT =================
+    if (error) return;
 
-  const renderTable = (data: any[]) => {
+    setData(data || []);
+  };
+
+  // ================= TABLE =================
+  const renderTable = (category: string) => {
+    const filtered = data.filter(
+      (item) =>
+        item.category?.toLowerCase() === category.toLowerCase()
+    );
+
+    console.log("📊 FILTER:", category, filtered);
+
     return (
       <div className="w-full overflow-x-auto flex justify-center font-habara">
         <table className="w-full max-w-5xl border border-white/10 rounded-xl overflow-hidden backdrop-blur-md bg-white/5">
@@ -86,7 +52,7 @@ export function Testimonials() {
 
           {/* BODY */}
           <tbody className="text-white/80 text-sm">
-            {data.map((item, index) => (
+            {filtered.map((item, index) => (
               <tr
                 key={index}
                 className="border-t border-white/10 hover:bg-white/5 transition-all duration-300"
@@ -104,7 +70,7 @@ export function Testimonials() {
                 {/* DIVE CAMPUS */}
                 <td className="p-5 text-center">
                   <span className="inline-block px-4 py-2 border border-cyan-400/30 rounded-lg text-cyan-300 bg-cyan-400/10">
-                    ✓ {item.diveCampus}
+                    ✓ {item.dive_campus}
                   </span>
                 </td>
               </tr>
@@ -116,7 +82,6 @@ export function Testimonials() {
   };
 
   // ================= UI =================
-
   return (
     <section className="relative py-24 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45] overflow-hidden font-habara">
 
@@ -139,18 +104,18 @@ export function Testimonials() {
         {/* TABS */}
         <div className="flex justify-center gap-12 mb-16 flex-wrap">
           {[
-            "TRAINING ENVIRONMENT",
-            "INSTRUCTOR QUALITY",
-            "INCLUSIONS",
+            "training environment",
+            "instructor quality",
+            "inclusions",
           ].map((item, i) => (
             <button
               key={i}
-              onMouseEnter={() => setActiveMainTab(item.toLowerCase())}
+              onMouseEnter={() => setActiveMainTab(item)}
               className="relative text-sm font-semibold uppercase tracking-[3px] text-white/80 hover:text-white transition"
             >
-              {item}
+              {item.toUpperCase()}
 
-              {activeMainTab === item.toLowerCase() && (
+              {activeMainTab === item && (
                 <motion.div
                   layoutId="underline"
                   className="absolute left-0 -bottom-2 w-full h-[3px] bg-cyan-300"
@@ -160,17 +125,10 @@ export function Testimonials() {
           ))}
         </div>
 
-        {/* TABLE CONTENT */}
-        {activeMainTab === "training environment" &&
-          renderTable(trainingData)}
-
-        {activeMainTab === "instructor quality" &&
-          renderTable(instructorData)}
-
-        {activeMainTab === "inclusions" &&
-          renderTable(inclusionData)}
+        {/* TABLE */}
+        {renderTable(activeMainTab)}
 
       </div>
     </section>
   );
-}
+} 

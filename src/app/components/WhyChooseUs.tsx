@@ -1,47 +1,47 @@
-import { motion } from 'framer-motion';
+"use client";
 
-const cards = [
-  {
-    title: 'ADVANCE FINNING',
-    image: '/img1.jpeg',
-    description: `"Move effortlessly. Breathe less. Disturb nothing."
-
-• Improve movement efficiency  
-• Reduce air consumption  
-• Navigate tight spaces`,
-  },
-  {
-    title: 'ADVANCE BUOYANCY',
-    image: '/img2.jpeg',
-    description: `"Stop fighting the water."
-
-• Hover motionless  
-• Perfect trim  
-• Protect reefs`,
-  },
-  {
-    title: 'SWITCH TO DIR',
-    image: '/img3.jpeg',
-    description: `"Dive smarter."
-
-• Streamlined gear  
-• Better teamwork`,
-  },
-  {
-    title: 'OVERCOME WATER PHOBIA',
-    image: '/img4.jpeg',
-    description: `"Build confidence."
-
-• Private sessions  
-• Step-by-step learning`,
-  },
-];
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { getWhyCards } from "@/services/whyService";
 
 export function WhyChooseUs() {
+  const [cards, setCards] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  // ================= LOAD =================
+  useEffect(() => {
+    load();
+  }, []);
+
+  const load = async () => {
+    console.log("📡 Fetching WHY cards...");
+
+    const { data, error } = await getWhyCards();
+
+    console.log("📦 DATA:", data);
+    console.log("❌ ERROR:", error);
+
+    if (!error) {
+      setCards(data || []);
+    }
+
+    setLoading(false);
+  };
+
+  // ================= LOADING =================
+  if (loading) {
+    return (
+      <div className="text-white text-center py-20">
+        Loading...
+      </div>
+    );
+  }
+
+  // ================= UI =================
   return (
     <section className="relative py-32 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45] overflow-hidden font-habara">
 
-      {/* GLOW EFFECT */}
+      {/* GLOW */}
       <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-400/20 blur-[120px] rounded-full" />
       <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-500/20 blur-[120px] rounded-full" />
 
@@ -64,9 +64,9 @@ export function WhyChooseUs() {
           animate={{ opacity: 1, y: 0 }}
           className="flex justify-center gap-6 flex-wrap"
         >
-          {cards.map((card, i) => (
+          {cards.map((card) => (
             <motion.div
-              key={i}
+              key={card.id}
               whileHover={{ y: -12 }}
               className="
                 group relative
@@ -86,6 +86,7 @@ export function WhyChooseUs() {
               {/* IMAGE */}
               <img
                 src={card.image}
+                alt={card.title}
                 className="
                   absolute inset-0
                   w-full h-full object-cover
