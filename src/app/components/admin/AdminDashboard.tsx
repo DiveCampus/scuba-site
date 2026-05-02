@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabaseClient";
 import { getHero, updateHero } from "@/services/heroService";
+import { useNavigate } from "react-router-dom";
 
 import CoursesPage from "./CoursesPage";
 import { Gallery } from "./gallerypage";
@@ -20,11 +21,16 @@ export default function AdminDashboard() {
   const [saving, setSaving] = useState(false);
   const [editingField, setEditingField] = useState<string | null>(null);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     const init = async () => {
       setLoading(true);
       const { data: { user } } = await supabase.auth.getUser();
-      if (!user) return;
+      if (!user) {
+        navigate("/admin");
+        return;
+      }
       const { data } = await getHero();
       setHero(data);
       setLoading(false);
@@ -38,6 +44,11 @@ export default function AdminDashboard() {
     const { data } = await getHero();
     setHero(data);
     setSaving(false);
+  };
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+    navigate("/admin");
   };
 
   if (loading) {
@@ -58,6 +69,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="bg-[#020617] text-white min-h-screen px-4 py-6">
+
       <div className="
         w-full
         max-w-md
@@ -68,6 +80,16 @@ export default function AdminDashboard() {
         mx-auto
         space-y-10
       ">
+
+        <div className="flex justify-end">
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={handleLogout}
+            className="h-[44px] px-5 rounded-2xl bg-red-500 text-white text-sm font-medium"
+          >
+            Logout
+          </motion.button>
+        </div>
 
         <motion.section
           initial={{ opacity: 0, y: 20 }}
