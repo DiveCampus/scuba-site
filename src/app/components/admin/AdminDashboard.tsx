@@ -16,6 +16,10 @@ import { WhyAdmin } from "./WhyAdmin";
 import { FooterAdmin } from "./FooterAdmin";
 import HeroSectionAdmin from "./HeroSectionAdmin";
 import FeaturesAdmin from "./FeaturesAdmin";
+import StepsAdmin from "./AdminSteps";
+import CompareAdmin from "./CompareAdmin";
+import CommunityFAQSelectionAdmin from "./CommunityFAQSelectionAdmin";
+import WhyChooseAdmin from "./WhyChooseAdmin";
 
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
@@ -260,6 +264,11 @@ export default function AdminDashboard() {
           <FooterAdmin />
           <HeroSectionAdmin />
           <FeaturesAdmin />
+          <StepsAdmin />
+          <CompareAdmin />
+          <CommunityFAQSelectionAdmin />
+          <WhyChooseAdmin />
+          
         </div>
 
       </div>

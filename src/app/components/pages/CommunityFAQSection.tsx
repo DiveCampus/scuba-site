@@ -1,42 +1,43 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
+import { getFAQ } from "@/services/CommunityFAQService";
 
 export function CommunityFAQSection() {
-  const [active, setActive] = useState<number | null>(0);
+  const [active, setActive] = useState<number | null>(null);
+  const [section, setSection] = useState<any>(null);
+  const [faqs, setFaqs] = useState<any[]>([]);
 
-  const faqs = [
-    {
-      q: "Are there any hidden fees or gear rental costs?",
-      a: "No. Everything is included. You get full gear, training, and certification with zero hidden charges.",
-    },
-    {
-      q: "I work full-time. Can I do the training on weekends?",
-      a: "Yes. We offer flexible weekend schedules so you can complete your certification without affecting your job.",
-    },
-    {
-      q: "What if I need more time to get comfortable underwater?",
-      a: "No problem. Our instructors work at your pace. We ensure you feel confident before moving forward.",
-    },
-    {
-      q: "Do I need to be a strong or fast swimmer?",
-      a: "Not at all. Basic comfort in water is enough. We train you step-by-step.",
-    },
-    {
-      q: "Can I upgrade to a private 1-on-1 or female instructor?",
-      a: "Yes. Private sessions and female instructors are available on request.",
-    },
-    {
-      q: "Does this license expire after a certain time?",
-      a: "No. Your PADI certification is valid for life.",
-    },
-  ];
+  const load = async () => {
+    console.log("🚀 Fetching FAQ...");
+
+    const { section, items, error } = await getFAQ();
+
+    console.log("📦 SECTION:", section);
+    console.log("📦 FAQ ITEMS:", items);
+    console.log("❌ ERROR:", error);
+
+    setSection(section);
+    setFaqs(items || []);
+  };
+
+  useEffect(() => {
+    load();
+  }, []);
 
   const toggle = (index: number) => {
     setActive(active === index ? null : index);
   };
+
+  if (!section) {
+    return (
+      <div className="h-[300px] flex items-center justify-center">
+        Loading FAQ...
+      </div>
+    );
+  }
 
   return (
     <>
@@ -48,16 +49,15 @@ export function CommunityFAQSection() {
         {/* HEADER */}
         <div className="text-center max-w-3xl mx-auto px-6 mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-[#0a0e27] leading-tight">
-            More Than a Dive Center.
+            {section.title}
             <br />
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-              A Community of Explorers.
+              {section.highlight}
             </span>
           </h2>
 
           <p className="text-gray-500 mt-4 text-sm md:text-base">
-            Nemo isn't just about the dives; it's about the people you meet between them.
-            Join the UAE’s most active diving community and turn every weekend into an epic story.
+            {section.subtitle}
           </p>
         </div>
 
@@ -71,7 +71,7 @@ export function CommunityFAQSection() {
 
           {faqs.map((item, i) => (
             <motion.div
-              key={i}
+              key={item.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
@@ -84,7 +84,7 @@ export function CommunityFAQSection() {
                 className="w-full flex justify-between items-center px-6 py-5 text-left"
               >
                 <span className="text-[#0a0e27] font-medium text-sm md:text-base">
-                  {item.q}
+                  {item.question}
                 </span>
 
                 <motion.div
@@ -106,7 +106,7 @@ export function CommunityFAQSection() {
                     transition={{ duration: 0.25 }}
                     className="px-6 pb-5 text-gray-600 text-sm leading-relaxed"
                   >
-                    {item.a}
+                    {item.answer}
                   </motion.div>
                 )}
               </AnimatePresence>

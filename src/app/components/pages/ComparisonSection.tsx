@@ -1,36 +1,47 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Check, X } from "lucide-react";
 import { motion } from "framer-motion";
+import { getCompare } from "@/services/compareService";
 
 export function ComparisonSection() {
-  const data = [
-    { feature: "Base Location", others: "Public Beach", nemo: "Private Beach & Pool" },
-    { feature: "Parking", others: "Paid / Public", nemo: "Free" },
-    { feature: "Gear Quality", others: "Standard", nemo: "Premium Gears" },
-    { feature: "Female Available", others: "Random", nemo: "Available" },
-    { feature: "Marine Life", others: "Limited", nemo: "Turtles & Coral" },
-    { feature: "Student Ratio", others: "8+ Group", nemo: "Max 3 in Ocean / 4 in Pool" },
-  ];
+  const [section, setSection] = useState<any>(null);
+  const [data, setData] = useState<any[]>([]);
+
+  useEffect(() => {
+    const load = async () => {
+      console.log("🚀 Fetching compare...");
+
+      const { section, items } = await getCompare();
+
+      console.log("📦 SECTION:", section);
+      console.log("📦 ITEMS:", items);
+
+      setSection(section);
+      setData(items || []);
+    };
+
+    load();
+  }, []);
+
+  if (!section) return null;
 
   return (
     <>
-      <section
-        className="relative py-32 bg-[#02131d] text-white overflow-hidden"
-        style={{ fontFamily: "Harabara, sans-serif" }} // ✅ FORCE FONT
-      >
+      <section className="relative py-32 bg-[#02131d] text-white overflow-hidden">
 
         {/* HEADER */}
         <div className="text-center mb-16 px-6">
           <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
-            DON'T SETTLE FOR{" "}
+            {section.title}{" "}
             <span className="text-cyan-400">
-              JUST "GOOD ENOUGH"
+              {section.highlight}
             </span>
           </h2>
 
           <p className="text-white/60 max-w-2xl mx-auto">
-            Get Certified in the luxury of Palm Jumeirah, then Dive in the UAE’s most pristine waters: Fujairah.
+            {section.subtitle}
           </p>
         </div>
 
@@ -48,10 +59,10 @@ export function ComparisonSection() {
               </div>
             </div>
 
-            {/* ROWS */}
+            {/* DYNAMIC ROWS */}
             {data.map((row, i) => (
               <motion.div
-                key={i}
+                key={row.id}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.05 }}
@@ -82,16 +93,6 @@ export function ComparisonSection() {
 
         </div>
       </section>
-
-      {/* ✅ HARABARA LOAD */}
-      <style jsx global>{`
-        @font-face {
-          font-family: 'Harabara';
-          src: url('/fonts/Harabara.woff') format('woff');
-          font-weight: normal;
-          font-style: normal;
-        }
-      `}</style>
     </>
   );
 }
