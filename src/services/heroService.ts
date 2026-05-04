@@ -2,13 +2,15 @@ import { supabase } from "@/lib/supabaseClient";
 
 // GET HERO
 export const getHero = async () => {
-  return await supabase
-    .from("hero_content")
+  const { data, error } = await supabase
+    .from("hero_section")
     .select("*")
+    .order("created_at", { ascending: false }) // 🔥 important
     .limit(1)
     .single();
-};
 
+  return { data, error };
+};
 // UPDATE HERO
 export const updateHero = async (data: any) => {
   return await supabase

@@ -14,6 +14,8 @@ import { FeaturedAdmin } from "./FeaturedAdmin";
 import { TestimonialsAdmin } from "./TestimonialsAdmin";
 import { WhyAdmin } from "./WhyAdmin";
 import { FooterAdmin } from "./FooterAdmin";
+import HeroSectionAdmin from "./HeroSectionAdmin";
+import FeaturesAdmin from "./FeaturesAdmin";
 
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
@@ -256,6 +258,8 @@ export default function AdminDashboard() {
           <WhyAdmin />
           <FaqAdmin />
           <FooterAdmin />
+          <HeroSectionAdmin />
+          <FeaturesAdmin />
         </div>
 
       </div>
