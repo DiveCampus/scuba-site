@@ -21,6 +21,7 @@ import { PadiRescueDiver } from "./components/pages/PadiRescueDiver";
 import { PadiOpenWater } from "./components/pages/PadiOpenWater";
 import DivemasterPage from "./divemaster/PadIDivemaster";
 import AboutDive from "./About/AboutDive";
+import { AdvancedPadiOpenDiver, AdvnacedOpenDiver } from "./components/pages/AdvancedPadiOpenDiver";
 
 function Home() {
   const isLoggedIn = localStorage.getItem("auth") === "true";
@@ -65,7 +66,7 @@ export default function App() {
       <Route path="/padi-divemaster" element={<DivemasterPage />} />
       <Route path="/padi-rescue-diver" element={<PadiRescueDiver />} />
       <Route path="/padi-open-water" element={<PadiOpenWater />} /> 
-      <Route path="/padi-open-diver" element={<PadiOpenWater />} />
+      <Route path="/padi-open-diver" element={<AdvancedPadiOpenDiver />} />
       <Route path="/about" element={<AboutDive />} />
 
     </Routes>
