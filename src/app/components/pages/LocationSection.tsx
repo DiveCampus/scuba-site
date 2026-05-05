@@ -1,29 +1,29 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { MapPin, Mail, Phone } from "lucide-react";
 import { motion } from "framer-motion";
+import { getLocations } from "@/services/locationService";
 
 export function LocationSection() {
-  const locations = [
-    {
-      title: "DUBAI BASE",
-      rating: "4.8",
-      reviews: "(1,082 Google Reviews)",
-      address: "Azure Residences, The Palm Jumeirah, Dubai, UAE",
-      email: "info@nemodivingcenter.com",
-      phone: "+971 56 704 4472",
-      map: "https://maps.google.com/maps?q=palm+jumeirah&t=&z=13&ie=UTF8&iwloc=&output=embed",
-    },
-    {
-      title: "FUJAIRAH BASE",
-      rating: "4.9",
-      reviews: "(486 Google Reviews)",
-      address: "Royal Beach, Dibba Fujairah, UAE",
-      email: "dive@nemodivingcenter.com",
-      phone: "+971 58 504 4450",
-      map: "https://maps.google.com/maps?q=fujairah+beach&t=&z=13&ie=UTF8&iwloc=&output=embed",
-    },
-  ];
+  const [locations, setLocations] = useState<any[]>([]);
+
+  useEffect(() => {
+    const load = async () => {
+      console.log("🚀 Fetching locations UI...");
+
+      const { data, error } = await getLocations();
+
+      console.log("📦 UI Locations:", data);
+      console.log("❌ Error:", error);
+
+      setLocations(data || []);
+    };
+
+    load();
+  }, []);
+
+  if (!locations.length) return null;
 
   return (
     <section className="py-28 bg-gradient-to-b from-[#f8fafc] to-[#eef2f6]">
@@ -32,7 +32,7 @@ export function LocationSection() {
 
         {locations.map((loc, i) => (
           <motion.div
-            key={i}
+            key={loc.id}
             whileHover={{ y: -5 }}
             className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6"
           >
@@ -73,7 +73,7 @@ export function LocationSection() {
             {/* MAP */}
             <div className="rounded-xl overflow-hidden border">
               <iframe
-                src={loc.map}
+                src={loc.map_url}   // ✅ IMPORTANT FIX
                 className="w-full h-[220px]"
                 loading="lazy"
               />
@@ -81,7 +81,7 @@ export function LocationSection() {
 
             {/* BUTTON */}
             <a
-              href={loc.map}
+              href={loc.map_url}   // ✅ IMPORTANT FIX
               target="_blank"
               className="inline-block mt-4 text-xs text-cyan-600 hover:underline"
             >

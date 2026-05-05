@@ -20,6 +20,9 @@ import StepsAdmin from "./AdminSteps";
 import CompareAdmin from "./CompareAdmin";
 import CommunityFAQSelectionAdmin from "./CommunityFAQSelectionAdmin";
 import WhyChooseAdmin from "./WhyChooseAdmin";
+import GoldStandardAdmin from "./GoldStandardAdmin";
+import LocationAdmin from "./LocationAdmin";
+import FootAdmin from "./FootAdmin";
 
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
@@ -268,6 +271,9 @@ export default function AdminDashboard() {
           <CompareAdmin />
           <CommunityFAQSelectionAdmin />
           <WhyChooseAdmin />
+          <GoldStandardAdmin />
+          <LocationAdmin />
+          <FootAdmin />
           
         </div>
 
