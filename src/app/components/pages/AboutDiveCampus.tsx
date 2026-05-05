@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -17,16 +17,16 @@ const team = [
 ];
 
 export function AboutDiveCampus() {
-  const sectionRef = useRef(null);
-  const cardsRef = useRef([]);
+  const sectionRef = useRef<HTMLDivElement | null>(null);
+  const cardsRef = useRef<HTMLDivElement[]>([]);
 
-  // const goBack = () => {
-  //   window.location.href = "/";
-  // };
+  useLayoutEffect(() => {
+    if (!sectionRef.current) return;
 
-  useEffect(() => {
+    // 🔥 Prevent scroll memory bugs
+    ScrollTrigger.clearScrollMemory();
+
     const ctx = gsap.context(() => {
-
       const total = cardsRef.current.length;
 
       const getRadius = () => {
@@ -39,10 +39,12 @@ export function AboutDiveCampus() {
 
       const updateOrbit = () => {
         radius = getRadius();
+        ScrollTrigger.refresh();
       };
 
       window.addEventListener("resize", updateOrbit);
 
+      // Initial positions
       cardsRef.current.forEach((card, i) => {
         const angle = (i / total) * Math.PI * 2;
 
@@ -56,17 +58,17 @@ export function AboutDiveCampus() {
 
       let rotation = { value: 0 };
 
-      const tl = gsap.timeline({
+      gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
           end: "+=4000",
           scrub: 1.2,
           pin: true,
+          pinSpacing: true,
+          invalidateOnRefresh: true,
         },
-      });
-
-      tl.to(rotation, {
+      }).to(rotation, {
         value: Math.PI * 2,
         ease: "none",
         onUpdate: () => {
@@ -88,73 +90,46 @@ export function AboutDiveCampus() {
         },
       });
 
+      // Cleanup resize listener
+      return () => {
+        window.removeEventListener("resize", updateOrbit);
+      };
     }, sectionRef);
 
-    return () => ctx.revert();
+    // ✅ CLEANUP (SAFE + CORRECT)
+    return () => {
+      ctx.revert(); // removes pin, spacer, inline styles
+
+      ScrollTrigger.killAll(false, true); // kill only triggers safely
+
+      // reset scroll behavior
+      document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
+
+      window.scrollTo({ top: 0, behavior: "auto" });
+
+      requestAnimationFrame(() => {
+        ScrollTrigger.refresh();
+      });
+    };
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="
-        relative h-screen w-full overflow-hidden
-        bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45]
-        text-white font-habara
-      "
+      className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45] text-white"
     >
-      {/* ✅ LOGO AS BACK BUTTON */}
-      {/* <div className="absolute top-16 left-6 z-30 cursor-pointer">
-        <img
-          src="/logow.svg"   // 🔥 yaha apna logo path daal
-          alt="logo"
-          onClick={goBack}
-          className="w-12 sm:w-14 hover:scale-105 transition"
-        />
-      </div> */}
-
-      {/* GLOW */}
-      <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-400/20 blur-[120px] rounded-full" />
-
-      {/* TEXT */}
-      <div className="
-        absolute z-20
-        top-20 left-1/2 -translate-x-1/2 text-center
-        lg:left-10 lg:top-1/2 lg:-translate-y-1/2 lg:translate-x-0 lg:text-left
-        max-w-[280px]
-      ">
-        <h2 className="text-3xl lg:text-5xl font-bold">
-          Meet <span className="text-cyan-300">Our Team</span>
-        </h2>
-        <p className="text-white/60 mt-3 text-sm">
-          Scroll to explore the story
-        </p>
-      </div>
-
-      {/* ORBIT */}
       <div className="absolute inset-0 flex items-center justify-center">
         {team.map((member, i) => (
           <div
             key={i}
-            ref={(el) => (cardsRef.current[i] = el)}
-            className="
-              absolute
-              w-[140px] h-[180px]
-              sm:w-[180px] sm:h-[240px]
-              lg:w-[240px] lg:h-[320px]
-              rounded-xl lg:rounded-2xl
-              bg-white/10 backdrop-blur-xl
-              border border-white/20
-              shadow-xl
-              flex flex-col items-center justify-center
-              text-center
-            "
+            ref={(el) => {
+              if (el) cardsRef.current[i] = el;
+            }}
+            className="absolute w-[160px] h-[200px] rounded-xl bg-white/10 backdrop-blur border border-white/20 flex flex-col items-center justify-center"
           >
-            <h3 className="text-sm sm:text-lg font-bold">
-              {member.name}
-            </h3>
-            <p className="text-cyan-300 text-xs sm:text-sm mt-1">
-              {member.role}
-            </p>
+            <h3 className="font-bold">{member.name}</h3>
+            <p className="text-cyan-300 text-sm">{member.role}</p>
           </div>
         ))}
       </div>

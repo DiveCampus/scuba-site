@@ -21,7 +21,7 @@ import { PadiRescueDiver } from "./components/pages/PadiRescueDiver";
 import { PadiOpenWater } from "./components/pages/PadiOpenWater";
 import DivemasterPage from "./divemaster/PadIDivemaster";
 import AboutDive from "./About/AboutDive";
-import { AdvancedPadiOpenDiver, AdvnacedOpenDiver } from "./components/pages/AdvancedPadiOpenDiver";
+import { AdvancedPadiOpenDiver } from "./components/pages/AdvancedPadiOpenDiver";
 
 function Home() {
   const isLoggedIn = localStorage.getItem("auth") === "true";
