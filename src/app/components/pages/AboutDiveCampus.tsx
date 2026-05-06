@@ -142,6 +142,7 @@ export function AboutDiveCampus() {
 
           // ✅ IMPORTANT
           fastScrollEnd: true,
+          markers: false,
         },
       });
 
@@ -321,7 +322,7 @@ export function AboutDiveCampus() {
     md:rounded-[32px]
 
     bg-white/10
-    backdrop-blur-2xl
+    backdrop-blur-md
     border
     border-white/15
 
@@ -333,6 +334,9 @@ export function AboutDiveCampus() {
     cursor-pointer
     overflow-hidden
     group
+
+    transform-gpu
+    will-change-transform
 
     shadow-[0_20px_60px_rgba(0,0,0,0.25)]
   "
