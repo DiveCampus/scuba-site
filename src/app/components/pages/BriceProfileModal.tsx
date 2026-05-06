@@ -128,7 +128,7 @@ export function BriceProfileModal({
                   className="text-cyan-300 text-[14px] tracking-[3px] uppercase mt-5"
                 >
 
-                  Divemaster
+                  Instructor
 
                 </motion.p>
 
@@ -172,7 +172,7 @@ export function BriceProfileModal({
                 <div className="flex flex-wrap gap-3 mt-7">
 
                   <div className="px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 text-cyan-200 text-[10px] tracking-[2px]">
-                    DIVEMASTER
+                    INSTRUCTOR
                   </div>
 
                   <div className="px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 text-cyan-200 text-[10px] tracking-[2px]">
