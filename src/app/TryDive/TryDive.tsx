@@ -3,6 +3,7 @@
 
 import { Navbar } from "../components/Navbar";
 import Divetry from "../components/pages/Divetry";
+import { FirstDiveStepsSection } from "../components/pages/FirstDiveStepsSection";
 
 
 
@@ -14,6 +15,7 @@ export function TryDive() {
     <>
     <Navbar />
     <Divetry/>
+    <FirstDiveStepsSection />      
     </>
   );
-}
+}    
