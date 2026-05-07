@@ -30,6 +30,8 @@ const team = [
 export function AboutDiveCampus() {
   const sectionRef = useRef<HTMLDivElement | null>(null);
   const cardsRef = useRef<HTMLDivElement[]>([]);
+  const resizeTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const lastRadiusRef = useRef<number>(0);
 
   // ✅ MODAL STATE
   const [selectedMember, setSelectedMember] =
@@ -86,10 +88,27 @@ useLayoutEffect(() => {
     };
 
     let radius = getRadius();
+    lastRadiusRef.current = radius;
 
+    // ✅ FIX 1: Debounce resize with longer delay for mobile
+    // Only refresh if radius actually changed, not on every resize event
     const updateOrbit = () => {
-      radius = getRadius();
-      ScrollTrigger.refresh();
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+      }
+
+      resizeTimeoutRef.current = setTimeout(() => {
+        const newRadius = getRadius();
+        
+        // ✅ FIX 2: Only refresh if radius actually changed (avoid spam refresh)
+        if (newRadius !== lastRadiusRef.current) {
+          lastRadiusRef.current = newRadius;
+          radius = newRadius;
+          ScrollTrigger.refresh();
+        }
+        
+        resizeTimeoutRef.current = null;
+      }, isMobile ? 500 : 250);
     };
 
     window.addEventListener(
@@ -114,9 +133,6 @@ useLayoutEffect(() => {
       value: 0,
     };
 
-    // ✅ FIX: Conditional pinType based on device
-    // Mobile (transform) = better for touch, avoids Safari pinning issues
-    // Desktop (fixed) = stable, smooth scrolling
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
@@ -125,7 +141,6 @@ useLayoutEffect(() => {
         scrub: 1.2,
         pin: true,
         pinSpacing: true,
-        // ✅ CRITICAL: Use "transform" for mobile, "fixed" for desktop
         pinType: isMobile ? "transform" : "fixed",
         anticipatePin: 1,
         fastScrollEnd: true,
@@ -178,13 +193,18 @@ useLayoutEffect(() => {
       },
     });
 
-    // ✅ FIX: Longer delay for mobile render time
-    const refreshDelay = isMobile ? 2000 : 1500;
+    // ✅ FIX 3: Initial refresh only once, not aggressive
     setTimeout(() => {
       ScrollTrigger.refresh();
-    }, refreshDelay);
+    }, isMobile ? 2000 : 1500);
 
     return () => {
+      // ✅ FIX 4: Clear debounce timeout
+      if (resizeTimeoutRef.current) {
+        clearTimeout(resizeTimeoutRef.current);
+        resizeTimeoutRef.current = null;
+      }
+
       window.removeEventListener(
         "resize",
         updateOrbit
@@ -195,13 +215,22 @@ useLayoutEffect(() => {
   }, sectionRef);
 
   return () => {
+    // ✅ FIX 5: Clear any pending resize timeout
+    if (resizeTimeoutRef.current) {
+      clearTimeout(resizeTimeoutRef.current);
+      resizeTimeoutRef.current = null;
+    }
+
     ctx.revert();
 
-    ScrollTrigger.getAll().forEach(
-      (trigger) => {
-        trigger.kill();
-      }
+    // ✅ FIX 6: Only kill current section's trigger, not ALL triggers
+    // This prevents killing other component's triggers
+    const currentTriggers = ScrollTrigger.getAll().filter(
+      (trigger) => trigger.trigger === sectionRef.current
     );
+    currentTriggers.forEach((trigger) => {
+      trigger.kill();
+    });
 
     document
       .querySelectorAll(".pin-spacer")
@@ -229,7 +258,8 @@ useLayoutEffect(() => {
       clearProps: "all",
     });
 
-    ScrollTrigger.refresh();
+    // ✅ FIX 7: Do NOT refresh after cleanup - let scroll restore naturally
+    // ScrollTrigger.refresh();
   };
 }, []);
 
