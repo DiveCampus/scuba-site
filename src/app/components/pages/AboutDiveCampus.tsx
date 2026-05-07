@@ -50,214 +50,313 @@ export function AboutDiveCampus() {
     };
   }, []);
 
-  useLayoutEffect(() => {
-    if (!sectionRef.current) return;
+useLayoutEffect(() => {
+  if (!sectionRef.current) return;
 
-    document.documentElement.style.scrollBehavior =
-      "smooth";
+  console.log("🚀 COMPONENT MOUNTED");
 
-    document.body.classList.add(
-      "hide-scrollbar"
+  console.log("📍 Current URL:", window.location.href);
+
+  console.log(
+    "📏 Screen Size:",
+    window.innerWidth,
+    "x",
+    window.innerHeight
+  );
+
+  console.log(
+    "📦 Total Orbit Cards:",
+    cardsRef.current.length
+  );
+
+  console.log(
+    "📜 Initial Scroll Height:",
+    document.body.scrollHeight
+  );
+
+  console.log(
+    "🧠 GSAP Version:",
+    gsap.version
+  );
+
+  console.log(
+    "🎯 ScrollTrigger Loaded:",
+    ScrollTrigger
+  );
+
+  document.documentElement.style.scrollBehavior = "smooth";
+
+  document.body.classList.add("hide-scrollbar");
+
+  // FIX LIVE BUG
+  document.body.style.overflow = "auto";
+  document.documentElement.style.overflow = "auto";
+
+  console.log(
+    "✅ Body Overflow:",
+    document.body.style.overflow
+  );
+
+  console.log(
+    "✅ HTML Overflow:",
+    document.documentElement.style.overflow
+  );
+
+  const ctx = gsap.context(() => {
+
+    const total = cardsRef.current.length;
+
+    console.log(
+      "🌀 Creating Orbit Animation"
     );
 
-    // ✅ FIX LIVE SCROLL BUG
-    document.body.style.overflow = "auto";
-    document.documentElement.style.overflow =
-      "auto";
+    const getRadius = () => {
+      if (window.innerWidth < 480) return 95;
+      if (window.innerWidth < 640) return 120;
+      if (window.innerWidth < 1024) return 180;
 
-    const ctx = gsap.context(() => {
-      const total = cardsRef.current.length;
+      return 260;
+    };
 
-      const getRadius = () => {
-        if (window.innerWidth < 480)
-          return 95;
+    let radius = getRadius();
 
-        if (window.innerWidth < 640)
-          return 120;
+    console.log("📡 Orbit Radius:", radius);
 
-        if (window.innerWidth < 1024)
-          return 180;
+    const updateOrbit = () => {
+      radius = getRadius();
 
-        return 260;
-      };
+      console.log(
+        "🔄 Resize Triggered | New Radius:",
+        radius
+      );
 
-      let radius = getRadius();
+      ScrollTrigger.refresh();
+    };
 
-      const updateOrbit = () => {
-        radius = getRadius();
+    window.addEventListener(
+      "resize",
+      updateOrbit
+    );
 
-        ScrollTrigger.refresh();
-      };
+    // INITIAL POSITION
+    cardsRef.current.forEach((card, i) => {
+      const angle =
+        (i / total) * Math.PI * 2;
 
-      window.addEventListener(
+      console.log(
+        `🧭 Card ${i} Initial Angle:`,
+        angle
+      );
+
+      gsap.set(card, {
+        x: Math.cos(angle) * radius,
+        y: Math.sin(angle) * radius,
+        opacity: 0.3,
+        scale: 0.7,
+      });
+    });
+
+    let rotation = {
+      value: 0,
+    };
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+
+        start: "top top",
+
+        end: "+=4000",
+
+        scrub: 1.2,
+
+        pin: true,
+
+        pinSpacing: true,
+
+        invalidateOnRefresh: true,
+
+        anticipatePin: 1,
+
+        fastScrollEnd: true,
+
+        markers: false,
+
+        onEnter: () => {
+          console.log(
+            "✅ ScrollTrigger ENTERED"
+          );
+        },
+
+        onUpdate: (self) => {
+          console.log(
+            "📜 Scroll Progress:",
+            self.progress.toFixed(3)
+          );
+        },
+
+        onLeave: () => {
+          console.log(
+            "🚪 ScrollTrigger LEFT"
+          );
+        },
+
+        onRefresh: () => {
+          console.log(
+            "♻️ ScrollTrigger REFRESHED"
+          );
+        },
+
+        onRefreshInit: () => {
+          console.log(
+            "⚡ ScrollTrigger REFRESH INIT"
+          );
+        },
+      },
+    });
+
+    console.log(
+      "🎬 Timeline Created Successfully"
+    );
+
+    tl.to(rotation, {
+      value: Math.PI * 2,
+
+      ease: "none",
+
+      onUpdate: () => {
+
+        console.log(
+          "🌀 Orbit Rotation:",
+          rotation.value.toFixed(2)
+        );
+
+        cardsRef.current.forEach(
+          (card, i) => {
+            const angle =
+              (i / total) *
+              Math.PI *
+              2 +
+              rotation.value;
+
+            const x =
+              Math.cos(angle) *
+              radius;
+
+            const y =
+              Math.sin(angle) *
+              radius;
+
+            const depth =
+              Math.cos(angle);
+
+            gsap.set(card, {
+              x,
+              y,
+
+              scale:
+                0.7 +
+                depth * 0.3,
+
+              opacity:
+                0.3 +
+                depth * 0.7,
+
+              filter: `blur(${(1 - depth) * 8}px)`,
+            });
+          }
+        );
+      },
+    });
+
+    // VERY IMPORTANT
+    setTimeout(() => {
+      console.log(
+        "⏳ Delayed ScrollTrigger Refresh"
+      );
+
+      ScrollTrigger.refresh();
+
+      console.log(
+        "📏 After Refresh Height:",
+        document.body.scrollHeight
+      );
+    }, 1000);
+
+    return () => {
+      console.log("🧹 CLEANUP STARTED");
+
+      window.removeEventListener(
         "resize",
         updateOrbit
       );
 
-      // INITIAL POSITION
-      cardsRef.current.forEach(
-        (card, i) => {
-          const angle =
-            (i / total) *
-            Math.PI *
-            2;
+      tl.kill();
 
-          gsap.set(card, {
-            x:
-              Math.cos(angle) *
-              radius,
-
-            y:
-              Math.sin(angle) *
-              radius,
-
-            opacity: 0.3,
-            scale: 0.7,
-          });
-        }
+      console.log(
+        "❌ Timeline Killed"
       );
+    };
+  }, sectionRef);
 
-      let rotation = {
-        value: 0,
-      };
+  return () => {
+    console.log("🛑 COMPONENT UNMOUNT");
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
+    ctx.revert();
 
-          start: "top top",
-
-          end: "+=4000",
-
-          scrub: 1.2,
-
-          pin: true,
-
-          pinSpacing: true,
-
-          invalidateOnRefresh: true,
-
-          // ✅ IMPORTANT
-          anticipatePin: 1,
-
-          // ✅ IMPORTANT
-          fastScrollEnd: true,
-          markers: false,
-        },
-      });
-
-      tl.to(rotation, {
-        value: Math.PI * 2,
-
-        ease: "none",
-
-        onUpdate: () => {
-          cardsRef.current.forEach(
-            (card, i) => {
-              const angle =
-                (i / total) *
-                Math.PI *
-                2 +
-                rotation.value;
-
-              const x =
-                Math.cos(angle) *
-                radius;
-
-              const y =
-                Math.sin(angle) *
-                radius;
-
-              const depth =
-                Math.cos(angle);
-
-              gsap.set(card, {
-                x,
-                y,
-
-                scale:
-                  0.7 +
-                  depth * 0.3,
-
-                opacity:
-                  0.3 +
-                  depth * 0.7,
-
-                filter: `blur(${(1 - depth) * 8
-                  }px)`,
-              });
-            }
-          );
-        },
-      });
-
-      return () => {
-        window.removeEventListener(
-          "resize",
-          updateOrbit
+    ScrollTrigger.getAll().forEach(
+      (trigger, i) => {
+        console.log(
+          `🔥 Killing Trigger ${i}`
         );
 
-        tl.kill();
-      };
-    }, sectionRef);
+        trigger.kill();
+      }
+    );
 
-    // ✅ CLEANUP
-    return () => {
-      ctx.revert();
+    document
+      .querySelectorAll(".pin-spacer")
+      .forEach((el, i) => {
 
-      // ✅ KILL ALL TRIGGERS
-      ScrollTrigger.getAll().forEach(
-        (trigger) => trigger.kill()
-      );
+        console.log(
+          `🧱 Removing Pin Spacer ${i}`
+        );
 
-      // ✅ REMOVE PIN SPACERS
-      document
-        .querySelectorAll(".pin-spacer")
-        .forEach((el) => {
-          const parent =
-            el.parentNode;
+        const parent = el.parentNode;
 
-          if (parent) {
-            while (el.firstChild) {
-              parent.insertBefore(
-                el.firstChild,
-                el
-              );
-            }
-
-            parent.removeChild(el);
+        if (parent) {
+          while (el.firstChild) {
+            parent.insertBefore(
+              el.firstChild,
+              el
+            );
           }
-        });
 
-      // ✅ FORCE RESET
-      gsap.set("body", {
-        clearProps: "all",
+          parent.removeChild(el);
+        }
       });
 
-      gsap.set("html", {
-        clearProps: "all",
-      });
+    gsap.set("body", {
+      clearProps: "all",
+    });
 
-      document.body.style.overflow =
-        "auto";
+    gsap.set("html", {
+      clearProps: "all",
+    });
 
-      document.documentElement.style.overflow =
-        "auto";
+    document.body.style.overflow =
+      "auto";
 
-      document.body.style.position =
-        "relative";
+    document.documentElement.style.overflow =
+      "auto";
 
-      document.documentElement.style.position =
-        "relative";
+    ScrollTrigger.refresh();
 
-      document.body.classList.remove(
-        "hide-scrollbar"
-      );
-
-      // ✅ FORCE REFRESH
-      ScrollTrigger.refresh();
-    };
-  }, []);
+    console.log(
+      "✅ FINAL CLEANUP DONE"
+    );
+  };
+}, []);
 
   return (
     <>
