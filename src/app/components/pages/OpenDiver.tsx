@@ -88,30 +88,74 @@ export function OpenDiver() {
           </p>
 
           {/* PRICE CARD */}
-          <div className="mt-14 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-12 py-8 shadow-xl">
+          <div
+            className="
+    mt-14
 
+    bg-white/10
+    backdrop-blur-xl
+
+    border
+    border-white/20
+
+    rounded-2xl
+
+    px-12
+    py-8
+
+    shadow-xl
+  "
+          >
             {/* OLD PRICE */}
-            <p className="text-xs text-white/40 line-through mb-2 tracking-[2px]">
+            <p
+              className="
+      text-xs
+      text-white/40
+      line-through
+      mb-2
+      tracking-[2px]
+    "
+            >
               AED {course?.old_price || 2199}
             </p>
 
             {/* PRICE */}
-            <h2 className="text-5xl font-bold tracking-[1px] leading-none">
-
-              {course?.price || 1599}
-
-              <span className="text-cyan-400 text-lg tracking-[2px] ml-1">
+            <h2
+              className="
+      text-5xl
+      font-bold
+      tracking-[1px]
+      leading-none
+    "
+            >
+              <span
+                className="
+        text-cyan-400
+        text-lg
+        tracking-[2px]
+        mr-2
+      "
+              >
                 AED
               </span>
 
+              {course?.price || 1599}
             </h2>
 
             {/* SUBTEXT */}
-            <p className="text-xs text-white/55 mt-4 tracking-[1px] leading-[1.8]">
-              Includes Deep Diving · Navigation · Adventure Training
+            <p
+              className="
+      text-xs
+      text-white/55
+      mt-4
+      tracking-[1px]
+      leading-[1.8]
+    "
+            >
+              Includes Deep Diving · Navigation ·
+              Adventure Training
             </p>
           </div>
-
           {/* BUTTONS */}
           <div className="mt-11 flex flex-col items-center gap-5">
 

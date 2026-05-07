@@ -8,7 +8,7 @@ export function PadiOpenDiver() {
 
   return (
     <><>
-    <Navbar /> 
+      <Navbar />
     </><section className="relative min-h-screen w-full overflow-hidden font-habara">
 
         {/* BACKGROUND IMAGE */}
@@ -59,20 +59,60 @@ export function PadiOpenDiver() {
           </p>
 
           {/* PRICE CARD */}
-          <div className="mt-8 bg-white/10 backdrop-blur-lg border border-white/20 rounded-xl px-8 py-6 shadow-xl">
-            <p className="text-sm text-white/50 line-through mb-1">
+          <div
+            className="
+    mt-8
+
+    bg-white/10
+    backdrop-blur-lg
+
+    border
+    border-white/20
+
+    rounded-xl
+
+    px-8
+    py-6
+
+    shadow-xl
+  "
+          >
+            <p
+              className="
+      text-sm
+      text-white/50
+      line-through
+      mb-1
+    "
+            >
               AED 2,199
             </p>
 
             <p className="text-4xl font-bold">
-              1,599 <span className="text-cyan-400 text-lg">AED</span>
+              <span
+                className="
+        text-cyan-400
+        text-lg
+        mr-2
+      "
+              >
+                AED
+              </span>
+
+              1,599
             </p>
 
-            <p className="text-xs text-white/60 mt-2">
-              Includes Basic Training + Certification
+            <p
+              className="
+      text-xs
+      text-white/60
+      mt-2
+    "
+            >
+              Includes Basic Training +
+              Certification
             </p>
           </div>
-
           {/* BUTTONS */}
           <div className="mt-8 flex gap-4 flex-wrap justify-center">
             <button className="px-8 py-3 bg-cyan-400 text-black font-semibold rounded-lg hover:scale-105 transition duration-300">

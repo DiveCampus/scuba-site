@@ -118,18 +118,35 @@ export function HeroSection() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="mt-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-8 py-6 shadow-[0_20px_60px_rgba(0,0,0,0.6)]"
+            className="
+    mt-8
+
+    bg-white/10
+    backdrop-blur-xl
+
+    border
+    border-white/20
+
+    rounded-2xl
+
+    px-8
+    py-6
+
+    shadow-[0_20px_60px_rgba(0,0,0,0.6)]
+  "
           >
             <p className="text-sm text-white/50 line-through">
               AED {safeHero.old_price}
             </p>
 
             <p className="text-4xl font-bold">
-              {safeHero.price}{" "}
-              <span className="text-cyan-400 text-lg">AED</span>
+              <span className="text-cyan-400 text-lg mr-2">
+                AED
+              </span>
+
+              {safeHero.price}
             </p>
           </motion.div>
-
           {/* BUTTONS */}
           <div className="mt-8 flex gap-4 flex-wrap justify-center">
 

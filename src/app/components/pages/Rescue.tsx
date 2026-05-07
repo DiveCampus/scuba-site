@@ -64,37 +64,118 @@ export function Rescue() {
           </p>
 
           {/* PRICE CARD */}
-          <div className="mt-14 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl px-12 py-9 shadow-xl">
+          <div
+            className="
+    mt-14
 
+    backdrop-blur-xl
+    bg-white/10
+
+    border
+    border-white/20
+
+    rounded-2xl
+
+    px-12
+    py-9
+
+    shadow-xl
+  "
+          >
             {/* OLD PRICE */}
-            <p className="text-xs text-white/40 line-through mb-2 tracking-[2px]">
+            <p
+              className="
+      text-xs
+      text-white/40
+      line-through
+      mb-2
+      tracking-[2px]
+    "
+            >
               AED 2,500
             </p>
 
             {/* NEW PRICE */}
-            <h2 className="text-5xl font-semibold tracking-[1px] leading-none">
-              1,720{" "}
-
-              <span className="text-cyan-400 text-lg font-medium tracking-[2px]">
+            <h2
+              className="
+      text-5xl
+      font-semibold
+      tracking-[1px]
+      leading-none
+    "
+            >
+              <span
+                className="
+        text-cyan-400
+        text-lg
+        font-medium
+        tracking-[2px]
+        mr-2
+      "
+              >
                 AED
               </span>
+
+              1,720
             </h2>
 
             {/* TAGS */}
-            <div className="flex justify-center gap-3 mt-6 flex-wrap text-[11px] text-white/60 tracking-[1px]">
+            <div
+              className="
+      flex
+      justify-center
+      gap-3
 
-              <span className="px-4 py-1.5 border border-white/20 rounded-full">
+      mt-6
+
+      flex-wrap
+
+      text-[11px]
+      text-white/60
+      tracking-[1px]
+    "
+            >
+              <span
+                className="
+        px-4
+        py-1.5
+
+        border
+        border-white/20
+
+        rounded-full
+      "
+              >
                 EFR INCLUDED
               </span>
 
-              <span className="px-4 py-1.5 border border-white/20 rounded-full">
+              <span
+                className="
+        px-4
+        py-1.5
+
+        border
+        border-white/20
+
+        rounded-full
+      "
+              >
                 3 DAYS TRAINING
               </span>
 
-              <span className="px-4 py-1.5 border border-white/20 rounded-full">
+              <span
+                className="
+        px-4
+        py-1.5
+
+        border
+        border-white/20
+
+        rounded-full
+      "
+              >
                 FULL GEAR INCLUDED
               </span>
-
             </div>
           </div>
 

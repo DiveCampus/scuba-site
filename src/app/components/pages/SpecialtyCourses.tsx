@@ -77,35 +77,75 @@ export function SpecialtyCourses() {
           </p>
 
           {/* PRICE CARD */}
-          <div className="mt-14 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-12 py-8 shadow-xl">
+          <div
+            className="
+    mt-14
 
+    bg-white/10
+    backdrop-blur-xl
+
+    border
+    border-white/20
+
+    rounded-2xl
+
+    px-12
+    py-8
+
+    shadow-xl
+  "
+          >
             {/* LABEL */}
-            <p className="text-xs text-white/45 mb-3 tracking-[2px] uppercase">
-
+            <p
+              className="
+      text-xs
+      text-white/45
+      mb-3
+      tracking-[2px]
+      uppercase
+    "
+            >
               Starting From
-
             </p>
 
             {/* PRICE */}
-            <p className="text-5xl font-bold tracking-[1px] leading-none">
-
-              799{" "}
-
-              <span className="text-cyan-400 text-lg tracking-[2px] font-medium">
+            <p
+              className="
+      text-5xl
+      font-bold
+      tracking-[1px]
+      leading-none
+    "
+            >
+              <span
+                className="
+        text-cyan-400
+        text-lg
+        tracking-[2px]
+        font-medium
+        mr-2
+      "
+              >
                 AED
               </span>
 
+              799
             </p>
 
             {/* SUBTEXT */}
-            <p className="text-xs text-white/55 mt-5 tracking-[1px] leading-[1.8]">
-
-              Flexible Courses · International Certification
-
+            <p
+              className="
+      text-xs
+      text-white/55
+      mt-5
+      tracking-[1px]
+      leading-[1.8]
+    "
+            >
+              Flexible Courses · International
+              Certification
             </p>
-
           </div>
-
           {/* BUTTONS */}
           <div className="mt-11 flex gap-5 flex-wrap justify-center">
 
