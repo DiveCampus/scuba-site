@@ -29,6 +29,7 @@ import AOWAdvantageAdmin from "./AOWAdvantageAdmin";
 import GlobalPassportAdmin from "./GlobalPassportAdmin";
 import ChooseEnvironmentAdmin from "./ChooseEnvironmentAdmin";
 import AdvancedTrainingGoldAdmin from "./AdvancedTrainingGoldAdmin";
+import MasteryGapAdmin from "./MasteryGapAdmin";
 
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
@@ -173,7 +174,11 @@ export default function AdminDashboard() {
     {
       name:" Advanced Training Gold Section",
       component:<AdvancedTrainingGoldAdmin/>
-    }
+    },
+    {
+      name :  "Mastery Gap",
+      component : <MasteryGapAdmin />
+    },
   ];
 
   if (loading) {
