@@ -28,6 +28,7 @@ import AdvancedProtocolAdmin from "./AdvancedProtocolAdmin";
 import AOWAdvantageAdmin from "./AOWAdvantageAdmin";
 import GlobalPassportAdmin from "./GlobalPassportAdmin";
 import ChooseEnvironmentAdmin from "./ChooseEnvironmentAdmin";
+import AdvancedTrainingGoldAdmin from "./AdvancedTrainingGoldAdmin";
 
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
@@ -168,6 +169,10 @@ export default function AdminDashboard() {
     {
       name :"Choose Environment",
       component : <ChooseEnvironmentAdmin />
+    },
+    {
+      name:" Advanced Training Gold Section",
+      component:<AdvancedTrainingGoldAdmin/>
     }
   ];
 
