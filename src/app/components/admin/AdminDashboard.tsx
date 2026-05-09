@@ -31,7 +31,12 @@ import ChooseEnvironmentAdmin from "./ChooseEnvironmentAdmin";
 import AdvancedTrainingGoldAdmin from "./AdvancedTrainingGoldAdmin";
 import MasteryGapAdmin from "./MasteryGapAdmin";
 import PremiumFooterAdmin from "./PremiumFooterAdmin";
-
+import OpenDiverAdmin from "./OpenDiverAdmin";
+import HybridProtocolAdmin from "./HybridProtocolAdmin";
+import EliteBenefitsAdmin from "./EliteBenefitsAdmin";
+import OceanEliteAdmin from "./OceanEliteAdmin";
+import DiveEnvironmentAdmin from "./DiveEnvironmentAdmin";
+import AdvancedTrainingGoldElitedAdmin from "./AdvancedTrainingGoldEliteAdmin";
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -184,6 +189,30 @@ export default function AdminDashboard() {
       name: "Premium Footer",
       component: <PremiumFooterAdmin/>
     },
+    {
+      name :"Open Diver",
+      component:<OpenDiverAdmin />
+    },
+    {
+      name :"Hybrid Protocol",
+      component:<HybridProtocolAdmin/>
+    },
+    {
+      name :"Elite Benefits",
+      component:<EliteBenefitsAdmin />
+    },
+    {
+      name :" Ocean Elite",
+      component:<OceanEliteAdmin />
+    },
+    {
+      name :"Dive Environment",
+      component :<DiveEnvironmentAdmin />
+    },
+    {
+      name :"Advanced Training Gold EliteAdmin",
+      component:<AdvancedTrainingGoldElitedAdmin />
+    }
   ];
 
   if (loading) {

@@ -1,13 +1,14 @@
-// AdvancedOpenWater.tsx
+// AdvancedOpenWater.tsx //LEVEL 2 · ADVANCED OPEN WATER...
+
 "use client";
 
-import { AdvancedProtocolSection } from "./AdvancedProtocolSection";
-import { AdvancedTrainingGoldSection } from "./AdvancedTrainingGoldSection";
-import { AOWAdvantageSection } from "./AOWAdvantageSection";
-import { ChooseEnvironmentSection } from "./ChooseEnvironmentSection";
+import { AdvancedTrainingGoldEliteSection } from "./AdvancedTrainingGoldEliteSection";
+import { DiveEnvironmentSection } from "./DiveEnvironmentSection";
+import { EliteBenefitsSection } from "./EliteBenefitsSection";
 // import { Community } from "./Community";
-import { GlobalPassportSection } from "./GlobalPassportSection";
+import { HybridProtocolSection } from "./HybridProtocolSection";
 import { MasteryGapSection } from "./MasteryGapSection";
+import { OceanEliteSection } from "./OceanEliteSection";
 import { OpenDiver } from "./OpenDiver";
 import { PremiumSec } from "./PremiumSec";
 
@@ -16,11 +17,11 @@ export function AdvancedOpenWater() {
   return (
     <>
     <OpenDiver  />
-    <AdvancedProtocolSection />
-    <AOWAdvantageSection />
-    <GlobalPassportSection />
-     <ChooseEnvironmentSection />
-     <AdvancedTrainingGoldSection />
+    <HybridProtocolSection />
+    <EliteBenefitsSection />
+    <OceanEliteSection />
+    <DiveEnvironmentSection /> 
+     <AdvancedTrainingGoldEliteSection />
      <MasteryGapSection />
      {/* <Community />  */}
      <PremiumSec />
