@@ -5,12 +5,12 @@
 import { AdvancedTrainingGoldEliteSection } from "./AdvancedTrainingGoldEliteSection";
 import { DiveEnvironmentSection } from "./DiveEnvironmentSection";
 import { EliteBenefitsSection } from "./EliteBenefitsSection";
+import { EliteFooter } from "./EliteFooter";
 // import { Community } from "./Community";
 import { HybridProtocolSection } from "./HybridProtocolSection";
-import { MasteryGapSection } from "./MasteryGapSection";
 import { OceanEliteSection } from "./OceanEliteSection";
 import { OpenDiver } from "./OpenDiver";
-import { PremiumSec } from "./PremiumSec";
+import { TrainingComparisonSection } from "./TrainingComparisonSection";
 
 
 export function AdvancedOpenWater() {
@@ -22,9 +22,9 @@ export function AdvancedOpenWater() {
     <OceanEliteSection />
     <DiveEnvironmentSection /> 
      <AdvancedTrainingGoldEliteSection />
-     <MasteryGapSection />
+     <TrainingComparisonSection />
      {/* <Community />  */}
-     <PremiumSec />
+     <EliteFooter />
     </>
   );
 }

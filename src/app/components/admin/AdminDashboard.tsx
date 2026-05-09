@@ -37,6 +37,8 @@ import EliteBenefitsAdmin from "./EliteBenefitsAdmin";
 import OceanEliteAdmin from "./OceanEliteAdmin";
 import DiveEnvironmentAdmin from "./DiveEnvironmentAdmin";
 import AdvancedTrainingGoldElitedAdmin from "./AdvancedTrainingGoldEliteAdmin";
+import TrainingComparisonAdmin from "./TrainingComparisonAdmin";
+import EliteFooterAdmin from "./EliteFooterAdmin";
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
   const [loading, setLoading] = useState(true);
@@ -212,6 +214,14 @@ export default function AdminDashboard() {
     {
       name :"Advanced Training Gold EliteAdmin",
       component:<AdvancedTrainingGoldElitedAdmin />
+    },
+    {
+      name :" Training Comparison",
+      component:<TrainingComparisonAdmin />
+    },
+    {
+      name :" Elite Footer",
+      component:<EliteFooterAdmin />
     }
   ];
 
