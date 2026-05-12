@@ -45,6 +45,9 @@ import ComparisonDiveAdmin from "./ComparisonDiveAdmin";
 import ProfessionalStatusAdmin from "./ProfessionalStatusAdmin";
 import CareerPathAdmin from "./CareerPathAdmin";
 import GoldStandardDiveAdmin from "./GoldStandardDiveAdmin";
+import RescueHeroAdmin from "./RescueHeroAdmin";
+import RescueCapabilitiesAdmin from "./RescueCapabilitiesAdmin";
+import RescueComparisonAdmin from "./RescueComparisonAdmin";
 // import EnvironmentSectionAdmin from "./EnvironmentSectionAdmin";
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
@@ -258,6 +261,19 @@ export default function AdminDashboard() {
     //   name :" Environment Section",
     //   component :<EnvironmentSectionAdmin />
     // }
+
+    {
+      name :"Rescue Hero",
+      component:<RescueHeroAdmin />
+    },
+    {
+      name :"Rescue Capabilities",
+      component:<RescueCapabilitiesAdmin />
+    },
+    {
+      name :" Rescue Comparison",
+      component:<RescueComparisonAdmin />
+    }
   ];
 
   if (loading) {

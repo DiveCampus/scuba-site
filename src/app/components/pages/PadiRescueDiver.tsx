@@ -1,4 +1,4 @@
-// PadiRescueDiver.tsx
+// LEVEL 3 · PADI RESCUE DIVER   
 "use client";
 
 import { Navbar } from "../Navbar";
