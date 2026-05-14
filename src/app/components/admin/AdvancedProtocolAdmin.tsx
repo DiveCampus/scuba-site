@@ -1,31 +1,35 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import {
+  useEffect,
+  useState,
+} from "react";
 
-import { motion } from "framer-motion";
+import {
+  motion,
+} from "framer-motion";
 
 import {
   Anchor,
   Compass,
   MapPin,
-  Ship,
   Waves,
-  Moon,
-  Search,
-  MessageCircle,
+  Save,
+  Plus,
+  Trash2,
 } from "lucide-react";
 
 import {
 
-  getAdvancedProtocolSection,
+  getAdvancedProtocol,
 
   updateAdvancedProtocolSection,
 
-  getAdvancedProtocolCards,
-
-
   updateAdvancedProtocolCard,
 
+  createAdvancedProtocolCard,
+
+  deleteAdvancedProtocolCard,
 
 } from "@/services/AdvancedProtocolService";
 
@@ -34,21 +38,10 @@ import {
 ========================================= */
 
 const icons: any = {
-
-  Anchor: <Anchor size={20} />,
-
-  Compass: <Compass size={20} />,
-
-  MapPin: <MapPin size={20} />,
-
-  Ship: <Ship size={20} />,
-
-  Waves: <Waves size={20} />,
-
-  Moon: <Moon size={20} />,
-
-  Search: <Search size={20} />,
-
+  Anchor,
+  Compass,
+  MapPin,
+  Waves,
 };
 
 /* =========================================
@@ -57,13 +50,14 @@ const icons: any = {
 
 export default function AdvancedProtocolAdmin() {
 
-  const [section, setSection] = useState<any>(null);
+  const [section, setSection] =
+    useState<any>(null);
 
-  const [cards, setCards] = useState<any[]>([]);
+  const [cards, setCards] =
+    useState<any[]>([]);
 
-  const [loading, setLoading] = useState(true);
-
-  const [saving, setSaving] = useState(false);
+  const [saving, setSaving] =
+    useState(false);
 
   /* =========================================
      FETCH
@@ -71,22 +65,18 @@ export default function AdvancedProtocolAdmin() {
 
   useEffect(() => {
 
-    const fetchData = async () => {
+    const load = async () => {
 
-      const { data: sectionData } =
-        await getAdvancedProtocolSection();
+      const res =
+        await getAdvancedProtocol();
 
-      const { data: cardsData } =
-        await getAdvancedProtocolCards();
+      setSection(res.section);
 
-      setSection(sectionData);
+      setCards(res.cards);
 
-      setCards(cardsData || []);
-
-      setLoading(false);
     };
 
-    fetchData();
+    load();
 
   }, []);
 
@@ -94,149 +84,139 @@ export default function AdvancedProtocolAdmin() {
      SAVE SECTION
   ========================================= */
 
-  const handleSaveSection = async () => {
+  const saveSection =
+    async () => {
 
-    if (!section?.id) return;
+      setSaving(true);
 
-    setSaving(true);
+      await updateAdvancedProtocolSection(
+        section.id,
+        section
+      );
 
-    await updateAdvancedProtocolSection(
-      section.id,
-      section
-    );
-
-    setSaving(false);
-  };
+      setSaving(false);
+    };
 
   /* =========================================
      UPDATE CARD
   ========================================= */
 
-  const handleUpdateCard = async (
-    id: string,
-    payload: any
-  ) => {
+  const updateCard =
+    async (
+      index: number,
+      field: string,
+      value: any
+    ) => {
 
-    await updateAdvancedProtocolCard(
-      id,
-      payload
-    );
+      const updated = [...cards];
 
-  };
+      updated[index][field] =
+        value;
+
+      setCards(updated);
+
+      await updateAdvancedProtocolCard(
+        updated[index].id,
+        updated[index]
+      );
+    };
 
   /* =========================================
      ADD CARD
   ========================================= */
 
-  const handleAddCard = async () => {
+  const addCard =
+    async () => {
 
-    const payload = {
+      const payload = {
 
-      section_id: section?.id,
+        section_id:
+          section.id,
 
-      tag: "NEW TAG",
+        tag: "NEW TAG",
 
-      title: "New Card",
+        title: "New Card",
 
-      description: "New description",
+        description:
+          "Card Description",
 
-      icon: "Anchor",
+        icon: "Anchor",
 
-      highlight: false,
+        highlight: false,
 
-      sort_order: cards.length + 1,
+        sort_order:
+          cards.length + 1,
 
+      };
+
+      const { data } =
+        await createAdvancedProtocolCard(
+          payload
+        );
+
+      if (data) {
+
+        setCards([
+          ...cards,
+          data,
+        ]);
+
+      }
     };
-
-//     const { data } =
-//       await createAdvancedProtocolCard(
-//         payload
-//       );
-
-//     if (data) {
-
-//       setCards([...cards, data]);
-
-//     }
-
-//   };
 
   /* =========================================
      DELETE CARD
   ========================================= */
 
-//   const handleDeleteCard = async (
-//     id: string
-//   ) => {
+  const deleteCard =
+    async (
+      id: string
+    ) => {
 
-//     await deleteAdvancedProtocolCard(id);
+      await deleteAdvancedProtocolCard(
+        id
+      );
 
-//     setCards(
-//       cards.filter(
-//         (card) => card.id !== id
-//       )
-//     );
+      setCards(
+        cards.filter(
+          (card) =>
+            card.id !== id
+        )
+      );
+    };
 
-  };
-
-  /* =========================================
-     LOADING
-  ========================================= */
-
-  if (loading) {
-
-    return (
-
-      <div className="
-        min-h-screen
-        flex
-        items-center
-        justify-center
-        bg-[#f3f6f9]
-        text-black
-      ">
-
-        Loading...
-
-      </div>
-
-    );
-
-  }
+  if (!section) return null;
 
   return (
 
-    <section
-      className="
-        py-24
-        bg-[#f3f6f9]
-      "
-      style={{
-        fontFamily: "Harabara, sans-serif",
-      }}
-    >
+    <section className="
+      py-24
+      bg-[#f3f6f9]
+      min-h-screen
+    ">
 
-      {/* HEADER */}
       <div className="
         max-w-7xl
         mx-auto
         px-6
       ">
 
+        {/* TOP */}
         <div className="
           flex
           items-center
           justify-between
-          mb-12
           flex-wrap
           gap-5
+          mb-14
         ">
 
           <div>
 
             <p className="
-              text-[10px]
+              text-[11px]
               tracking-[4px]
+              uppercase
               text-cyan-500
               mb-3
             ">
@@ -244,10 +224,10 @@ export default function AdvancedProtocolAdmin() {
             </p>
 
             <h2 className="
-              text-3xl
+              text-4xl
               md:text-5xl
               font-bold
-              text-[#0a0e27]
+              text-black
             ">
               Advanced Protocol
             </h2>
@@ -255,22 +235,31 @@ export default function AdvancedProtocolAdmin() {
           </div>
 
           <motion.button
-            whileTap={{ scale: 0.95 }}
-            onClick={handleSaveSection}
+            whileTap={{
+              scale: 0.95,
+            }}
+            onClick={
+              saveSection
+            }
             className="
               px-7
-              h-[54px]
+              h-[56px]
               rounded-2xl
               bg-cyan-500
               text-white
               font-semibold
               shadow-lg
+              flex
+              items-center
+              gap-3
             "
           >
 
+            <Save size={18} />
+
             {saving
               ? "Saving..."
-              : "Save Section"}
+              : "Save Changes"}
 
           </motion.button>
 
@@ -279,10 +268,9 @@ export default function AdvancedProtocolAdmin() {
         {/* SECTION FORM */}
         <div className="
           grid
-          grid-cols-1
           lg:grid-cols-2
           gap-7
-          mb-12
+          mb-14
         ">
 
           {/* LEFT */}
@@ -294,155 +282,111 @@ export default function AdvancedProtocolAdmin() {
             p-7
             shadow-sm
             space-y-5
-
           ">
 
-            <div>
+            {/* TOP LABEL */}
+            <input
+              value={
+                section.top_label || ""
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  top_label:
+                    e.target.value,
+                })
+              }
+              placeholder="Top Label"
+              className="
+                w-full
+                h-[56px]
+                rounded-2xl
+                border
+                border-gray-200
+                px-5
+                outline-none
+                text-black
+                placeholder:text-gray-400
+              "
+            />
 
-              <label className="
-                text-xs
-                tracking-[2px]
-                text-gray-400
-                uppercase
-              ">
-                Top Label
-              </label>
+            {/* TITLE */}
+            <input
+              value={
+                section.title || ""
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  title:
+                    e.target.value,
+                })
+              }
+              placeholder="Main Title"
+              className="
+                w-full
+                h-[56px]
+                rounded-2xl
+                border
+                border-gray-200
+                px-5
+                outline-none
+                text-black
+              "
+            />
 
-              <input
-                value={section?.top_label || ""}
-                onChange={(e) =>
-                  setSection({
-                    ...section,
-                    top_label:
-                      e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[56px]
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  px-5
-                  outline-none
-                  text-black
-                "
-              />
+            {/* HIGHLIGHT */}
+            <input
+              value={
+                section.highlighted_title || ""
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  highlighted_title:
+                    e.target.value,
+                })
+              }
+              placeholder="Highlighted Title"
+              className="
+                w-full
+                h-[56px]
+                rounded-2xl
+                border
+                border-cyan-200
+                bg-cyan-50
+                px-5
+                outline-none
+                text-cyan-700
+                font-semibold
+              "
+            />
 
-            </div>
-
-            <div>
-
-              <label className="
-                text-xs
-                tracking-[2px]
-                text-gray-400
-                uppercase
-              ">
-                Main Title
-              </label>
-
-              <input
-                value={section?.title || ""}
-                onChange={(e) =>
-                  setSection({
-                    ...section,
-                    title:
-                      e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[56px]
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  px-5
-                  outline-none
-                  resize-none
-                  text-black
-
-
-                "
-              />
-
-            </div>
-
-            <div>
-
-              <label className="
-                text-xs
-                tracking-[2px]
-                text-gray-400
-                uppercase
-              ">
-                Highlighted Title
-              </label>
-
-              <input
-                value={
-                  section?.highlighted_title || ""
-                }
-                onChange={(e) =>
-                  setSection({
-                    ...section,
-                    highlighted_title:
-                      e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[56px]
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  px-5
-                  outline-none
-                  text-black
-                "
-              />
-
-            </div>
-
-            <div>
-
-              <label className="
-                text-xs
-                tracking-[2px]
-                text-gray-400
-                uppercase
-              ">
-                Description
-              </label>
-
-              <textarea
-                rows={5}
-                value={
-                  section?.description || ""
-                }
-                onChange={(e) =>
-                  setSection({
-                    ...section,
-                    description:
-                      e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  p-5
-                  outline-none
-                  resize-none
-                "
-              />
-
-            </div>
+            {/* DESCRIPTION */}
+            <textarea
+              rows={5}
+              value={
+                section.description || ""
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  description:
+                    e.target.value,
+                })
+              }
+              placeholder="Description"
+              className="
+                w-full
+                rounded-2xl
+                border
+                border-gray-200
+                p-5
+                outline-none
+                resize-none
+                text-black
+              "
+            />
 
           </div>
 
@@ -457,188 +401,133 @@ export default function AdvancedProtocolAdmin() {
             space-y-5
           ">
 
-            <div>
+            {/* INFO BOX 1 */}
+            <textarea
+              rows={3}
+              value={
+                section.info_box_1 || ""
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  info_box_1:
+                    e.target.value,
+                })
+              }
+              placeholder="Info Box 1"
+              className="
+                w-full
+                rounded-2xl
+                border
+                border-gray-200
+                p-5
+                outline-none
+                resize-none
+                text-black
+              "
+            />
 
-              <label className="
-                text-xs
-                tracking-[2px]
-                text-gray-400
-                uppercase
-              ">
-                Info Box 1
-              </label>
+            {/* INFO BOX 2 */}
+            <textarea
+              rows={3}
+              value={
+                section.info_box_2 || ""
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  info_box_2:
+                    e.target.value,
+                })
+              }
+              placeholder="Info Box 2"
+              className="
+                w-full
+                rounded-2xl
+                border
+                border-gray-200
+                p-5
+                outline-none
+                resize-none
+                text-black
+              "
+            />
 
-              <textarea
-                rows={3}
-                value={
-                  section?.info_box_1 || ""
-                }
-                onChange={(e) =>
-                  setSection({
-                    ...section,
-                    info_box_1:
-                      e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  p-5
-                  outline-none
-                  resize-none
-                "
-              />
+            {/* CTA TITLE */}
+            <input
+              value={
+                section.cta_title || ""
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  cta_title:
+                    e.target.value,
+                })
+              }
+              placeholder="CTA Title"
+              className="
+                w-full
+                h-[56px]
+                rounded-2xl
+                border
+                border-gray-200
+                px-5
+                outline-none
+                text-black
+              "
+            />
 
-            </div>
+            {/* CTA DESCRIPTION */}
+            <textarea
+              rows={3}
+              value={
+                section.cta_description || ""
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  cta_description:
+                    e.target.value,
+                })
+              }
+              placeholder="CTA Description"
+              className="
+                w-full
+                rounded-2xl
+                border
+                border-gray-200
+                p-5
+                outline-none
+                resize-none
+                text-black
+              "
+            />
 
-            <div>
-
-              <label className="
-                text-xs
-                tracking-[2px]
-                text-gray-400
-                uppercase
-              ">
-                Info Box 2
-              </label>
-
-              <textarea
-                rows={3}
-                value={
-                  section?.info_box_2 || ""
-                }
-                onChange={(e) =>
-                  setSection({
-                    ...section,
-                    info_box_2:
-                      e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  p-5
-                  outline-none
-                  resize-none
-                "
-              />
-
-            </div>
-
-            <div>
-
-              <label className="
-                text-xs
-                tracking-[2px]
-                text-gray-400
-                uppercase
-              ">
-                CTA Title
-              </label>
-
-              <input
-                value={
-                  section?.cta_title || ""
-                }
-                onChange={(e) =>
-                  setSection({
-                    ...section,
-                    cta_title:
-                      e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[56px]
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  px-5
-                  outline-none
-                "
-              />
-
-            </div>
-
-            <div>
-
-              <label className="
-                text-xs
-                tracking-[2px]
-                text-gray-400
-                uppercase
-              ">
-                CTA Description
-              </label>
-
-              <textarea
-                rows={3}
-                value={
-                  section?.cta_description || ""
-                }
-                onChange={(e) =>
-                  setSection({
-                    ...section,
-                    cta_description:
-                      e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  p-5
-                  outline-none
-                  resize-none
-                "
-              />
-
-            </div>
-
-            <div>
-
-              <label className="
-                text-xs
-                tracking-[2px]
-                text-gray-400
-                uppercase
-              ">
-                CTA Button
-              </label>
-
-              <input
-                value={
-                  section?.cta_button || ""
-                }
-                onChange={(e) =>
-                  setSection({
-                    ...section,
-                    cta_button:
-                      e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[56px]
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  px-5
-                  outline-none
-                "
-              />
-
-            </div>
+            {/* CTA BUTTON */}
+            <input
+              value={
+                section.cta_button || ""
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  cta_button:
+                    e.target.value,
+                })
+              }
+              placeholder="CTA Button"
+              className="
+                w-full
+                h-[56px]
+                rounded-2xl
+                border
+                border-gray-200
+                px-5
+                outline-none
+                text-black
+              "
+            />
 
           </div>
 
@@ -649,30 +538,28 @@ export default function AdvancedProtocolAdmin() {
           flex
           items-center
           justify-between
-          mb-7
-          flex-wrap
-          gap-4
+          mb-8
         ">
 
           <h3 className="
             text-2xl
             font-bold
-            text-[#0a0e27]
+            text-black
           ">
             Protocol Cards
           </h3>
 
-          {/* <button
-            onClick={handleAddCard}
+          <button
+            onClick={addCard}
             className="
+              px-6
+              h-[52px]
+              rounded-2xl
+              bg-black
+              text-white
               flex
               items-center
               gap-2
-              px-5
-              h-[50px]
-              rounded-2xl
-              bg-[#0a0e27]
-              text-white
             "
           >
 
@@ -680,11 +567,11 @@ export default function AdvancedProtocolAdmin() {
 
             Add Card
 
-          </button> */}
+          </button>
 
         </div>
 
-        {/* CARDS GRID */}
+        {/* CARDS */}
         <div className="
           grid
           md:grid-cols-2
@@ -692,50 +579,62 @@ export default function AdvancedProtocolAdmin() {
           gap-7
         ">
 
-          {cards.map((card, i) => (
+          {cards.map(
+            (
+              card,
+              i
+            ) => {
 
-            <motion.div
-              key={card.id}
-              whileHover={{ y: -5 }}
-              className={`
-                bg-white
-                rounded-3xl
-                border
-                p-6
-                shadow-sm
-                space-y-5
-                ${
-                  card.highlight
-                    ? "border-yellow-400 bg-[#fffdf7]"
-                    : "border-gray-200"
-                }
-              `}
-            >
+              const Icon =
+                icons[
+                  card.icon
+                ];
 
-              {/* TOP */}
-              <div className="
-                flex
-                items-center
-                justify-between
-              ">
+              return (
 
-                <div className="
-                  text-cyan-500
-                ">
-                  {
-                    icons[
-                      card.icon
-                    ]
-                  }
-                </div>
+                <motion.div
+                  key={card.id}
+                  whileHover={{
+                    y: -5,
+                  }}
+                  className={`
+                    rounded-3xl
+                    border
+                    p-6
+                    shadow-sm
+                    bg-white
+                    space-y-5
 
-                    {/* <button
-                    onClick={() =>
-                        handleDeleteCard(
-                        card.id
-                        )
+                    ${
+                      card.highlight
+                        ? "border-yellow-400 bg-[#fffdf7]"
+                        : "border-gray-200"
                     }
-                    className="
+                  `}
+                >
+
+                  {/* TOP */}
+                  <div className="
+                    flex
+                    items-center
+                    justify-between
+                  ">
+
+                    <div className="
+                      text-cyan-500
+                    ">
+                      <Icon
+                        size={20}
+                      />
+                    </div>
+
+                    <button
+                      onClick={() =>
+                        deleteCard(
+                          card.id
+                        )
+                      }
+                      className="
                         w-10
                         h-10
                         rounded-xl
@@ -744,269 +643,176 @@ export default function AdvancedProtocolAdmin() {
                         items-center
                         justify-center
                         text-red-500
+                      "
+                    >
+
+                      <Trash2
+                        size={16}
+                      />
+
+                    </button>
+
+                  </div>
+
+                  {/* TAG */}
+                  <input
+                    value={
+                      card.tag
+                    }
+                    onChange={(e) =>
+                      updateCard(
+                        i,
+                        "tag",
+                        e.target.value
+                      )
+                    }
+                    className="
+                      w-full
+                      h-[48px]
+                      rounded-xl
+                      border
+                      border-gray-200
+                      px-4
+                      outline-none
+                      text-black
+                      uppercase
+                      tracking-[2px]
+                      text-[11px]
                     "
-                    >
+                  />
 
-                    <Trash2 size={16} />
+                  {/* TITLE */}
+                  <input
+                    value={
+                      card.title
+                    }
+                    onChange={(e) =>
+                      updateCard(
+                        i,
+                        "title",
+                        e.target.value
+                      )
+                    }
+                    className="
+                      w-full
+                      h-[52px]
+                      rounded-xl
+                      border
+                      border-gray-200
+                      px-4
+                      outline-none
+                      text-black
+                      font-semibold
+                    "
+                  />
 
-                    </button> */}
+                  {/* DESCRIPTION */}
+                  <textarea
+                    rows={5}
+                    value={
+                      card.description
+                    }
+                    onChange={(e) =>
+                      updateCard(
+                        i,
+                        "description",
+                        e.target.value
+                      )
+                    }
+                    className="
+                      w-full
+                      rounded-2xl
+                      border
+                      border-gray-200
+                      p-4
+                      outline-none
+                      resize-none
+                      text-black
+                    "
+                  />
 
-              </div>
+                  {/* ICON */}
+                  <select
+                    value={
+                      card.icon
+                    }
+                    onChange={(e) =>
+                      updateCard(
+                        i,
+                        "icon",
+                        e.target.value
+                      )
+                    }
+                    className="
+                      w-full
+                      h-[50px]
+                      rounded-xl
+                      border
+                      border-gray-200
+                      px-4
+                      outline-none
+                      text-black
+                    "
+                  >
 
-              {/* TAG */}
-              <input
-                value={card.tag}
-                onChange={(e) => {
+                    {Object.keys(
+                      icons
+                    ).map(
+                      (icon) => (
 
-                  const updated =
-                    [...cards];
+                        <option
+                          key={icon}
+                          value={icon}
+                        >
 
-                  updated[i].tag =
-                    e.target.value;
+                          {icon}
 
-                  setCards(updated);
+                        </option>
 
-                  handleUpdateCard(
-                    card.id,
-                    updated[i]
-                  );
+                      )
+                    )}
 
-                }}
-                className="
-                  w-full
-                  h-[48px]
-                  rounded-xl
-                  border
-                  border-gray-200
-                  px-4
-                  text-[11px]
-                  tracking-[2px]
-                  uppercase
-                  outline-none
-                "
-              />
+                  </select>
 
-              {/* TITLE */}
-              <input
-                value={card.title}
-                onChange={(e) => {
+                  {/* HIGHLIGHT */}
+                  <div className="
+                    flex
+                    items-center
+                    justify-between
+                  ">
 
-                  const updated =
-                    [...cards];
+                    <span className="
+                      text-sm
+                      text-black
+                    ">
+                      Highlight
+                    </span>
 
-                  updated[i].title =
-                    e.target.value;
+                    <input
+                      type="checkbox"
+                      checked={
+                        card.highlight
+                      }
+                      onChange={(e) =>
+                        updateCard(
+                          i,
+                          "highlight",
+                          e.target.checked
+                        )
+                      }
+                      className="
+                        w-5
+                        h-5
+                      "
+                    />
 
-                  setCards(updated);
+                  </div>
 
-                  handleUpdateCard(
-                    card.id,
-                    updated[i]
-                  );
+                </motion.div>
 
-                }}
-                className="
-                  w-full
-                  h-[52px]
-                  rounded-xl
-                  border
-                  border-gray-200
-                  px-4
-                  font-semibold
-                  outline-none
-                  text-black
-                "
-              />
-
-              {/* DESCRIPTION */}
-              <textarea
-                rows={5}
-                value={card.description}
-                onChange={(e) => {
-
-                  const updated =
-                    [...cards];
-
-                  updated[i].description =
-                    e.target.value;
-
-                  setCards(updated);
-
-                  handleUpdateCard(
-                    card.id,
-                    updated[i]
-                  );
-
-                }}
-                className="
-                  w-full
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  p-4
-                  text-sm
-                  outline-none
-                  resize-none
-                  text-black
-                "
-              />
-
-              {/* ICON */}
-              <select
-                value={card.icon}
-                onChange={(e) => {
-
-                  const updated =
-                    [...cards];
-
-                  updated[i].icon =
-                    e.target.value;
-
-                  setCards(updated);
-
-                  handleUpdateCard(
-                    card.id,
-                    updated[i]
-                  );
-
-                }}
-                className="
-                  w-full
-                  h-[50px]
-                  rounded-xl
-                  border
-                  border-gray-200
-                  px-4
-                  outline-none
-                  text-black
-                "
-              >
-
-                {Object.keys(icons).map(
-                  (icon) => (
-
-                    <option
-                      key={icon}
-                      value={icon}
-                    >
-
-                      {icon}
-
-                    </option>
-
-                  )
-                )}
-
-              </select>
-
-              {/* HIGHLIGHT */}
-              <div className="
-                flex
-                items-center
-                justify-between
-                pt-2
-              ">
-
-                <span className="
-                  text-sm
-                  text-gray-500
-                ">
-                  Highlight Card
-                </span>
-
-                <input
-                  type="checkbox"
-                  checked={card.highlight}
-                  onChange={(e) => {
-
-                    const updated =
-                      [...cards];
-
-                    updated[i].highlight =
-                      e.target.checked;
-
-                    setCards(updated);
-
-                    handleUpdateCard(
-                      card.id,
-                      updated[i]
-                    );
-
-                  }}
-                  className="
-                    w-5
-                    h-5
-                  "
-                />
-
-              </div>
-
-            </motion.div>
-
-          ))}
-
-          {/* CTA PREVIEW CARD */}
-          <div className="
-            p-7
-            rounded-2xl
-            border
-            border-gray-200
-            bg-white
-            flex
-            flex-col
-            justify-center
-            items-center
-            text-center
-          ">
-
-            <MessageCircle
-              className="
-                text-cyan-500
-                mb-5
-              "
-              size={22}
-            />
-
-            <h3 className="
-              text-[15px]
-              font-semibold
-              tracking-[0.8px]
-              leading-[1.5]
-              text-[#0a0e27]
-              mb-4
-            ">
-
-              {section?.cta_title}
-
-            </h3>
-
-            <p className="
-              text-[13px]
-              text-gray-500
-              leading-[1.9]
-              tracking-[0.35px]
-              mb-6
-            ">
-
-              {section?.cta_description}
-
-            </p>
-
-            <button className="
-              px-5
-              py-2.5
-              text-[11px]
-              tracking-[1.5px]
-              border
-              border-gray-300
-              rounded-lg
-            ">
-
-              {section?.cta_button}
-
-            </button>
-
-          </div>
+              );
+            }
+          )}
 
         </div>
 

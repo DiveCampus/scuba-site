@@ -1,138 +1,77 @@
 import { supabase } from "@/lib/supabaseClient";
 
-/* =========================================
-   GET SECTION
-========================================= */
+/* ================= GET ================= */
 
-export const getAdvancedProtocolSection =
+export const getAdvancedProtocol =
   async () => {
 
-    const { data, error } =
-      await supabase
-        .from("advanced_protocol_section")
-        .select("*")
-        .limit(1)
-        .single();
+    const [{ data: section }, { data: cards }] =
+      await Promise.all([
 
-    if (error) {
-      console.error(error);
-    }
+        supabase
+          .from("advanced_protocol_section")
+          .select("*")
+          .limit(1)
+          .single(),
 
-    return { data, error };
+        supabase
+          .from("advanced_protocol_cards")
+          .select("*")
+          .order("sort_order"),
+
+      ]);
+
+    return {
+      section,
+      cards: cards || [],
+    };
   };
 
-/* =========================================
-   UPDATE SECTION
-========================================= */
+/* ================= UPDATE SECTION ================= */
 
 export const updateAdvancedProtocolSection =
-  async (
-    id: string,
-    payload: any
-  ) => {
+  async (id: string, payload: any) => {
 
-    const { data, error } =
-      await supabase
-        .from("advanced_protocol_section")
-        .update({
-          ...payload,
-          updated_at: new Date(),
-        })
-        .eq("id", id)
-        .select()
-        .single();
-
-    if (error) {
-      console.error(error);
-    }
-
-    return { data, error };
+    return await supabase
+      .from("advanced_protocol_section")
+      .update(payload)
+      .eq("id", id)
+      .select()
+      .single();
   };
 
-/* =========================================
-   GET CARDS
-========================================= */
+/* ================= UPDATE CARD ================= */
 
-export const getAdvancedProtocolCards =
-  async () => {
+export const updateAdvancedProtocolCard =
+  async (id: string, payload: any) => {
 
-    const { data, error } =
-      await supabase
-        .from("advanced_protocol_cards")
-        .select("*")
-        .order("sort_order", {
-          ascending: true,
-        });
-
-    if (error) {
-      console.error(error);
-    }
-
-    return { data, error };
+    return await supabase
+      .from("advanced_protocol_cards")
+      .update(payload)
+      .eq("id", id)
+      .select()
+      .single();
   };
 
-/* =========================================
-   CREATE CARD
-========================================= */
+/* ================= CREATE CARD ================= */
 
 export const createAdvancedProtocolCard =
   async (payload: any) => {
 
-    const { data, error } =
-      await supabase
-        .from("advanced_protocol_cards")
-        .insert([payload])
-        .select()
-        .single();
-
-    if (error) {
-      console.error(error);
-    }
-
-    return { data, error };
+    return await supabase
+      .from("advanced_protocol_cards")
+      .insert([payload])
+      .select()
+      .single();
   };
 
-/* =========================================
-   UPDATE CARD
-========================================= */
-
-export const updateAdvancedProtocolCard =
-  async (
-    id: string,
-    payload: any
-  ) => {
-
-    const { data, error } =
-      await supabase
-        .from("advanced_protocol_cards")
-        .update(payload)
-        .eq("id", id)
-        .select()
-        .single();
-
-    if (error) {
-      console.error(error);
-    }
-
-    return { data, error };
-  };
-
-/* =========================================
-   DELETE CARD
-========================================= */
+/* ================= DELETE CARD ================= */
 
 export const deleteAdvancedProtocolCard =
   async (id: string) => {
 
-    const { error } =
-      await supabase
-        .from("advanced_protocol_cards")
-        .delete()
-        .eq("id", id);
-
-    if (error) {
-      console.error(error);
-    }
-
-    return { error };
+    return await supabase
+      .from("advanced_protocol_cards")
+      .delete()
+      .eq("id", id);
   };
