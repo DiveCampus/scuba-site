@@ -52,7 +52,7 @@ export function Navbar() {
     "PADI Open Water":
       "/padi-open-water",
 
-    "PADI SCUBA DRIVER":
+    "PADI Scuba Diver":
       "/padi-scuba-diver",
   };
 
@@ -67,7 +67,7 @@ export function Navbar() {
 
       dropdown: [
         "PADI Open Water",
-        "PADI Open Diver",
+        "PADI Scuba Diver",
       ],
     },
 
