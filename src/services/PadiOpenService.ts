@@ -4,82 +4,103 @@ import { supabase } from "@/lib/supabaseClient";
    GET DATA
 ========================= */
 
-export const getPadiOpenDiver = async () => {
+export const getPadiOpenDiver =
+  async () => {
 
-  const { data, error } = await supabase
-    .from("padi_open_diver")
-    .select("*")
-    .limit(1)
-    .single();
+    const {
+      data,
+      error,
+    } = await supabase
+      .from(
+        "kadir_padi_open_diver"
+      )
+      .select("*")
+      .limit(1)
+      .single();
 
-  if (error) {
-    console.error(error);
-  }
-
-  return { data, error };
-};
-
-/* =========================
-   CREATE DATA
-========================= */
-
-export const createPadiOpenDiver = async (payload: any) => {
-
-  const { data, error } = await supabase
-    .from("padi_open_diver")
-    .insert([payload])
-    .select()
-    .single();
-
-  if (error) {
-    console.error(error);
-  }
-
-  return { data, error };
-};
+    return {
+      data,
+      error,
+    };
+  };
 
 /* =========================
-   UPDATE DATA
+   CREATE
 ========================= */
 
-export const updatePadiOpenDiver = async (
-  id: string,
-  payload: any
-) => {
+export const createPadiOpenDiver =
+  async (payload: any) => {
 
-  const { data, error } = await supabase
-    .from("padi_open_diver")
-    .update({
-      ...payload,
-      updated_at: new Date(),
-    })
-    .eq("id", id)
-    .select()
-    .single();
+    const {
+      data,
+      error,
+    } = await supabase
+      .from(
+        "kadir_padi_open_diver"
+      )
+      .insert([
+        payload,
+      ])
+      .select()
+      .single();
 
-  if (error) {
-    console.error(error);
-  }
-
-  return { data, error };
-};
+    return {
+      data,
+      error,
+    };
+  };
 
 /* =========================
-   DELETE DATA
+   UPDATE
 ========================= */
 
-export const deletePadiOpenDiver = async (
-  id: string
-) => {
+export const updatePadiOpenDiver =
+  async (
+    id: string,
+    payload: any
+  ) => {
 
-  const { error } = await supabase
-    .from("padi_open_diver")
-    .delete()
-    .eq("id", id);
+    const {
+      data,
+      error,
+    } = await supabase
+      .from(
+        "kadir_padi_open_diver"
+      )
+      .update({
+        ...payload,
 
-  if (error) {
-    console.error(error);
-  }
+        updated_at:
+          new Date().toISOString(),
+      })
+      .eq("id", id)
+      .select()
+      .single();
 
-  return { error };
-};
+    return {
+      data,
+      error,
+    };
+  };
+
+/* =========================
+   DELETE
+========================= */
+
+export const deletePadiOpenDiver =
+  async (
+    id: string
+  ) => {
+
+    const { error } =
+      await supabase
+        .from(
+          "kadir_padi_open_diver"
+        )
+        .delete()
+        .eq("id", id);
+
+    return {
+      error,
+    };
+  };

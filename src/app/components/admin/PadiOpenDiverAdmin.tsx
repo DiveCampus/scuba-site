@@ -1,62 +1,65 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { getPadiOpenDiver, updatePadiOpenDiver } from "@/services/PadiOpenService";
 
+import {
+  useEffect,
+  useState,
+} from "react";
+
+import {
+  Save,
+} from "lucide-react";
+
+import {
+  getPadiOpenDiver,
+  updatePadiOpenDiver,
+} from "@/services/PadiOpenService";
 
 export default function PadiOpenDiverAdmin() {
 
-  const [data, setData] = useState<any>(null);
+  const [data, setData] =
+    useState<any>(null);
 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] =
+    useState(true);
 
-  const [saving, setSaving] = useState(false);
-
-  const [editingField, setEditingField] =
-    useState<string | null>(null);
-
-  /* =========================
-     FETCH DATA
-  ========================= */
+  const [saving, setSaving] =
+    useState(false);
 
   useEffect(() => {
 
-    const fetchData = async () => {
+    const fetchData =
+      async () => {
 
-      const { data } =
-        await getPadiOpenDiver();
+        const {
+          data,
+        } =
+          await getPadiOpenDiver();
 
-      setData(data);
+        setData(data);
 
-      setLoading(false);
-    };
+        setLoading(false);
+      };
 
     fetchData();
 
   }, []);
 
-  /* =========================
-     SAVE
-  ========================= */
+  const handleSave =
+    async () => {
 
-  const handleSave = async () => {
+      if (!data?.id) return;
 
-    if (!data?.id) return;
+      setSaving(true);
 
-    setSaving(true);
+      await updatePadiOpenDiver(
+        data.id,
+        data
+      );
 
-    await updatePadiOpenDiver(
-      data.id,
-      data
-    );
-
-    setSaving(false);
-  };
-
-  /* =========================
-     LOADING
-  ========================= */
+      setSaving(false);
+    };
 
   if (loading) {
     return (
@@ -65,7 +68,7 @@ export default function PadiOpenDiverAdmin() {
         flex
         items-center
         justify-center
-        bg-[#020617]
+        bg-[#02182b]
         text-white
       ">
         Loading...
@@ -74,817 +77,527 @@ export default function PadiOpenDiverAdmin() {
   }
 
   return (
-    <section className="
-      relative
-      min-h-screen
-      overflow-hidden
-      rounded-[30px]
-      border
-      border-white/10
-      bg-[#02182b]
-      shadow-[0_20px_80px_rgba(0,0,0,0.5)]
-    ">
-
-      {/* BACKGROUND */}
-      <div className="absolute inset-0">
-
-        <img
-          src={data?.background_image || "/1.avif"}
-          alt="bg"
-          className="
-            w-full
-            h-full
-            object-cover
-          "
-        />
-
-        <div className="
-          absolute
-          inset-0
-          bg-[#02182b]/75
-          backdrop-blur-[2px]
-        " />
-
-      </div>
-
-      {/* CONTENT */}
-      <div className="
+    <>
+      <section className="
         relative
-        z-10
-        px-6
-        py-20
-        md:px-14
+        min-h-screen
+        overflow-hidden
+        text-white
       ">
 
-        {/* HEADER */}
+        {/* BG */}
+        <div className="absolute inset-0">
+
+          <img
+            src={
+              data?.background_image
+            }
+            className="
+              w-full
+              h-full
+              object-cover
+            "
+          />
+
+          <div className="
+            absolute
+            inset-0
+            bg-[#02182b]/80
+          " />
+
+        </div>
+
+        {/* GLOW */}
         <div className="
-          flex
-          items-center
-          justify-between
-          flex-wrap
-          gap-4
-          mb-12
+          absolute
+          top-0
+          right-0
+          w-[500px]
+          h-[500px]
+          bg-cyan-400/20
+          blur-[180px]
+          rounded-full
+        " />
+
+        {/* SAVE BUTTON */}
+        <div className="
+          fixed
+          top-6
+          right-6
+          z-50
         ">
 
-          <div>
-
-            <p className="
-              text-cyan-300
-              tracking-[4px]
-              text-xs
-              uppercase
-            ">
-              Admin Panel
-            </p>
-
-            <h2 className="
-              mt-2
-              text-3xl
-              md:text-5xl
-              font-bold
-              text-white
-            ">
-              PADI OPEN DIVER
-            </h2>
-
-          </div>
-
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            onClick={handleSave}
+          <button
+            onClick={
+              handleSave
+            }
             className="
-              h-[54px]
-              px-8
+              px-7
+              py-4
               rounded-2xl
               bg-cyan-400
               text-black
               font-bold
-              shadow-[0_0_40px_rgba(34,211,238,0.4)]
+              shadow-[0_20px_60px_rgba(0,180,255,0.35)]
+              hover:scale-105
+              transition
+              flex
+              items-center
+              gap-3
             "
           >
-            {saving ? "Saving..." : "Save Changes"}
-          </motion.button>
+
+            <Save size={18} />
+
+            {saving
+              ? "Saving..."
+              : "Save"}
+
+          </button>
 
         </div>
 
-        {/* GRID */}
+        {/* CONTENT */}
         <div className="
-          grid
-          grid-cols-1
-          lg:grid-cols-2
-          gap-8
+          relative
+          z-10
+          min-h-screen
+          flex
+          flex-col
+          items-center
+          justify-center
+          text-center
+          px-6
         ">
 
-          {/* LEFT SIDE */}
-          <div className="
-            bg-white/5
-            border
-            border-white/10
-            backdrop-blur-xl
-            rounded-[28px]
-            p-6
-            space-y-6
-          ">
-
-            {/* TOP BADGE */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                Top Badge
-              </label>
-
-              <input
-                value={data?.top_badge || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    top_badge: e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
-              />
-
-            </div>
-
-            {/* SUB TEXT */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                Sub Text
-              </label>
-
-              <input
-                value={data?.sub_text || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    sub_text: e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
-              />
-
-            </div>
-
-            {/* TITLE */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                Main Title
-              </label>
-
-              <input
-                value={data?.title || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    title: e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
-              />
-
-            </div>
-
-            {/* HIGHLIGHT */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                Highlight Text
-              </label>
-
-              <input
-                value={data?.highlighted_text || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    highlighted_text: e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-cyan-300
-                  outline-none
-                "
-              />
-
-            </div>
-
-            {/* DESCRIPTION */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                Description
-              </label>
-
-              <textarea
-                rows={5}
-                value={data?.description || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    description: e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  p-5
-                  text-white
-                  outline-none
-                  resize-none
-                "
-              />
-
-            </div>
-
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div className="
-            bg-white/5
-            border
-            border-white/10
-            backdrop-blur-xl
-            rounded-[28px]
-            p-6
-            space-y-6
-          ">
-
-            {/* OLD PRICE */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                Old Price
-              </label>
-
-              <input
-                type="number"
-                value={data?.old_price || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    old_price: Number(e.target.value),
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
-              />
-
-            </div>
-
-            {/* NEW PRICE */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                New Price
-              </label>
-
-              <input
-                type="number"
-                value={data?.new_price || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    new_price: Number(e.target.value),
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-cyan-300
-                  outline-none
-                "
-              />
-
-            </div>
-
-            {/* PRICE NOTE */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                Price Note
-              </label>
-
-              <input
-                value={data?.price_note || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    price_note: e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
-              />
-
-            </div>
-
-            {/* BUTTON 1 */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                Primary Button
-              </label>
-
-              <input
-                value={data?.primary_button || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    primary_button: e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
-              />
-
-            </div>
-
-            {/* BUTTON 2 */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                Secondary Button
-              </label>
-
-              <input
-                value={data?.secondary_button || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    secondary_button: e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
-              />
-
-            </div>
-
-            {/* BG IMAGE */}
-            <div>
-
-              <label className="
-                text-white/60
-                text-xs
-                uppercase
-                tracking-[3px]
-              ">
-                Background Image
-              </label>
-
-              <input
-                value={data?.background_image || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    background_image: e.target.value,
-                  })
-                }
-                className="
-                  mt-2
-                  w-full
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
-              />
-
-            </div>
-
-          </div>
-
-        </div>
-
-        {/* FEATURES */}
-        <div className="
-          mt-8
-          bg-white/5
-          border
-          border-white/10
-          backdrop-blur-xl
-          rounded-[28px]
-          p-6
-        ">
-
-          <h3 className="
-            text-white
-            text-2xl
-            font-bold
-            mb-6
-          ">
-            Features
-          </h3>
-
-          <div className="
-            grid
-            grid-cols-1
-            md:grid-cols-2
-            gap-5
-          ">
-
-            {[1, 2, 3, 4].map((num) => (
-
-              <input
-                key={num}
-                value={data?.[`feature_${num}`] || ""}
-                onChange={(e) =>
-                  setData({
-                    ...data,
-                    [`feature_${num}`]: e.target.value,
-                  })
-                }
-                placeholder={`Feature ${num}`}
-                className="
-                  h-[54px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
-              />
-
-            ))}
-
-          </div>
-
-        </div>
-
-        {/* LIVE PREVIEW
-        <div className="
-          mt-10
-          bg-black/30
-          border
-          border-cyan-400/20
-          rounded-[30px]
-          overflow-hidden
-        ">
-
-          <div className="
-            px-6
-            py-4
-            border-b
-            border-white/10
-            flex
-            items-center
-            justify-between
-          ">
-
-            <h3 className="
-              text-white
-              text-xl
-              font-bold
-            ">
-              Live Preview
-            </h3>
-
-            <div className="
-              px-4
-              py-1
+          {/* BADGE */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: -20,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+            }}
+            className="
+              px-6
+              py-2
               rounded-full
-              bg-cyan-400/10
+              border
+              border-cyan-400/30
               text-cyan-300
               text-xs
-            ">
-              REAL TIME
-            </div>
+              tracking-[4px]
+              uppercase
+              mb-6
+              backdrop-blur-xl
+              bg-white/5
+            "
+          >
+
+            <input
+              value={
+                data?.top_badge || ""
+              }
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  top_badge:
+                    e.target.value,
+                })
+              }
+              className="
+                bg-transparent
+                outline-none
+                text-center
+                w-full
+              "
+            />
+
+          </motion.div>
+
+          {/* SUBTEXT */}
+          <input
+            value={
+              data?.sub_text || ""
+            }
+            onChange={(e) =>
+              setData({
+                ...data,
+                sub_text:
+                  e.target.value,
+              })
+            }
+            className="
+              bg-transparent
+              outline-none
+              text-white/60
+              tracking-[4px]
+              text-xs
+              uppercase
+              mb-4
+              text-center
+              w-full
+              max-w-xl
+            "
+          />
+
+          {/* TITLE */}
+          <div className="
+            max-w-5xl
+            space-y-4
+          ">
+
+            <textarea
+              rows={2}
+              value={
+                data?.title || ""
+              }
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  title:
+                    e.target.value,
+                })
+              }
+              className="
+                w-full
+                bg-transparent
+                outline-none
+                text-5xl
+                md:text-7xl
+                font-bold
+                text-center
+                resize-none
+                overflow-hidden
+              "
+            />
+
+            <textarea
+              rows={2}
+              value={
+                data?.highlighted_text || ""
+              }
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  highlighted_text:
+                    e.target.value,
+                })
+              }
+              className="
+                w-full
+                bg-transparent
+                outline-none
+                text-5xl
+                md:text-7xl
+                font-bold
+                text-center
+                resize-none
+                overflow-hidden
+                bg-gradient-to-r
+                from-cyan-300
+                to-blue-500
+                bg-clip-text
+                text-transparent
+              "
+            />
 
           </div>
 
+          {/* DESCRIPTION */}
+          <textarea
+            rows={4}
+            value={
+              data?.description || ""
+            }
+            onChange={(e) =>
+              setData({
+                ...data,
+                description:
+                  e.target.value,
+              })
+            }
+            className="
+              mt-6
+              bg-transparent
+              outline-none
+              text-white/70
+              max-w-2xl
+              text-lg
+              leading-relaxed
+              resize-none
+              text-center
+              w-full
+            "
+          />
+
+          {/* PRICE CARD */}
           <div className="
-            relative
-            min-h-[700px]
-            overflow-hidden
+            mt-10
+            px-10
+            py-7
+            rounded-[30px]
+            bg-white/10
+            backdrop-blur-xl
+            border
+            border-white/10
+            shadow-[0_20px_80px_rgba(0,0,0,0.4)]
+            w-full
+            max-w-md
           ">
 
-            <img
-              src={data?.background_image || "/1.avif"}
-              alt=""
+            <input
+              value={
+                data?.old_price || ""
+              }
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  old_price:
+                    e.target.value,
+                })
+              }
               className="
-                absolute
-                inset-0
+                bg-transparent
+                outline-none
+                text-white/40
+                line-through
+                text-sm
+                text-center
                 w-full
-                h-full
-                object-cover
               "
             />
 
             <div className="
-              absolute
-              inset-0
-              bg-[#02182b]/70
-            " />
-
-            <div className="
-              relative
-              z-10
+              mt-3
               flex
-              flex-col
               items-center
               justify-center
-              text-center
-              min-h-[700px]
-              px-6
+              gap-2
             ">
 
-              <div className="
-                mb-6
-                px-5
-                py-2
-                rounded-full
-                border
-                border-cyan-300/40
-                text-cyan-200
-                text-xs
-                tracking-widest
+              <span className="
+                text-cyan-400
+                text-xl
               ">
-                {data?.top_badge}
-              </div>
+                AED
+              </span>
 
-              <p className="
-                text-xs
-                tracking-[3px]
-                text-white/60
-                mb-4
-              ">
-                {data?.sub_text}
-              </p>
-
-              <h1 className="
-                text-4xl
-                md:text-6xl
-                font-bold
-                leading-tight
-                max-w-4xl
-                text-white
-              ">
-                {data?.title}{" "}
-
-                <span className="text-cyan-400">
-                  {data?.highlighted_text}
-                </span>
-              </h1>
-
-              <p className="
-                mt-4
-                text-white/70
-                max-w-2xl
-              ">
-                {data?.description}
-              </p>
-
-              <div className="
-                mt-8
-                bg-white/10
-                backdrop-blur-lg
-                border
-                border-white/20
-                rounded-xl
-                px-8
-                py-6
-              ">
-
-                <p className="
-                  text-sm
-                  text-white/50
-                  line-through
-                ">
-                  AED {data?.old_price}
-                </p>
-
-                <p className="
-                  mt-2
-                  text-4xl
+              <input
+                value={
+                  data?.new_price || ""
+                }
+                onChange={(e) =>
+                  setData({
+                    ...data,
+                    new_price:
+                      e.target.value,
+                  })
+                }
+                className="
+                  bg-transparent
+                  outline-none
+                  text-5xl
                   font-bold
-                  text-white
-                ">
-                  <span className="
-                    text-cyan-400
-                    text-lg
-                    mr-2
-                  ">
-                    AED
-                  </span>
-
-                  {data?.new_price}
-                </p>
-
-                <p className="
-                  mt-2
-                  text-xs
-                  text-white/60
-                ">
-                  {data?.price_note}
-                </p>
-
-              </div>
-
-              <div className="
-                mt-8
-                flex
-                gap-4
-                flex-wrap
-                justify-center
-              ">
-
-                <button className="
-                  px-8
-                  py-3
-                  bg-cyan-400
-                  text-black
-                  rounded-xl
-                  font-bold
-                ">
-                  {data?.primary_button}
-                </button>
-
-                <button className="
-                  px-8
-                  py-3
-                  border
-                  border-white/20
-                  text-white
-                  rounded-xl
-                ">
-                  {data?.secondary_button}
-                </button>
-
-              </div>
-
-              <div className="
-                mt-12
-                flex
-                gap-6
-                flex-wrap
-                justify-center
-                text-xs
-                text-white/60
-              ">
-
-                <span>{data?.feature_1}</span>
-                <span>{data?.feature_2}</span>
-                <span>{data?.feature_3}</span>
-                <span>{data?.feature_4}</span>
-
-              </div>
+                  text-center
+                  w-[180px]
+                "
+              />
 
             </div>
 
+            <input
+              value={
+                data?.price_note || ""
+              }
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  price_note:
+                    e.target.value,
+                })
+              }
+              className="
+                mt-3
+                bg-transparent
+                outline-none
+                text-white/60
+                text-sm
+                text-center
+                w-full
+              "
+            />
+
           </div>
 
-        </div> */}
+          {/* BUTTONS */}
+          <div className="
+            mt-10
+            flex
+            gap-5
+            flex-wrap
+            justify-center
+          ">
 
-      </div>
+            <input
+              value={
+                data?.primary_button || ""
+              }
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  primary_button:
+                    e.target.value,
+                })
+              }
+              className="
+                px-8
+                py-4
+                rounded-2xl
+                bg-cyan-400
+                text-black
+                font-bold
+                text-center
+                outline-none
+              "
+            />
 
-    </section>
+            <input
+              value={
+                data?.secondary_button || ""
+              }
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  secondary_button:
+                    e.target.value,
+                })
+              }
+              className="
+                px-8
+                py-4
+                rounded-2xl
+                border
+                border-white/20
+                bg-white/5
+                text-white
+                text-center
+                outline-none
+              "
+            />
+
+          </div>
+
+          {/* FEATURES */}
+          <div className="
+            mt-14
+            grid
+            md:grid-cols-4
+            gap-4
+            max-w-6xl
+            w-full
+          ">
+
+            {[
+              "feature_1",
+              "feature_2",
+              "feature_3",
+              "feature_4",
+            ].map(
+              (
+                key,
+                i
+              ) => (
+                <div
+                  key={i}
+                  className="
+                    px-6
+                    py-5
+                    rounded-2xl
+                    bg-white/5
+                    border
+                    border-white/10
+                    backdrop-blur-xl
+                  "
+                >
+
+                  <input
+                    value={
+                      data?.[
+                        key
+                      ] || ""
+                    }
+                    onChange={(e) =>
+                      setData({
+                        ...data,
+                        [key]:
+                          e.target.value,
+                      })
+                    }
+                    className="
+                      bg-transparent
+                      outline-none
+                      text-white/80
+                      text-center
+                      w-full
+                    "
+                  />
+
+                </div>
+              )
+            )}
+
+          </div>
+
+          {/* IMAGE URL */}
+          <div className="
+            mt-14
+            w-full
+            max-w-3xl
+          ">
+
+            <input
+              value={
+                data?.background_image || ""
+              }
+              onChange={(e) =>
+                setData({
+                  ...data,
+                  background_image:
+                    e.target.value,
+                })
+              }
+              placeholder="Background Image URL"
+              className="
+                w-full
+                h-[60px]
+                rounded-2xl
+                bg-white/10
+                backdrop-blur-xl
+                border
+                border-white/10
+                px-6
+                text-white
+                outline-none
+              "
+            />
+
+          </div>
+
+        </div>
+
+      </section>
+
+      {/* FONT */}
+      <style jsx global>{`
+        @font-face {
+          font-family: 'Harabara';
+          src: url('/fonts/Harabara.woff')
+            format('woff');
+        }
+      `}</style>
+    </>
   );
 }
