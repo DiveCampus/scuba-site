@@ -1,95 +1,217 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { MapPin, Mail, Phone } from "lucide-react";
+import {
+  useEffect,
+  useState,
+} from "react";
+
+import {
+  MapPin,
+  Mail,
+  Phone,
+} from "lucide-react";
+
 import { motion } from "framer-motion";
+
 import { getLocations } from "@/services/locationService";
 
 export function LocationSection() {
-  const [locations, setLocations] = useState<any[]>([]);
+  const [
+    locations,
+    setLocations,
+  ] = useState<any[]>([]);
 
   useEffect(() => {
-    const load = async () => {
-      console.log("🚀 Fetching locations UI...");
-
-      const { data, error } = await getLocations();
-
-      console.log("📦 UI Locations:", data);
-      console.log("❌ Error:", error);
-
-      setLocations(data || []);
-    };
-
     load();
   }, []);
 
-  if (!locations.length) return null;
+  const load = async () => {
+    const { data } =
+      await getLocations();
+
+    setLocations(data || []);
+  };
+
+  if (!locations.length)
+    return null;
 
   return (
-    <section className="py-28 bg-gradient-to-b from-[#f8fafc] to-[#eef2f6]">
+    <section className="relative py-32 bg-gradient-to-b from-[#f8fafc] to-[#eef2f6] overflow-hidden">
 
-      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10">
+      {/* BG GLOW */}
+      <div className="absolute top-0 right-0 w-72 h-72 bg-cyan-400/10 blur-[120px] rounded-full" />
 
-        {locations.map((loc, i) => (
-          <motion.div
-            key={loc.id}
-            whileHover={{ y: -5 }}
-            className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6"
-          >
+      <div className="max-w-6xl mx-auto px-6">
 
-            {/* HEADER */}
-            <div className="text-center mb-6">
-              <h3 className="text-sm tracking-widest text-gray-400">
-                {loc.title}
-              </h3>
+        {/* HEADER */}
+        <div className="text-center mb-16">
 
-              <p className="text-sm mt-1 text-gray-600">
-                {loc.rating} ⭐⭐⭐⭐⭐{" "}
-                <span className="text-gray-400 text-xs">
-                  {loc.reviews}
-                </span>
-              </p>
-            </div>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0a0e27]">
 
-            {/* INFO */}
-            <div className="space-y-4 text-sm text-gray-600 mb-6">
+            Visit Our{" "}
 
-              <div className="flex items-start gap-3">
-                <MapPin className="text-cyan-500 w-5 h-5 mt-1" />
-                <span>{loc.address}</span>
-              </div>
+            <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
 
-              <div className="flex items-center gap-3">
-                <Mail className="text-cyan-500 w-5 h-5" />
-                <span>{loc.email}</span>
-              </div>
+              Locations
 
-              <div className="flex items-center gap-3">
-                <Phone className="text-cyan-500 w-5 h-5" />
-                <span>{loc.phone}</span>
-              </div>
-            </div>
+            </span>
 
-            {/* MAP */}
-            <div className="rounded-xl overflow-hidden border">
-              <iframe
-                src={loc.map_url}   // ✅ IMPORTANT FIX
-                className="w-full h-[220px]"
-                loading="lazy"
-              />
-            </div>
+          </h2>
 
-            {/* BUTTON */}
-            <a
-              href={loc.map_url}   // ✅ IMPORTANT FIX
-              target="_blank"
-              className="inline-block mt-4 text-xs text-cyan-600 hover:underline"
-            >
-              Open in Maps ↗
-            </a>
+          <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
 
-          </motion.div>
-        ))}
+            Explore our premium dive training centers across the UAE.
+
+          </p>
+
+        </div>
+
+        {/* CARDS */}
+        <div className="grid md:grid-cols-2 gap-10">
+
+          {locations.map(
+            (loc, i) => (
+              <motion.div
+                key={loc.id}
+                initial={{
+                  opacity: 0,
+                  y: 30,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  delay:
+                    i * 0.1,
+                }}
+                whileHover={{
+                  y: -6,
+                }}
+                className="
+                  bg-white/80
+                  backdrop-blur-xl
+                  rounded-3xl
+                  border
+                  border-white/40
+                  shadow-[0_20px_60px_rgba(0,0,0,0.08)]
+                  overflow-hidden
+                "
+              >
+
+                {/* TOP */}
+                <div className="p-8">
+
+                  <div className="flex items-center justify-between mb-6">
+
+                    <div>
+
+                      <h3 className="text-xl font-bold text-[#0a0e27]">
+
+                        {loc.title}
+
+                      </h3>
+
+                      <p className="text-sm text-gray-500 mt-1">
+
+                        {loc.rating}
+                        {" "}
+                        ⭐⭐⭐⭐⭐
+                        {" "}
+                        {loc.reviews}
+
+                      </p>
+
+                    </div>
+
+                    <div className="w-14 h-14 rounded-2xl bg-cyan-400/10 flex items-center justify-center">
+
+                      <MapPin className="text-cyan-500 w-6 h-6" />
+
+                    </div>
+
+                  </div>
+
+                  {/* INFO */}
+                  <div className="space-y-5 text-sm text-gray-600">
+
+                    <div className="flex items-start gap-3">
+
+                      <MapPin className="text-cyan-500 w-5 h-5 mt-1" />
+
+                      <span>
+                        {loc.address}
+                      </span>
+
+                    </div>
+
+                    <div className="flex items-center gap-3">
+
+                      <Mail className="text-cyan-500 w-5 h-5" />
+
+                      <span>
+                        {loc.email}
+                      </span>
+
+                    </div>
+
+                    <div className="flex items-center gap-3">
+
+                      <Phone className="text-cyan-500 w-5 h-5" />
+
+                      <span>
+                        {loc.phone}
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+                {/* MAP */}
+                <div className="border-t border-gray-100">
+
+                  <iframe
+                    src={
+                      loc.map_url
+                    }
+                    className="w-full h-[260px]"
+                    loading="lazy"
+                  />
+
+                </div>
+
+                {/* FOOTER */}
+                <div className="p-5 border-t border-gray-100">
+
+                  <a
+                    href={
+                      loc.map_url
+                    }
+                    target="_blank"
+                    className="
+                      inline-flex
+                      items-center
+                      gap-2
+                      text-sm
+                      text-cyan-600
+                      hover:text-cyan-700
+                      font-medium
+                    "
+                  >
+
+                    Open in Maps ↗
+
+                  </a>
+
+                </div>
+
+              </motion.div>
+            )
+          )}
+
+        </div>
 
       </div>
     </section>

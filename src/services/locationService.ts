@@ -1,58 +1,87 @@
 import { supabase } from "@/lib/supabaseClient";
 
 /* ================= GET ================= */
-export const getLocations = async () => {
-  const { data, error } = await supabase
-    .from("location_section")
-    .select("*")
-    .order("created_at", { ascending: true });
 
-  console.log("📦 LOCATIONS:", data);
-  console.log("❌ ERROR:", error);
+export const getLocations =
+  async () => {
+    const { data, error } =
+      await supabase
+        .from(
+          "kadir_locations"
+        )
+        .select("*")
+        .order(
+          "created_at",
+          {
+            ascending: true,
+          }
+        );
 
-  return { data, error };
-};
+    return {
+      data,
+      error,
+    };
+  };
 
 /* ================= UPDATE ================= */
-export const updateLocation = async (item: any) => {
-  console.log("💾 Updating:", item);
 
-  const { data, error } = await supabase
-    .from("location_section")
-    .update({
-      title: item.title,
-      rating: item.rating,
-      reviews: item.reviews,
-      address: item.address,
-      email: item.email,
-      phone: item.phone,
-      map_url: item.map_url,
-    })
-    .eq("id", String(item.id))
-    .select();
+export const updateLocation =
+  async (item: any) => {
+    return await supabase
+      .from(
+        "kadir_locations"
+      )
+      .update({
+        title: item.title,
 
-  console.log("✅ UPDATE RESULT:", data);
-  console.log("❌ UPDATE ERROR:", error);
+        rating:
+          item.rating,
 
-  return { data, error };
-};
+        reviews:
+          item.reviews,
+
+        address:
+          item.address,
+
+        email:
+          item.email,
+
+        phone:
+          item.phone,
+
+        map_url:
+          item.map_url,
+
+        updated_at:
+          new Date().toISOString(),
+      })
+      .eq(
+        "id",
+        String(item.id)
+      )
+      .select();
+  };
 
 /* ================= CREATE ================= */
-export const createLocation = async (item: any) => {
-  const { data, error } = await supabase
-    .from("location_section")
-    .insert(item)
-    .select();
 
-  return { data, error };
-};
+export const createLocation =
+  async (item: any) => {
+    return await supabase
+      .from(
+        "kadir_locations"
+      )
+      .insert(item)
+      .select();
+  };
 
 /* ================= DELETE ================= */
-export const deleteLocation = async (id: string) => {
-  const { error } = await supabase
-    .from("location_section")
-    .delete()
-    .eq("id", id);
 
-  return { error };
-};
+export const deleteLocation =
+  async (id: string) => {
+    return await supabase
+      .from(
+        "kadir_locations"
+      )
+      .delete()
+      .eq("id", id);
+  };
