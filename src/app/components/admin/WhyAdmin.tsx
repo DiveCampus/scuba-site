@@ -17,11 +17,11 @@ export function WhyAdmin() {
   }, []);
 
   const load = async () => {
-    console.log("📡 Fetching WHY cards...");
+    // console.log("📡 Fetching WHY cards...");
 
     const { data, error } = await getWhyCards();
 
-    console.log("📦 DATA:", data);
+    // console.log("📦 DATA:", data);
     console.log("❌ ERROR:", error);
 
     if (error) return;
@@ -30,7 +30,7 @@ export function WhyAdmin() {
   };
 
   const handleChange = (id: string, field: string, value: string) => {
-    console.log(`✏️ Editing ${field}:`, value);
+    // console.log(`✏️ Editing ${field}:`, value);
 
     setData((prev) =>
       prev.map((item) =>
@@ -42,7 +42,7 @@ export function WhyAdmin() {
   const handleSave = async (id: string) => {
     const row = data.find((i) => i.id === id);
 
-    console.log("💾 Saving:", row);
+    // console.log("💾 Saving:", row);
 
     const { error } = await updateWhyCard(id, row);
 
