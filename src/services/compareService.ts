@@ -1,48 +1,82 @@
 import { supabase } from "@/lib/supabaseClient";
 
+// ========================================
+// GET COMPARE
+// ========================================
+
 export const getCompare = async () => {
   const { data: section } = await supabase
-    .from("compare_section")
+    .from("kadir_compare_section")
     .select("*")
-    .order("created_at", { ascending: false })
+    .order("created_at", {
+      ascending: false,
+    })
     .limit(1)
     .single();
 
   const { data: items } = await supabase
-    .from("compare_items")
+    .from("kadir_compare_items")
     .select("*")
-    .order("created_at", { ascending: true });
+    .order("position", {
+      ascending: true,
+    });
 
   return { section, items };
 };
 
-export const updateCompareSection = async (section: any) => {
-  const { data, error } = await supabase
-    .from("compare_section")
-    .update({
-      title: section.title,
-      highlight: section.highlight,
-      subtitle: section.subtitle,
-    })
-    .eq("id", section.id)
-    .select();
+// ========================================
+// UPDATE SECTION
+// ========================================
 
-  console.log("UPDATE SECTION:", data, error);
+export const updateCompareSection =
+  async (section: any) => {
+    const { error } =
+      await supabase
+        .from(
+          "kadir_compare_section"
+        )
+        .update({
+          title:
+            section.title,
 
-  return { error };
-};
-export const updateCompareItem = async (item: any) => {
-  const { data, error } = await supabase
-    .from("compare_items")
-    .update({
-      feature: item.feature,
-      others: item.others,
-      nemo: item.nemo,
-    })
-    .eq("id", item.id)
-    .select();
+          highlight:
+            section.highlight,
 
-  console.log("UPDATE ITEM:", data, error);
+          subtitle:
+            section.subtitle,
 
-  return { error };
-};
+          updated_at:
+            new Date().toISOString(),
+        })
+        .eq("id", section.id);
+
+    return { error };
+  };
+
+// ========================================
+// UPDATE ITEM
+// ========================================
+
+export const updateCompareItem =
+  async (item: any) => {
+    const { error } =
+      await supabase
+        .from(
+          "kadir_compare_items"
+        )
+        .update({
+          feature:
+            item.feature,
+
+          others:
+            item.others,
+
+          nemo: item.nemo,
+
+          updated_at:
+            new Date().toISOString(),
+        })
+        .eq("id", item.id);
+
+    return { error };
+  };

@@ -1,6 +1,14 @@
 "use client";
 
 import { useEffect, useState } from "react";
+
+import {
+  Check,
+  X,
+} from "lucide-react";
+
+import { motion } from "framer-motion";
+
 import {
   getCompare,
   updateCompareSection,
@@ -8,190 +16,447 @@ import {
 } from "@/services/compareService";
 
 export default function CompareAdmin() {
-  const [section, setSection] = useState<any>(null);
-  const [items, setItems] = useState<any[]>([]);
-  const [editing, setEditing] = useState<string | null>(null);
-  const [saving, setSaving] = useState(false);
+  const [section, setSection] =
+    useState<any>(null);
+
+  const [items, setItems] =
+    useState<any[]>([]);
+
+  const [editing, setEditing] =
+    useState<string | null>(null);
+
+  const [saving, setSaving] =
+    useState(false);
 
   useEffect(() => {
-    const load = async () => {
-      console.log("🚀 Fetching compare data...");
-      const { section, items } = await getCompare();
-
-      console.log("📦 Section:", section);
-      console.log("📦 Items:", items);
-
-      setSection(section);
-      setItems(items || []);
-    };
-
     load();
   }, []);
 
-  const handleSave = async () => {
-    console.log("💾 Saving compare data...");
+  const load = async () => {
+    const {
+      section,
+      items,
+    } = await getCompare();
 
+    setSection(section);
+
+    setItems(items || []);
+  };
+
+  const handleSave = async () => {
     setSaving(true);
 
-    await updateCompareSection(section);
+    await updateCompareSection(
+      section
+    );
 
-    for (let item of items) {
-      await updateCompareItem(item);
+    for (const item of items) {
+      await updateCompareItem(
+        item
+      );
     }
 
     setSaving(false);
 
-    console.log("✅ Saved successfully");
+    setEditing(null);
   };
 
   if (!section) {
     return (
-      <div className="h-screen flex items-center justify-center bg-black text-white">
+      <div className="h-screen flex items-center justify-center bg-[#02131d] text-white">
         Loading...
       </div>
     );
   }
 
   return (
-    <section className="min-h-screen bg-[#020617] text-white px-6 py-16">
+    <section className="relative py-32 bg-[#02131d] text-white overflow-hidden min-h-screen">
 
       {/* HEADER */}
-      <div className="max-w-4xl mx-auto text-center mb-14">
+      <div className="text-center mb-16 px-6">
 
+        {/* TITLE */}
         {editing === "title" ? (
-          <input
-            value={section.title}
-            onChange={(e) =>
-              setSection({ ...section, title: e.target.value })
-            }
-            onBlur={() => setEditing(null)}
-            autoFocus
-            className="text-3xl md:text-5xl font-bold text-center bg-transparent outline-none w-full"
-          />
-        ) : (
-          <h2
-            onClick={() => setEditing("title")}
-            className="text-3xl md:text-5xl font-bold cursor-pointer"
-          >
-            {section.title}{" "}
-            <span className="text-cyan-400">
-              {section.highlight}
-            </span>
-          </h2>
-        )}
+          <div className="max-w-4xl mx-auto">
 
-        {editing === "subtitle" ? (
-          <textarea
-            value={section.subtitle}
-            onChange={(e) =>
-              setSection({ ...section, subtitle: e.target.value })
-            }
-            onBlur={() => setEditing(null)}
-            className="mt-4 text-center w-full bg-transparent outline-none text-white/60"
-          />
+            <input
+              value={
+                section.title
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  title:
+                    e.target.value,
+                })
+              }
+              className="
+                w-full
+                text-center
+                text-3xl
+                md:text-5xl
+                font-bold
+                bg-white/10
+                border
+                border-cyan-400/30
+                rounded-2xl
+                px-6
+                py-4
+                outline-none
+              "
+            />
+
+            <input
+              value={
+                section.highlight
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  highlight:
+                    e.target.value,
+                })
+              }
+              className="
+                w-full
+                mt-4
+                text-center
+                text-2xl
+                md:text-4xl
+                text-cyan-400
+                font-bold
+                bg-white/10
+                border
+                border-cyan-400/30
+                rounded-2xl
+                px-6
+                py-4
+                outline-none
+              "
+            />
+
+            <textarea
+              value={
+                section.subtitle
+              }
+              onChange={(e) =>
+                setSection({
+                  ...section,
+                  subtitle:
+                    e.target.value,
+                })
+              }
+              className="
+                w-full
+                mt-4
+                text-center
+                bg-white/10
+                border
+                border-cyan-400/30
+                rounded-2xl
+                px-6
+                py-4
+                outline-none
+                text-white/70
+              "
+            />
+
+          </div>
         ) : (
-          <p
-            onClick={() => setEditing("subtitle")}
-            className="mt-4 text-white/60 cursor-pointer"
+          <motion.div
+            whileHover={{
+              scale: 1.01,
+            }}
+            onClick={() =>
+              setEditing(
+                "title"
+              )
+            }
+            className="cursor-pointer"
           >
-            {section.subtitle}
-          </p>
+
+            <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+
+              {
+                section.title
+              }{" "}
+
+              <span className="text-cyan-400">
+                {
+                  section.highlight
+                }
+              </span>
+
+            </h2>
+
+            <p className="text-white/60 max-w-2xl mx-auto">
+              {
+                section.subtitle
+              }
+            </p>
+
+          </motion.div>
         )}
 
       </div>
 
       {/* TABLE */}
-      <div className="max-w-5xl mx-auto rounded-2xl border border-white/10 overflow-hidden bg-white/5">
+      <div className="max-w-6xl mx-auto px-6">
 
-        {/* HEADER ROW */}
-        <div className="grid grid-cols-3 p-4 text-sm text-white/60 border-b border-white/10">
-          <span>FEATURE</span>
-          <span>OTHERS</span>
-          <span className="text-cyan-400">NEMO DIVING</span>
-        </div>
+        <div className="rounded-3xl border border-white/10 overflow-hidden backdrop-blur-xl bg-white/5 shadow-[0_0_40px_rgba(0,255,255,0.06)]">
 
-        {/* ROWS */}
-        {items.map((item, i) => (
-          <div
-            key={item.id}
-            className="grid grid-cols-3 p-4 border-b border-white/10"
-          >
-            {/* FEATURE */}
-            {editing === `feature-${i}` ? (
-              <input
-                value={item.feature}
-                onChange={(e) => {
-                  const updated = [...items];
-                  updated[i].feature = e.target.value;
-                  setItems(updated);
-                }}
-                onBlur={() => setEditing(null)}
-                autoFocus
-                className="bg-transparent outline-none"
-              />
-            ) : (
-              <span
-                onClick={() => setEditing(`feature-${i}`)}
-                className="cursor-pointer"
-              >
-                {item.feature}
-              </span>
-            )}
+          {/* HEAD */}
+          <div className="grid grid-cols-3 text-sm text-white/50 border-b border-white/10">
 
-            {/* OTHERS */}
-            {editing === `others-${i}` ? (
-              <input
-                value={item.others}
-                onChange={(e) => {
-                  const updated = [...items];
-                  updated[i].others = e.target.value;
-                  setItems(updated);
-                }}
-                onBlur={() => setEditing(null)}
-                className="bg-transparent outline-none text-red-400"
-              />
-            ) : (
-              <span
-                onClick={() => setEditing(`others-${i}`)}
-                className="text-red-400 cursor-pointer"
-              >
-                ✖ {item.others}
-              </span>
-            )}
+            <div className="p-5">
+              FEATURE
+            </div>
 
-            {/* NEMO */}
-            {editing === `nemo-${i}` ? (
-              <input
-                value={item.nemo}
-                onChange={(e) => {
-                  const updated = [...items];
-                  updated[i].nemo = e.target.value;
-                  setItems(updated);
-                }}
-                onBlur={() => setEditing(null)}
-                className="bg-transparent outline-none text-cyan-400"
-              />
-            ) : (
-              <span
-                onClick={() => setEditing(`nemo-${i}`)}
-                className="text-cyan-400 cursor-pointer"
-              >
-                ✔ {item.nemo}
-              </span>
-            )}
+            <div className="p-5 text-center">
+              OTHERS
+            </div>
+
+            <div className="p-5 text-center text-cyan-400 font-semibold">
+              DIVE CAMPUS
+            </div>
+
           </div>
-        ))}
+
+          {/* ROWS */}
+          {items.map(
+            (row, i) => {
+              const isEditing =
+                editing ===
+                row.id;
+
+              return (
+                <motion.div
+                  key={row.id}
+                  initial={{
+                    opacity: 0,
+                    y: 30,
+                  }}
+                  whileInView={{
+                    opacity: 1,
+                    y: 0,
+                  }}
+                  transition={{
+                    delay:
+                      i * 0.05,
+                  }}
+                  whileHover={{
+                    backgroundColor:
+                      "rgba(255,255,255,0.03)",
+                  }}
+                  onClick={() =>
+                    setEditing(
+                      row.id
+                    )
+                  }
+                  className={`
+                    grid
+                    grid-cols-3
+                    border-b
+                    border-white/10
+                    last:border-none
+                    cursor-pointer
+                    transition
+
+                    ${
+                      isEditing
+                        ? "bg-cyan-400/5"
+                        : ""
+                    }
+                  `}
+                >
+
+                  {/* FEATURE */}
+                  <div className="p-5 text-white/80">
+
+                    {isEditing ? (
+                      <input
+                        value={
+                          row.feature
+                        }
+                        onChange={(
+                          e
+                        ) => {
+                          const updated =
+                            [
+                              ...items,
+                            ];
+
+                          updated[
+                            i
+                          ].feature =
+                            e.target.value;
+
+                          setItems(
+                            updated
+                          );
+                        }}
+                        className="
+                          w-full
+                          bg-white/10
+                          border
+                          border-cyan-400/30
+                          rounded-xl
+                          px-4
+                          py-3
+                          outline-none
+                        "
+                      />
+                    ) : (
+                      row.feature
+                    )}
+
+                  </div>
+
+                  {/* OTHERS */}
+                  <div className="p-5 flex items-center justify-center">
+
+                    {isEditing ? (
+                      <input
+                        value={
+                          row.others
+                        }
+                        onChange={(
+                          e
+                        ) => {
+                          const updated =
+                            [
+                              ...items,
+                            ];
+
+                          updated[
+                            i
+                          ].others =
+                            e.target.value;
+
+                          setItems(
+                            updated
+                          );
+                        }}
+                        className="
+                          w-full
+                          bg-white/10
+                          border
+                          border-red-400/30
+                          rounded-xl
+                          px-4
+                          py-3
+                          outline-none
+                          text-red-400
+                        "
+                      />
+                    ) : (
+                      <div className="flex items-center gap-2 text-red-400">
+
+                        <X
+                          size={
+                            16
+                          }
+                        />
+
+                        {
+                          row.others
+                        }
+
+                      </div>
+                    )}
+
+                  </div>
+
+                  {/* DIVE CAMPUS */}
+                  <div className="p-5 flex items-center justify-center">
+
+                    {isEditing ? (
+                      <input
+                        value={
+                          row.nemo
+                        }
+                        onChange={(
+                          e
+                        ) => {
+                          const updated =
+                            [
+                              ...items,
+                            ];
+
+                          updated[
+                            i
+                          ].nemo =
+                            e.target.value;
+
+                          setItems(
+                            updated
+                          );
+                        }}
+                        className="
+                          w-full
+                          bg-white/10
+                          border
+                          border-cyan-400/30
+                          rounded-xl
+                          px-4
+                          py-3
+                          outline-none
+                          text-cyan-300
+                        "
+                      />
+                    ) : (
+                      <div className="flex items-center gap-2 px-5 py-2 rounded-xl border border-cyan-400/30 bg-cyan-400/5 text-cyan-300">
+
+                        <Check
+                          size={
+                            16
+                          }
+                        />
+
+                        {
+                          row.nemo
+                        }
+
+                      </div>
+                    )}
+
+                  </div>
+
+                </motion.div>
+              );
+            }
+          )}
+
+        </div>
 
       </div>
 
       {/* SAVE */}
-      <div className="text-center mt-12">
-        <button
+      <div className="text-center mt-14">
+
+        <motion.button
+          whileHover={{
+            scale: 1.05,
+          }}
+          whileTap={{
+            scale: 0.95,
+          }}
           onClick={handleSave}
-          className="px-8 py-3 bg-cyan-400 text-black rounded-full font-semibold hover:scale-105 transition"
+          className="
+            px-10
+            py-4
+            bg-cyan-400
+            text-black
+            rounded-full
+            font-semibold
+            shadow-[0_0_30px_rgba(0,255,255,0.25)]
+          "
         >
-          {saving ? "Saving..." : "Save Changes"}
-        </button>
+          {saving
+            ? "Saving..."
+            : "Save Changes"}
+        </motion.button>
+
       </div>
 
     </section>

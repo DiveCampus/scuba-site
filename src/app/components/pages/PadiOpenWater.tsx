@@ -1,4 +1,4 @@
-// PadiOpenWater.tsx
+//PadiOpenWater.tsx
 "use client";
 
 import { HeroSection } from "./HeroSection";

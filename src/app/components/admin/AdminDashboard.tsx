@@ -16,7 +16,6 @@ import { WhyAdmin } from "./WhyAdmin";
 import { FooterAdmin } from "./FooterAdmin";
 import HeroSectionAdmin from "./HeroSectionAdmin";
 import FeaturesAdmin from "./FeaturesAdmin";
-import StepsAdmin from "./AdminSteps";
 import CompareAdmin from "./CompareAdmin";
 import CommunityFAQSelectionAdmin from "./CommunityFAQSelectionAdmin";
 import WhyChooseAdmin from "./WhyChooseAdmin";
@@ -50,6 +49,7 @@ import RescueCapabilitiesAdmin from "./RescueCapabilitiesAdmin";
 import RescueComparisonAdmin from "./RescueComparisonAdmin";
 import SimulationRealityAdmin from "./SimulationToRealityAdmin";
 import MasterScubaCTAAdmin from "./MasterScubaCTAAdmin";
+import { StepsAdmin } from "./AdminSteps";
 // import EnvironmentSectionAdmin from "./EnvironmentSectionAdmin";
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
