@@ -50,6 +50,7 @@ import RescueComparisonAdmin from "./RescueComparisonAdmin";
 import SimulationRealityAdmin from "./SimulationToRealityAdmin";
 import MasterScubaCTAAdmin from "./MasterScubaCTAAdmin";
 import { StepsAdmin } from "./AdminSteps";
+import RescueFAQAdmin from "./RescueFAQAdmin";
 // import EnvironmentSectionAdmin from "./EnvironmentSectionAdmin";
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
@@ -285,6 +286,10 @@ export default function AdminDashboard() {
       name :"Master Scuba CTA",
       component :<MasterScubaCTAAdmin />
     },
+    {
+      name :"Rescue FAQ Admin",
+      component : <RescueFAQAdmin />
+    }
   ];
 
   if (loading) {
