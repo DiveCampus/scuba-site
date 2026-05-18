@@ -56,6 +56,7 @@ import LocationFooterAdmin from "./LocationFooterAdmin";
 import DivetryAdmin from "./DivetryAdmin";
 import FirstDiveStepsAdmin from "./FirstDiveStepsAdmin";
 import WeekendRoutineAdmin from "./WeekendRoutineAdmin";
+import DiveConfidenceFAQAdmin from "./DiveConfidenceFAQAdmin";
 // import EnvironmentSectionAdmin from "./EnvironmentSectionAdmin";
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
@@ -314,7 +315,11 @@ export default function AdminDashboard() {
     {
       name : "Weekend Routine Admin",
       component: <WeekendRoutineAdmin />
-    }
+    },
+    {
+      name :"Dive ConfidenceFAQ Admin",
+      component : <DiveConfidenceFAQAdmin />
+    },
 
     
   ];
