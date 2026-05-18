@@ -55,6 +55,7 @@ import DiveTrainingShowcaseAdmin from "./DiveTrainingShowcaseAdmin";
 import LocationFooterAdmin from "./LocationFooterAdmin";
 import DivetryAdmin from "./DivetryAdmin";
 import FirstDiveStepsAdmin from "./FirstDiveStepsAdmin";
+import WeekendRoutineAdmin from "./WeekendRoutineAdmin";
 // import EnvironmentSectionAdmin from "./EnvironmentSectionAdmin";
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
@@ -310,7 +311,11 @@ export default function AdminDashboard() {
       name :"First DiveSteps Admin",
       component: <FirstDiveStepsAdmin />
     },
-    
+    {
+      name : "Weekend Routine Admin",
+      component: <WeekendRoutineAdmin />
+    }
+
     
   ];
 
