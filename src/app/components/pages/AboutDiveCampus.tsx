@@ -396,7 +396,7 @@ useLayoutEffect(() => {
                                   ? "/Abdullah.webp"
                                   : member.name === "Sorie"
                                     ? "/Surie.webp"
-                                    : "/placeholder.jpg"
+                                    : "/placeholder.webp"
                   }
                   alt={member.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition duration-700"

@@ -17,7 +17,7 @@ export function ContactLocations() {
         "Azure Residences, The Palm Jumeirah, Dubai, UAE",
       email: "info@nemodivingcenter.com",
       phone: "+971 56 704 4472",
-      map: "/map1.jpg",
+      map: "/map1.webp",
     },
 
     {
@@ -26,7 +26,7 @@ export function ContactLocations() {
         "Royal Beach, Dibba Fujairah, Al Fujairah",
       email: "dive@nemodivingcenter.com",
       phone: "+971 58 504 4450",
-      map: "/map2.jpg",
+      map: "/map2.webp",
     },
   ];
 

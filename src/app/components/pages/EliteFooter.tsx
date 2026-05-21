@@ -445,7 +445,7 @@ export function EliteFooter() {
             >
 
               <img
-                src="/whatsapp.png"
+                src="/whatsapp.webp"
                 alt="whatsapp"
                 className="
                   w-6

@@ -63,7 +63,7 @@ export function PremiumFooter() {
       <div className="absolute inset-0 opacity-10">
 
         <img
-          src="/img3.jpeg"
+          src="/img3.webp"
           className="w-full h-full object-cover"
         />
 

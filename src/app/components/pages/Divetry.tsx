@@ -13,7 +13,7 @@ export default function Divetry() {
       style={{
         backgroundImage: `
           linear-gradient(to bottom, rgba(0,0,0,0.58), rgba(0,0,0,0.82)),
-          url('/img3.jpeg')
+          url('/img3.webp')
         `,
       }}
     >

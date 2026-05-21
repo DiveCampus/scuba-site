@@ -20,7 +20,7 @@ export function TryDiveFooter() {
         {/* BACKGROUND */}
         <div className="absolute inset-0">
           <img
-            src="/footer-bg.jpg"
+            src="/footer-bg.webp"
             alt="footer"
             className="w-full h-full object-cover opacity-20"
           />

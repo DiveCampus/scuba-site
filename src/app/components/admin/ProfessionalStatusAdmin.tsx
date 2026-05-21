@@ -269,7 +269,7 @@ export default function ProfessionalStatusAdmin() {
                   e.target.value,
               })
             }
-            placeholder="/divemaster.jpg"
+            placeholder="/divemaster.webp"
             className="
               h-[58px]
               rounded-3xl

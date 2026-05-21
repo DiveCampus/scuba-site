@@ -102,7 +102,7 @@ export function BookingForm() {
             {/* IMAGE SECTION */}
             <div className="relative overflow-hidden rounded-2xl aspect-video">
               <img
-                src="/img1.jpeg"
+                src="/img1.webp"
                 alt="Custom"
                 className="w-full h-full object-cover"
               />

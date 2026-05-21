@@ -4,17 +4,17 @@ import { motion } from "framer-motion";
 
 export function AdventureGallery() {
   const images = [
-    "/gallery/1.jpg",
-    "/gallery/2.jpg",
-    "/gallery/3.jpg",
-    "/gallery/4.jpg",
-    "/gallery/5.jpg",
-    "/gallery/6.jpg",
-    "/gallery/7.jpg",
-    "/gallery/8.jpg",
-    "/gallery/9.jpg",
-    "/gallery/10.jpg",
-    "/gallery/11.jpg",
+    "/gallery/1.webp",
+    "/gallery/2.webp",
+    "/gallery/3.webp",
+    "/gallery/4.webp",
+    "/gallery/5.webp",
+    "/gallery/6.webp",
+    "/gallery/7.webp",
+    "/gallery/8.webp",
+    "/gallery/9.webp",
+    "/gallery/10.webp",
+    "/gallery/11.webp",
   ];
 
   return (
@@ -168,7 +168,7 @@ export function AdventureGallery() {
               className="col-span-3 overflow-hidden rounded-[4px]"
             >
               <img
-                src="/gallery/12.jpg"
+                src="/gallery/12.webp"
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -178,7 +178,7 @@ export function AdventureGallery() {
               className="col-span-2 overflow-hidden rounded-[4px]"
             >
               <img
-                src="/gallery/13.jpg"
+                src="/gallery/13.webp"
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>

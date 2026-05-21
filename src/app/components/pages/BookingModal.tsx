@@ -76,7 +76,7 @@ export function BookingModal({ isOpen, onClose }: any) {
 
                     <button className="w-full h-[54px] bg-black rounded-lg flex items-center justify-center hover:opacity-90 transition">
                       <img
-                        src="/gpay.png"
+                        src="/gpay.webp"
                         alt="gpay"
                         className="h-7 object-contain"
                       />
@@ -132,9 +132,9 @@ export function BookingModal({ isOpen, onClose }: any) {
                         </p>
 
                         <div className="flex items-center gap-2">
-                          <img src="/visa.png" className="h-5" />
-                          <img src="/mastercard.png" className="h-5" />
-                          <img src="/amex.png" className="h-5" />
+                          <img src="/visa.webp" className="h-5" />
+                          <img src="/mastercard.webp" className="h-5" />
+                          <img src="/amex.webp" className="h-5" />
                         </div>
                       </div>
 
@@ -334,7 +334,7 @@ export function BookingModal({ isOpen, onClose }: any) {
                     <div className="flex gap-4">
                       <div className="relative">
                         <img
-                          src="/course.jpg"
+                          src="/course.webp"
                           alt=""
                           className="w-[76px] h-[76px] rounded-xl object-cover border border-gray-200"
                         />

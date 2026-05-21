@@ -5,19 +5,19 @@ import { motion } from "framer-motion";
 export function CommunityGallerySection() {
 
   const images = [
-    "/A59I0374.jpg",
-    "/A59I0450.jpg",
-    "/A59I0656.jpg",
-    "/A59I9512.jpg",
-    "/A59I9544.jpg",
-    "/A59I9590.jpg",
-    "/A59I9631.jpg",
-    "/img1.jpeg",
-    "/img2.jpeg",
-    "/img3.jpeg",
-    "/img4.jpeg",
-    "/img5.jpeg",
-    "/dubai.jpg",
+    "/A59I0374.webp",
+    "/A59I0450.webp",
+    "/A59I0656.webp",
+    "/A59I9512.webp",
+    "/A59I9544.webp",
+    "/A59I9590.webp",
+    "/A59I9631.webp",
+    "/img1.webp",
+    "/img2.webp",
+    "/img3.webp",
+    "/img4.webp",
+    "/img5.webp",
+    "/dubai.webp",
   ];
 
   return (

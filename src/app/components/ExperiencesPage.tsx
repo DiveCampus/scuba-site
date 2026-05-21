@@ -24,7 +24,7 @@ export function ExperiencesPage() {
           >
             <motion.img
               layout
-              src="/dubai.jpg"
+              src="/dubai.webp"
               className="w-full h-[300px] object-cover"
             />
 
@@ -78,7 +78,7 @@ export function ExperiencesPage() {
           >
             <motion.img
               layout
-              src="/khor.jpg"
+              src="/khor.webp"
               className="w-full h-[300px] object-cover"
             />
 
