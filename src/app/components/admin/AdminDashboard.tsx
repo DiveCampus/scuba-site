@@ -63,6 +63,7 @@ import LegacyOfTrustAdmin from "./LegacyOfTrustAdmin";
 import ContactLocationsAdmin from "./ContactLocationsAdmin";
 import AdventureGalleryAdmin from "./AdventureGalleryAdmin";
 import TryDiveFooterAdmin from "./TryDiveFooterAdmin";
+import { MediaManager } from "./MediaManager";
 // import EnvironmentSectionAdmin from "./EnvironmentSectionAdmin";
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
@@ -351,7 +352,11 @@ export default function AdminDashboard() {
       name:"TryDiveFooterAdmin",
       component: <TryDiveFooterAdmin />
     },
-
+    
+    {
+     name:"Image Uploads & Url",
+     component:<MediaManager />
+     },
     
   ];
 
