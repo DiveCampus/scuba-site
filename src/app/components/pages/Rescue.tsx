@@ -25,11 +25,7 @@ import {
 
 } from "react-icons/fa";
 
-import {
-
-  OpenDiverBooking,
-
-} from "./OpenDiverBooking";
+import { useNavigate } from "react-router-dom";
 
 import {
 
@@ -39,8 +35,7 @@ import {
 
 export function Rescue() {
 
-  const [open, setOpen] =
-    useState(false);
+  const navigate = useNavigate();
 
   const [section, setSection] =
     useState<any>(null);
@@ -353,7 +348,7 @@ export function Rescue() {
             <button
 
               onClick={() =>
-                setOpen(true)
+                navigate("/booking?course=padi-rescue-diver")
               }
 
               className="
@@ -510,7 +505,7 @@ export function Rescue() {
         <button
 
           onClick={() =>
-            setOpen(true)
+            navigate("/booking?course=padi-rescue-diver")
           }
 
           className="
@@ -565,17 +560,6 @@ export function Rescue() {
         </a>
 
       </div>
-
-      {/* MODAL */}
-      <OpenDiverBooking
-
-        isOpen={open}
-
-        onClose={() =>
-          setOpen(false)
-        }
-
-      />
 
     </>
 

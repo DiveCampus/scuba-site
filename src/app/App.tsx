@@ -24,6 +24,8 @@ import AboutDive from "./About/AboutDive";
 import { AdvancedPadiOpenDiver } from "./components/pages/AdvancedPadiOpenDiver";
 import { TryDive } from "./TryDive/TryDive";
 import BookingPage from "./booking/BookingPage";
+import PaymentSuccess from "./booking/PaymentSuccess";
+import PaymentCancel from "./booking/PaymentCancel";
 
 function Home() {
   const isLoggedIn = localStorage.getItem("auth") === "true";
@@ -71,7 +73,10 @@ export default function App() {
       <Route path="/padi-scuba-diver" element={<AdvancedPadiOpenDiver />} /> 
       <Route path="/padi-open-water" element={<PadiOpenWater />} />
       <Route path="/about" element={<AboutDive />} />
+      <Route path="/booking" element={<BookingPage />} />
       <Route path="/open-diver/booking" element={<BookingPage />} />
+      <Route path="/payment-success" element={<PaymentSuccess />} />
+      <Route path="/payment-cancel" element={<PaymentCancel />} />
 
     </Routes>
   );

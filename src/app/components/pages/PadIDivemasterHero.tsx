@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { OpenDiverBooking } from "./OpenDiverBooking";
+import { useNavigate } from "react-router-dom";
 import { Navbar } from "../Navbar";
 import {
   getDivemasterHero,
@@ -11,8 +11,7 @@ import {
 
 export function PadiDivemasterHero() {
 
-  const [open, setOpen] =
-    useState(false);
+  const navigate = useNavigate();
 
   const [data, setData] =
     useState<any>(null);
@@ -241,7 +240,7 @@ export function PadiDivemasterHero() {
 
             <button
               onClick={() =>
-                setOpen(true)
+                navigate("/booking?course=padi-divemaster")
               }
               className="
                 px-8
@@ -283,13 +282,6 @@ export function PadiDivemasterHero() {
         </div>
 
       </section>
-
-      <OpenDiverBooking
-        isOpen={open}
-        onClose={() =>
-          setOpen(false)
-        }
-      />
 
     </>
 

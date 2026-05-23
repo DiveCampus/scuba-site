@@ -3,11 +3,10 @@
 import { Shield, Clock, Monitor, Users, Globe } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { OpenDiverBooking } from "./OpenDiverBooking";
+import { useNavigate } from "react-router-dom";
 
 export function EnrollmentSection() {
-  const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
 
   const features = [
     {
@@ -124,7 +123,7 @@ export function EnrollmentSection() {
 
             {/* MAIN BUTTON */}
             <button
-              onClick={() => setOpen(true)}
+              onClick={() => navigate("/booking?course=padi-open-water")}
               className="flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 text-black font-semibold text-sm hover:scale-105 transition shadow-[0_5px_20px_rgba(0,200,255,0.4)]"
             >
               ENROLL NOW →
@@ -145,12 +144,6 @@ export function EnrollmentSection() {
         </div>
 
       </section>
-
-      {/* MODAL */}
-      <OpenDiverBooking
-        isOpen={open}
-        onClose={() => setOpen(false)}
-      />
 
       {/* FONT */}
       <style jsx global>{`

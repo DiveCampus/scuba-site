@@ -3,17 +3,47 @@
 import { useState } from "react";
 import { X, Info, Lock, HelpCircle } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { COURSE_DATA, formatCoursePrice, type CourseData } from "@/data/courseData";
+import { createCheckoutSession } from "@/services/paymentService";
 
-export function BookingModal({ isOpen, onClose }: any) {
+type BookingModalProps = {
+  isOpen: boolean;
+  onClose: () => void;
+  course?: CourseData;
+};
+
+export function BookingModal({ isOpen, onClose, course = COURSE_DATA["open-diver"] }: BookingModalProps) {
   const [divers, setDivers] = useState(1);
   const [selected, setSelected] = useState<number[]>([]);
   const [tip, setTip] = useState("none");
+  const [paymentLoading, setPaymentLoading] = useState(false);
+  const [paymentError, setPaymentError] = useState("");
+
+  const subtotal = course.price * divers;
+  const estimatedTax = subtotal * 0.05;
+  const total = subtotal + estimatedTax;
 
   const toggleOption = (i: number) => {
     setSelected((prev) =>
       prev.includes(i) ? prev.filter((x) => x !== i) : [...prev, i]
     );
   };
+
+  const handlePayNow = async () => {
+    try {
+      setPaymentLoading(true);
+      setPaymentError("");
+      const checkoutUrl = await createCheckoutSession(course);
+      window.location.href = checkoutUrl;
+    } catch (error) {
+      setPaymentError(
+        error instanceof Error ? error.message : "Unable to start Stripe checkout."
+      );
+      setPaymentLoading(false);
+    }
+  };
+
+  if (!isOpen) return null;
 
   const options = [
     {
@@ -260,9 +290,9 @@ export function BookingModal({ isOpen, onClose }: any) {
                       <div className="grid grid-cols-4 rounded-xl overflow-hidden border border-gray-200 mb-5">
 
                         {[
-                          { id: "2", label: "2%", amount: "AED 44.00" },
-                          { id: "5", label: "5%", amount: "AED 110.00" },
-                          { id: "10", label: "10%", amount: "AED 220.00" },
+                          { id: "2", label: "2%", amount: formatCoursePrice(subtotal * 0.02) },
+                          { id: "5", label: "5%", amount: formatCoursePrice(subtotal * 0.05) },
+                          { id: "10", label: "10%", amount: formatCoursePrice(subtotal * 0.1) },
                           { id: "none", label: "None", amount: "" },
                         ].map((item) => (
                           <button
@@ -317,8 +347,18 @@ export function BookingModal({ isOpen, onClose }: any) {
                   </div>
 
                   {/* PAY BUTTON */}
-                  <button className="w-full h-[60px] rounded-2xl bg-[#1773ea] hover:bg-[#1365cf] transition text-white text-lg font-semibold shadow-lg">
-                    Pay now
+                  {paymentError && (
+                    <p className="mb-4 text-sm text-red-600">
+                      {paymentError}
+                    </p>
+                  )}
+
+                  <button
+                    onClick={handlePayNow}
+                    disabled={paymentLoading}
+                    className="w-full h-[60px] rounded-2xl bg-[#1773ea] hover:bg-[#1365cf] transition text-white text-lg font-semibold shadow-lg disabled:opacity-70"
+                  >
+                    {paymentLoading ? "Redirecting..." : "Pay now"}
                   </button>
                 </div>
               </div>
@@ -334,8 +374,8 @@ export function BookingModal({ isOpen, onClose }: any) {
                     <div className="flex gap-4">
                       <div className="relative">
                         <img
-                          src="/course.webp"
-                          alt=""
+                          src={course.image}
+                          alt={course.title}
                           className="w-[76px] h-[76px] rounded-xl object-cover border border-gray-200"
                         />
 
@@ -346,18 +386,17 @@ export function BookingModal({ isOpen, onClose }: any) {
 
                       <div>
                         <h3 className="text-[22px] font-semibold text-black leading-tight">
-                          PADI DiveMaster Course
+                          {course.title}
                         </h3>
 
                         <p className="text-sm text-gray-500 leading-relaxed mt-1">
-                          Divemaster Course | Flexible (without
-                          PADI Crewpack and eLearning)
+                          {course.details}
                         </p>
                       </div>
                     </div>
 
                     <p className="text-[26px] font-semibold text-black">
-                      AED 2,200.00
+                      {formatCoursePrice(subtotal)}
                     </p>
                   </div>
 
@@ -378,7 +417,7 @@ export function BookingModal({ isOpen, onClose }: any) {
 
                     <div className="flex justify-between text-gray-700">
                       <span>Subtotal</span>
-                      <span>AED 2,200.00</span>
+                      <span>{formatCoursePrice(subtotal)}</span>
                     </div>
 
                     <div className="flex justify-between text-gray-700">
@@ -387,7 +426,7 @@ export function BookingModal({ isOpen, onClose }: any) {
                         <Info size={14} />
                       </span>
 
-                      <span>AED 110.00</span>
+                      <span>{formatCoursePrice(estimatedTax)}</span>
                     </div>
                   </div>
 
@@ -404,7 +443,7 @@ export function BookingModal({ isOpen, onClose }: any) {
                     </div>
 
                     <p className="text-[42px] font-bold text-black">
-                      AED 2,310.00
+                      {formatCoursePrice(total)}
                     </p>
                   </div>
 

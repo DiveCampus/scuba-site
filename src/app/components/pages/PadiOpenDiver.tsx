@@ -8,12 +8,14 @@ import {
   useEffect,
   useState,
 } from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   getPadiOpenDiver,
 } from "@/services/PadiOpenService";
 
 export function PadiOpenDiver() {
+  const navigate = useNavigate();
 
   const [data, setData] =
     useState<any>(null);
@@ -255,7 +257,9 @@ export function PadiOpenDiver() {
             justify-center
           ">
 
-            <button className="
+            <button
+              onClick={() => navigate("/booking?course=padi-scuba-diver")}
+              className="
               px-8
               py-4
               rounded-2xl

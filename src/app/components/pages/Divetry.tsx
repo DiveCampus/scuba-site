@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function Divetry() {
   const [selected, setSelected] = useState<"dubai" | "fujairah">("dubai");
+  const navigate = useNavigate();
 
   const isDubai = selected === "dubai";
 
@@ -123,7 +125,10 @@ export default function Divetry() {
         </div>
 
         {/* 🔥 CTA */}
-        <button className="mt-10 px-7 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-md transition tracking-[2px] text-sm leading-relaxed">
+        <button
+          onClick={() => navigate("/booking?course=try-dive")}
+          className="mt-10 px-7 py-3.5 bg-cyan-500 hover:bg-cyan-400 text-black font-semibold rounded-md transition tracking-[2px] text-sm leading-relaxed"
+        >
           {isDubai
             ? "BOOK DUBAI EXPERIENCE"
             : "BOOK FUJAIRAH EXPERIENCE"}

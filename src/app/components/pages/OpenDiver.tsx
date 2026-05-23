@@ -2,14 +2,15 @@
 
 import { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Navbar } from "../Navbar";
-import { OpenDiverBooking } from "./OpenDiverBooking";
 import { getOpenDiverCourse } from "@/services/OpenDiverService";
 
 export function OpenDiver() {
-  const [open, setOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  const bookingCourse =
+    location.pathname === "/advanced-open-water" ? "advanced-open-water" : "open-diver";
   const [course, setCourse] =
     useState<any>(null);
   const [loading, setLoading] =
@@ -101,7 +102,7 @@ export function OpenDiver() {
           <div className="mt-11 flex flex-col items-center gap-5">
             <button
               onClick={() =>
-                navigate("/open-diver/booking")
+                navigate(`/booking?course=${bookingCourse}`)
               }
               className="rounded-xl bg-cyan-400 px-8 py-3.5 font-semibold tracking-[1px] text-black shadow-lg transition duration-300 hover:scale-105"
             >
@@ -147,7 +148,7 @@ export function OpenDiver() {
         <div className="flex items-center rounded-full bg-[#1f2a33]/90 p-1.5 shadow-[0_10px_40px_rgba(0,0,0,0.6)] backdrop-blur-xl">
           <button
             onClick={() =>
-              navigate("/open-diver/booking")
+              navigate(`/booking?course=${bookingCourse}`)
             }
             className="rounded-full bg-gradient-to-r from-cyan-400 to-cyan-500 px-7 py-3 font-semibold tracking-[1px] text-black transition duration-300 hover:scale-105"
           >
@@ -168,13 +169,6 @@ export function OpenDiver() {
           </a>
         </div>
       </div>
-
-      <OpenDiverBooking
-        isOpen={open}
-        onClose={() =>
-          setOpen(false)
-        }
-      />
     </>
   );
 }
