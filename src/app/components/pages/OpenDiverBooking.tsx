@@ -33,17 +33,17 @@ export function OpenDiverBooking({ isOpen, onClose }: any) {
     },
   ];
 
-  if (!isOpen) return null;
+  // if (!isOpen) return null;
 
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 bg-black/70 backdrop-blur-md z-[9999] overflow-y-auto font-habara"
+        className="w-full min-h-screen bg-white overflow-y-auto font-habara"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <div className="min-h-screen flex items-center justify-center p-4 lg:p-8">
+        <div className="w-full min-h-screen">
 
           {/* MAIN CONTAINER */}
           <motion.div
@@ -51,7 +51,7 @@ export function OpenDiverBooking({ isOpen, onClose }: any) {
             animate={{ scale: 1, y: 0 }}
             exit={{ scale: 0.96, y: 30 }}
             transition={{ duration: 0.3 }}
-            className="w-full max-w-[1400px] bg-white rounded-[28px] overflow-hidden shadow-[0_40px_120px_rgba(0,0,0,0.45)]"
+            className="w-full min-h-screen bg-white overflow-hidden"
           >
             <div className="grid lg:grid-cols-[60%_40%]">
 

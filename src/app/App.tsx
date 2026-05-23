@@ -71,7 +71,7 @@ export default function App() {
       <Route path="/padi-scuba-diver" element={<AdvancedPadiOpenDiver />} /> 
       <Route path="/padi-open-water" element={<PadiOpenWater />} />
       <Route path="/about" element={<AboutDive />} />
-      <Route path="/booking" element={<BookingPage />} />
+      <Route path="/open-diver/booking" element={<BookingPage />} />
 
     </Routes>
   );
