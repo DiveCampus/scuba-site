@@ -109,44 +109,22 @@ export default function EnvironmentSectionAdmin() {
 
   return (
 
-    <section className="
-      min-h-screen
-      bg-[#02131d]
-      text-white
-      py-20
-      px-6
-    ">
+    <section className="min-h-screen bg-[#02131d] text-white py-20 px-6">
 
-      <div className="
-        max-w-7xl
-        mx-auto
-      ">
+      <div className="max-w-7xl mx-auto">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-14
-        ">
+        <div className="flex items-center justify-between mb-14">
 
           <div>
 
-            <p className="
-              text-cyan-400
-              tracking-[4px]
-              text-[10px]
-              mb-4
-            ">
+            <p className="text-cyan-400 tracking-[4px] text-[10px] mb-4">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-semibold
-            ">
+            <h2 className="text-4xl font-semibold">
 
               Environment Section
 
@@ -158,16 +136,7 @@ export default function EnvironmentSectionAdmin() {
             onClick={
               handleSaveSection
             }
-            className="
-              h-[56px]
-              px-7
-              rounded-2xl
-              bg-cyan-500
-              flex
-              items-center
-              gap-3
-              font-semibold
-            "
+            className="h-[56px] px-7 rounded-2xl bg-cyan-500 flex items-center gap-3 font-semibold"
           >
 
             <Save size={18} />
@@ -179,12 +148,7 @@ export default function EnvironmentSectionAdmin() {
         </div>
 
         {/* SECTION */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-6
-          mb-16
-        ">
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
 
           <input
             value={section.title}
@@ -196,15 +160,7 @@ export default function EnvironmentSectionAdmin() {
               })
             }
             placeholder="Title"
-            className="
-              h-[58px]
-              rounded-2xl
-              bg-white/5
-              border
-              border-white/10
-              px-5
-              outline-none
-            "
+            className="h-[58px] rounded-2xl bg-white/5 border border-white/10 px-5 outline-none"
           />
 
           <input
@@ -219,16 +175,7 @@ export default function EnvironmentSectionAdmin() {
               })
             }
             placeholder="Highlighted Title"
-            className="
-              h-[58px]
-              rounded-2xl
-              bg-cyan-500/10
-              border
-              border-cyan-400/20
-              px-5
-              outline-none
-              text-cyan-400
-            "
+            className="h-[58px] rounded-2xl bg-cyan-500/10 border border-cyan-400/20 px-5 outline-none text-cyan-400"
           />
 
           <textarea
@@ -244,39 +191,20 @@ export default function EnvironmentSectionAdmin() {
               })
             }
             placeholder="Description"
-            className="
-              md:col-span-2
-              rounded-2xl
-              bg-white/5
-              border
-              border-white/10
-              p-5
-              outline-none
-            "
+            className="md:col-span-2 rounded-2xl bg-white/5 border border-white/10 p-5 outline-none"
           />
 
         </div>
 
         {/* CARDS */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-8
-          mb-16
-        ">
+        <div className="grid md:grid-cols-2 gap-8 mb-16">
 
           {cards.map(
             (card, i) => (
 
               <div
                 key={card.id}
-                className="
-                  bg-white/5
-                  border
-                  border-white/10
-                  rounded-3xl
-                  p-8
-                "
+                className="bg-white/5 border border-white/10 rounded-3xl p-8"
               >
 
                 <input
@@ -297,17 +225,7 @@ export default function EnvironmentSectionAdmin() {
 
                   }}
                   placeholder="Label"
-                  className="
-                    w-full
-                    h-[54px]
-                    rounded-2xl
-                    bg-black/20
-                    border
-                    border-white/10
-                    px-5
-                    outline-none
-                    mb-5
-                  "
+                  className="w-full h-[54px] rounded-2xl bg-black/20 border border-white/10 px-5 outline-none mb-5"
                 />
 
                 <input
@@ -328,17 +246,7 @@ export default function EnvironmentSectionAdmin() {
 
                   }}
                   placeholder="Title"
-                  className="
-                    w-full
-                    h-[54px]
-                    rounded-2xl
-                    bg-black/20
-                    border
-                    border-white/10
-                    px-5
-                    outline-none
-                    mb-5
-                  "
+                  className="w-full h-[54px] rounded-2xl bg-black/20 border border-white/10 px-5 outline-none mb-5"
                 />
 
                 <textarea
@@ -364,16 +272,7 @@ export default function EnvironmentSectionAdmin() {
 
                   }}
                   placeholder="Description"
-                  className="
-                    w-full
-                    rounded-2xl
-                    bg-black/20
-                    border
-                    border-white/10
-                    p-5
-                    outline-none
-                    mb-5
-                  "
+                  className="w-full rounded-2xl bg-black/20 border border-white/10 p-5 outline-none mb-5"
                 />
 
                 {/* FEATURES */}
@@ -405,17 +304,7 @@ export default function EnvironmentSectionAdmin() {
                         );
 
                       }}
-                      className="
-                        w-full
-                        h-[50px]
-                        rounded-2xl
-                        bg-black/20
-                        border
-                        border-white/10
-                        px-5
-                        outline-none
-                        mb-4
-                      "
+                      className="w-full h-[50px] rounded-2xl bg-black/20 border border-white/10 px-5 outline-none mb-4"
                     />
 
                   )
@@ -436,14 +325,7 @@ export default function EnvironmentSectionAdmin() {
 
                     }
                   }
-                  className="
-                    mt-4
-                    h-[52px]
-                    px-6
-                    rounded-2xl
-                    bg-cyan-500
-                    font-semibold
-                  "
+                  className="mt-4 h-[52px] px-6 rounded-2xl bg-cyan-500 font-semibold"
                 >
 
                   Update Card

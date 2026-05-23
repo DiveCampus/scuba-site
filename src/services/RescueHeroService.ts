@@ -7,13 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getRescueHero =
   async () => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "rescue_hero_section"
@@ -64,13 +58,7 @@ export const updateRescueHero =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "rescue_hero_section"

@@ -60,14 +60,11 @@ export default function GlobalPassportAdmin() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getGlobalPassportSection();
+      const { data: sectionData } = await getGlobalPassportSection();
 
-      const { data: reviewsData } =
-        await getGlobalPassportReviews();
+      const { data: reviewsData } = await getGlobalPassportReviews();
 
-      const { data: faqData } =
-        await getGlobalPassportFaqs();
+      const { data: faqData } = await getGlobalPassportFaqs();
 
       setSection(sectionData);
 
@@ -110,14 +107,7 @@ export default function GlobalPassportAdmin() {
 
     return (
 
-      <div className="
-        min-h-screen
-        flex
-        items-center
-        justify-center
-        bg-[#f5f7fa]
-        text-black
-      ">
+      <div className="min-h-screen flex items-center justify-center bg-[#f5f7fa] text-black">
 
         Loading...
 
@@ -130,49 +120,25 @@ export default function GlobalPassportAdmin() {
   return (
 
     <section
-      className="
-        py-32
-        bg-[#f5f7fa]
-      "
+      className="py-32 bg-[#f5f7fa]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          flex-wrap
-          gap-5
-          mb-16
-        ">
+        <div className="flex items-center justify-between flex-wrap gap-5 mb-16">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-500
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-500 mb-3">
               ADMIN PANEL
             </p>
 
-            <h2 className="
-              text-3xl
-              md:text-5xl
-              font-bold
-              text-[#0a0e27]
-            ">
+            <h2 className="text-3xl md:text-5xl font-bold text-[#0a0e27]">
               Global Passport
             </h2>
 
@@ -183,17 +149,7 @@ export default function GlobalPassportAdmin() {
               scale: 0.95,
             }}
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-7
-              rounded-2xl
-              bg-cyan-500
-              text-white
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-7 rounded-2xl bg-cyan-500 text-white font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -207,31 +163,13 @@ export default function GlobalPassportAdmin() {
         </div>
 
         {/* SECTION FORM */}
-        <div className="
-          bg-white
-          border
-          border-gray-200
-          rounded-3xl
-          p-8
-          shadow-sm
-          mb-16
-          space-y-6
-        ">
+        <div className="bg-white border border-gray-200 rounded-3xl p-8 shadow-sm mb-16 space-y-6">
 
-          <div className="
-            grid
-            md:grid-cols-2
-            gap-6
-          ">
+          <div className="grid md:grid-cols-2 gap-6">
 
             <div>
 
-              <label className="
-                text-xs
-                tracking-[2px]
-                uppercase
-                text-gray-400
-              ">
+              <label className="text-xs tracking-[2px] uppercase text-gray-400">
                 Title
               </label>
 
@@ -246,29 +184,14 @@ export default function GlobalPassportAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  mt-3
-                  w-full
-                  h-[56px]
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  px-5
-                  text-black
-                  outline-none
-                "
+                className="mt-3 w-full h-[56px] rounded-2xl border border-gray-200 px-5 text-black outline-none"
               />
 
             </div>
 
             <div>
 
-              <label className="
-                text-xs
-                tracking-[2px]
-                uppercase
-                text-gray-400
-              ">
+              <label className="text-xs tracking-[2px] uppercase text-gray-400">
                 Highlighted Title
               </label>
 
@@ -283,17 +206,7 @@ export default function GlobalPassportAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  mt-3
-                  w-full
-                  h-[56px]
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  px-5
-                  text-black
-                  outline-none
-                "
+                className="mt-3 w-full h-[56px] rounded-2xl border border-gray-200 px-5 text-black outline-none"
               />
 
             </div>
@@ -302,12 +215,7 @@ export default function GlobalPassportAdmin() {
 
           <div>
 
-            <label className="
-              text-xs
-              tracking-[2px]
-              uppercase
-              text-gray-400
-            ">
+            <label className="text-xs tracking-[2px] uppercase text-gray-400">
               Description
             </label>
 
@@ -323,17 +231,7 @@ export default function GlobalPassportAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                mt-3
-                w-full
-                rounded-2xl
-                border
-                border-gray-200
-                p-5
-                text-black
-                outline-none
-                resize-none
-              "
+              className="mt-3 w-full rounded-2xl border border-gray-200 p-5 text-black outline-none resize-none"
             />
 
           </div>
@@ -341,24 +239,13 @@ export default function GlobalPassportAdmin() {
         </div>
 
         {/* GRID */}
-        <div className="
-          grid
-          lg:grid-cols-2
-          gap-16
-        ">
+        <div className="grid lg:grid-cols-2 gap-16">
 
           {/* LEFT */}
           <div>
 
             {/* TESTIMONIAL CARD */}
-            <div className="
-              bg-white
-              border
-              border-gray-200
-              rounded-3xl
-              p-10
-              shadow-sm
-            ">
+            <div className="bg-white border border-gray-200 rounded-3xl p-10 shadow-sm">
 
               <input
                 value={
@@ -371,17 +258,7 @@ export default function GlobalPassportAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  w-full
-                  h-[56px]
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  px-5
-                  text-black
-                  outline-none
-                  mb-5
-                "
+                className="w-full h-[56px] rounded-2xl border border-gray-200 px-5 text-black outline-none mb-5"
               />
 
               <input
@@ -395,17 +272,7 @@ export default function GlobalPassportAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  w-full
-                  h-[56px]
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  px-5
-                  text-black
-                  outline-none
-                  mb-5
-                "
+                className="w-full h-[56px] rounded-2xl border border-gray-200 px-5 text-black outline-none mb-5"
               />
 
               <textarea
@@ -420,40 +287,20 @@ export default function GlobalPassportAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  w-full
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  p-5
-                  text-black
-                  outline-none
-                  resize-none
-                "
+                className="w-full rounded-2xl border border-gray-200 p-5 text-black outline-none resize-none"
               />
 
             </div>
 
             {/* REVIEWS */}
-            <div className="
-              grid
-              grid-cols-2
-              gap-5
-              mt-10
-            ">
+            <div className="grid grid-cols-2 gap-5 mt-10">
 
               {reviews.map(
                 (review, i) => (
 
                   <div
                     key={review.id}
-                    className="
-                      bg-white
-                      border
-                      rounded-2xl
-                      p-5
-                      shadow-sm
-                    "
+                    className="bg-white border rounded-2xl p-5 shadow-sm"
                   >
 
                     <input
@@ -482,17 +329,7 @@ export default function GlobalPassportAdmin() {
                         );
 
                       }}
-                      className="
-                        w-full
-                        h-[48px]
-                        rounded-xl
-                        border
-                        border-gray-200
-                        px-4
-                        text-black
-                        outline-none
-                        mb-4
-                      "
+                      className="w-full h-[48px] rounded-xl border border-gray-200 px-4 text-black outline-none mb-4"
                     />
 
                     <textarea
@@ -522,16 +359,7 @@ export default function GlobalPassportAdmin() {
                         );
 
                       }}
-                      className="
-                        w-full
-                        rounded-2xl
-                        border
-                        border-gray-200
-                        p-4
-                        text-black
-                        outline-none
-                        resize-none
-                      "
+                      className="w-full rounded-2xl border border-gray-200 p-4 text-black outline-none resize-none"
                     />
 
                   </div>
@@ -558,38 +386,18 @@ export default function GlobalPassportAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                w-full
-                h-[58px]
-                rounded-2xl
-                border
-                border-gray-200
-                px-5
-                text-black
-                outline-none
-                mb-8
-                bg-white
-              "
+              className="w-full h-[58px] rounded-2xl border border-gray-200 px-5 text-black outline-none mb-8 bg-white"
             />
 
             {/* FAQS */}
-            <div className="
-              space-y-5
-            ">
+            <div className="space-y-5">
 
               {faqs.map(
                 (faq, i) => (
 
                   <div
                     key={faq.id}
-                    className="
-                      bg-white
-                      border
-                      border-gray-200
-                      rounded-2xl
-                      overflow-hidden
-                      shadow-sm
-                    "
+                    className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm"
                   >
 
                     {/* QUESTION */}
@@ -601,14 +409,7 @@ export default function GlobalPassportAdmin() {
                             : i
                         )
                       }
-                      className="
-                        w-full
-                        flex
-                        justify-between
-                        items-center
-                        px-6
-                        py-5
-                      "
+                      className="w-full flex justify-between items-center px-6 py-5"
                     >
 
                       <input
@@ -637,20 +438,12 @@ export default function GlobalPassportAdmin() {
                           );
 
                         }}
-                        className="
-                          flex-1
-                          bg-transparent
-                          text-[14px]
-                          text-black
-                          outline-none
-                        "
+                        className="flex-1 bg-transparent text-[14px] text-black outline-none"
                       />
 
                       <Plus
                         size={18}
-                        className="
-                          text-cyan-500
-                        "
+                        className="text-cyan-500"
                       />
 
                     </button>
@@ -676,10 +469,7 @@ export default function GlobalPassportAdmin() {
                           transition={{
                             duration: 0.3,
                           }}
-                          className="
-                            px-6
-                            pb-6
-                          "
+                          className="px-6 pb-6"
                         >
 
                           <textarea
@@ -709,16 +499,7 @@ export default function GlobalPassportAdmin() {
                               );
 
                             }}
-                            className="
-                              w-full
-                              rounded-2xl
-                              border
-                              border-gray-200
-                              p-4
-                              text-black
-                              outline-none
-                              resize-none
-                            "
+                            className="w-full rounded-2xl border border-gray-200 p-4 text-black outline-none resize-none"
                           />
 
                         </motion.div>

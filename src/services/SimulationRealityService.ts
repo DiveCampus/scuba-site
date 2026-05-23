@@ -12,13 +12,7 @@ export const getSimulationReality =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "simulation_reality_section"
@@ -31,13 +25,7 @@ export const getSimulationReality =
       .single();
 
     /* FEATURES */
-    const {
-
-      data: features,
-
-      error: featuresError,
-
-    } = await supabase
+    const { data: features, error: featuresError } = await supabase
 
       .from(
         "simulation_reality_features"
@@ -103,13 +91,7 @@ export const updateSimulationRealitySection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "simulation_reality_section"
@@ -164,13 +146,7 @@ export const updateSimulationRealityFeature =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "simulation_reality_features"

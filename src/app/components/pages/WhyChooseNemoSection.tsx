@@ -40,10 +40,7 @@ export function WhyChooseNemoSection() {
 
   useEffect(() => {
     const load = async () => {
-      const {
-        section,
-        features,
-      } = await getWhyChoose();
+      const { section, features } = await getWhyChoose();
 
       setSection(section);
 
@@ -58,13 +55,7 @@ export function WhyChooseNemoSection() {
   return (
     <>
       <section
-        className="
-          relative
-          py-32
-          bg-[#02131d]
-          text-white
-          overflow-hidden
-        "
+        className="relative py-32 bg-[#02131d] text-white overflow-hidden"
         style={{
           fontFamily:
             "Harabara, sans-serif",
@@ -91,13 +82,7 @@ export function WhyChooseNemoSection() {
                 opacity: 1,
                 y: 0,
               }}
-              className="
-                text-cyan-400
-                tracking-[4px]
-                text-[11px]
-                mb-4
-                uppercase
-              "
+              className="text-cyan-400 tracking-[4px] text-[11px] mb-4 uppercase"
             >
               {section.tag}
             </motion.p>
@@ -115,13 +100,7 @@ export function WhyChooseNemoSection() {
               transition={{
                 delay: 0.1,
               }}
-              className="
-                text-4xl
-                md:text-5xl
-                font-bold
-                mb-6
-                leading-tight
-              "
+              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
             >
 
               {section.title}{" "}
@@ -149,14 +128,7 @@ export function WhyChooseNemoSection() {
               transition={{
                 delay: 0.15,
               }}
-              className="
-                text-white/60
-                mb-10
-                max-w-lg
-                text-sm
-                md:text-base
-                leading-relaxed
-              "
+              className="text-white/60 mb-10 max-w-lg text-sm md:text-base leading-relaxed"
             >
               {
                 section.description
@@ -185,30 +157,12 @@ export function WhyChooseNemoSection() {
                       delay:
                         i * 0.1,
                     }}
-                    className="
-                      flex
-                      gap-4
-                      items-start
-                    "
+                    className="flex gap-4 items-start"
                   >
 
                     {/* ICON */}
                     <div
-                      className="
-                        w-12
-                        h-12
-                        flex
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-cyan-400/30
-                        bg-gradient-to-br
-                        from-cyan-400/10
-                        to-blue-500/10
-                        text-cyan-400
-                        shadow-inner
-                      "
+                      className="w-12 h-12 flex items-center justify-center rounded-full border border-cyan-400/30 bg-gradient-to-br from-cyan-400/10 to-blue-500/10 text-cyan-400 shadow-inner"
                     >
                       {
                         iconMap[
@@ -221,11 +175,7 @@ export function WhyChooseNemoSection() {
                     <div>
 
                       <h3
-                        className="
-                          font-semibold
-                          mb-1
-                          text-white
-                        "
+                        className="font-semibold mb-1 text-white"
                       >
                         {
                           item.title
@@ -233,11 +183,7 @@ export function WhyChooseNemoSection() {
                       </h3>
 
                       <p
-                        className="
-                          text-sm
-                          text-white/60
-                          leading-relaxed
-                        "
+                        className="text-sm text-white/60 leading-relaxed"
                       >
                         {
                           item.description
@@ -277,14 +223,7 @@ export function WhyChooseNemoSection() {
                   section.image_url
                 }
                 alt="Divers"
-                className="
-                  w-full
-                  h-full
-                  object-cover
-                  hover:scale-105
-                  transition
-                  duration-700
-                "
+                className="w-full h-full object-cover hover:scale-105 transition duration-700"
               />
 
             </div>

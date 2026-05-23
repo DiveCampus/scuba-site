@@ -8,13 +8,7 @@ export const getWeekendRoutine =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "weekend_routine_section"
@@ -27,13 +21,7 @@ export const getWeekendRoutine =
       .single();
 
     /* IMAGES */
-    const {
-
-      data: images,
-
-      error: imagesError,
-
-    } = await supabase
+    const { data: images, error: imagesError } = await supabase
 
       .from(
         "weekend_routine_images"
@@ -49,13 +37,7 @@ export const getWeekendRoutine =
       );
 
     /* GIFT CARD */
-    const {
-
-      data: giftCard,
-
-      error: giftError,
-
-    } = await supabase
+    const { data: giftCard, error: giftError } = await supabase
 
       .from(
         "weekend_routine_gift_card"
@@ -134,13 +116,7 @@ export const updateWeekendRoutineSection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "weekend_routine_section"
@@ -184,13 +160,7 @@ export const updateWeekendRoutineImage =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "weekend_routine_images"
@@ -234,13 +204,7 @@ export const updateWeekendRoutineGiftCard =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "weekend_routine_gift_card"

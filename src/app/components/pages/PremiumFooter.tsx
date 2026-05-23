@@ -33,8 +33,7 @@ export function PremiumFooter() {
   }, []);
 
   const load = async () => {
-    const res =
-      await getFooter();
+    const res = await getFooter();
 
     setSection(
       res.section
@@ -96,16 +95,7 @@ export function PremiumFooter() {
                   key={app.id}
                   href={app.link}
                   target="_blank"
-                  className="
-                    block
-                    border
-                    border-white/10
-                    rounded-2xl
-                    px-5
-                    py-4
-                    hover:bg-white/5
-                    transition
-                  "
+                  className="block border border-white/10 rounded-2xl px-5 py-4 hover:bg-white/5 transition"
                 >
 
                   {app.name}
@@ -138,31 +128,11 @@ export function PremiumFooter() {
               placeholder={
                 section.subscribe_placeholder
               }
-              className="
-                bg-white/5
-                border
-                border-white/10
-                px-5
-                py-3
-                rounded-full
-                text-sm
-                w-full
-                outline-none
-              "
+              className="bg-white/5 border border-white/10 px-5 py-3 rounded-full text-sm w-full outline-none"
             />
 
             <button
-              className="
-                mt-4
-                w-full
-                bg-gradient-to-r
-                from-cyan-400
-                to-blue-500
-                text-black
-                py-3
-                rounded-full
-                font-semibold
-              "
+              className="mt-4 w-full bg-gradient-to-r from-cyan-400 to-blue-500 text-black py-3 rounded-full font-semibold"
             >
 
               SUBSCRIBE
@@ -283,19 +253,7 @@ export function PremiumFooter() {
                 key={s.id}
                 href={s.url}
                 target="_blank"
-                className="
-                  w-11
-                  h-11
-                  flex
-                  items-center
-                  justify-center
-                  border
-                  border-white/10
-                  rounded-full
-                  hover:bg-cyan-400
-                  hover:text-black
-                  transition
-                "
+                className="w-11 h-11 flex items-center justify-center border border-white/10 rounded-full hover:bg-cyan-400 hover:text-black transition"
               >
 
                 {s.platform ===

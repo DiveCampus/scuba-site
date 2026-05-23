@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getOceanEliteSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("ocean_elite_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateOceanEliteSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("ocean_elite_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateOceanEliteSection =
 export const getOceanEliteReviews =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("ocean_elite_reviews")
         .select("*")
         .order("sort_order", {
@@ -87,8 +84,7 @@ export const getOceanEliteReviews =
 export const createOceanEliteReview =
   async (payload: any) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("ocean_elite_reviews")
         .insert([payload])
         .select()
@@ -114,8 +110,7 @@ export const updateOceanEliteReview =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("ocean_elite_reviews")
         .update({
           ...payload,
@@ -143,8 +138,7 @@ export const updateOceanEliteReview =
 export const getOceanEliteFaqs =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("ocean_elite_faqs")
         .select("*")
         .order("sort_order", {
@@ -168,8 +162,7 @@ export const getOceanEliteFaqs =
 export const createOceanEliteFaq =
   async (payload: any) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("ocean_elite_faqs")
         .insert([payload])
         .select()
@@ -195,8 +188,7 @@ export const updateOceanEliteFaq =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("ocean_elite_faqs")
         .update({
           ...payload,

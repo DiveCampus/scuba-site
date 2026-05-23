@@ -26,8 +26,7 @@ export function LocationSection() {
   }, []);
 
   const load = async () => {
-    const { data } =
-      await getLocations();
+    const { data } = await getLocations();
 
     setLocations(data || []);
   };
@@ -88,15 +87,7 @@ export function LocationSection() {
                 whileHover={{
                   y: -6,
                 }}
-                className="
-                  bg-white/80
-                  backdrop-blur-xl
-                  rounded-3xl
-                  border
-                  border-white/40
-                  shadow-[0_20px_60px_rgba(0,0,0,0.08)]
-                  overflow-hidden
-                "
+                className="bg-white/80 backdrop-blur-xl rounded-3xl border border-white/40 shadow-[0_20px_60px_rgba(0,0,0,0.08)] overflow-hidden"
               >
 
                 {/* TOP */}
@@ -190,15 +181,7 @@ export function LocationSection() {
                       loc.map_url
                     }
                     target="_blank"
-                    className="
-                      inline-flex
-                      items-center
-                      gap-2
-                      text-sm
-                      text-cyan-600
-                      hover:text-cyan-700
-                      font-medium
-                    "
+                    className="inline-flex items-center gap-2 text-sm text-cyan-600 hover:text-cyan-700 font-medium"
                   >
 
                     Open in Maps ↗

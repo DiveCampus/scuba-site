@@ -22,8 +22,7 @@ export function AOWAdvantageSection() {
 
     const load = async () => {
 
-      const res =
-        await getAOWAdvantage();
+      const res = await getAOWAdvantage();
 
       setSection(res.section);
 
@@ -39,21 +38,9 @@ export function AOWAdvantageSection() {
 
   return (
 
-    <section className="
-      py-32
-      bg-[#03121c]
-      text-white
-    ">
+    <section className="py-32 bg-[#03121c] text-white">
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        grid
-        lg:grid-cols-2
-        gap-20
-        px-6
-        items-center
-      ">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 px-6 items-center">
 
         {/* IMAGE */}
         <motion.div
@@ -65,20 +52,12 @@ export function AOWAdvantageSection() {
             opacity: 1,
             scale: 1,
           }}
-          className="
-            rounded-3xl
-            overflow-hidden
-            shadow-[0_20px_80px_rgba(0,0,0,0.6)]
-          "
+          className="rounded-3xl overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.6)]"
         >
 
           <img
             src={section.image_url}
-            className="
-              w-full
-              h-full
-              object-cover
-            "
+            className="w-full h-full object-cover"
           />
 
         </motion.div>
@@ -86,27 +65,15 @@ export function AOWAdvantageSection() {
         {/* CONTENT */}
         <div>
 
-          <p className="
-            text-[10px]
-            tracking-[4px]
-            text-cyan-400
-            mb-5
-          ">
+          <p className="text-[10px] tracking-[4px] text-cyan-400 mb-5">
             {section.top_label}
           </p>
 
-          <h2 className="
-            text-4xl
-            md:text-5xl
-            font-bold
-            mb-8
-          ">
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
 
             {section.title}{" "}
 
-            <span className="
-              text-cyan-400
-            ">
+            <span className="text-cyan-400">
               {section.highlighted_title}
             </span>{" "}
 
@@ -114,17 +81,11 @@ export function AOWAdvantageSection() {
 
           </h2>
 
-          <p className="
-            text-white/60
-            leading-[1.9]
-            mb-14
-          ">
+          <p className="text-white/60 leading-[1.9] mb-14">
             {section.description}
           </p>
 
-          <div className="
-            space-y-8
-          ">
+          <div className="space-y-8">
 
             {points.map((item, i) => (
 
@@ -141,26 +102,10 @@ export function AOWAdvantageSection() {
                 transition={{
                   delay: i * 0.08,
                 }}
-                className="
-                  flex
-                  gap-5
-                  border-b
-                  border-white/10
-                  pb-7
-                "
+                className="flex gap-5 border-b border-white/10 pb-7"
               >
 
-                <div className="
-                  w-7
-                  h-7
-                  flex
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-cyan-400/10
-                  text-cyan-400
-                  mt-1
-                ">
+                <div className="w-7 h-7 flex items-center justify-center rounded-full bg-cyan-400/10 text-cyan-400 mt-1">
 
                   <Check size={14} />
 
@@ -168,19 +113,11 @@ export function AOWAdvantageSection() {
 
                 <div>
 
-                  <h3 className="
-                    font-semibold
-                    text-white
-                    mb-2
-                  ">
+                  <h3 className="font-semibold text-white mb-2">
                     {item.title}
                   </h3>
 
-                  <p className="
-                    text-sm
-                    text-white/60
-                    leading-[1.9]
-                  ">
+                  <p className="text-sm text-white/60 leading-[1.9]">
                     {item.description}
                   </p>
 

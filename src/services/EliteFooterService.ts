@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getEliteFooterSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_footer_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateEliteFooterSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_footer_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateEliteFooterSection =
 export const getEliteFooterGroups =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_footer_groups")
         .select("*")
         .order("sort_order", {
@@ -87,8 +84,7 @@ export const getEliteFooterGroups =
 export const getEliteFooterLinks =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_footer_links")
         .select("*")
         .order("sort_order", {
@@ -115,8 +111,7 @@ export const updateEliteFooterGroup =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_footer_groups")
         .update({
           ...payload,
@@ -146,8 +141,7 @@ export const updateEliteFooterLink =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_footer_links")
         .update({
           ...payload,

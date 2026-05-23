@@ -44,8 +44,7 @@ export default function RescueHeroAdmin() {
 
           data,
 
-        } =
-          await getRescueHero();
+        } = await getRescueHero();
 
         console.log(
           "ADMIN DATA =>",
@@ -100,44 +99,22 @@ export default function RescueHeroAdmin() {
 
   return (
 
-    <section className="
-      min-h-screen
-      bg-[#02131d]
-      text-white
-      py-20
-      px-6
-    ">
+    <section className="min-h-screen bg-[#02131d] text-white py-20 px-6">
 
-      <div className="
-        max-w-6xl
-        mx-auto
-      ">
+      <div className="max-w-6xl mx-auto">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-14
-        ">
+        <div className="flex items-center justify-between mb-14">
 
           <div>
 
-            <p className="
-              text-cyan-400
-              tracking-[4px]
-              text-[10px]
-              mb-4
-            ">
+            <p className="text-cyan-400 tracking-[4px] text-[10px] mb-4">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-semibold
-            ">
+            <h2 className="text-4xl font-semibold">
 
               Rescue Hero Section
 
@@ -151,18 +128,7 @@ export default function RescueHeroAdmin() {
               handleSave
             }
 
-            className="
-              h-[56px]
-              px-8
-              rounded-2xl
-              bg-cyan-500
-              hover:bg-cyan-400
-              transition
-              flex
-              items-center
-              gap-3
-              font-semibold
-            "
+            className="h-[56px] px-8 rounded-2xl bg-cyan-500 hover:bg-cyan-400 transition flex items-center gap-3 font-semibold"
 
           >
 
@@ -181,11 +147,7 @@ export default function RescueHeroAdmin() {
         </div>
 
         {/* FORM */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-6
-        ">
+        <div className="grid md:grid-cols-2 gap-6">
 
           {Object.keys(data).map(
 
@@ -209,19 +171,10 @@ export default function RescueHeroAdmin() {
 
                 <div
                   key={key}
-                  className="
-                    flex
-                    flex-col
-                    gap-2
-                  "
+                  className="flex flex-col gap-2"
                 >
 
-                  <label className="
-                    text-sm
-                    text-white/60
-                    uppercase
-                    tracking-[2px]
-                  ">
+                  <label className="text-sm text-white/60 uppercase tracking-[2px]">
 
                     {key}
 
@@ -244,15 +197,7 @@ export default function RescueHeroAdmin() {
                       })
                     }
 
-                    className="
-                      h-[56px]
-                      rounded-2xl
-                      bg-white/5
-                      border
-                      border-white/10
-                      px-5
-                      outline-none
-                    "
+                    className="h-[56px] rounded-2xl bg-white/5 border border-white/10 px-5 outline-none"
 
                   />
 

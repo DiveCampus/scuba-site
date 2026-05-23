@@ -37,8 +37,7 @@ export default function LocationAdmin() {
   }, []);
 
   const load = async () => {
-    const { data } =
-      await getLocations();
+    const { data } = await getLocations();
 
     setLocations(data || []);
   };
@@ -75,8 +74,7 @@ export default function LocationAdmin() {
     async () => {
       const {
         data,
-      }: any =
-        await createLocation(
+      }: any = await createLocation(
           {
             title:
               "NEW LOCATION",
@@ -147,17 +145,7 @@ export default function LocationAdmin() {
             onClick={
               handleAdd
             }
-            className="
-              flex
-              items-center
-              gap-2
-              px-6
-              py-3
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-semibold
-            "
+            className="flex items-center gap-2 px-6 py-3 rounded-2xl bg-cyan-400 text-black font-semibold"
           > */}
 
             {/* <Plus className="w-5 h-5" />
@@ -181,14 +169,7 @@ export default function LocationAdmin() {
                 whileHover={{
                   y: -4,
                 }}
-                className="
-                  bg-white
-                  rounded-3xl
-                  border
-                  border-gray-200
-                  overflow-hidden
-                  shadow-[0_20px_60px_rgba(0,0,0,0.06)]
-                "
+                className="bg-white rounded-3xl border border-gray-200 overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.06)]"
               >
 
                 {/* TOP */}
@@ -417,18 +398,7 @@ export default function LocationAdmin() {
             onClick={
               handleSave
             }
-            className="
-              flex
-              items-center
-              gap-3
-              px-8
-              py-4
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-semibold
-              shadow-xl
-            "
+            className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-400 text-black font-semibold shadow-xl"
           >
 
             <Save className="w-5 h-5" />

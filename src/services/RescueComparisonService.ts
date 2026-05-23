@@ -12,13 +12,7 @@ export const getRescueComparison =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "rescue_comparison_section"
@@ -31,13 +25,7 @@ export const getRescueComparison =
       .single();
 
     /* ROWS */
-    const {
-
-      data: rows,
-
-      error: rowsError,
-
-    } = await supabase
+    const { data: rows, error: rowsError } = await supabase
 
       .from(
         "rescue_comparison_rows"
@@ -103,13 +91,7 @@ export const updateRescueComparisonSection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "rescue_comparison_section"
@@ -164,13 +146,7 @@ export const updateRescueComparisonRow =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "rescue_comparison_rows"

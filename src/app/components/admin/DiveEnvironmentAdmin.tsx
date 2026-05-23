@@ -48,11 +48,9 @@ export default function DiveEnvironmentAdmin() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getDiveEnvironmentSection();
+      const { data: sectionData } = await getDiveEnvironmentSection();
 
-      const { data: cardsData } =
-        await getDiveEnvironmentCards();
+      const { data: cardsData } = await getDiveEnvironmentCards();
 
       setSection(sectionData);
 
@@ -90,12 +88,7 @@ export default function DiveEnvironmentAdmin() {
   return (
 
     <section
-      className="
-        relative
-        py-32
-        overflow-hidden
-        bg-black
-      "
+      className="relative py-32 overflow-hidden bg-black"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -103,52 +96,22 @@ export default function DiveEnvironmentAdmin() {
     >
 
       {/* GLOW */}
-      <div className="
-        absolute
-        left-[-220px]
-        top-[-120px]
-        w-[650px]
-        h-[650px]
-        bg-cyan-500/20
-        blur-[180px]
-        rounded-full
-      " />
+      <div className="absolute left-[-220px] top-[-120px] w-[650px] h-[650px] bg-cyan-500/20 blur-[180px] rounded-full" />
 
-      <div className="
-        relative
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="relative max-w-7xl mx-auto px-6">
 
         {/* TOP */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-20
-          flex-wrap
-          gap-5
-        ">
+        <div className="flex items-center justify-between mb-20 flex-wrap gap-5">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-400
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-400 mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-bold
-              text-white
-            ">
+            <h2 className="text-4xl font-bold text-white">
 
               Dive Environment
 
@@ -158,17 +121,7 @@ export default function DiveEnvironmentAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-7
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-7 rounded-2xl bg-cyan-400 text-black font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -184,19 +137,9 @@ export default function DiveEnvironmentAdmin() {
         </div>
 
         {/* HEADER */}
-        <div className="
-          text-center
-          max-w-4xl
-          mx-auto
-          mb-24
-        ">
+        <div className="text-center max-w-4xl mx-auto mb-24">
 
-          <div className="
-            grid
-            md:grid-cols-2
-            gap-5
-            mb-8
-          ">
+          <div className="grid md:grid-cols-2 gap-5 mb-8">
 
             <input
               value={
@@ -209,18 +152,7 @@ export default function DiveEnvironmentAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                h-[76px]
-                rounded-3xl
-                bg-white/5
-                border
-                border-white/10
-                text-center
-                text-4xl
-                font-bold
-                text-white
-                outline-none
-              "
+              className="h-[76px] rounded-3xl bg-white/5 border border-white/10 text-center text-4xl font-bold text-white outline-none"
             />
 
             <input
@@ -234,18 +166,7 @@ export default function DiveEnvironmentAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                h-[76px]
-                rounded-3xl
-                bg-cyan-400/10
-                border
-                border-cyan-400/20
-                text-center
-                text-4xl
-                font-bold
-                text-cyan-400
-                outline-none
-              "
+              className="h-[76px] rounded-3xl bg-cyan-400/10 border border-cyan-400/20 text-center text-4xl font-bold text-cyan-400 outline-none"
             />
 
           </div>
@@ -262,29 +183,13 @@ export default function DiveEnvironmentAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              rounded-[32px]
-              bg-white/5
-              border
-              border-white/10
-              p-8
-              text-center
-              text-white/60
-              leading-[2]
-              outline-none
-              resize-none
-            "
+            className="w-full rounded-[32px] bg-white/5 border border-white/10 p-8 text-center text-white/60 leading-[2] outline-none resize-none"
           />
 
         </div>
 
         {/* CARDS */}
-        <div className="
-          grid
-          lg:grid-cols-2
-          gap-10
-        ">
+        <div className="grid lg:grid-cols-2 gap-10">
 
           {cards.map((item, i) => (
 
@@ -293,15 +198,7 @@ export default function DiveEnvironmentAdmin() {
               whileHover={{
                 y: -5,
               }}
-              className="
-                rounded-[34px]
-                border
-                border-white/10
-                bg-gradient-to-br
-                from-[#111f2a]
-                to-[#05080d]
-                p-10
-              "
+              className="rounded-[34px] border border-white/10 bg-gradient-to-br from-[#111f2a] to-[#05080d] p-10"
             >
 
               {/* BADGE */}
@@ -325,20 +222,7 @@ export default function DiveEnvironmentAdmin() {
                   );
 
                 }}
-                className="
-                  w-full
-                  h-[50px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-cyan-400
-                  text-[10px]
-                  tracking-[4px]
-                  outline-none
-                  mb-8
-                "
+                className="w-full h-[50px] rounded-2xl bg-white/5 border border-white/10 px-5 text-cyan-400 text-[10px] tracking-[4px] outline-none mb-8"
               />
 
               {/* TITLE */}
@@ -362,20 +246,7 @@ export default function DiveEnvironmentAdmin() {
                   );
 
                 }}
-                className="
-                  w-full
-                  h-[76px]
-                  rounded-3xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-6
-                  text-[42px]
-                  font-bold
-                  text-white
-                  outline-none
-                  mb-8
-                "
+                className="w-full h-[76px] rounded-3xl bg-white/5 border border-white/10 px-6 text-[42px] font-bold text-white outline-none mb-8"
               />
 
               {/* DESCRIPTION */}
@@ -402,25 +273,11 @@ export default function DiveEnvironmentAdmin() {
                   );
 
                 }}
-                className="
-                  w-full
-                  rounded-[28px]
-                  bg-white/5
-                  border
-                  border-white/10
-                  p-6
-                  text-white/60
-                  leading-[2]
-                  outline-none
-                  resize-none
-                  mb-10
-                "
+                className="w-full rounded-[28px] bg-white/5 border border-white/10 p-6 text-white/60 leading-[2] outline-none resize-none mb-10"
               />
 
               {/* FEATURES */}
-              <div className="
-                space-y-5
-              ">
+              <div className="space-y-5">
 
                 {[
                   "feature_1",
@@ -447,17 +304,7 @@ export default function DiveEnvironmentAdmin() {
                       );
 
                     }}
-                    className="
-                      w-full
-                      h-[54px]
-                      rounded-2xl
-                      bg-white/5
-                      border
-                      border-white/10
-                      px-5
-                      text-white
-                      outline-none
-                    "
+                    className="w-full h-[54px] rounded-2xl bg-white/5 border border-white/10 px-5 text-white outline-none"
                   />
 
                 ))}

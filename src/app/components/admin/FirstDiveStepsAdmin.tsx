@@ -80,13 +80,7 @@ FirstDiveStepsAdmin() {
   const load =
     async () => {
 
-      const {
-
-        section,
-        cards,
-
-      } =
-        await getFirstDiveSteps();
+      const { section, cards } = await getFirstDiveSteps();
 
       setSection(
         section
@@ -192,12 +186,7 @@ FirstDiveStepsAdmin() {
   return (
 
     <section
-      className="
-      relative
-      py-20
-      bg-[#f4f7fa]
-      overflow-hidden
-      "
+      className="relative py-20 bg-[#f4f7fa] overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -205,28 +194,15 @@ FirstDiveStepsAdmin() {
     >
 
       {/* BG */}
-      <div className="
-      absolute
-      inset-0
-      bg-[radial-gradient(circle_at_top,rgba(0,194,255,0.04),transparent_45%)]
-      " />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,194,255,0.04),transparent_45%)]" />
 
-      <div className="
-      relative
-      max-w-6xl
-      mx-auto
-      px-6
-      ">
+      <div className="relative max-w-6xl mx-auto px-6">
 
         {/* =====================================
             HEADER
         ===================================== */}
 
-        <div className="
-        text-center
-        max-w-2xl
-        mx-auto
-        ">
+        <div className="text-center max-w-2xl mx-auto">
 
           {/* LABEL */}
           <input
@@ -244,17 +220,7 @@ FirstDiveStepsAdmin() {
 
               })
             }
-            className="
-            bg-transparent
-            text-center
-            uppercase
-            tracking-[4px]
-            text-cyan-500
-            text-[11px]
-            outline-none
-            w-full
-            mb-4
-            "
+            className="bg-transparent text-center uppercase tracking-[4px] text-cyan-500 text-[11px] outline-none w-full mb-4"
           />
 
           {/* TITLE */}
@@ -274,19 +240,7 @@ FirstDiveStepsAdmin() {
               })
             }
             rows={2}
-            className="
-            w-full
-            bg-transparent
-            text-center
-            text-[26px]
-            md:text-[44px]
-            font-semibold
-            text-[#0b1b2b]
-            uppercase
-            tracking-[2px]
-            outline-none
-            resize-none
-            "
+            className="w-full bg-transparent text-center text-[26px] md:text-[44px] font-semibold text-[#0b1b2b] uppercase tracking-[2px] outline-none resize-none"
           />
 
           {/* DESCRIPTION */}
@@ -306,16 +260,7 @@ FirstDiveStepsAdmin() {
               })
             }
             rows={2}
-            className="
-            mt-4
-            w-full
-            bg-transparent
-            text-center
-            text-[#7b8794]
-            text-[13px]
-            outline-none
-            resize-none
-            "
+            className="mt-4 w-full bg-transparent text-center text-[#7b8794] text-[13px] outline-none resize-none"
           />
 
         </div>
@@ -324,13 +269,7 @@ FirstDiveStepsAdmin() {
             CARDS
         ===================================== */}
 
-        <div className="
-        mt-12
-        grid
-        grid-cols-1
-        md:grid-cols-3
-        gap-5
-        ">
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-5">
 
           {cards.map(
 
@@ -346,18 +285,7 @@ FirstDiveStepsAdmin() {
                 whileHover={{
                   y: -6,
                 }}
-                className="
-                relative
-                rounded-[24px]
-                bg-white
-                border
-                border-[#edf1f5]
-                shadow-[0_10px_30px_rgba(15,23,42,0.04)]
-                px-7
-                py-10
-                text-center
-                overflow-hidden
-                "
+                className="relative rounded-[24px] bg-white border border-[#edf1f5] shadow-[0_10px_30px_rgba(15,23,42,0.04)] px-7 py-10 text-center overflow-hidden"
               >
 
                 {/* STEP */}
@@ -376,33 +304,11 @@ FirstDiveStepsAdmin() {
                         .value
                     )
                   }
-                  className="
-                  bg-[#f4f7fa]
-                  rounded-full
-                  px-3
-                  py-2
-                  text-center
-                  text-[10px]
-                  tracking-[2px]
-                  uppercase
-                  mb-6
-                  outline-none
-                  "
+                  className="bg-[#f4f7fa] rounded-full px-3 py-2 text-center text-[10px] tracking-[2px] uppercase mb-6 outline-none"
                 />
 
                 {/* ICON */}
-                <div className="
-                mx-auto
-                w-14
-                h-14
-                rounded-full
-                bg-cyan-50
-                flex
-                items-center
-                justify-center
-                text-cyan-500
-                mb-6
-                ">
+                <div className="mx-auto w-14 h-14 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-500 mb-6">
 
                   {
                     iconMap[
@@ -429,14 +335,7 @@ FirstDiveStepsAdmin() {
                         .value
                     )
                   }
-                  className="
-                  mb-5
-                  px-4
-                  py-2
-                  rounded-xl
-                  border
-                  outline-none
-                  "
+                  className="mb-5 px-4 py-2 rounded-xl border outline-none"
                 >
 
                   <option>
@@ -469,16 +368,7 @@ FirstDiveStepsAdmin() {
                         .value
                     )
                   }
-                  className="
-                  w-full
-                  text-center
-                  text-[17px]
-                  font-semibold
-                  uppercase
-                  outline-none
-                  resize-none
-                  text-[#0b1b2b]
-                  "
+                  className="w-full text-center text-[17px] font-semibold uppercase outline-none resize-none text-[#0b1b2b]"
                 />
 
                 {/* DESC */}
@@ -498,15 +388,7 @@ FirstDiveStepsAdmin() {
                     )
                   }
                   rows={5}
-                  className="
-                  mt-3
-                  w-full
-                  text-center
-                  text-[12px]
-                  text-[#7b8794]
-                  outline-none
-                  resize-none
-                  "
+                  className="mt-3 w-full text-center text-[12px] text-[#7b8794] outline-none resize-none"
                 />
 
               </motion.div>
@@ -516,11 +398,7 @@ FirstDiveStepsAdmin() {
         </div>
 
         {/* SAVE */}
-        <div className="
-        flex
-        justify-center
-        mt-12
-        ">
+        <div className="flex justify-center mt-12">
 
           <button
             onClick={
@@ -529,20 +407,7 @@ FirstDiveStepsAdmin() {
             disabled={
               saving
             }
-            className="
-            flex
-            items-center
-            gap-3
-            px-8
-            py-4
-            rounded-2xl
-            bg-cyan-500
-            text-white
-            hover:scale-[1.02]
-            transition
-            duration-300
-            shadow-lg
-            "
+            className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-500 text-white hover:scale-[1.02] transition duration-300 shadow-lg"
           >
 
             <Save

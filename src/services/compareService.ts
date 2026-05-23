@@ -30,8 +30,7 @@ export const getCompare = async () => {
 
 export const updateCompareSection =
   async (section: any) => {
-    const { error } =
-      await supabase
+    const { error } = await supabase
         .from(
           "kadir_compare_section"
         )
@@ -59,8 +58,7 @@ export const updateCompareSection =
 
 export const updateCompareItem =
   async (item: any) => {
-    const { error } =
-      await supabase
+    const { error } = await supabase
         .from(
           "kadir_compare_items"
         )

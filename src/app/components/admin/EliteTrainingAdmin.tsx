@@ -86,11 +86,9 @@ export default function EliteTrainingAdmin() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getEliteTrainingSection();
+      const { data: sectionData } = await getEliteTrainingSection();
 
-      const { data: cardsData } =
-        await getEliteTrainingCards();
+      const { data: cardsData } = await getEliteTrainingCards();
 
       setSection(sectionData);
 
@@ -131,14 +129,7 @@ export default function EliteTrainingAdmin() {
 
     return (
 
-      <div className="
-        min-h-screen
-        flex
-        items-center
-        justify-center
-        bg-[#f3f6f9]
-        text-black
-      ">
+      <div className="min-h-screen flex items-center justify-center bg-[#f3f6f9] text-black">
 
         Loading...
 
@@ -151,10 +142,7 @@ export default function EliteTrainingAdmin() {
   return (
 
     <section
-      className="
-        py-32
-        bg-[#f3f6f9]
-      "
+      className="py-32 bg-[#f3f6f9]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -162,36 +150,17 @@ export default function EliteTrainingAdmin() {
     >
 
       {/* HEADER */}
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-        mb-14
-        flex
-        items-center
-        justify-between
-        flex-wrap
-        gap-5
-      ">
+      <div className="max-w-7xl mx-auto px-6 mb-14 flex items-center justify-between flex-wrap gap-5">
 
         <div>
 
-          <p className="
-            text-[10px]
-            tracking-[4px]
-            text-cyan-500
-            mb-3
-          ">
+          <p className="text-[10px] tracking-[4px] text-cyan-500 mb-3">
 
             ADMIN PANEL
 
           </p>
 
-          <h2 className="
-            text-4xl
-            font-bold
-            text-[#0a0e27]
-          ">
+          <h2 className="text-4xl font-bold text-[#0a0e27]">
 
             Elite Training System
 
@@ -201,17 +170,7 @@ export default function EliteTrainingAdmin() {
 
         <button
           onClick={handleSave}
-          className="
-            h-[56px]
-            px-7
-            rounded-2xl
-            bg-cyan-500
-            text-white
-            font-semibold
-            flex
-            items-center
-            gap-3
-          "
+          className="h-[56px] px-7 rounded-2xl bg-cyan-500 text-white font-semibold flex items-center gap-3"
         >
 
           <Save size={18} />
@@ -227,13 +186,7 @@ export default function EliteTrainingAdmin() {
       </div>
 
       {/* SECTION */}
-      <div className="
-        text-center
-        max-w-4xl
-        mx-auto
-        px-6
-        mb-20
-      ">
+      <div className="text-center max-w-4xl mx-auto px-6 mb-20">
 
         {/* LABEL */}
         <input
@@ -247,29 +200,11 @@ export default function EliteTrainingAdmin() {
                 e.target.value,
             })
           }
-          className="
-            w-full
-            h-[56px]
-            rounded-2xl
-            border
-            border-gray-200
-            bg-white
-            text-center
-            text-cyan-500
-            text-[11px]
-            tracking-[4px]
-            outline-none
-            mb-6
-          "
+          className="w-full h-[56px] rounded-2xl border border-gray-200 bg-white text-center text-cyan-500 text-[11px] tracking-[4px] outline-none mb-6"
         />
 
         {/* TITLES */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-5
-          mb-6
-        ">
+        <div className="grid md:grid-cols-2 gap-5 mb-6">
 
           <input
             value={
@@ -282,18 +217,7 @@ export default function EliteTrainingAdmin() {
                   e.target.value,
               })
             }
-            className="
-              h-[68px]
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              px-6
-              text-[#0a0e27]
-              text-3xl
-              font-bold
-              outline-none
-            "
+            className="h-[68px] rounded-2xl border border-gray-200 bg-white px-6 text-[#0a0e27] text-3xl font-bold outline-none"
           />
 
           <input
@@ -307,18 +231,7 @@ export default function EliteTrainingAdmin() {
                   e.target.value,
               })
             }
-            className="
-              h-[68px]
-              rounded-2xl
-              border
-              border-cyan-200
-              bg-cyan-50
-              px-6
-              text-cyan-500
-              text-3xl
-              font-bold
-              outline-none
-            "
+            className="h-[68px] rounded-2xl border border-cyan-200 bg-cyan-50 px-6 text-cyan-500 text-3xl font-bold outline-none"
           />
 
         </div>
@@ -336,32 +249,13 @@ export default function EliteTrainingAdmin() {
                 e.target.value,
             })
           }
-          className="
-            w-full
-            rounded-3xl
-            border
-            border-gray-200
-            bg-white
-            p-6
-            text-gray-600
-            leading-[1.9]
-            outline-none
-            resize-none
-            mb-8
-          "
+          className="w-full rounded-3xl border border-gray-200 bg-white p-6 text-gray-600 leading-[1.9] outline-none resize-none mb-8"
         />
 
       </div>
 
       {/* CARDS */}
-      <div className="
-        max-w-6xl
-        mx-auto
-        px-6
-        grid
-        md:grid-cols-4
-        gap-7
-      ">
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-7">
 
         {cards.map((card, i) => (
 
@@ -406,27 +300,11 @@ export default function EliteTrainingAdmin() {
                 );
 
               }}
-              className="
-                w-full
-                h-[42px]
-                rounded-xl
-                border
-                border-gray-200
-                bg-[#f8fafc]
-                px-4
-                text-[10px]
-                tracking-[2px]
-                text-cyan-500
-                outline-none
-                mb-5
-              "
+              className="w-full h-[42px] rounded-xl border border-gray-200 bg-[#f8fafc] px-4 text-[10px] tracking-[2px] text-cyan-500 outline-none mb-5"
             />
 
             {/* ICON */}
-            <div className="
-              text-cyan-500
-              mb-5
-            ">
+            <div className="text-cyan-500 mb-5">
 
               {
                 icons[
@@ -457,19 +335,7 @@ export default function EliteTrainingAdmin() {
                 );
 
               }}
-              className="
-                w-full
-                h-[56px]
-                rounded-2xl
-                border
-                border-gray-200
-                bg-white
-                px-5
-                text-[#0a0e27]
-                font-semibold
-                outline-none
-                mb-4
-              "
+              className="w-full h-[56px] rounded-2xl border border-gray-200 bg-white px-5 text-[#0a0e27] font-semibold outline-none mb-4"
             />
 
             {/* DESCRIPTION */}
@@ -496,19 +362,7 @@ export default function EliteTrainingAdmin() {
                 );
 
               }}
-              className="
-                w-full
-                rounded-2xl
-                border
-                border-gray-200
-                bg-white
-                p-4
-                text-gray-500
-                text-[13px]
-                leading-[1.9]
-                outline-none
-                resize-none
-              "
+              className="w-full rounded-2xl border border-gray-200 bg-white p-4 text-gray-500 text-[13px] leading-[1.9] outline-none resize-none"
             />
 
           </motion.div>
@@ -516,24 +370,10 @@ export default function EliteTrainingAdmin() {
         ))}
 
         {/* CTA CARD */}
-        <div className="
-          p-7
-          rounded-2xl
-          border
-          border-gray-200
-          bg-white
-          flex
-          flex-col
-          justify-center
-          items-center
-          text-center
-        ">
+        <div className="p-7 rounded-2xl border border-gray-200 bg-white flex flex-col justify-center items-center text-center">
 
           <MessageCircle
-            className="
-              text-cyan-500
-              mb-5
-            "
+            className="text-cyan-500 mb-5"
             size={22}
           />
 
@@ -548,20 +388,7 @@ export default function EliteTrainingAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              h-[56px]
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              px-5
-              text-center
-              text-[#0a0e27]
-              font-semibold
-              outline-none
-              mb-4
-            "
+            className="w-full h-[56px] rounded-2xl border border-gray-200 bg-white px-5 text-center text-[#0a0e27] font-semibold outline-none mb-4"
           />
 
           <textarea
@@ -576,21 +403,7 @@ export default function EliteTrainingAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              p-4
-              text-gray-500
-              text-[13px]
-              text-center
-              leading-[1.9]
-              outline-none
-              resize-none
-              mb-5
-            "
+            className="w-full rounded-2xl border border-gray-200 bg-white p-4 text-gray-500 text-[13px] text-center leading-[1.9] outline-none resize-none mb-5"
           />
 
           <input
@@ -604,18 +417,7 @@ export default function EliteTrainingAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              h-[48px]
-              rounded-xl
-              border
-              border-gray-300
-              bg-[#f8fafc]
-              text-center
-              text-[11px]
-              tracking-[1.5px]
-              outline-none
-            "
+            className="w-full h-[48px] rounded-xl border border-gray-300 bg-[#f8fafc] text-center text-[11px] tracking-[1.5px] outline-none"
           />
 
         </div>

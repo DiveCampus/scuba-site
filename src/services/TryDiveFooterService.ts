@@ -8,13 +8,7 @@ export const getTryDiveFooter =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "try_dive_footer_section"
@@ -27,13 +21,7 @@ export const getTryDiveFooter =
       .single();
 
     /* LINKS */
-    const {
-
-      data: links,
-
-      error: linksError,
-
-    } = await supabase
+    const { data: links, error: linksError } = await supabase
 
       .from(
         "try_dive_footer_links"
@@ -49,13 +37,7 @@ export const getTryDiveFooter =
       );
 
     /* SOCIALS */
-    const {
-
-      data: socials,
-
-      error: socialsError,
-
-    } = await supabase
+    const { data: socials, error: socialsError } = await supabase
 
       .from(
         "try_dive_footer_socials"
@@ -127,13 +109,7 @@ export const updateTryDiveFooterSection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "try_dive_footer_section"
@@ -180,13 +156,7 @@ export const updateTryDiveFooterLink =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "try_dive_footer_links"
@@ -233,13 +203,7 @@ export const updateTryDiveFooterSocial =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "try_dive_footer_socials"

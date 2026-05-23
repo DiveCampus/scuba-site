@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getCareerPathSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("career_path_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateCareerPathSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("career_path_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateCareerPathSection =
 export const getCareerPathBenefits =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("career_path_benefits")
         .select("*")
         .order("sort_order", {
@@ -90,8 +87,7 @@ export const updateCareerPathBenefit =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("career_path_benefits")
         .update({
           ...payload,
@@ -118,8 +114,7 @@ export const updateCareerPathBenefit =
 export const getCareerPathFaqs =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("career_path_faqs")
         .select("*")
         .order("sort_order", {
@@ -146,8 +141,7 @@ export const updateCareerPathFaq =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("career_path_faqs")
         .update({
           ...payload,

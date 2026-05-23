@@ -18,8 +18,7 @@ export function OpenDiver() {
 
   useEffect(() => {
     (async () => {
-      const { data } =
-        await getOpenDiverCourse();
+      const { data } = await getOpenDiverCourse();
 
       setCourse(data);
       setLoading(false);

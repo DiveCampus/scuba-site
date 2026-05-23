@@ -50,11 +50,9 @@ export default function CommandOceanAdmin() {
     const fetchData =
       async () => {
 
-        const sectionResponse =
-          await getCommandOceanSection();
+        const sectionResponse = await getCommandOceanSection();
 
-        const itemsResponse =
-          await getCommandOceanItems();
+        const itemsResponse = await getCommandOceanItems();
 
         setSection(
           sectionResponse.data
@@ -97,50 +95,27 @@ export default function CommandOceanAdmin() {
   return (
 
     <section
-      className="
-        py-28
-        bg-[#f4f7fb]
-      "
+      className="py-28 bg-[#f4f7fb]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* TOP */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-16
-          flex-wrap
-          gap-5
-        ">
+        <div className="flex items-center justify-between mb-16 flex-wrap gap-5">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-500
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-500 mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-bold
-              text-[#0a0e27]
-            ">
+            <h2 className="text-4xl font-bold text-[#0a0e27]">
 
               Command Ocean Section
 
@@ -150,17 +125,7 @@ export default function CommandOceanAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-8
-              rounded-2xl
-              bg-cyan-500
-              text-white
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-8 rounded-2xl bg-cyan-500 text-white font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -176,12 +141,7 @@ export default function CommandOceanAdmin() {
         </div>
 
         {/* SECTION */}
-        <div className="
-          grid
-          md:grid-cols-3
-          gap-6
-          mb-16
-        ">
+        <div className="grid md:grid-cols-3 gap-6 mb-16">
 
           <textarea
             rows={2}
@@ -195,16 +155,7 @@ export default function CommandOceanAdmin() {
                   e.target.value,
               })
             }
-            className="
-              rounded-3xl
-              bg-white
-              border
-              border-gray-200
-              p-5
-              outline-none
-              resize-none
-              text-gray-700
-            "
+            className="rounded-3xl bg-white border border-gray-200 p-5 outline-none resize-none text-gray-700"
           />
 
           <textarea
@@ -219,17 +170,7 @@ export default function CommandOceanAdmin() {
                   e.target.value,
               })
             }
-            className="
-              rounded-3xl
-              bg-white
-              border
-              border-gray-200
-              p-5
-              outline-none
-              resize-none
-              text-cyan-500
-              font-semibold
-            "
+            className="rounded-3xl bg-white border border-gray-200 p-5 outline-none resize-none text-cyan-500 font-semibold"
           />
 
           <textarea
@@ -244,40 +185,19 @@ export default function CommandOceanAdmin() {
                   e.target.value,
               })
             }
-            className="
-              rounded-3xl
-              bg-white
-              border
-              border-gray-200
-              p-5
-              outline-none
-              resize-none
-              text-gray-600
-            "
+            className="rounded-3xl bg-white border border-gray-200 p-5 outline-none resize-none text-gray-600"
           />
 
         </div>
 
         {/* ITEMS */}
-        <div className="
-          grid
-          grid-cols-1
-          md:grid-cols-2
-          lg:grid-cols-4
-          gap-8
-        ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 
           {items.map((item, i) => (
 
             <div
               key={item.id}
-              className="
-                bg-white
-                border
-                border-gray-200
-                rounded-3xl
-                p-6
-              "
+              className="bg-white border border-gray-200 rounded-3xl p-6"
             >
 
               {/* ICON */}
@@ -303,16 +223,7 @@ export default function CommandOceanAdmin() {
                   );
 
                 }}
-                className="
-                  w-full
-                  h-[52px]
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  px-4
-                  outline-none
-                  mb-5
-                "
+                className="w-full h-[52px] rounded-2xl border border-gray-200 px-4 outline-none mb-5"
               />
 
               {/* TITLE */}
@@ -339,18 +250,7 @@ export default function CommandOceanAdmin() {
                   );
 
                 }}
-                className="
-                  w-full
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  p-4
-                  outline-none
-                  resize-none
-                  mb-5
-                  font-semibold
-                  text-[#0a0e27]
-                "
+                className="w-full rounded-2xl border border-gray-200 p-4 outline-none resize-none mb-5 font-semibold text-[#0a0e27]"
               />
 
               {/* DESC */}
@@ -377,17 +277,7 @@ export default function CommandOceanAdmin() {
                   );
 
                 }}
-                className="
-                  w-full
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  p-4
-                  outline-none
-                  resize-none
-                  text-gray-500
-                  leading-[1.8]
-                "
+                className="w-full rounded-2xl border border-gray-200 p-4 outline-none resize-none text-gray-500 leading-[1.8]"
               />
 
             </div>

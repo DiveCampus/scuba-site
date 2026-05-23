@@ -13,8 +13,7 @@ export const getGoldStandard =
       .select("*")
       .limit(1);
 
-    const { data: tags } =
-      await supabase
+    const { data: tags } = await supabase
         .from(
           "kadir_gold_standard_tags"
         )

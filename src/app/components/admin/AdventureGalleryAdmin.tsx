@@ -70,13 +70,7 @@ AdventureGalleryAdmin() {
   const load =
     async () => {
 
-      const {
-
-        section,
-        images,
-
-      } =
-        await getAdventureGallery();
+      const { section, images } = await getAdventureGallery();
 
       setSection(
         section
@@ -190,10 +184,7 @@ AdventureGalleryAdmin() {
   return (
 
     <section
-      className="
-      py-24
-      bg-[#f5f8fb]
-      "
+      className="py-24 bg-[#f5f8fb]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -202,10 +193,7 @@ AdventureGalleryAdmin() {
 
       {/* HEADER */}
       <div
-        className="
-        text-center
-        px-6
-        "
+        className="text-center px-6"
       >
 
         <textarea
@@ -224,21 +212,7 @@ AdventureGalleryAdmin() {
             })
           }
           rows={2}
-          className="
-          w-full
-          max-w-3xl
-          mx-auto
-          text-center
-          bg-transparent
-          text-[34px]
-          md:text-[52px]
-          leading-[1.05]
-          tracking-[-1.5px]
-          font-semibold
-          text-[#0b1c2e]
-          resize-none
-          outline-none
-          "
+          className="w-full max-w-3xl mx-auto text-center bg-transparent text-[34px] md:text-[52px] leading-[1.05] tracking-[-1.5px] font-semibold text-[#0b1c2e] resize-none outline-none"
         />
 
         <textarea
@@ -257,21 +231,7 @@ AdventureGalleryAdmin() {
             })
           }
           rows={2}
-          className="
-          w-full
-          max-w-3xl
-          mx-auto
-          text-center
-          bg-transparent
-          text-cyan-500
-          text-[34px]
-          md:text-[52px]
-          leading-[1.05]
-          tracking-[-1.5px]
-          font-semibold
-          resize-none
-          outline-none
-          "
+          className="w-full max-w-3xl mx-auto text-center bg-transparent text-cyan-500 text-[34px] md:text-[52px] leading-[1.05] tracking-[-1.5px] font-semibold resize-none outline-none"
         />
 
         <textarea
@@ -290,39 +250,18 @@ AdventureGalleryAdmin() {
             })
           }
           rows={5}
-          className="
-          mt-5
-          w-full
-          max-w-2xl
-          mx-auto
-          text-center
-          bg-transparent
-          text-[14px]
-          leading-[1.8]
-          text-[#7f8b99]
-          resize-none
-          outline-none
-          "
+          className="mt-5 w-full max-w-2xl mx-auto text-center bg-transparent text-[14px] leading-[1.8] text-[#7f8b99] resize-none outline-none"
         />
 
       </div>
 
       {/* GALLERY */}
       <div
-        className="
-        max-w-[1150px]
-        mx-auto
-        mt-14
-        px-6
-        "
+        className="max-w-[1150px] mx-auto mt-14 px-6"
       >
 
         <div
-          className="
-          grid
-          grid-cols-5
-          gap-3
-          "
+          className="grid grid-cols-5 gap-3"
         >
 
           {images.map(
@@ -364,19 +303,12 @@ AdventureGalleryAdmin() {
                   src={
                     item.image_url
                   }
-                  className="
-                  w-full
-                  h-[200px]
-                  object-cover
-                  "
+                  className="w-full h-[200px] object-cover"
                 />
 
                 {/* URL */}
                 <div
-                  className="
-                  p-3
-                  bg-white
-                  "
+                  className="p-3 bg-white"
                 >
 
                   <input
@@ -392,15 +324,7 @@ AdventureGalleryAdmin() {
                           .value
                       )
                     }
-                    className="
-                    w-full
-                    border
-                    rounded-lg
-                    px-3
-                    py-2
-                    text-sm
-                    outline-none
-                    "
+                    className="w-full border rounded-lg px-3 py-2 text-sm outline-none"
                   />
 
                 </div>
@@ -415,12 +339,7 @@ AdventureGalleryAdmin() {
 
       {/* BUTTONS */}
       <div
-        className="
-        flex
-        justify-center
-        gap-4
-        mt-16
-        "
+        className="flex justify-center gap-4 mt-16"
       >
 
 
@@ -431,19 +350,7 @@ AdventureGalleryAdmin() {
           disabled={
             saving
           }
-          className="
-          flex
-          items-center
-          gap-3
-          px-8
-          py-4
-          rounded-2xl
-          bg-cyan-500
-          text-white
-          hover:scale-[1.03]
-          transition
-          shadow-lg
-          "
+          className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-500 text-white hover:scale-[1.03] transition shadow-lg"
         >
 
           <Save

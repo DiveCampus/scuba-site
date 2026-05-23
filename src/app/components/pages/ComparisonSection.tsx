@@ -20,10 +20,7 @@ export function ComparisonSection() {
 
   useEffect(() => {
     const load = async () => {
-      const {
-        section,
-        items,
-      } = await getCompare();
+      const { section, items } = await getCompare();
 
       setSection(section);
 

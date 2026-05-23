@@ -78,8 +78,7 @@ ChooseDiveSiteAdmin() {
         cards,
         items,
 
-      } =
-        await getChooseDiveSite();
+      } = await getChooseDiveSite();
 
       setSection(
         section
@@ -239,12 +238,7 @@ ChooseDiveSiteAdmin() {
   return (
 
     <section
-      className="
-      relative
-      overflow-hidden
-      py-28
-      bg-[#071c2d]
-      "
+      className="relative overflow-hidden py-28 bg-[#071c2d]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -252,46 +246,19 @@ ChooseDiveSiteAdmin() {
     >
 
       {/* BG GLOW */}
-      <div className="
-      absolute
-      inset-0
-      ">
+      <div className="absolute inset-0">
 
-        <div className="
-        absolute
-        top-0
-        left-0
-        w-[40%]
-        h-[500px]
-        bg-cyan-500/10
-        blur-[120px]
-        " />
+        <div className="absolute top-0 left-0 w-[40%] h-[500px] bg-cyan-500/10 blur-[120px]" />
 
-        <div className="
-        absolute
-        bottom-0
-        right-0
-        w-[30%]
-        h-[400px]
-        bg-blue-500/10
-        blur-[100px]
-        " />
+        <div className="absolute bottom-0 right-0 w-[30%] h-[400px] bg-blue-500/10 blur-[100px]" />
 
       </div>
 
-      <div className="
-      relative
-      z-10
-      max-w-6xl
-      mx-auto
-      px-6
-      ">
+      <div className="relative z-10 max-w-6xl mx-auto px-6">
 
         {/* HEADER */}
         <div
-          className="
-          text-center
-          "
+          className="text-center"
         >
 
           {/* TITLE */}
@@ -311,17 +278,7 @@ ChooseDiveSiteAdmin() {
               })
             }
             rows={2}
-            className="
-            bg-transparent
-            text-center
-            text-4xl
-            md:text-5xl
-            font-semibold
-            text-white
-            resize-none
-            outline-none
-            w-full
-            "
+            className="bg-transparent text-center text-4xl md:text-5xl font-semibold text-white resize-none outline-none w-full"
           />
 
           {/* DESCRIPTION */}
@@ -341,30 +298,13 @@ ChooseDiveSiteAdmin() {
               })
             }
             rows={3}
-            className="
-            mt-5
-            bg-transparent
-            text-center
-            text-white/45
-            text-sm
-            resize-none
-            outline-none
-            w-full
-            max-w-2xl
-            mx-auto
-            block
-            "
+            className="mt-5 bg-transparent text-center text-white/45 text-sm resize-none outline-none w-full max-w-2xl mx-auto block"
           />
 
         </div>
 
         {/* CARDS */}
-        <div className="
-        mt-20
-        grid
-        lg:grid-cols-2
-        gap-8
-        ">
+        <div className="mt-20 grid lg:grid-cols-2 gap-8">
 
           {cards.map(
 
@@ -409,22 +349,13 @@ ChooseDiveSiteAdmin() {
                   {card.highlight && (
 
                     <div
-                      className="
-                      absolute
-                      top-0
-                      left-0
-                      h-[3px]
-                      w-full
-                      bg-cyan-400
-                      "
+                      className="absolute top-0 left-0 h-[3px] w-full bg-cyan-400"
                     />
 
                   )}
 
                   <div
-                    className="
-                    p-8
-                    "
+                    className="p-8"
                   >
 
                     {/* BADGE */}
@@ -443,15 +374,7 @@ ChooseDiveSiteAdmin() {
                             .value
                         )
                       }
-                      className="
-                      bg-transparent
-                      text-[10px]
-                      tracking-[3px]
-                      text-cyan-400
-                      uppercase
-                      outline-none
-                      w-full
-                      "
+                      className="bg-transparent text-[10px] tracking-[3px] text-cyan-400 uppercase outline-none w-full"
                     />
 
                     {/* TITLE */}
@@ -471,29 +394,12 @@ ChooseDiveSiteAdmin() {
                         )
                       }
                       rows={2}
-                      className="
-                      mt-4
-                      bg-transparent
-                      text-[34px]
-                      leading-[1.1]
-                      font-semibold
-                      text-white
-                      resize-none
-                      outline-none
-                      w-full
-                      "
+                      className="mt-4 bg-transparent text-[34px] leading-[1.1] font-semibold text-white resize-none outline-none w-full"
                     />
 
                     {/* HIGHLIGHT */}
                     <label
-                      className="
-                      mt-5
-                      flex
-                      items-center
-                      gap-3
-                      text-white/70
-                      text-sm
-                      "
+                      className="mt-5 flex items-center gap-3 text-white/70 text-sm"
                     >
 
                       <input
@@ -520,11 +426,7 @@ ChooseDiveSiteAdmin() {
 
                     {/* ITEMS */}
                     <div
-                      className="
-                      mt-8
-                      border-t
-                      border-white/10
-                      "
+                      className="mt-8 border-t border-white/10"
                     >
 
                       {cardItems.map(
@@ -534,12 +436,7 @@ ChooseDiveSiteAdmin() {
                             key={
                               item.id
                             }
-                            className="
-                            py-5
-                            border-b
-                            border-white/10
-                            space-y-3
-                            "
+                            className="py-5 border-b border-white/10 space-y-3"
                           >
 
                             <input
@@ -557,15 +454,7 @@ ChooseDiveSiteAdmin() {
                                     .value
                                 )
                               }
-                              className="
-                              bg-transparent
-                              text-[10px]
-                              tracking-[2px]
-                              text-white/30
-                              uppercase
-                              outline-none
-                              w-full
-                              "
+                              className="bg-transparent text-[10px] tracking-[2px] text-white/30 uppercase outline-none w-full"
                             />
 
                             <textarea
@@ -626,21 +515,7 @@ ChooseDiveSiteAdmin() {
                       placeholder="
                       Optional Footer
                       "
-                      className="
-                      mt-8
-                      w-full
-                      rounded-xl
-                      border
-                      border-cyan-400/30
-                      bg-cyan-400/10
-                      px-5
-                      py-4
-                      text-cyan-300
-                      text-center
-                      text-[10px]
-                      tracking-[2px]
-                      outline-none
-                      "
+                      className="mt-8 w-full rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-5 py-4 text-cyan-300 text-center text-[10px] tracking-[2px] outline-none"
                     />
 
                   </div>
@@ -653,11 +528,7 @@ ChooseDiveSiteAdmin() {
         </div>
 
         {/* SAVE */}
-        <div className="
-        flex
-        justify-center
-        mt-16
-        ">
+        <div className="flex justify-center mt-16">
 
           <button
             onClick={
@@ -666,19 +537,7 @@ ChooseDiveSiteAdmin() {
             disabled={
               saving
             }
-            className="
-            flex
-            items-center
-            gap-3
-            px-8
-            py-4
-            rounded-2xl
-            bg-cyan-500
-            text-white
-            hover:scale-[1.03]
-            transition
-            shadow-lg
-            "
+            className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-500 text-white hover:scale-[1.03] transition shadow-lg"
           >
 
             <Save

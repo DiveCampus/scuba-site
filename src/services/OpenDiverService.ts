@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getOpenDiverCourses =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("open_diver_courses")
         .select("*")
         .order("created_at", {
@@ -32,8 +31,7 @@ export const getOpenDiverCourses =
 export const getOpenDiverCourse =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("open_diver_courses")
         .select("*")
         .limit(1)
@@ -59,8 +57,7 @@ export const updateOpenDiverCourse =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("open_diver_courses")
         .update({
           ...payload,

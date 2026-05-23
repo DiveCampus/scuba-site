@@ -7,13 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getLegacyOfTrust =
   async () => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "legacy_of_trust_section"
@@ -62,13 +56,7 @@ export const updateLegacyOfTrust =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "legacy_of_trust_section"

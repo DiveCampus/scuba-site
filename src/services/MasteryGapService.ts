@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getMasteryGapSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("mastery_gap_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateMasteryGapSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("mastery_gap_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateMasteryGapSection =
 export const getMasteryGapRows =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("mastery_gap_rows")
         .select("*")
         .order("sort_order", {
@@ -90,8 +87,7 @@ export const updateMasteryGapRow =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("mastery_gap_rows")
         .update(payload)
         .eq("id", id)

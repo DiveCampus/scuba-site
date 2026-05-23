@@ -100,8 +100,7 @@ export function Gallery() {
 
         data,
 
-      } =
-        await getGallery();
+      } = await getGallery();
 
       const sorted =
         (data || [])
@@ -376,12 +375,7 @@ export function Gallery() {
   return (
 
     <section
-      className="
-      relative
-      py-32
-      overflow-hidden
-      font-habara
-      "
+      className="relative py-32 overflow-hidden font-habara"
     >
 
       {/* ADMIN */}
@@ -391,18 +385,7 @@ export function Gallery() {
             !isAdmin
           )
         }
-        className="
-        absolute
-        top-6
-        right-6
-        z-50
-        bg-white/20
-        text-white
-        px-3
-        py-1
-        rounded
-        border
-        "
+        className="absolute top-6 right-6 z-50 bg-white/20 text-white px-3 py-1 rounded border"
       >
 
         {isAdmin
@@ -415,47 +398,26 @@ export function Gallery() {
 
       {/* BACKGROUND */}
       <div
-        className="
-        absolute
-        inset-0
-        bg-gradient-to-br
-        from-[#18476D]
-        via-[#123a5a]
-        to-[#0b2c45]
-        "
+        className="absolute inset-0 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45]"
       />
 
       <div
-        className="
-        relative
-        max-w-[1400px]
-        mx-auto
-        px-6
-        "
+        className="relative max-w-[1400px] mx-auto px-6"
       >
 
         {/* HEADER */}
         <div
-          className="
-          text-center
-          mb-20
-          "
+          className="text-center mb-20"
         >
 
           <h2
-            className="
-            text-5xl
-            font-bold
-            text-white
-            "
+            className="text-5xl font-bold text-white"
           >
 
             Underwater{" "}
 
             <span
-              className="
-              text-cyan-300
-              "
+              className="text-cyan-300"
             >
 
               Gallery
@@ -468,22 +430,14 @@ export function Gallery() {
 
         {/* SLIDER */}
         <div
-          className="
-          relative
-          "
+          className="relative"
         >
 
           <button
             onClick={
               prev
             }
-            className="
-            absolute
-            left-4
-            top-1/2
-            z-20
-            text-white
-            "
+            className="absolute left-4 top-1/2 z-20 text-white"
           >
 
             ‹
@@ -494,13 +448,7 @@ export function Gallery() {
             onClick={
               next
             }
-            className="
-            absolute
-            right-4
-            top-1/2
-            z-20
-            text-white
-            "
+            className="absolute right-4 top-1/2 z-20 text-white"
           >
 
             ›
@@ -512,15 +460,7 @@ export function Gallery() {
             ref={
               sliderRef
             }
-            className="
-            flex
-            gap-8
-            overflow-x-auto
-            px-16
-            snap-x
-            scroll-smooth
-            no-scrollbar
-            "
+            className="flex gap-8 overflow-x-auto px-16 snap-x scroll-smooth no-scrollbar"
           >
 
             {images.map(
@@ -544,12 +484,7 @@ export function Gallery() {
                     key={
                       image.id
                     }
-                    className="
-                    snap-center
-                    flex-shrink-0
-                    min-w-[280px]
-                    md:min-w-[360px]
-                    "
+                    className="snap-center flex-shrink-0 min-w-[280px] md:min-w-[360px]"
                     animate={{
                       scale:
                         isActive
@@ -586,37 +521,20 @@ export function Gallery() {
                   >
 
                     <div
-                      className="
-                      relative
-                      rounded-xl
-                      overflow-hidden
-                      "
+                      className="relative rounded-xl overflow-hidden"
                     >
 
                       <img
                         src={
                           image.image_url
                         }
-                        className="
-                        w-full
-                        h-[420px]
-                        object-cover
-                        "
+                        className="w-full h-[420px] object-cover"
                       />
 
                       {isAdmin && (
 
                         <div
-                          className="
-                          admin-panel
-                          absolute
-                          bottom-2
-                          left-2
-                          right-2
-                          bg-black/70
-                          p-2
-                          rounded
-                          "
+                          className="admin-panel absolute bottom-2 left-2 right-2 bg-black/70 p-2 rounded"
                         >
 
                           {isEditing ? (
@@ -638,22 +556,11 @@ export function Gallery() {
                                       .value
                                   )
                                 }
-                                className="
-                                w-full
-                                text-white
-                                bg-white/10
-                                p-2
-                                text-xs
-                                rounded
-                                "
+                                className="w-full text-white bg-white/10 p-2 text-xs rounded"
                               />
 
                               <div
-                                className="
-                                flex
-                                gap-2
-                                mt-2
-                                "
+                                className="flex gap-2 mt-2"
                               >
 
                                 <button
@@ -668,14 +575,7 @@ export function Gallery() {
                                     );
 
                                   }}
-                                  className="
-                                  bg-green-400
-                                  text-black
-                                  px-3
-                                  py-1
-                                  text-xs
-                                  rounded
-                                  "
+                                  className="bg-green-400 text-black px-3 py-1 text-xs rounded"
                                 >
 
                                   Save
@@ -692,14 +592,7 @@ export function Gallery() {
                                     handleCancel();
 
                                   }}
-                                  className="
-                                  bg-red-500
-                                  text-white
-                                  px-3
-                                  py-1
-                                  text-xs
-                                  rounded
-                                  "
+                                  className="bg-red-500 text-white px-3 py-1 text-xs rounded"
                                 >
 
                                   Cancel
@@ -722,14 +615,7 @@ export function Gallery() {
                                 );
 
                               }}
-                              className="
-                              bg-white/20
-                              text-white
-                              px-3
-                              py-1
-                              text-xs
-                              rounded
-                              "
+                              className="bg-white/20 text-white px-3 py-1 text-xs rounded"
                             >
 
                               Edit
@@ -761,15 +647,7 @@ export function Gallery() {
           null && (
 
           <motion.div
-            className="
-            fixed
-            inset-0
-            bg-black/90
-            flex
-            items-center
-            justify-center
-            z-50
-            "
+            className="fixed inset-0 bg-black/90 flex items-center justify-center z-50"
           >
 
             <img
@@ -779,10 +657,7 @@ export function Gallery() {
                 ]
                   .image_url
               }
-              className="
-              max-w-[90%]
-              max-h-[80%]
-              "
+              className="max-w-[90%] max-h-[80%]"
             />
 
             <button
@@ -791,13 +666,7 @@ export function Gallery() {
                   null
                 )
               }
-              className="
-              absolute
-              top-6
-              right-6
-              text-white
-              text-3xl
-              "
+              className="absolute top-6 right-6 text-white text-3xl"
             >
 
               ✕

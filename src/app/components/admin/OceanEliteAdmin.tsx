@@ -57,14 +57,11 @@ export default function OceanEliteAdmin() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getOceanEliteSection();
+      const { data: sectionData } = await getOceanEliteSection();
 
-      const { data: reviewData } =
-        await getOceanEliteReviews();
+      const { data: reviewData } = await getOceanEliteReviews();
 
-      const { data: faqData } =
-        await getOceanEliteFaqs();
+      const { data: faqData } = await getOceanEliteFaqs();
 
       setSection(sectionData);
 
@@ -104,50 +101,27 @@ export default function OceanEliteAdmin() {
   return (
 
     <section
-      className="
-        py-32
-        bg-[#f5f7fa]
-      "
+      className="py-32 bg-[#f5f7fa]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-20
-          flex-wrap
-          gap-5
-        ">
+        <div className="flex items-center justify-between mb-20 flex-wrap gap-5">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-500
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-500 mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-bold
-              text-[#07142b]
-            ">
+            <h2 className="text-4xl font-bold text-[#07142b]">
 
               Ocean Elite
 
@@ -157,17 +131,7 @@ export default function OceanEliteAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-7
-              rounded-2xl
-              bg-cyan-500
-              text-white
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-7 rounded-2xl bg-cyan-500 text-white font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -183,12 +147,7 @@ export default function OceanEliteAdmin() {
         </div>
 
         {/* TITLES */}
-        <div className="
-          text-center
-          max-w-4xl
-          mx-auto
-          mb-24
-        ">
+        <div className="text-center max-w-4xl mx-auto mb-24">
 
           <input
             value={
@@ -201,20 +160,7 @@ export default function OceanEliteAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              h-[78px]
-              rounded-3xl
-              bg-white
-              border
-              border-gray-200
-              text-center
-              text-5xl
-              font-bold
-              text-[#07142b]
-              outline-none
-              mb-5
-            "
+            className="w-full h-[78px] rounded-3xl bg-white border border-gray-200 text-center text-5xl font-bold text-[#07142b] outline-none mb-5"
           />
 
           <input
@@ -228,20 +174,7 @@ export default function OceanEliteAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              h-[78px]
-              rounded-3xl
-              bg-cyan-50
-              border
-              border-cyan-200
-              text-center
-              text-5xl
-              font-bold
-              text-cyan-500
-              outline-none
-              mb-8
-            "
+            className="w-full h-[78px] rounded-3xl bg-cyan-50 border border-cyan-200 text-center text-5xl font-bold text-cyan-500 outline-none mb-8"
           />
 
           <textarea
@@ -256,52 +189,21 @@ export default function OceanEliteAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              rounded-[32px]
-              bg-white
-              border
-              border-gray-200
-              p-8
-              text-center
-              text-gray-500
-              leading-[2]
-              outline-none
-              resize-none
-            "
+            className="w-full rounded-[32px] bg-white border border-gray-200 p-8 text-center text-gray-500 leading-[2] outline-none resize-none"
           />
 
         </div>
 
         {/* CONTENT */}
-        <div className="
-          grid
-          lg:grid-cols-2
-          gap-16
-          items-start
-        ">
+        <div className="grid lg:grid-cols-2 gap-16 items-start">
 
           {/* REVIEWS */}
           <div>
 
             {/* TOP CARD */}
-            <div className="
-              bg-white
-              rounded-[32px]
-              border
-              border-gray-200
-              p-12
-              shadow-sm
-              mb-8
-            ">
+            <div className="bg-white rounded-[32px] border border-gray-200 p-12 shadow-sm mb-8">
 
-              <h3 className="
-                text-4xl
-                font-bold
-                text-center
-                text-[#07142b]
-                mb-8
-              ">
+              <h3 className="text-4xl font-bold text-center text-[#07142b] mb-8">
 
                 Dont Take Our
                 <br />
@@ -309,11 +211,7 @@ export default function OceanEliteAdmin() {
 
               </h3>
 
-              <p className="
-                text-center
-                text-gray-500
-                leading-[2]
-              ">
+              <p className="text-center text-gray-500 leading-[2]">
 
                 Real stories from divers
                 who pushed their limits
@@ -325,11 +223,7 @@ export default function OceanEliteAdmin() {
             </div>
 
             {/* REVIEW CARDS */}
-            <div className="
-              grid
-              md:grid-cols-2
-              gap-6
-            ">
+            <div className="grid md:grid-cols-2 gap-6">
 
               {reviews.map((item, i) => (
 
@@ -338,14 +232,7 @@ export default function OceanEliteAdmin() {
                   whileHover={{
                     y: -4,
                   }}
-                  className="
-                    bg-white
-                    rounded-[28px]
-                    p-7
-                    border
-                    border-gray-200
-                    shadow-sm
-                  "
+                  className="bg-white rounded-[28px] p-7 border border-gray-200 shadow-sm"
                 >
 
                   <input
@@ -372,19 +259,7 @@ export default function OceanEliteAdmin() {
                       );
 
                     }}
-                    className="
-                      w-full
-                      h-[52px]
-                      rounded-2xl
-                      bg-[#f8fafc]
-                      border
-                      border-gray-200
-                      px-5
-                      text-[#07142b]
-                      font-semibold
-                      outline-none
-                      mb-5
-                    "
+                    className="w-full h-[52px] rounded-2xl bg-[#f8fafc] border border-gray-200 px-5 text-[#07142b] font-semibold outline-none mb-5"
                   />
 
                   <textarea
@@ -412,18 +287,7 @@ export default function OceanEliteAdmin() {
                       );
 
                     }}
-                    className="
-                      w-full
-                      rounded-2xl
-                      bg-[#f8fafc]
-                      border
-                      border-gray-200
-                      p-5
-                      text-gray-500
-                      leading-[2]
-                      outline-none
-                      resize-none
-                    "
+                    className="w-full rounded-2xl bg-[#f8fafc] border border-gray-200 p-5 text-gray-500 leading-[2] outline-none resize-none"
                   />
 
                 </motion.div>
@@ -437,47 +301,26 @@ export default function OceanEliteAdmin() {
           {/* FAQ */}
           <div>
 
-            <h3 className="
-              text-3xl
-              font-bold
-              text-[#07142b]
-              mb-10
-            ">
+            <h3 className="text-3xl font-bold text-[#07142b] mb-10">
 
               Tactical Briefing
 
             </h3>
 
-            <div className="
-              space-y-5
-            ">
+            <div className="space-y-5">
 
               {faqs.map((faq, i) => (
 
                 <div
                   key={faq.id}
-                  className="
-                    bg-white
-                    rounded-[24px]
-                    border
-                    border-gray-200
-                    shadow-sm
-                    p-6
-                  "
+                  className="bg-white rounded-[24px] border border-gray-200 shadow-sm p-6"
                 >
 
-                  <div className="
-                    flex
-                    items-center
-                    justify-between
-                    mb-5
-                  ">
+                  <div className="flex items-center justify-between mb-5">
 
                     <Plus
                       size={18}
-                      className="
-                        text-cyan-500
-                      "
+                      className="text-cyan-500"
                     />
 
                   </div>
@@ -506,19 +349,7 @@ export default function OceanEliteAdmin() {
                       );
 
                     }}
-                    className="
-                      w-full
-                      h-[54px]
-                      rounded-2xl
-                      bg-[#f8fafc]
-                      border
-                      border-gray-200
-                      px-5
-                      text-[#07142b]
-                      font-semibold
-                      outline-none
-                      mb-4
-                    "
+                    className="w-full h-[54px] rounded-2xl bg-[#f8fafc] border border-gray-200 px-5 text-[#07142b] font-semibold outline-none mb-4"
                   />
 
                   <textarea
@@ -546,18 +377,7 @@ export default function OceanEliteAdmin() {
                       );
 
                     }}
-                    className="
-                      w-full
-                      rounded-2xl
-                      bg-[#f8fafc]
-                      border
-                      border-gray-200
-                      p-5
-                      text-gray-500
-                      leading-[2]
-                      outline-none
-                      resize-none
-                    "
+                    className="w-full rounded-2xl bg-[#f8fafc] border border-gray-200 p-5 text-gray-500 leading-[2] outline-none resize-none"
                   />
 
                 </div>

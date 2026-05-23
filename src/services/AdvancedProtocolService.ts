@@ -5,8 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getAdvancedProtocol =
   async () => {
 
-    const [{ data: section }, { data: cards }] =
-      await Promise.all([
+    const [{ data: section }, { data: cards }] = await Promise.all([
 
         supabase
           .from("advanced_protocol_section")

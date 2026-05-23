@@ -35,10 +35,7 @@ export function StepsAdmin() {
   }, []);
 
   const load = async () => {
-    const {
-      section,
-      list,
-    } = await getSteps();
+    const { section, list } = await getSteps();
 
     setSection(section);
 
@@ -126,18 +123,7 @@ export function StepsAdmin() {
                   e.target.value
                 )
               }
-              className="
-                text-4xl
-                md:text-7xl
-                font-bold
-                text-center
-                bg-white
-                border
-                border-cyan-300
-                rounded-xl
-                p-3
-                w-full
-              "
+              className="text-4xl md:text-7xl font-bold text-center bg-white border border-cyan-300 rounded-xl p-3 w-full"
             />
 
             <input
@@ -150,18 +136,7 @@ export function StepsAdmin() {
                   e.target.value
                 )
               }
-              className="
-                text-3xl
-                text-cyan-500
-                font-bold
-                text-center
-                bg-white
-                border
-                border-cyan-300
-                rounded-xl
-                p-3
-                w-full
-              "
+              className="text-3xl text-cyan-500 font-bold text-center bg-white border border-cyan-300 rounded-xl p-3 w-full"
             />
 
             <textarea
@@ -174,28 +149,14 @@ export function StepsAdmin() {
                   e.target.value
                 )
               }
-              className="
-                bg-white
-                border
-                border-cyan-300
-                rounded-xl
-                p-4
-                w-full
-                text-center
-              "
+              className="bg-white border border-cyan-300 rounded-xl p-4 w-full text-center"
             />
 
             <button
               onClick={
                 saveSection
               }
-              className="
-                px-6
-                py-3
-                bg-cyan-500
-                text-white
-                rounded-xl
-              "
+              className="px-6 py-3 bg-cyan-500 text-white rounded-xl"
             >
               {saving
                 ? "Saving..."
@@ -213,17 +174,7 @@ export function StepsAdmin() {
             className="cursor-pointer"
           >
             <h2
-              className="
-                flex
-                flex-col
-                items-center
-                text-4xl
-                md:text-7xl
-                font-bold
-                text-[#0a0e27]
-                leading-[1.05]
-                tracking-[1px]
-              "
+              className="flex flex-col items-center text-4xl md:text-7xl font-bold text-[#0a0e27] leading-[1.05] tracking-[1px]"
               style={{
                 fontFamily:
                   "Harabara, sans-serif",
@@ -236,11 +187,7 @@ export function StepsAdmin() {
               </span>
 
               <span
-                className="
-                  text-cyan-500
-                  mt-3
-                  md:mt-5
-                "
+                className="text-cyan-500 mt-3 md:mt-5"
               >
                 {
                   section.highlight
@@ -249,10 +196,7 @@ export function StepsAdmin() {
             </h2>
 
             <p
-              className="
-                text-gray-500
-                mt-4
-              "
+              className="text-gray-500 mt-4"
               style={{
                 fontFamily:
                   "Inter, sans-serif",
@@ -268,15 +212,7 @@ export function StepsAdmin() {
 
       {/* STEPS */}
       <div
-        className="
-          relative
-          max-w-7xl
-          mx-auto
-          px-6
-          grid
-          md:grid-cols-4
-          gap-6
-        "
+        className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-6"
       >
         {steps.map(
           (step, i) => {
@@ -293,16 +229,7 @@ export function StepsAdmin() {
                 {/* ARROW */}
                 {i !== 0 && (
                   <div
-                    className="
-                      hidden
-                      md:block
-                      absolute
-                      -left-4
-                      top-1/2
-                      -translate-y-1/2
-                      text-cyan-400
-                      text-xl
-                    "
+                    className="hidden md:block absolute -left-4 top-1/2 -translate-y-1/2 text-cyan-400 text-xl"
                   >
                     →
                   </div>
@@ -357,31 +284,12 @@ export function StepsAdmin() {
                             .value
                         )
                       }
-                      className="
-                        absolute
-                        top-3
-                        right-3
-                        text-[10px]
-                        px-2
-                        py-1
-                        rounded-full
-                        border
-                      "
+                      className="absolute top-3 right-3 text-[10px] px-2 py-1 rounded-full border"
                     />
                   ) : (
                     step.highlight && (
                       <div
-                        className="
-                          absolute
-                          top-3
-                          right-3
-                          text-[10px]
-                          px-3
-                          py-1
-                          bg-cyan-500
-                          text-white
-                          rounded-full
-                        "
+                        className="absolute top-3 right-3 text-[10px] px-3 py-1 bg-cyan-500 text-white rounded-full"
                       >
                         {
                           step.tag
@@ -415,21 +323,11 @@ export function StepsAdmin() {
                             .value
                         )
                       }
-                      className="
-                        w-full
-                        border
-                        rounded-lg
-                        p-2
-                        mb-3
-                      "
+                      className="w-full border rounded-lg p-2 mb-3"
                     />
                   ) : (
                     <h3
-                      className="
-                        font-semibold
-                        text-[#0a0e27]
-                        mb-2
-                      "
+                      className="font-semibold text-[#0a0e27] mb-2"
                       style={{
                         fontFamily:
                           "Harabara, sans-serif",
@@ -458,13 +356,7 @@ export function StepsAdmin() {
                               .value
                           )
                         }
-                        className="
-                          w-full
-                          border
-                          rounded-lg
-                          p-2
-                          mb-3
-                        "
+                        className="w-full border rounded-lg p-2 mb-3"
                       />
 
                       <button
@@ -473,13 +365,7 @@ export function StepsAdmin() {
                             step
                           )
                         }
-                        className="
-                          w-full
-                          py-2
-                          rounded-xl
-                          bg-cyan-500
-                          text-white
-                        "
+                        className="w-full py-2 rounded-xl bg-cyan-500 text-white"
                       >
                         {saving
                           ? "Saving..."
@@ -488,11 +374,7 @@ export function StepsAdmin() {
                     </>
                   ) : (
                     <p
-                      className="
-                        text-sm
-                        text-gray-500
-                        leading-relaxed
-                      "
+                      className="text-sm text-gray-500 leading-relaxed"
                       style={{
                         fontFamily:
                           "Inter, sans-serif",

@@ -19,8 +19,7 @@ export default function HeroAdminSection() {
 
   useEffect(() => {
     const fetchHero = async () => {
-      const { data, error } =
-        await getMainHero();
+      const { data, error } = await getMainHero();
 
       if (error) return;
 

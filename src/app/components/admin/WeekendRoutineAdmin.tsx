@@ -68,8 +68,7 @@ WeekendRoutineAdmin() {
         images,
         giftCard,
 
-      } =
-        await getWeekendRoutine();
+      } = await getWeekendRoutine();
 
       setSection(
         section
@@ -193,12 +192,7 @@ WeekendRoutineAdmin() {
   return (
 
     <section
-      className="
-      relative
-      overflow-hidden
-      py-24
-      bg-[#071c2d]
-      "
+      className="relative overflow-hidden py-24 bg-[#071c2d]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -206,48 +200,21 @@ WeekendRoutineAdmin() {
     >
 
       {/* BG */}
-      <div className="
-      absolute
-      inset-0
-      ">
+      <div className="absolute inset-0">
 
-        <div className="
-        absolute
-        top-0
-        left-0
-        w-[40%]
-        h-[500px]
-        bg-cyan-500/10
-        blur-[140px]
-        " />
+        <div className="absolute top-0 left-0 w-[40%] h-[500px] bg-cyan-500/10 blur-[140px]" />
 
-        <div className="
-        absolute
-        bottom-0
-        right-0
-        w-[30%]
-        h-[400px]
-        bg-blue-500/10
-        blur-[120px]
-        " />
+        <div className="absolute bottom-0 right-0 w-[30%] h-[400px] bg-blue-500/10 blur-[120px]" />
 
       </div>
 
-      <div className="
-      relative
-      z-10
-      max-w-7xl
-      mx-auto
-      px-6
-      ">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
 
         {/* ======================
             HEADER
         ====================== */}
 
-        <div className="
-        text-center
-        ">
+        <div className="text-center">
 
           {/* TITLE */}
           <textarea
@@ -266,17 +233,7 @@ WeekendRoutineAdmin() {
               })
             }
             rows={2}
-            className="
-            bg-transparent
-            text-center
-            text-white
-            text-3xl
-            md:text-5xl
-            font-semibold
-            resize-none
-            outline-none
-            w-full
-            "
+            className="bg-transparent text-center text-white text-3xl md:text-5xl font-semibold resize-none outline-none w-full"
           />
 
           {/* HIGHLIGHT */}
@@ -295,15 +252,7 @@ WeekendRoutineAdmin() {
 
               })
             }
-            className="
-            mt-3
-            bg-transparent
-            text-cyan-400
-            text-center
-            text-2xl
-            outline-none
-            w-full
-            "
+            className="mt-3 bg-transparent text-cyan-400 text-center text-2xl outline-none w-full"
           />
 
           {/* DESCRIPTION */}
@@ -323,18 +272,7 @@ WeekendRoutineAdmin() {
               })
             }
             rows={3}
-            className="
-            mt-5
-            bg-transparent
-            text-white/50
-            text-center
-            resize-none
-            outline-none
-            w-full
-            max-w-3xl
-            mx-auto
-            block
-            "
+            className="mt-5 bg-transparent text-white/50 text-center resize-none outline-none w-full max-w-3xl mx-auto block"
           />
 
         </div>
@@ -343,13 +281,7 @@ WeekendRoutineAdmin() {
             IMAGES
         ====================== */}
 
-        <div className="
-        mt-16
-        grid
-        grid-cols-2
-        md:grid-cols-4
-        gap-5
-        ">
+        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-5">
 
           {images.map(
             image => (
@@ -361,27 +293,14 @@ WeekendRoutineAdmin() {
                 whileHover={{
                   y: -5,
                 }}
-                className="
-                rounded-2xl
-                overflow-hidden
-                border
-                border-white/10
-                bg-white/5
-                p-3
-                "
+                className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 p-3"
               >
 
                 <img
                   src={
                     image.image_url
                   }
-                  className="
-                  h-[220px]
-                  w-full
-                  object-cover
-                  rounded-xl
-                  mb-3
-                  "
+                  className="h-[220px] w-full object-cover rounded-xl mb-3"
                 />
 
                 <input
@@ -397,18 +316,7 @@ WeekendRoutineAdmin() {
                         .value
                     )
                   }
-                  className="
-                  w-full
-                  bg-white/10
-                  border
-                  border-white/10
-                  rounded-xl
-                  px-4
-                  py-3
-                  text-sm
-                  text-white
-                  outline-none
-                  "
+                  className="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none"
                 />
 
               </motion.div>
@@ -421,21 +329,9 @@ WeekendRoutineAdmin() {
             GIFT CARD
         ====================== */}
 
-        <div className="
-        mt-20
-        max-w-[500px]
-        mx-auto
-        ">
+        <div className="mt-20 max-w-[500px] mx-auto">
 
-          <div className="
-          rounded-3xl
-          border
-          border-white/10
-          bg-white/5
-          backdrop-blur-xl
-          p-10
-          text-center
-          ">
+          <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-10 text-center">
 
             <input
               value={
@@ -452,14 +348,7 @@ WeekendRoutineAdmin() {
 
                 })
               }
-              className="
-              bg-transparent
-              text-4xl
-              text-center
-              w-full
-              outline-none
-              mb-5
-              "
+              className="bg-transparent text-4xl text-center w-full outline-none mb-5"
             />
 
             <textarea
@@ -478,16 +367,7 @@ WeekendRoutineAdmin() {
                 })
               }
               rows={2}
-              className="
-              bg-transparent
-              text-white
-              text-[22px]
-              font-semibold
-              text-center
-              resize-none
-              outline-none
-              w-full
-              "
+              className="bg-transparent text-white text-[22px] font-semibold text-center resize-none outline-none w-full"
             />
 
             <textarea
@@ -506,15 +386,7 @@ WeekendRoutineAdmin() {
                 })
               }
               rows={4}
-              className="
-              mt-4
-              bg-transparent
-              text-white/50
-              text-center
-              resize-none
-              outline-none
-              w-full
-              "
+              className="mt-4 bg-transparent text-white/50 text-center resize-none outline-none w-full"
             />
 
             <textarea
@@ -533,20 +405,7 @@ WeekendRoutineAdmin() {
                 })
               }
               rows={2}
-              className="
-              mt-7
-              bg-lime-400/10
-              border
-              border-lime-400/30
-              rounded-full
-              text-lime-300
-              text-center
-              px-5
-              py-3
-              resize-none
-              outline-none
-              w-full
-              "
+              className="mt-7 bg-lime-400/10 border border-lime-400/30 rounded-full text-lime-300 text-center px-5 py-3 resize-none outline-none w-full"
             />
 
           </div>
@@ -554,11 +413,7 @@ WeekendRoutineAdmin() {
         </div>
 
         {/* SAVE */}
-        <div className="
-        flex
-        justify-center
-        mt-14
-        ">
+        <div className="flex justify-center mt-14">
 
           <button
             onClick={
@@ -567,17 +422,7 @@ WeekendRoutineAdmin() {
             disabled={
               saving
             }
-            className="
-            px-10
-            py-4
-            rounded-xl
-            bg-gradient-to-r
-            from-cyan-400
-            to-blue-500
-            text-[#02131d]
-            font-semibold
-            tracking-[1px]
-            "
+            className="px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-[#02131d] font-semibold tracking-[1px]"
           >
 
             {saving

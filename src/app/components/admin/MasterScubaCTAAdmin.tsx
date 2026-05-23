@@ -48,8 +48,7 @@ export default function MasterScubaCTAAdmin() {
 
           data,
 
-        } =
-          await getMasterScubaCTA();
+        } = await getMasterScubaCTA();
 
         setSection(data);
 
@@ -99,47 +98,22 @@ export default function MasterScubaCTAAdmin() {
 
   return (
 
-    <section className="
-      min-h-screen
-      bg-gradient-to-br
-      from-[#081c2c]
-      to-[#0d2f45]
-      text-white
-      py-20
-      px-6
-    ">
+    <section className="min-h-screen bg-gradient-to-br from-[#081c2c] to-[#0d2f45] text-white py-20 px-6">
 
-      <div className="
-        max-w-5xl
-        mx-auto
-      ">
+      <div className="max-w-5xl mx-auto">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-16
-        ">
+        <div className="flex items-center justify-between mb-16">
 
           <div>
 
-            <p className="
-              text-cyan-400
-              text-[10px]
-              tracking-[4px]
-              uppercase
-              mb-3
-            ">
+            <p className="text-cyan-400 text-[10px] tracking-[4px] uppercase mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-semibold
-            ">
+            <h2 className="text-4xl font-semibold">
 
               Master Scuba CTA
 
@@ -153,18 +127,7 @@ export default function MasterScubaCTAAdmin() {
               handleSave
             }
 
-            className="
-              h-[56px]
-              px-8
-              rounded-2xl
-              bg-cyan-500
-              hover:bg-cyan-400
-              transition
-              flex
-              items-center
-              gap-3
-              font-semibold
-            "
+            className="h-[56px] px-8 rounded-2xl bg-cyan-500 hover:bg-cyan-400 transition flex items-center gap-3 font-semibold"
 
           >
 
@@ -183,11 +146,7 @@ export default function MasterScubaCTAAdmin() {
         </div>
 
         {/* FORM */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-7
-        ">
+        <div className="grid md:grid-cols-2 gap-7">
 
           {Object.keys(section).map(
 
@@ -213,20 +172,11 @@ export default function MasterScubaCTAAdmin() {
 
                   key={key}
 
-                  className="
-                    flex
-                    flex-col
-                    gap-3
-                  "
+                  className="flex flex-col gap-3"
 
                 >
 
-                  <label className="
-                    text-sm
-                    uppercase
-                    tracking-[2px]
-                    text-white/60
-                  ">
+                  <label className="text-sm uppercase tracking-[2px] text-white/60">
 
                     {key}
 
@@ -255,16 +205,7 @@ export default function MasterScubaCTAAdmin() {
                         })
                       }
 
-                      className="
-                        rounded-2xl
-                        bg-white/5
-                        border
-                        border-white/10
-                        px-5
-                        py-4
-                        outline-none
-                        resize-none
-                      "
+                      className="rounded-2xl bg-white/5 border border-white/10 px-5 py-4 outline-none resize-none"
 
                     />
 
@@ -287,15 +228,7 @@ export default function MasterScubaCTAAdmin() {
                         })
                       }
 
-                      className="
-                        h-[56px]
-                        rounded-2xl
-                        bg-white/5
-                        border
-                        border-white/10
-                        px-5
-                        outline-none
-                      "
+                      className="h-[56px] rounded-2xl bg-white/5 border border-white/10 px-5 outline-none"
 
                     />
 

@@ -308,75 +308,14 @@ useLayoutEffect(() => {
                   setSelectedMember(member.name);
                 }
               }}
-              className="
-    absolute
-    w-[120px]
-    h-[170px]
-
-    sm:w-[140px]
-    sm:h-[190px]
-
-    md:w-[160px]
-    md:h-[220px]
-
-    lg:w-[180px]
-    lg:h-[240px]
-
-    rounded-[24px]
-    md:rounded-[32px]
-
-    bg-white/10
-    backdrop-blur-md
-    border
-    border-white/15
-
-    flex
-    flex-col
-    items-center
-    justify-center
-
-    cursor-pointer
-    overflow-hidden
-    group
-
-    transform-gpu
-    will-change-transform
-
-    shadow-[0_20px_60px_rgba(0,0,0,0.25)]
-  "
+              className="absolute w-[120px] h-[170px] sm:w-[140px] sm:h-[190px] md:w-[160px] md:h-[220px] lg:w-[180px] lg:h-[240px] rounded-[24px] md:rounded-[32px] bg-white/10 backdrop-blur-md border border-white/15 flex flex-col items-center justify-center cursor-pointer overflow-hidden group transform-gpu will-change-transform shadow-[0_20px_60px_rgba(0,0,0,0.25)]"
             >
               {/* CARD GLOW */}
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-500 bg-gradient-to-br from-cyan-400/10 to-blue-500/10" />
 
               {/* IMAGE */}
               <div
-                className="
-      relative
-      z-10
-
-      w-[60px]
-      h-[60px]
-
-      sm:w-[70px]
-      sm:h-[70px]
-
-      md:w-[80px]
-      md:h-[80px]
-
-      lg:w-[88px]
-      lg:h-[88px]
-
-      rounded-full
-      overflow-hidden
-
-      border
-      border-cyan-300/30
-
-      shadow-[0_0_30px_rgba(34,211,238,0.18)]
-
-      mb-4
-      md:mb-5
-    "
+                className="relative z-10 w-[60px] h-[60px] sm:w-[70px] sm:h-[70px] md:w-[80px] md:h-[80px] lg:w-[88px] lg:h-[88px] rounded-full overflow-hidden border border-cyan-300/30 shadow-[0_0_30px_rgba(34,211,238,0.18)] mb-4 md:mb-5"
               >
                 <img
                   src={
@@ -408,55 +347,14 @@ useLayoutEffect(() => {
 
               {/* NAME */}
               <h3
-                className="
-      relative
-      z-10
-
-      text-[12px]
-      sm:text-[14px]
-      md:text-[16px]
-      lg:text-[18px]
-
-      tracking-[2px]
-      md:tracking-[3px]
-
-      font-semibold
-      uppercase
-
-      leading-[1.4]
-
-      text-center
-    "
+                className="relative z-10 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] tracking-[2px] md:tracking-[3px] font-semibold uppercase leading-[1.4] text-center"
               >
                 {member.name}
               </h3>
 
               {/* ROLE */}
               <p
-                className="
-      relative
-      z-10
-
-      text-cyan-300
-
-      text-[8px]
-      sm:text-[9px]
-      md:text-[10px]
-
-      tracking-[2px]
-      md:tracking-[3px]
-
-      uppercase
-
-      mt-2
-      md:mt-3
-
-      text-center
-
-      leading-[1.8]
-
-      px-2
-    "
+                className="relative z-10 text-cyan-300 text-[8px] sm:text-[9px] md:text-[10px] tracking-[2px] md:tracking-[3px] uppercase mt-2 md:mt-3 text-center leading-[1.8] px-2"
               >
                 {member.role}
               </p>

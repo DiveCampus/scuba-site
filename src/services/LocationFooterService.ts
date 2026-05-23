@@ -12,13 +12,7 @@ export const getLocationFooter =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "location_footer_section"
@@ -31,13 +25,7 @@ export const getLocationFooter =
       .single();
 
     /* FEATURES */
-    const {
-
-      data: features,
-
-      error: featuresError,
-
-    } = await supabase
+    const { data: features, error: featuresError } = await supabase
 
       .from(
         "location_footer_features"
@@ -53,13 +41,7 @@ export const getLocationFooter =
       );
 
     /* GROUPS */
-    const {
-
-      data: groups,
-
-      error: groupsError,
-
-    } = await supabase
+    const { data: groups, error: groupsError } = await supabase
 
       .from(
         "location_footer_groups"
@@ -75,13 +57,7 @@ export const getLocationFooter =
       );
 
     /* LINKS */
-    const {
-
-      data: links,
-
-      error: linksError,
-
-    } = await supabase
+    const { data: links, error: linksError } = await supabase
 
       .from(
         "location_footer_links"
@@ -169,13 +145,7 @@ export const updateLocationFooterSection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "location_footer_section"
@@ -219,13 +189,7 @@ export const updateLocationFooterFeature =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "location_footer_features"
@@ -269,13 +233,7 @@ export const updateLocationFooterGroup =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "location_footer_groups"
@@ -319,13 +277,7 @@ export const updateLocationFooterLink =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "location_footer_links"

@@ -95,8 +95,7 @@ export default function LocationFooterAdmin() {
 
           links,
 
-        } =
-          await getLocationFooter();
+        } = await getLocationFooter();
 
         setSection(
           section
@@ -229,47 +228,22 @@ export default function LocationFooterAdmin() {
 
   return (
 
-    <section className="
-      min-h-screen
-      bg-gradient-to-br
-      from-[#02131d]
-      to-[#031e2d]
-      text-white
-      py-20
-      px-6
-    ">
+    <section className="min-h-screen bg-gradient-to-br from-[#02131d] to-[#031e2d] text-white py-20 px-6">
 
-      <div className="
-        max-w-7xl
-        mx-auto
-      ">
+      <div className="max-w-7xl mx-auto">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-14
-        ">
+        <div className="flex items-center justify-between mb-14">
 
           <div>
 
-            <p className="
-              text-cyan-400
-              text-[10px]
-              tracking-[4px]
-              uppercase
-              mb-3
-            ">
+            <p className="text-cyan-400 text-[10px] tracking-[4px] uppercase mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-semibold
-            ">
+            <h2 className="text-4xl font-semibold">
 
               Location Footer
 
@@ -283,18 +257,7 @@ export default function LocationFooterAdmin() {
               saveSection
             }
 
-            className="
-              h-[56px]
-              px-8
-              rounded-2xl
-              bg-cyan-500
-              hover:bg-cyan-400
-              transition
-              flex
-              items-center
-              gap-3
-              font-semibold
-            "
+            className="h-[56px] px-8 rounded-2xl bg-cyan-500 hover:bg-cyan-400 transition flex items-center gap-3 font-semibold"
 
           >
 
@@ -318,31 +281,15 @@ export default function LocationFooterAdmin() {
            SECTION
         ========================================= */}
 
-        <div className="
-          bg-white/5
-          border
-          border-white/10
-          rounded-[32px]
-          p-8
-          backdrop-blur-xl
-          mb-12
-        ">
+        <div className="bg-white/5 border border-white/10 rounded-[32px] p-8 backdrop-blur-xl mb-12">
 
-          <h3 className="
-            text-2xl
-            mb-8
-            font-semibold
-          ">
+          <h3 className="text-2xl mb-8 font-semibold">
 
             Section Content
 
           </h3>
 
-          <div className="
-            grid
-            md:grid-cols-2
-            gap-6
-          ">
+          <div className="grid md:grid-cols-2 gap-6">
 
             {Object.keys(
               section
@@ -373,14 +320,7 @@ export default function LocationFooterAdmin() {
                     key={key}
                   >
 
-                    <label className="
-                      text-sm
-                      text-white/60
-                      mb-3
-                      block
-                      uppercase
-                      tracking-[2px]
-                    ">
+                    <label className="text-sm text-white/60 mb-3 block uppercase tracking-[2px]">
 
                       {key}
 
@@ -415,16 +355,7 @@ export default function LocationFooterAdmin() {
                           })
                         }
 
-                        className="
-                          w-full
-                          rounded-2xl
-                          bg-white/10
-                          border
-                          border-white/10
-                          px-5
-                          py-4
-                          outline-none
-                        "
+                        className="w-full rounded-2xl bg-white/10 border border-white/10 px-5 py-4 outline-none"
 
                       />
 
@@ -453,16 +384,7 @@ export default function LocationFooterAdmin() {
                           })
                         }
 
-                        className="
-                          w-full
-                          h-[56px]
-                          rounded-2xl
-                          bg-white/10
-                          border
-                          border-white/10
-                          px-5
-                          outline-none
-                        "
+                        className="w-full h-[56px] rounded-2xl bg-white/10 border border-white/10 px-5 outline-none"
 
                       />
 
@@ -483,12 +405,7 @@ export default function LocationFooterAdmin() {
            FEATURES
         ========================================= */}
 
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-6
-          mb-14
-        ">
+        <div className="grid md:grid-cols-2 gap-6 mb-14">
 
           {features.map(
             (
@@ -502,21 +419,11 @@ export default function LocationFooterAdmin() {
                   item.id
                 }
 
-                className="
-                  bg-white/5
-                  border
-                  border-white/10
-                  rounded-[30px]
-                  p-7
-                "
+                className="bg-white/5 border border-white/10 rounded-[30px] p-7"
 
               >
 
-                <h4 className="
-                  text-lg
-                  mb-5
-                  font-semibold
-                ">
+                <h4 className="text-lg mb-5 font-semibold">
 
                   Feature
                 </h4>
@@ -553,16 +460,7 @@ export default function LocationFooterAdmin() {
                     Icon Name
                   "
 
-                  className="
-                    w-full
-                    h-[56px]
-                    rounded-2xl
-                    bg-white/10
-                    border
-                    border-white/10
-                    px-5
-                    mb-4
-                  "
+                  className="w-full h-[56px] rounded-2xl bg-white/10 border border-white/10 px-5 mb-4"
 
                 />
 
@@ -598,16 +496,7 @@ export default function LocationFooterAdmin() {
                     Title
                   "
 
-                  className="
-                    w-full
-                    h-[56px]
-                    rounded-2xl
-                    bg-white/10
-                    border
-                    border-white/10
-                    px-5
-                    mb-4
-                  "
+                  className="w-full h-[56px] rounded-2xl bg-white/10 border border-white/10 px-5 mb-4"
 
                 />
 
@@ -619,13 +508,7 @@ export default function LocationFooterAdmin() {
                     )
                   }
 
-                  className="
-                    w-full
-                    h-[52px]
-                    rounded-2xl
-                    bg-cyan-500
-                    hover:bg-cyan-400
-                  "
+                  className="w-full h-[52px] rounded-2xl bg-cyan-500 hover:bg-cyan-400"
 
                 >
 
@@ -668,23 +551,11 @@ export default function LocationFooterAdmin() {
                   group.id
                 }
 
-                className="
-                  bg-white/5
-                  border
-                  border-white/10
-                  rounded-[32px]
-                  p-8
-                  mb-10
-                "
+                className="bg-white/5 border border-white/10 rounded-[32px] p-8 mb-10"
 
               >
 
-                <div className="
-                  flex
-                  items-center
-                  justify-between
-                  mb-8
-                ">
+                <div className="flex items-center justify-between mb-8">
 
                   <input
 
@@ -725,16 +596,7 @@ export default function LocationFooterAdmin() {
 
                     }}
 
-                    className="
-                      h-[56px]
-                      rounded-2xl
-                      bg-white/10
-                      border
-                      border-white/10
-                      px-5
-                      text-xl
-                      font-semibold
-                    "
+                    className="h-[56px] rounded-2xl bg-white/10 border border-white/10 px-5 text-xl font-semibold"
 
                   />
 
@@ -746,12 +608,7 @@ export default function LocationFooterAdmin() {
                       )
                     }
 
-                    className="
-                      px-6
-                      h-[50px]
-                      rounded-2xl
-                      bg-cyan-500
-                    "
+                    className="px-6 h-[50px] rounded-2xl bg-cyan-500"
 
                   >
 
@@ -762,11 +619,7 @@ export default function LocationFooterAdmin() {
                 </div>
 
                 {/* LINKS */}
-                <div className="
-                  grid
-                  md:grid-cols-2
-                  gap-6
-                ">
+                <div className="grid md:grid-cols-2 gap-6">
 
                   {groupLinks.map(
                     (
@@ -780,13 +633,7 @@ export default function LocationFooterAdmin() {
                           link.id
                         }
 
-                        className="
-                          bg-white/5
-                          rounded-3xl
-                          border
-                          border-white/10
-                          p-6
-                        "
+                        className="bg-white/5 rounded-3xl border border-white/10 p-6"
 
                       >
 
@@ -829,16 +676,7 @@ export default function LocationFooterAdmin() {
 
                           }}
 
-                          className="
-                            w-full
-                            h-[56px]
-                            rounded-2xl
-                            bg-white/10
-                            border
-                            border-white/10
-                            px-5
-                            mb-4
-                          "
+                          className="w-full h-[56px] rounded-2xl bg-white/10 border border-white/10 px-5 mb-4"
 
                         />
 
@@ -881,16 +719,7 @@ export default function LocationFooterAdmin() {
 
                           }}
 
-                          className="
-                            w-full
-                            h-[56px]
-                            rounded-2xl
-                            bg-white/10
-                            border
-                            border-white/10
-                            px-5
-                            mb-4
-                          "
+                          className="w-full h-[56px] rounded-2xl bg-white/10 border border-white/10 px-5 mb-4"
 
                         />
 
@@ -902,12 +731,7 @@ export default function LocationFooterAdmin() {
                             )
                           }
 
-                          className="
-                            w-full
-                            h-[50px]
-                            rounded-2xl
-                            bg-cyan-500
-                          "
+                          className="w-full h-[50px] rounded-2xl bg-cyan-500"
 
                         >
 

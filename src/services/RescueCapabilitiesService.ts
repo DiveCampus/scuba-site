@@ -8,13 +8,7 @@ export const getRescueCapabilities =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "rescue_capabilities_section"
@@ -27,13 +21,7 @@ export const getRescueCapabilities =
       .single();
 
     /* CARDS */
-    const {
-
-      data: cards,
-
-      error: cardsError,
-
-    } = await supabase
+    const { data: cards, error: cardsError } = await supabase
 
       .from(
         "rescue_capabilities_cards"
@@ -99,13 +87,7 @@ export const updateRescueCapabilitiesSection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "rescue_capabilities_section"
@@ -160,13 +142,7 @@ export const updateRescueCapabilitiesCard =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "rescue_capabilities_cards"

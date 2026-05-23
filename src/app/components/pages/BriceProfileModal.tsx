@@ -137,15 +137,7 @@ export function BriceProfileModal({
                   initial={{ opacity: 0, y: 25 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="
-                    mt-7
-                    space-y-4
-                    text-white/70
-                    text-[13px]
-                    leading-[1.8]
-                    tracking-[0.3px]
-                    max-w-[480px]
-                  "
+                  className="mt-7 space-y-4 text-white/70 text-[13px] leading-[1.8] tracking-[0.3px] max-w-[480px]"
                 >
 
                   <p>
@@ -190,19 +182,7 @@ export function BriceProfileModal({
 
                   {/* CONNECT */}
                   <button
-                    className="
-                      px-7 py-3.5
-                      rounded-2xl
-                      bg-cyan-400
-                      text-black
-                      text-[11px]
-                      tracking-[2px]
-                      font-semibold
-                      hover:scale-[1.03]
-                      transition-all
-                      duration-300
-                      shadow-[0_10px_40px_rgba(34,211,238,0.30)]
-                    "
+                    className="px-7 py-3.5 rounded-2xl bg-cyan-400 text-black text-[11px] tracking-[2px] font-semibold hover:scale-[1.03] transition-all duration-300 shadow-[0_10px_40px_rgba(34,211,238,0.30)]"
                   >
                     CONNECT →
                   </button>

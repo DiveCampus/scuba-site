@@ -92,8 +92,7 @@ TryDiveFooterAdmin() {
         links,
         socials,
 
-      } =
-        await getTryDiveFooter();
+      } = await getTryDiveFooter();
 
       setSection(
         section
@@ -272,13 +271,7 @@ TryDiveFooterAdmin() {
 
     <>
       <footer
-        className="
-        relative
-        overflow-hidden
-        bg-[#02101d]
-        pt-20
-        pb-10
-        "
+        className="relative overflow-hidden bg-[#02101d] pt-20 pb-10"
         style={{
           fontFamily:
             "Harabara, sans-serif",
@@ -287,10 +280,7 @@ TryDiveFooterAdmin() {
 
         {/* BACKGROUND */}
         <div
-          className="
-          absolute
-          inset-0
-          "
+          className="absolute inset-0"
         >
 
           <img
@@ -298,58 +288,30 @@ TryDiveFooterAdmin() {
               section.footer_bg_image
             }
             alt="footer"
-            className="
-            w-full
-            h-full
-            object-cover
-            opacity-20
-            "
+            className="w-full h-full object-cover opacity-20"
           />
 
           <div
-            className="
-            absolute
-            inset-0
-            bg-gradient-to-r
-            from-[#02101d]
-            via-[#02101d]/90
-            to-[#02101d]
-            "
+            className="absolute inset-0 bg-gradient-to-r from-[#02101d] via-[#02101d]/90 to-[#02101d]"
           />
 
         </div>
 
         {/* CONTENT */}
         <div
-          className="
-          relative
-          z-10
-          max-w-6xl
-          mx-auto
-          px-6
-          "
+          className="relative z-10 max-w-6xl mx-auto px-6"
         >
 
           {/* TOP GRID */}
           <div
-            className="
-            grid
-            md:grid-cols-5
-            gap-10
-            "
+            className="grid md:grid-cols-5 gap-10"
           >
 
             {/* DOWNLOAD */}
             <div>
 
               <h4
-                className="
-                text-white
-                text-[11px]
-                tracking-[2px]
-                font-semibold
-                mb-6
-                "
+                className="text-white text-[11px] tracking-[2px] font-semibold mb-6"
               >
 
                 DOWNLOAD APP
@@ -357,48 +319,26 @@ TryDiveFooterAdmin() {
               </h4>
 
               <div
-                className="
-                space-y-3
-                "
+                className="space-y-3"
               >
 
                 {/* APP STORE */}
                 <div>
 
                   <button
-                    className="
-                    w-[160px]
-                    h-[48px]
-                    rounded-xl
-                    border
-                    border-white/10
-                    bg-white/[0.03]
-                    flex
-                    items-center
-                    gap-3
-                    px-4
-                    "
+                    className="w-[160px] h-[48px] rounded-xl border border-white/10 bg-white/[0.03] flex items-center gap-3 px-4"
                   >
 
                     <FaApple
-                      className="
-                      text-white
-                      text-xl
-                      "
+                      className="text-white text-xl"
                     />
 
                     <div
-                      className="
-                      text-left
-                      "
+                      className="text-left"
                     >
 
                       <p
-                        className="
-                        text-[8px]
-                        text-white/40
-                        uppercase
-                        "
+                        className="text-[8px] text-white/40 uppercase"
                       >
 
                         Download on the
@@ -406,11 +346,7 @@ TryDiveFooterAdmin() {
                       </p>
 
                       <p
-                        className="
-                        text-white
-                        text-sm
-                        font-medium
-                        "
+                        className="text-white text-sm font-medium"
                       >
 
                         App Store
@@ -439,19 +375,7 @@ TryDiveFooterAdmin() {
                     placeholder="
                     App Store URL
                     "
-                    className="
-                    mt-2
-                    w-full
-                    rounded-xl
-                    bg-white/5
-                    border
-                    border-white/10
-                    px-4
-                    py-3
-                    text-sm
-                    text-white
-                    outline-none
-                    "
+                    className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white outline-none"
                   />
 
                 </div>
@@ -460,39 +384,19 @@ TryDiveFooterAdmin() {
                 <div>
 
                   <button
-                    className="
-                    w-[160px]
-                    h-[48px]
-                    rounded-xl
-                    border
-                    border-white/10
-                    bg-white/[0.03]
-                    flex
-                    items-center
-                    gap-3
-                    px-4
-                    "
+                    className="w-[160px] h-[48px] rounded-xl border border-white/10 bg-white/[0.03] flex items-center gap-3 px-4"
                   >
 
                     <FaGooglePlay
-                      className="
-                      text-white
-                      text-lg
-                      "
+                      className="text-white text-lg"
                     />
 
                     <div
-                      className="
-                      text-left
-                      "
+                      className="text-left"
                     >
 
                       <p
-                        className="
-                        text-[8px]
-                        text-white/40
-                        uppercase
-                        "
+                        className="text-[8px] text-white/40 uppercase"
                       >
 
                         Get it on
@@ -500,11 +404,7 @@ TryDiveFooterAdmin() {
                       </p>
 
                       <p
-                        className="
-                        text-white
-                        text-sm
-                        font-medium
-                        "
+                        className="text-white text-sm font-medium"
                       >
 
                         Google Play
@@ -533,19 +433,7 @@ TryDiveFooterAdmin() {
                     placeholder="
                     Google Play URL
                     "
-                    className="
-                    mt-2
-                    w-full
-                    rounded-xl
-                    bg-white/5
-                    border
-                    border-white/10
-                    px-4
-                    py-3
-                    text-sm
-                    text-white
-                    outline-none
-                    "
+                    className="mt-2 w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-sm text-white outline-none"
                   />
 
                 </div>
@@ -558,13 +446,7 @@ TryDiveFooterAdmin() {
             <div>
 
               <h4
-                className="
-                text-white
-                text-[11px]
-                tracking-[2px]
-                font-semibold
-                mb-6
-                "
+                className="text-white text-[11px] tracking-[2px] font-semibold mb-6"
               >
 
                 CONNECT
@@ -572,20 +454,11 @@ TryDiveFooterAdmin() {
               </h4>
 
               <div
-                className="
-                flex
-                items-center
-                gap-2
-                text-white/70
-                text-sm
-                mb-5
-                "
+                className="flex items-center gap-2 text-white/70 text-sm mb-5"
               >
 
                 <FaWhatsapp
-                  className="
-                  text-cyan-400
-                  "
+                  className="text-cyan-400"
                 />
 
                 <input
@@ -603,11 +476,7 @@ TryDiveFooterAdmin() {
 
                     })
                   }
-                  className="
-                  bg-transparent
-                  outline-none
-                  text-white
-                  "
+                  className="bg-transparent outline-none text-white"
                 />
 
               </div>
@@ -630,25 +499,11 @@ TryDiveFooterAdmin() {
                 placeholder="
                 WhatsApp URL
                 "
-                className="
-                w-full
-                rounded-full
-                bg-white/[0.03]
-                border
-                border-white/10
-                px-5
-                py-3
-                text-sm
-                text-white
-                outline-none
-                "
+                className="w-full rounded-full bg-white/[0.03] border border-white/10 px-5 py-3 text-sm text-white outline-none"
               />
 
               <div
-                className="
-                space-y-3
-                mt-4
-                "
+                className="space-y-3 mt-4"
               >
 
                 <input
@@ -666,18 +521,7 @@ TryDiveFooterAdmin() {
 
                     })
                   }
-                  className="
-                  w-full
-                  h-[44px]
-                  rounded-full
-                  bg-white/[0.03]
-                  border
-                  border-white/10
-                  px-5
-                  text-sm
-                  text-white
-                  outline-none
-                  "
+                  className="w-full h-[44px] rounded-full bg-white/[0.03] border border-white/10 px-5 text-sm text-white outline-none"
                 />
 
                 <input
@@ -695,17 +539,7 @@ TryDiveFooterAdmin() {
 
                     })
                   }
-                  className="
-                  w-full
-                  h-[44px]
-                  rounded-full
-                  bg-cyan-500
-                  text-white
-                  text-sm
-                  font-semibold
-                  text-center
-                  outline-none
-                  "
+                  className="w-full h-[44px] rounded-full bg-cyan-500 text-white text-sm font-semibold text-center outline-none"
                 />
 
               </div>
@@ -715,13 +549,7 @@ TryDiveFooterAdmin() {
             <div>
 
               <h4
-                className="
-                text-white
-                text-[11px]
-                tracking-[2px]
-                font-semibold
-                mb-6
-                "
+                className="text-white text-[11px] tracking-[2px] font-semibold mb-6"
               >
 
                 INFORMATION
@@ -729,9 +557,7 @@ TryDiveFooterAdmin() {
               </h4>
 
               <div
-                className="
-                space-y-4
-                "
+                className="space-y-4"
               >
 
                 {links
@@ -748,11 +574,7 @@ TryDiveFooterAdmin() {
                         key={
                           item.id
                         }
-                        className="
-                        flex
-                        items-center
-                        gap-2
-                        "
+                        className="flex items-center gap-2"
                       >
 
                         <input
@@ -770,13 +592,7 @@ TryDiveFooterAdmin() {
                                 .value
                             )
                           }
-                          className="
-                          flex-1
-                          bg-transparent
-                          text-sm
-                          text-white/50
-                          outline-none
-                          "
+                          className="flex-1 bg-transparent text-sm text-white/50 outline-none"
                         />
 
                         <Trash2
@@ -786,10 +602,7 @@ TryDiveFooterAdmin() {
                               item.id
                             )
                           }
-                          className="
-                          text-red-400
-                          cursor-pointer
-                          "
+                          className="text-red-400 cursor-pointer"
                         />
 
                       </div>
@@ -804,13 +617,7 @@ TryDiveFooterAdmin() {
             <div>
 
               <h4
-                className="
-                text-white
-                text-[11px]
-                tracking-[2px]
-                font-semibold
-                mb-6
-                "
+                className="text-white text-[11px] tracking-[2px] font-semibold mb-6"
               >
 
                 EXPERIENCES
@@ -818,9 +625,7 @@ TryDiveFooterAdmin() {
               </h4>
 
               <div
-                className="
-                space-y-4
-                "
+                className="space-y-4"
               >
 
                 {links
@@ -837,11 +642,7 @@ TryDiveFooterAdmin() {
                         key={
                           item.id
                         }
-                        className="
-                        flex
-                        items-center
-                        gap-2
-                        "
+                        className="flex items-center gap-2"
                       >
 
                         <input
@@ -859,13 +660,7 @@ TryDiveFooterAdmin() {
                                 .value
                             )
                           }
-                          className="
-                          flex-1
-                          bg-transparent
-                          text-sm
-                          text-white/50
-                          outline-none
-                          "
+                          className="flex-1 bg-transparent text-sm text-white/50 outline-none"
                         />
 
                         <Trash2
@@ -875,10 +670,7 @@ TryDiveFooterAdmin() {
                               item.id
                             )
                           }
-                          className="
-                          text-red-400
-                          cursor-pointer
-                          "
+                          className="text-red-400 cursor-pointer"
                         />
 
                       </div>
@@ -893,13 +685,7 @@ TryDiveFooterAdmin() {
             <div>
 
               <h4
-                className="
-                text-white
-                text-[11px]
-                tracking-[2px]
-                font-semibold
-                mb-6
-                "
+                className="text-white text-[11px] tracking-[2px] font-semibold mb-6"
               >
 
                 DIVING COURSES
@@ -907,9 +693,7 @@ TryDiveFooterAdmin() {
               </h4>
 
               <div
-                className="
-                space-y-4
-                "
+                className="space-y-4"
               >
 
                 {links
@@ -926,11 +710,7 @@ TryDiveFooterAdmin() {
                         key={
                           item.id
                         }
-                        className="
-                        flex
-                        items-center
-                        gap-2
-                        "
+                        className="flex items-center gap-2"
                       >
 
                         <input
@@ -948,13 +728,7 @@ TryDiveFooterAdmin() {
                                 .value
                             )
                           }
-                          className="
-                          flex-1
-                          bg-transparent
-                          text-sm
-                          text-white/50
-                          outline-none
-                          "
+                          className="flex-1 bg-transparent text-sm text-white/50 outline-none"
                         />
 
                         <Trash2
@@ -964,10 +738,7 @@ TryDiveFooterAdmin() {
                               item.id
                             )
                           }
-                          className="
-                          text-red-400
-                          cursor-pointer
-                          "
+                          className="text-red-400 cursor-pointer"
                         />
 
                       </div>
@@ -982,27 +753,12 @@ TryDiveFooterAdmin() {
 
           {/* DIVIDER */}
           <div
-            className="
-            mt-16
-            border-t
-            border-white/10
-            pt-8
-            flex
-            flex-col
-            md:flex-row
-            items-center
-            justify-between
-            gap-6
-            "
+            className="mt-16 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-6"
           >
 
             {/* SOCIALS */}
             <div
-              className="
-              flex
-              items-center
-              gap-3
-              "
+              className="flex items-center gap-3"
             >
 
               {socials.map(
@@ -1012,26 +768,11 @@ TryDiveFooterAdmin() {
                     key={
                       item.id
                     }
-                    className="
-                    flex
-                    flex-col
-                    gap-2
-                    "
+                    className="flex flex-col gap-2"
                   >
 
                     <button
-                      className="
-                      w-10
-                      h-10
-                      rounded-full
-                      border
-                      border-white/10
-                      bg-white/[0.03]
-                      flex
-                      items-center
-                      justify-center
-                      text-white/70
-                      "
+                      className="w-10 h-10 rounded-full border border-white/10 bg-white/[0.03] flex items-center justify-center text-white/70"
                     >
 
                       {item.icon_name ===
@@ -1071,18 +812,7 @@ TryDiveFooterAdmin() {
                             .value
                         )
                       }
-                      className="
-                      w-[140px]
-                      rounded-xl
-                      bg-white/5
-                      border
-                      border-white/10
-                      px-3
-                      py-2
-                      text-xs
-                      text-white
-                      outline-none
-                      "
+                      className="w-[140px] rounded-xl bg-white/5 border border-white/10 px-3 py-2 text-xs text-white outline-none"
                     />
 
                   </div>
@@ -1107,16 +837,7 @@ TryDiveFooterAdmin() {
 
                 })
               }
-              className="
-              text-[11px]
-              tracking-[1px]
-              text-white/30
-              text-center
-              bg-transparent
-              outline-none
-              w-full
-              md:w-[420px]
-              "
+              className="text-[11px] tracking-[1px] text-white/30 text-center bg-transparent outline-none w-full md:w-[420px]"
             />
 
           </div>
@@ -1127,11 +848,7 @@ TryDiveFooterAdmin() {
 
       {/* SAVE BUTTON */}
       <div
-        className="
-        flex
-        justify-center
-        mt-10
-        "
+        className="flex justify-center mt-10"
       >
 
         <button
@@ -1141,19 +858,7 @@ TryDiveFooterAdmin() {
           disabled={
             saving
           }
-          className="
-          flex
-          items-center
-          gap-3
-          px-8
-          py-4
-          rounded-2xl
-          bg-cyan-500
-          text-white
-          hover:scale-[1.03]
-          transition
-          shadow-lg
-          "
+          className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-500 text-white hover:scale-[1.03] transition shadow-lg"
         >
 
           <Save

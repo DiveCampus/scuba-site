@@ -8,13 +8,7 @@ export const getDivetry =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "divetry_section"
@@ -27,13 +21,7 @@ export const getDivetry =
       .single();
 
     /* CARDS */
-    const {
-
-      data: cards,
-
-      error: cardsError,
-
-    } = await supabase
+    const { data: cards, error: cardsError } = await supabase
 
       .from(
         "divetry_cards"
@@ -99,13 +87,7 @@ export const updateDivetrySection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "divetry_section"
@@ -160,13 +142,7 @@ export const updateDivetryCard =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "divetry_cards"

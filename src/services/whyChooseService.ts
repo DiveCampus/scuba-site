@@ -3,10 +3,7 @@ import { supabase } from "@/lib/supabaseClient";
 /* ================= GET ================= */
 
 export const getWhyChoose = async () => {
-  const {
-    data: section,
-    error: secErr,
-  } = await supabase
+  const { data: section, error: secErr } = await supabase
     .from(
       "kadir_why_choose_section"
     )
@@ -16,10 +13,7 @@ export const getWhyChoose = async () => {
     })
     .limit(1);
 
-  const {
-    data: features,
-    error: featErr,
-  } = await supabase
+  const { data: features, error: featErr } = await supabase
     .from(
       "kadir_why_choose_features"
     )
@@ -44,8 +38,7 @@ export const getWhyChoose = async () => {
 
 export const updateWhySection =
   async (section: any) => {
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "kadir_why_choose_section"
         )
@@ -85,8 +78,7 @@ export const updateWhySection =
 
 export const updateWhyFeature =
   async (item: any) => {
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "kadir_why_choose_features"
         )
@@ -118,8 +110,7 @@ export const updateWhyFeature =
 
 export const createWhyFeature =
   async (item: any) => {
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "kadir_why_choose_features"
         )
@@ -144,8 +135,7 @@ export const createWhyFeature =
 
 export const deleteWhyFeature =
   async (id: string) => {
-    const { error } =
-      await supabase
+    const { error } = await supabase
         .from(
           "kadir_why_choose_features"
         )

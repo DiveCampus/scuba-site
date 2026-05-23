@@ -7,10 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getPadiOpenDiver =
   async () => {
 
-    const {
-      data,
-      error,
-    } = await supabase
+    const { data, error } = await supabase
       .from(
         "kadir_padi_open_diver"
       )
@@ -31,10 +28,7 @@ export const getPadiOpenDiver =
 export const createPadiOpenDiver =
   async (payload: any) => {
 
-    const {
-      data,
-      error,
-    } = await supabase
+    const { data, error } = await supabase
       .from(
         "kadir_padi_open_diver"
       )
@@ -60,10 +54,7 @@ export const updatePadiOpenDiver =
     payload: any
   ) => {
 
-    const {
-      data,
-      error,
-    } = await supabase
+    const { data, error } = await supabase
       .from(
         "kadir_padi_open_diver"
       )
@@ -92,8 +83,7 @@ export const deletePadiOpenDiver =
     id: string
   ) => {
 
-    const { error } =
-      await supabase
+    const { error } = await supabase
         .from(
           "kadir_padi_open_diver"
         )

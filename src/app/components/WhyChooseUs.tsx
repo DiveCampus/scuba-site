@@ -68,64 +68,27 @@ export function WhyChooseUs() {
             <motion.div
               key={card.id}
               whileHover={{ y: -12 }}
-              className="
-                group relative
-                w-[280px] h-[400px]
-                overflow-hidden
-                cursor-pointer
-                rounded-[24px]
-                backdrop-blur-xl
-                bg-white/10
-                border border-white/20
-                shadow-[0_20px_60px_rgba(0,0,0,0.5)]
-                transition-all duration-500
-                hover:border-cyan-300
-                hover:bg-white/15
-              "
+              className="group relative w-[280px] h-[400px] overflow-hidden cursor-pointer rounded-[24px] backdrop-blur-xl bg-white/10 border border-white/20 shadow-[0_20px_60px_rgba(0,0,0,0.5)] transition-all duration-500 hover:border-cyan-300 hover:bg-white/15"
             >
               {/* IMAGE */}
               <img
                 src={card.image}
                 alt={card.title}
-                className="
-                  absolute inset-0
-                  w-full h-full object-cover
-                  transition-all duration-500
-                  group-hover:opacity-0
-                  group-hover:scale-110
-                "
+                className="absolute inset-0 w-full h-full object-cover transition-all duration-500 group-hover:opacity-0 group-hover:scale-110"
               />
 
               {/* HOVER BG */}
-              <div className="
-                absolute inset-0
-                bg-[#02131d]
-                opacity-0
-                group-hover:opacity-100
-                transition-all duration-500
-              " />
+              <div className="absolute inset-0 bg-[#02131d] opacity-0 group-hover:opacity-100 transition-all duration-500" />
 
               {/* TITLE */}
-              <div className="
-                absolute bottom-6 left-6 z-20
-                group-hover:opacity-0
-                transition
-              ">
+              <div className="absolute bottom-6 left-6 z-20 group-hover:opacity-0 transition">
                 <h3 className="text-2xl font-bold text-white">
                   {card.title}
                 </h3>
               </div>
 
               {/* CONTENT */}
-              <div className="
-                absolute inset-0 z-30
-                opacity-0
-                group-hover:opacity-100
-                transition-all duration-500
-                flex flex-col justify-center
-                px-6
-                overflow-y-auto
-              ">
+              <div className="absolute inset-0 z-30 opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-center px-6 overflow-y-auto">
                 <h3 className="text-xl font-bold text-cyan-300 mb-4">
                   {card.title}
                 </h3>

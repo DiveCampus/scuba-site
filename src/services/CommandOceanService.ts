@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getCommandOceanSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("command_ocean_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateCommandOceanSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("command_ocean_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateCommandOceanSection =
 export const getCommandOceanItems =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("command_ocean_items")
         .select("*")
         .order("sort_order", {
@@ -90,8 +87,7 @@ export const updateCommandOceanItem =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("command_ocean_items")
         .update({
           ...payload,

@@ -40,8 +40,7 @@ export function AdvancedTrainingGoldEliteSection() {
 
     const fetchData = async () => {
 
-      const { data } =
-        await getAdvancedTrainingEliteSection();
+      const { data } = await getAdvancedTrainingEliteSection();
 
       setData(data);
 
@@ -58,66 +57,33 @@ export function AdvancedTrainingGoldEliteSection() {
   return (
 
     <section
-      className="
-        py-36
-        bg-[#f4f7fb]
-      "
+      className="py-36 bg-[#f4f7fb]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-        grid
-        lg:grid-cols-2
-        gap-20
-        items-center
-      ">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
 
         {/* ================= LEFT ================= */}
         <div>
 
           {/* BADGE */}
-          <div className="
-            inline-flex
-            items-center
-            px-7
-            py-3
-            rounded-full
-            border
-            border-cyan-400/40
-            text-cyan-400
-            text-[10px]
-            tracking-[4px]
-            mb-10
-          ">
+          <div className="inline-flex items-center px-7 py-3 rounded-full border border-cyan-400/40 text-cyan-400 text-[10px] tracking-[4px] mb-10">
 
             {data?.badge}
 
           </div>
 
           {/* TITLE */}
-          <h2 className="
-            text-5xl
-            md:text-6xl
-            font-bold
-            text-[#071133]
-            leading-[1.08]
-            tracking-[-2px]
-            mb-10
-          ">
+          <h2 className="text-5xl md:text-6xl font-bold text-[#071133] leading-[1.08] tracking-[-2px] mb-10">
 
             {data?.title}
 
             <br />
 
-            <span className="
-              text-cyan-500
-            ">
+            <span className="text-cyan-500">
 
               {
                 data?.highlighted_title
@@ -128,13 +94,7 @@ export function AdvancedTrainingGoldEliteSection() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="
-            text-[#5f6982]
-            text-[17px]
-            leading-[2]
-            max-w-2xl
-            mb-16
-          ">
+          <p className="text-[#5f6982] text-[17px] leading-[2] max-w-2xl mb-16">
 
             {data?.description}
 
@@ -148,63 +108,28 @@ export function AdvancedTrainingGoldEliteSection() {
             transition={{
               duration: 0.3,
             }}
-            className="
-              relative
-              bg-[#fffdf8]
-              border
-              border-yellow-300
-              rounded-[34px]
-              p-10
-              shadow-sm
-            "
+            className="relative bg-[#fffdf8] border border-yellow-300 rounded-[34px] p-10 shadow-sm"
           >
 
             {/* ICON */}
-            <div className="
-              absolute
-              -top-5
-              left-8
-              w-12
-              h-12
-              rounded-full
-              bg-white
-              border
-              border-yellow-300
-              flex
-              items-center
-              justify-center
-            ">
+            <div className="absolute -top-5 left-8 w-12 h-12 rounded-full bg-white border border-yellow-300 flex items-center justify-center">
 
               <Award
-                className="
-                  text-yellow-500
-                "
+                className="text-yellow-500"
                 size={18}
               />
 
             </div>
 
             {/* TITLE */}
-            <h3 className="
-              text-[36px]
-              font-bold
-              text-[#071133]
-              leading-[1.2]
-              mb-8
-              mt-4
-            ">
+            <h3 className="text-[36px] font-bold text-[#071133] leading-[1.2] mb-8 mt-4">
 
               {data?.card_title}
 
             </h3>
 
             {/* TEXT */}
-            <p className="
-              text-[#667085]
-              leading-[2]
-              text-[15px]
-              mb-10
-            ">
+            <p className="text-[#667085] leading-[2] text-[15px] mb-10">
 
               {
                 data?.card_description
@@ -213,26 +138,10 @@ export function AdvancedTrainingGoldEliteSection() {
             </p>
 
             {/* TAGS */}
-            <div className="
-              flex
-              flex-wrap
-              gap-4
-            ">
+            <div className="flex flex-wrap gap-4">
 
               {/* TAG 1 */}
-              <div className="
-                px-6
-                py-3
-                rounded-full
-                border
-                border-yellow-400
-                flex
-                items-center
-                gap-3
-                text-yellow-600
-                text-[12px]
-                tracking-[1px]
-              ">
+              <div className="px-6 py-3 rounded-full border border-yellow-400 flex items-center gap-3 text-yellow-600 text-[12px] tracking-[1px]">
 
                 <Clock size={14} />
 
@@ -241,19 +150,7 @@ export function AdvancedTrainingGoldEliteSection() {
               </div>
 
               {/* TAG 2 */}
-              <div className="
-                px-6
-                py-3
-                rounded-full
-                border
-                border-yellow-400
-                flex
-                items-center
-                gap-3
-                text-yellow-600
-                text-[12px]
-                tracking-[1px]
-              ">
+              <div className="px-6 py-3 rounded-full border border-yellow-400 flex items-center gap-3 text-yellow-600 text-[12px] tracking-[1px]">
 
                 <Award size={14} />
 
@@ -262,19 +159,7 @@ export function AdvancedTrainingGoldEliteSection() {
               </div>
 
               {/* TAG 3 */}
-              <div className="
-                px-6
-                py-3
-                rounded-full
-                border
-                border-yellow-400
-                flex
-                items-center
-                gap-3
-                text-yellow-600
-                text-[12px]
-                tracking-[1px]
-              ">
+              <div className="px-6 py-3 rounded-full border border-yellow-400 flex items-center gap-3 text-yellow-600 text-[12px] tracking-[1px]">
 
                 <Users size={14} />
 
@@ -289,11 +174,7 @@ export function AdvancedTrainingGoldEliteSection() {
         </div>
 
         {/* ================= RIGHT ================= */}
-        <div className="
-          grid
-          grid-cols-2
-          gap-6
-        ">
+        <div className="grid grid-cols-2 gap-6">
 
           {/* BIG IMAGE */}
           <motion.div
@@ -303,22 +184,12 @@ export function AdvancedTrainingGoldEliteSection() {
             transition={{
               duration: 0.3,
             }}
-            className="
-              row-span-2
-              rounded-[34px]
-              overflow-hidden
-              shadow-md
-              min-h-[620px]
-            "
+            className="row-span-2 rounded-[34px] overflow-hidden shadow-md min-h-[620px]"
           >
 
             <img
               src={data?.image_1}
-              className="
-                w-full
-                h-full
-                object-cover
-              "
+              className="w-full h-full object-cover"
             />
 
           </motion.div>
@@ -331,21 +202,12 @@ export function AdvancedTrainingGoldEliteSection() {
             transition={{
               duration: 0.3,
             }}
-            className="
-              rounded-[34px]
-              overflow-hidden
-              shadow-md
-              h-[300px]
-            "
+            className="rounded-[34px] overflow-hidden shadow-md h-[300px]"
           >
 
             <img
               src={data?.image_2}
-              className="
-                w-full
-                h-full
-                object-cover
-              "
+              className="w-full h-full object-cover"
             />
 
           </motion.div>
@@ -358,21 +220,12 @@ export function AdvancedTrainingGoldEliteSection() {
             transition={{
               duration: 0.3,
             }}
-            className="
-              rounded-[34px]
-              overflow-hidden
-              shadow-md
-              h-[300px]
-            "
+            className="rounded-[34px] overflow-hidden shadow-md h-[300px]"
           >
 
             <img
               src={data?.image_3}
-              className="
-                w-full
-                h-full
-                object-cover
-              "
+              className="w-full h-full object-cover"
             />
 
           </motion.div>

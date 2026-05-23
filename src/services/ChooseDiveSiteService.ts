@@ -8,13 +8,7 @@ export const getChooseDiveSite =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "choose_dive_site_section"
@@ -27,13 +21,7 @@ export const getChooseDiveSite =
       .single();
 
     /* CARDS */
-    const {
-
-      data: cards,
-
-      error: cardsError,
-
-    } = await supabase
+    const { data: cards, error: cardsError } = await supabase
 
       .from(
         "choose_dive_site_cards"
@@ -49,13 +37,7 @@ export const getChooseDiveSite =
       );
 
     /* ITEMS */
-    const {
-
-      data: items,
-
-      error: itemsError,
-
-    } = await supabase
+    const { data: items, error: itemsError } = await supabase
 
       .from(
         "choose_dive_site_items"
@@ -137,13 +119,7 @@ export const updateChooseDiveSiteSection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "choose_dive_site_section"
@@ -190,13 +166,7 @@ export const updateChooseDiveSiteCard =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "choose_dive_site_cards"
@@ -243,13 +213,7 @@ export const updateChooseDiveSiteItem =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "choose_dive_site_items"

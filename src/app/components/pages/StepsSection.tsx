@@ -22,10 +22,7 @@ export function StepsSection() {
 
   useEffect(() => {
     const load = async () => {
-      const {
-        section,
-        list,
-      } = await getSteps();
+      const { section, list } = await getSteps();
 
       setSection(section);
 
@@ -52,17 +49,7 @@ export function StepsSection() {
         <div className="text-center max-w-4xl mx-auto px-6 mb-20">
 
           <h2
-            className="
-              flex
-              flex-col
-              items-center
-              text-4xl
-              md:text-7xl
-              font-bold
-              text-[#0a0e27]
-              leading-[1.05]
-              tracking-[1px]
-            "
+            className="flex flex-col items-center text-4xl md:text-7xl font-bold text-[#0a0e27] leading-[1.05] tracking-[1px]"
             style={{
               fontFamily:
                 "Harabara, sans-serif",
@@ -73,11 +60,7 @@ export function StepsSection() {
             </span>
 
             <span
-              className="
-                text-cyan-500
-                mt-3
-                md:mt-5
-              "
+              className="text-cyan-500 mt-3 md:mt-5"
             >
               {
                 section.highlight
@@ -86,10 +69,7 @@ export function StepsSection() {
           </h2>
 
           <p
-            className="
-              text-gray-500
-              mt-4
-            "
+            className="text-gray-500 mt-4"
             style={{
               fontFamily:
                 "Inter, sans-serif",
@@ -103,15 +83,7 @@ export function StepsSection() {
 
         {/* STEPS */}
         <div
-          className="
-            relative
-            max-w-7xl
-            mx-auto
-            px-6
-            grid
-            md:grid-cols-4
-            gap-6
-          "
+          className="relative max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-6"
         >
           {steps.map(
             (step, i) => (
@@ -122,16 +94,7 @@ export function StepsSection() {
                 {/* ARROW */}
                 {i !== 0 && (
                   <div
-                    className="
-                      hidden
-                      md:block
-                      absolute
-                      -left-4
-                      top-1/2
-                      -translate-y-1/2
-                      text-cyan-400
-                      text-xl
-                    "
+                    className="hidden md:block absolute -left-4 top-1/2 -translate-y-1/2 text-cyan-400 text-xl"
                   >
                     →
                   </div>
@@ -159,17 +122,7 @@ export function StepsSection() {
                   {/* BADGE */}
                   {step.highlight && (
                     <div
-                      className="
-                        absolute
-                        top-3
-                        right-3
-                        text-[10px]
-                        px-3
-                        py-1
-                        bg-cyan-500
-                        text-white
-                        rounded-full
-                      "
+                      className="absolute top-3 right-3 text-[10px] px-3 py-1 bg-cyan-500 text-white rounded-full"
                     >
                       {step.tag}
                     </div>
@@ -186,11 +139,7 @@ export function StepsSection() {
 
                   {/* TITLE */}
                   <h3
-                    className="
-                      font-semibold
-                      text-[#0a0e27]
-                      mb-2
-                    "
+                    className="font-semibold text-[#0a0e27] mb-2"
                     style={{
                       fontFamily:
                         "Harabara, sans-serif",
@@ -201,11 +150,7 @@ export function StepsSection() {
 
                   {/* DESC */}
                   <p
-                    className="
-                      text-sm
-                      text-gray-500
-                      leading-relaxed
-                    "
+                    className="text-sm text-gray-500 leading-relaxed"
                     style={{
                       fontFamily:
                         "Inter, sans-serif",

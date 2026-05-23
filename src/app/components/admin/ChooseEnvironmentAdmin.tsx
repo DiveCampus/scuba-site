@@ -44,11 +44,9 @@ export default function ChooseEnvironmentAdmin() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getChooseEnvironmentSection();
+      const { data: sectionData } = await getChooseEnvironmentSection();
 
-      const { data: cardsData } =
-        await getChooseEnvironmentCards();
+      const { data: cardsData } = await getChooseEnvironmentCards();
 
       setSection(sectionData);
 
@@ -89,14 +87,7 @@ export default function ChooseEnvironmentAdmin() {
 
     return (
 
-      <div className="
-        min-h-screen
-        flex
-        items-center
-        justify-center
-        bg-[#03121c]
-        text-white
-      ">
+      <div className="min-h-screen flex items-center justify-center bg-[#03121c] text-white">
 
         Loading...
 
@@ -109,13 +100,7 @@ export default function ChooseEnvironmentAdmin() {
   return (
 
     <section
-      className="
-        relative
-        py-36
-        bg-[#03121c]
-        text-white
-        overflow-hidden
-      "
+      className="relative py-36 bg-[#03121c] text-white overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -123,73 +108,24 @@ export default function ChooseEnvironmentAdmin() {
     >
 
       {/* BACKGROUND */}
-      <div className="
-        absolute
-        top-0
-        left-0
-        w-full
-        h-full
-        bg-gradient-to-br
-        from-[#061a28]
-        via-[#03121c]
-        to-black
-      " />
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-[#061a28] via-[#03121c] to-black" />
 
-      <div className="
-        absolute
-        top-20
-        left-20
-        w-72
-        h-72
-        bg-cyan-400/10
-        blur-[120px]
-        rounded-full
-      " />
+      <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-400/10 blur-[120px] rounded-full" />
 
-      <div className="
-        absolute
-        bottom-20
-        right-20
-        w-72
-        h-72
-        bg-blue-500/10
-        blur-[120px]
-        rounded-full
-      " />
+      <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
-      <div className="
-        relative
-        max-w-6xl
-        mx-auto
-        px-6
-      ">
+      <div className="relative max-w-6xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          flex-wrap
-          gap-5
-          mb-20
-        ">
+        <div className="flex items-center justify-between flex-wrap gap-5 mb-20">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-400
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-400 mb-3">
               ADMIN PANEL
             </p>
 
-            <h2 className="
-              text-3xl
-              md:text-5xl
-              font-bold
-            ">
+            <h2 className="text-3xl md:text-5xl font-bold">
               Choose Environment
             </h2>
 
@@ -200,17 +136,7 @@ export default function ChooseEnvironmentAdmin() {
               scale: 0.95,
             }}
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-7
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-7 rounded-2xl bg-cyan-400 text-black font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -224,32 +150,14 @@ export default function ChooseEnvironmentAdmin() {
         </div>
 
         {/* ================= HEADER FORM ================= */}
-        <div className="
-          bg-white/5
-          backdrop-blur-xl
-          border
-          border-white/10
-          rounded-3xl
-          p-8
-          mb-20
-          space-y-6
-        ">
+        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-3xl p-8 mb-20 space-y-6">
 
           {/* TITLE */}
-          <div className="
-            grid
-            md:grid-cols-2
-            gap-6
-          ">
+          <div className="grid md:grid-cols-2 gap-6">
 
             <div>
 
-              <label className="
-                text-[10px]
-                tracking-[3px]
-                uppercase
-                text-white/45
-              ">
+              <label className="text-[10px] tracking-[3px] uppercase text-white/45">
                 Title
               </label>
 
@@ -264,30 +172,14 @@ export default function ChooseEnvironmentAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  mt-3
-                  w-full
-                  h-[58px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
+                className="mt-3 w-full h-[58px] rounded-2xl bg-white/5 border border-white/10 px-5 text-white outline-none"
               />
 
             </div>
 
             <div>
 
-              <label className="
-                text-[10px]
-                tracking-[3px]
-                uppercase
-                text-white/45
-              ">
+              <label className="text-[10px] tracking-[3px] uppercase text-white/45">
                 Highlighted Title
               </label>
 
@@ -302,18 +194,7 @@ export default function ChooseEnvironmentAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  mt-3
-                  w-full
-                  h-[58px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-5
-                  text-cyan-300
-                  outline-none
-                "
+                className="mt-3 w-full h-[58px] rounded-2xl bg-white/5 border border-white/10 px-5 text-cyan-300 outline-none"
               />
 
             </div>
@@ -323,12 +204,7 @@ export default function ChooseEnvironmentAdmin() {
           {/* DESCRIPTION */}
           <div>
 
-            <label className="
-              text-[10px]
-              tracking-[3px]
-              uppercase
-              text-white/45
-            ">
+            <label className="text-[10px] tracking-[3px] uppercase text-white/45">
               Description
             </label>
 
@@ -344,18 +220,7 @@ export default function ChooseEnvironmentAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                mt-3
-                w-full
-                rounded-2xl
-                bg-white/5
-                border
-                border-white/10
-                p-5
-                text-white
-                outline-none
-                resize-none
-              "
+              className="mt-3 w-full rounded-2xl bg-white/5 border border-white/10 p-5 text-white outline-none resize-none"
             />
 
           </div>
@@ -363,11 +228,7 @@ export default function ChooseEnvironmentAdmin() {
         </div>
 
         {/* ================= CARDS ================= */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-9
-        ">
+        <div className="grid md:grid-cols-2 gap-9">
 
           {cards.map(
             (card, i) => (
@@ -380,28 +241,13 @@ export default function ChooseEnvironmentAdmin() {
                 transition={{
                   duration: 0.25,
                 }}
-                className="
-                  relative
-                  p-10
-                  rounded-3xl
-                  border
-                  border-white/10
-                  bg-white/5
-                  backdrop-blur-xl
-                  shadow-[0_20px_60px_rgba(0,0,0,0.5)]
-                  space-y-6
-                "
+                className="relative p-10 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.5)] space-y-6"
               >
 
                 {/* TOP LABEL */}
                 <div>
 
-                  <label className="
-                    text-[10px]
-                    tracking-[3px]
-                    uppercase
-                    text-white/45
-                  ">
+                  <label className="text-[10px] tracking-[3px] uppercase text-white/45">
                     Top Label
                   </label>
 
@@ -431,18 +277,7 @@ export default function ChooseEnvironmentAdmin() {
                       );
 
                     }}
-                    className="
-                      mt-3
-                      w-full
-                      h-[56px]
-                      rounded-2xl
-                      bg-white/5
-                      border
-                      border-white/10
-                      px-5
-                      text-cyan-300
-                      outline-none
-                    "
+                    className="mt-3 w-full h-[56px] rounded-2xl bg-white/5 border border-white/10 px-5 text-cyan-300 outline-none"
                   />
 
                 </div>
@@ -450,12 +285,7 @@ export default function ChooseEnvironmentAdmin() {
                 {/* TITLE */}
                 <div>
 
-                  <label className="
-                    text-[10px]
-                    tracking-[3px]
-                    uppercase
-                    text-white/45
-                  ">
+                  <label className="text-[10px] tracking-[3px] uppercase text-white/45">
                     Card Title
                   </label>
 
@@ -485,20 +315,7 @@ export default function ChooseEnvironmentAdmin() {
                       );
 
                     }}
-                    className="
-                      mt-3
-                      w-full
-                      h-[58px]
-                      rounded-2xl
-                      bg-white/5
-                      border
-                      border-white/10
-                      px-5
-                      text-white
-                      text-xl
-                      font-semibold
-                      outline-none
-                    "
+                    className="mt-3 w-full h-[58px] rounded-2xl bg-white/5 border border-white/10 px-5 text-white text-xl font-semibold outline-none"
                   />
 
                 </div>
@@ -506,12 +323,7 @@ export default function ChooseEnvironmentAdmin() {
                 {/* DESCRIPTION */}
                 <div>
 
-                  <label className="
-                    text-[10px]
-                    tracking-[3px]
-                    uppercase
-                    text-white/45
-                  ">
+                  <label className="text-[10px] tracking-[3px] uppercase text-white/45">
                     Description
                   </label>
 
@@ -542,46 +354,23 @@ export default function ChooseEnvironmentAdmin() {
                       );
 
                     }}
-                    className="
-                      mt-3
-                      w-full
-                      rounded-2xl
-                      bg-white/5
-                      border
-                      border-white/10
-                      p-5
-                      text-white
-                      outline-none
-                      resize-none
-                    "
+                    className="mt-3 w-full rounded-2xl bg-white/5 border border-white/10 p-5 text-white outline-none resize-none"
                   />
 
                 </div>
 
                 {/* FEATURES */}
-                <div className="
-                  space-y-5
-                ">
+                <div className="space-y-5">
 
                   {[1, 2, 3].map(
                     (num) => (
 
                       <div
                         key={num}
-                        className="
-                          flex
-                          items-center
-                          gap-4
-                        "
+                        className="flex items-center gap-4"
                       >
 
-                        <span className="
-                          w-2
-                          h-2
-                          bg-cyan-400
-                          rounded-full
-                          shrink-0
-                        " />
+                        <span className="w-2 h-2 bg-cyan-400 rounded-full shrink-0" />
 
                         <input
                           value={
@@ -613,18 +402,7 @@ export default function ChooseEnvironmentAdmin() {
                             );
 
                           }}
-                          className="
-                            flex-1
-                            h-[50px]
-                            rounded-2xl
-                            bg-white/5
-                            border
-                            border-white/10
-                            px-5
-                            text-white
-                            outline-none
-                            tracking-[0.45px]
-                          "
+                          className="flex-1 h-[50px] rounded-2xl bg-white/5 border border-white/10 px-5 text-white outline-none tracking-[0.45px]"
                         />
 
                       </div>

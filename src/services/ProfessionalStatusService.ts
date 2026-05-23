@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getProfessionalStatusSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("professional_status_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateProfessionalStatusSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("professional_status_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateProfessionalStatusSection =
 export const getProfessionalStatusItems =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("professional_status_items")
         .select("*")
         .order("sort_order", {
@@ -90,8 +87,7 @@ export const updateProfessionalStatusItem =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("professional_status_items")
         .update({
           ...payload,

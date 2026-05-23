@@ -88,8 +88,7 @@ DiveConfidenceFAQAdmin() {
         reviews,
         faqs,
 
-      } =
-        await getDiveConfidenceFAQ();
+      } = await getDiveConfidenceFAQ();
 
       setSection(
         section
@@ -249,30 +248,18 @@ DiveConfidenceFAQAdmin() {
   return (
 
     <section
-      className="
-      py-28
-      bg-[#f7f9fc]
-      "
+      className="py-28 bg-[#f7f9fc]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="
-      max-w-6xl
-      mx-auto
-      grid
-      lg:grid-cols-2
-      gap-20
-      px-6
-      ">
+      <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 px-6">
 
         {/* LEFT SIDE */}
         <div
-          className="
-          max-w-md
-          "
+          className="max-w-md"
         >
 
           {/* TITLE */}
@@ -292,17 +279,7 @@ DiveConfidenceFAQAdmin() {
               })
             }
             rows={2}
-            className="
-            w-full
-            bg-transparent
-            text-4xl
-            md:text-5xl
-            font-semibold
-            resize-none
-            outline-none
-            text-[#0a0e27]
-            leading-[1.05]
-            "
+            className="w-full bg-transparent text-4xl md:text-5xl font-semibold resize-none outline-none text-[#0a0e27] leading-[1.05]"
           />
 
           {/* HIGHLIGHT */}
@@ -321,14 +298,7 @@ DiveConfidenceFAQAdmin() {
 
               })
             }
-            className="
-            mt-3
-            text-cyan-500
-            text-4xl
-            bg-transparent
-            outline-none
-            w-full
-            "
+            className="mt-3 text-cyan-500 text-4xl bg-transparent outline-none w-full"
           />
 
           {/* DESC */}
@@ -348,23 +318,11 @@ DiveConfidenceFAQAdmin() {
               })
             }
             rows={5}
-            className="
-            mt-7
-            w-full
-            resize-none
-            bg-transparent
-            outline-none
-            text-[15px]
-            leading-[1.9]
-            text-[#7b8794]
-            "
+            className="mt-7 w-full resize-none bg-transparent outline-none text-[15px] leading-[1.9] text-[#7b8794]"
           />
 
           {/* REVIEWS */}
-          <div className="
-          mt-10
-          space-y-4
-          ">
+          <div className="mt-10 space-y-4">
 
             {reviews.map(
               review => (
@@ -373,19 +331,7 @@ DiveConfidenceFAQAdmin() {
                   key={
                     review.id
                   }
-                  className="
-                  w-fit
-                  flex
-                  items-center
-                  gap-4
-                  px-5
-                  py-4
-                  rounded-full
-                  border
-                  border-[#d7e1ea]
-                  bg-white
-                  shadow-sm
-                  "
+                  className="w-fit flex items-center gap-4 px-5 py-4 rounded-full border border-[#d7e1ea] bg-white shadow-sm"
                 >
 
                   {review.icon_url ? (
@@ -394,10 +340,7 @@ DiveConfidenceFAQAdmin() {
                       src={
                         review.icon_url
                       }
-                      className="
-                      w-12
-                      object-contain
-                      "
+                      className="w-12 object-contain"
                     />
 
                   ) : (
@@ -421,9 +364,7 @@ DiveConfidenceFAQAdmin() {
                   )}
 
                   <div
-                    className="
-                    space-y-2
-                    "
+                    className="space-y-2"
                   >
 
                     <input
@@ -441,13 +382,7 @@ DiveConfidenceFAQAdmin() {
                             .value
                         )
                       }
-                      className="
-                      text-sm
-                      font-semibold
-                      text-[#0a0e27]
-                      outline-none
-                      bg-transparent
-                      "
+                      className="text-sm font-semibold text-[#0a0e27] outline-none bg-transparent"
                     />
 
                     <input
@@ -465,13 +400,7 @@ DiveConfidenceFAQAdmin() {
                             .value
                         )
                       }
-                      className="
-                      text-[10px]
-                      tracking-[1px]
-                      text-cyan-500
-                      bg-transparent
-                      outline-none
-                      "
+                      className="text-[10px] tracking-[1px] text-cyan-500 bg-transparent outline-none"
                     />
 
                   </div>
@@ -486,9 +415,7 @@ DiveConfidenceFAQAdmin() {
 
         {/* RIGHT FAQ */}
         <div
-          className="
-          space-y-4
-          "
+          className="space-y-4"
         >
 
           {faqs.map(
@@ -533,15 +460,7 @@ DiveConfidenceFAQAdmin() {
                           : i
                       )
                     }
-                    className="
-                    w-full
-                    flex
-                    items-center
-                    justify-between
-                    px-6
-                    py-5
-                    text-left
-                    "
+                    className="w-full flex items-center justify-between px-6 py-5 text-left"
                   >
 
                     <input
@@ -559,20 +478,11 @@ DiveConfidenceFAQAdmin() {
                             .value
                         )
                       }
-                      className="
-                      text-[15px]
-                      text-[#243447]
-                      font-medium
-                      bg-transparent
-                      outline-none
-                      flex-1
-                      "
+                      className="text-[15px] text-[#243447] font-medium bg-transparent outline-none flex-1"
                     />
 
                     <div
-                      className="
-                      text-cyan-500
-                      "
+                      className="text-cyan-500"
                     >
 
                       {isOpen ? (
@@ -614,10 +524,7 @@ DiveConfidenceFAQAdmin() {
                       >
 
                         <div
-                          className="
-                          px-6
-                          pb-6
-                          "
+                          className="px-6 pb-6"
                         >
 
                           <textarea
@@ -636,15 +543,7 @@ DiveConfidenceFAQAdmin() {
                               )
                             }
                             rows={4}
-                            className="
-                            w-full
-                            resize-none
-                            bg-transparent
-                            outline-none
-                            text-[14px]
-                            leading-[1.9]
-                            text-[#7b8794]
-                            "
+                            className="w-full resize-none bg-transparent outline-none text-[14px] leading-[1.9] text-[#7b8794]"
                           />
 
                         </div>
@@ -664,11 +563,7 @@ DiveConfidenceFAQAdmin() {
       </div>
 
       {/* SAVE */}
-      <div className="
-      flex
-      justify-center
-      mt-14
-      ">
+      <div className="flex justify-center mt-14">
 
         <button
           onClick={
@@ -677,19 +572,7 @@ DiveConfidenceFAQAdmin() {
           disabled={
             saving
           }
-          className="
-          flex
-          items-center
-          gap-3
-          px-8
-          py-4
-          rounded-2xl
-          bg-cyan-500
-          text-white
-          hover:scale-[1.03]
-          transition
-          shadow-lg
-          "
+          className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-500 text-white hover:scale-[1.03] transition shadow-lg"
         >
 
           <Save

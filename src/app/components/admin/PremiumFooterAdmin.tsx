@@ -45,14 +45,11 @@ export default function PremiumFooterAdmin() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getPremiumFooterSection();
+      const { data: sectionData } = await getPremiumFooterSection();
 
-      const { data: groupsData } =
-        await getPremiumFooterGroups();
+      const { data: groupsData } = await getPremiumFooterGroups();
 
-      const { data: linksData } =
-        await getPremiumFooterLinks();
+      const { data: linksData } = await getPremiumFooterLinks();
 
       setSection(sectionData);
 
@@ -92,14 +89,7 @@ export default function PremiumFooterAdmin() {
   return (
 
     <section
-      className="
-        relative
-        min-h-screen
-        bg-[#02131d]
-        text-white
-        py-28
-        overflow-hidden
-      "
+      className="relative min-h-screen bg-[#02131d] text-white py-28 overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -107,65 +97,31 @@ export default function PremiumFooterAdmin() {
     >
 
       {/* BACKGROUND */}
-      <div className="
-        absolute
-        inset-0
-      ">
+      <div className="absolute inset-0">
 
         <img
           src={
             section?.background_image
           }
-          className="
-            w-full
-            h-full
-            object-cover
-            opacity-10
-          "
+          className="w-full h-full object-cover opacity-10"
         />
 
-        <div className="
-          absolute
-          inset-0
-          bg-[#02131d]/95
-        " />
+        <div className="absolute inset-0 bg-[#02131d]/95" />
 
       </div>
 
-      <div className="
-        relative
-        z-10
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-16
-          flex-wrap
-          gap-5
-        ">
+        <div className="flex items-center justify-between mb-16 flex-wrap gap-5">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-400
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-400 mb-3">
               ADMIN PANEL
             </p>
 
-            <h2 className="
-              text-3xl
-              md:text-5xl
-              font-bold
-            ">
+            <h2 className="text-3xl md:text-5xl font-bold">
               Premium Footer
             </h2>
 
@@ -173,17 +129,7 @@ export default function PremiumFooterAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-7
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-7 rounded-2xl bg-cyan-400 text-black font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -197,12 +143,7 @@ export default function PremiumFooterAdmin() {
         </div>
 
         {/* SECTION */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-6
-          mb-14
-        ">
+        <div className="grid md:grid-cols-2 gap-6 mb-14">
 
           <input
             value={
@@ -215,16 +156,7 @@ export default function PremiumFooterAdmin() {
                   e.target.value,
               })
             }
-            className="
-              h-[56px]
-              rounded-2xl
-              bg-white/5
-              border
-              border-white/10
-              px-5
-              text-white
-              outline-none
-            "
+            className="h-[56px] rounded-2xl bg-white/5 border border-white/10 px-5 text-white outline-none"
             placeholder="Background Image"
           />
 
@@ -239,16 +171,7 @@ export default function PremiumFooterAdmin() {
                   e.target.value,
               })
             }
-            className="
-              h-[56px]
-              rounded-2xl
-              bg-white/5
-              border
-              border-white/10
-              px-5
-              text-white
-              outline-none
-            "
+            className="h-[56px] rounded-2xl bg-white/5 border border-white/10 px-5 text-white outline-none"
             placeholder="Connect Text"
           />
 
@@ -263,16 +186,7 @@ export default function PremiumFooterAdmin() {
                   e.target.value,
               })
             }
-            className="
-              h-[56px]
-              rounded-2xl
-              bg-white/5
-              border
-              border-white/10
-              px-5
-              text-white
-              outline-none
-            "
+            className="h-[56px] rounded-2xl bg-white/5 border border-white/10 px-5 text-white outline-none"
             placeholder="Email Placeholder"
           />
 
@@ -287,41 +201,21 @@ export default function PremiumFooterAdmin() {
                   e.target.value,
               })
             }
-            className="
-              h-[56px]
-              rounded-2xl
-              bg-white/5
-              border
-              border-white/10
-              px-5
-              text-white
-              outline-none
-            "
+            className="h-[56px] rounded-2xl bg-white/5 border border-white/10 px-5 text-white outline-none"
             placeholder="Subscribe Button"
           />
 
         </div>
 
         {/* GROUPS */}
-        <div className="
-          grid
-          md:grid-cols-4
-          gap-8
-        ">
+        <div className="grid md:grid-cols-4 gap-8">
 
           {groups.map(
             (group) => (
 
               <div
                 key={group.id}
-                className="
-                  bg-white/5
-                  border
-                  border-white/10
-                  rounded-3xl
-                  p-6
-                  backdrop-blur-xl
-                "
+                className="bg-white/5 border border-white/10 rounded-3xl p-6 backdrop-blur-xl"
               >
 
                 {/* GROUP TITLE */}
@@ -354,26 +248,11 @@ export default function PremiumFooterAdmin() {
                     );
 
                   }}
-                  className="
-                    w-full
-                    h-[52px]
-                    rounded-2xl
-                    bg-white/5
-                    border
-                    border-white/10
-                    px-4
-                    text-white
-                    outline-none
-                    mb-6
-                    text-[12px]
-                    tracking-[2px]
-                  "
+                  className="w-full h-[52px] rounded-2xl bg-white/5 border border-white/10 px-4 text-white outline-none mb-6 text-[12px] tracking-[2px]"
                 />
 
                 {/* LINKS */}
-                <div className="
-                  space-y-4
-                ">
+                <div className="space-y-4">
 
                   {links
                     .filter(
@@ -417,18 +296,7 @@ export default function PremiumFooterAdmin() {
                           );
 
                         }}
-                        className="
-                          w-full
-                          h-[50px]
-                          rounded-2xl
-                          bg-white/5
-                          border
-                          border-white/10
-                          px-4
-                          text-white
-                          outline-none
-                          text-[13px]
-                        "
+                        className="w-full h-[50px] rounded-2xl bg-white/5 border border-white/10 px-4 text-white outline-none text-[13px]"
                       />
 
                     ))}
@@ -443,9 +311,7 @@ export default function PremiumFooterAdmin() {
         </div>
 
         {/* COPYRIGHT */}
-        <div className="
-          mt-14
-        ">
+        <div className="mt-14">
 
           <textarea
             rows={3}
@@ -459,17 +325,7 @@ export default function PremiumFooterAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              rounded-3xl
-              bg-white/5
-              border
-              border-white/10
-              p-5
-              text-white
-              outline-none
-              resize-none
-            "
+            className="w-full rounded-3xl bg-white/5 border border-white/10 p-5 text-white outline-none resize-none"
           />
 
         </div>

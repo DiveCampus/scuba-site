@@ -68,15 +68,7 @@ export function ReviewsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.15 }}
               whileHover={{ y: -10 }}
-              className="
-                relative
-                bg-white/10 backdrop-blur-xl
-                border border-white/20
-                rounded-2xl p-6
-                shadow-[0_20px_60px_rgba(0,0,0,0.5)]
-                hover:border-cyan-300/50
-                transition-all duration-500
-              "
+              className="relative bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl p-6 shadow-[0_20px_60px_rgba(0,0,0,0.5)] hover:border-cyan-300/50 transition-all duration-500"
             >
 
               {/* USER */}

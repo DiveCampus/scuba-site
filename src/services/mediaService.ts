@@ -137,10 +137,7 @@ export const uploadMedia = async ({
         publicUrlData.publicUrl;
 
       // SAVE TO DB
-      const {
-        data,
-        error: dbError,
-      } = await supabase
+      const { data, error: dbError } = await supabase
         .from(
           "media_library"
         )
@@ -204,8 +201,7 @@ export const deleteMedia =
       const {
         error:
           storageError,
-      } =
-        await supabase.storage
+      } = await supabase.storage
           .from("uploads")
           .remove([
             filePath,

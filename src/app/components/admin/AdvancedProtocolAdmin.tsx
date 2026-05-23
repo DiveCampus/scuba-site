@@ -67,8 +67,7 @@ export default function AdvancedProtocolAdmin() {
 
     const load = async () => {
 
-      const res =
-        await getAdvancedProtocol();
+      const res = await getAdvancedProtocol();
 
       setSection(res.section);
 
@@ -149,8 +148,7 @@ export default function AdvancedProtocolAdmin() {
 
       };
 
-      const { data } =
-        await createAdvancedProtocolCard(
+      const { data } = await createAdvancedProtocolCard(
           payload
         );
 
@@ -189,46 +187,20 @@ export default function AdvancedProtocolAdmin() {
 
   return (
 
-    <section className="
-      py-24
-      bg-[#f3f6f9]
-      min-h-screen
-    ">
+    <section className="py-24 bg-[#f3f6f9] min-h-screen">
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* TOP */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          flex-wrap
-          gap-5
-          mb-14
-        ">
+        <div className="flex items-center justify-between flex-wrap gap-5 mb-14">
 
           <div>
 
-            <p className="
-              text-[11px]
-              tracking-[4px]
-              uppercase
-              text-cyan-500
-              mb-3
-            ">
+            <p className="text-[11px] tracking-[4px] uppercase text-cyan-500 mb-3">
               ADMIN PANEL
             </p>
 
-            <h2 className="
-              text-4xl
-              md:text-5xl
-              font-bold
-              text-black
-            ">
+            <h2 className="text-4xl md:text-5xl font-bold text-black">
               Advanced Protocol
             </h2>
 
@@ -241,18 +213,7 @@ export default function AdvancedProtocolAdmin() {
             onClick={
               saveSection
             }
-            className="
-              px-7
-              h-[56px]
-              rounded-2xl
-              bg-cyan-500
-              text-white
-              font-semibold
-              shadow-lg
-              flex
-              items-center
-              gap-3
-            "
+            className="px-7 h-[56px] rounded-2xl bg-cyan-500 text-white font-semibold shadow-lg flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -266,23 +227,10 @@ export default function AdvancedProtocolAdmin() {
         </div>
 
         {/* SECTION FORM */}
-        <div className="
-          grid
-          lg:grid-cols-2
-          gap-7
-          mb-14
-        ">
+        <div className="grid lg:grid-cols-2 gap-7 mb-14">
 
           {/* LEFT */}
-          <div className="
-            bg-white
-            rounded-3xl
-            border
-            border-gray-200
-            p-7
-            shadow-sm
-            space-y-5
-          ">
+          <div className="bg-white rounded-3xl border border-gray-200 p-7 shadow-sm space-y-5">
 
             {/* TOP LABEL */}
             <input
@@ -297,17 +245,7 @@ export default function AdvancedProtocolAdmin() {
                 })
               }
               placeholder="Top Label"
-              className="
-                w-full
-                h-[56px]
-                rounded-2xl
-                border
-                border-gray-200
-                px-5
-                outline-none
-                text-black
-                placeholder:text-gray-400
-              "
+              className="w-full h-[56px] rounded-2xl border border-gray-200 px-5 outline-none text-black placeholder:text-gray-400"
             />
 
             {/* TITLE */}
@@ -323,16 +261,7 @@ export default function AdvancedProtocolAdmin() {
                 })
               }
               placeholder="Main Title"
-              className="
-                w-full
-                h-[56px]
-                rounded-2xl
-                border
-                border-gray-200
-                px-5
-                outline-none
-                text-black
-              "
+              className="w-full h-[56px] rounded-2xl border border-gray-200 px-5 outline-none text-black"
             />
 
             {/* HIGHLIGHT */}
@@ -348,18 +277,7 @@ export default function AdvancedProtocolAdmin() {
                 })
               }
               placeholder="Highlighted Title"
-              className="
-                w-full
-                h-[56px]
-                rounded-2xl
-                border
-                border-cyan-200
-                bg-cyan-50
-                px-5
-                outline-none
-                text-cyan-700
-                font-semibold
-              "
+              className="w-full h-[56px] rounded-2xl border border-cyan-200 bg-cyan-50 px-5 outline-none text-cyan-700 font-semibold"
             />
 
             {/* DESCRIPTION */}
@@ -376,30 +294,13 @@ export default function AdvancedProtocolAdmin() {
                 })
               }
               placeholder="Description"
-              className="
-                w-full
-                rounded-2xl
-                border
-                border-gray-200
-                p-5
-                outline-none
-                resize-none
-                text-black
-              "
+              className="w-full rounded-2xl border border-gray-200 p-5 outline-none resize-none text-black"
             />
 
           </div>
 
           {/* RIGHT */}
-          <div className="
-            bg-white
-            rounded-3xl
-            border
-            border-gray-200
-            p-7
-            shadow-sm
-            space-y-5
-          ">
+          <div className="bg-white rounded-3xl border border-gray-200 p-7 shadow-sm space-y-5">
 
             {/* INFO BOX 1 */}
             <textarea
@@ -415,16 +316,7 @@ export default function AdvancedProtocolAdmin() {
                 })
               }
               placeholder="Info Box 1"
-              className="
-                w-full
-                rounded-2xl
-                border
-                border-gray-200
-                p-5
-                outline-none
-                resize-none
-                text-black
-              "
+              className="w-full rounded-2xl border border-gray-200 p-5 outline-none resize-none text-black"
             />
 
             {/* INFO BOX 2 */}
@@ -441,16 +333,7 @@ export default function AdvancedProtocolAdmin() {
                 })
               }
               placeholder="Info Box 2"
-              className="
-                w-full
-                rounded-2xl
-                border
-                border-gray-200
-                p-5
-                outline-none
-                resize-none
-                text-black
-              "
+              className="w-full rounded-2xl border border-gray-200 p-5 outline-none resize-none text-black"
             />
 
             {/* CTA TITLE */}
@@ -466,16 +349,7 @@ export default function AdvancedProtocolAdmin() {
                 })
               }
               placeholder="CTA Title"
-              className="
-                w-full
-                h-[56px]
-                rounded-2xl
-                border
-                border-gray-200
-                px-5
-                outline-none
-                text-black
-              "
+              className="w-full h-[56px] rounded-2xl border border-gray-200 px-5 outline-none text-black"
             />
 
             {/* CTA DESCRIPTION */}
@@ -492,16 +366,7 @@ export default function AdvancedProtocolAdmin() {
                 })
               }
               placeholder="CTA Description"
-              className="
-                w-full
-                rounded-2xl
-                border
-                border-gray-200
-                p-5
-                outline-none
-                resize-none
-                text-black
-              "
+              className="w-full rounded-2xl border border-gray-200 p-5 outline-none resize-none text-black"
             />
 
             {/* CTA BUTTON */}
@@ -517,16 +382,7 @@ export default function AdvancedProtocolAdmin() {
                 })
               }
               placeholder="CTA Button"
-              className="
-                w-full
-                h-[56px]
-                rounded-2xl
-                border
-                border-gray-200
-                px-5
-                outline-none
-                text-black
-              "
+              className="w-full h-[56px] rounded-2xl border border-gray-200 px-5 outline-none text-black"
             />
 
           </div>
@@ -534,33 +390,15 @@ export default function AdvancedProtocolAdmin() {
         </div>
 
         {/* CARD HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-8
-        ">
+        <div className="flex items-center justify-between mb-8">
 
-          <h3 className="
-            text-2xl
-            font-bold
-            text-black
-          ">
+          <h3 className="text-2xl font-bold text-black">
             Protocol Cards
           </h3>
 
           <button
             onClick={addCard}
-            className="
-              px-6
-              h-[52px]
-              rounded-2xl
-              bg-black
-              text-white
-              flex
-              items-center
-              gap-2
-            "
+            className="px-6 h-[52px] rounded-2xl bg-black text-white flex items-center gap-2"
           >
 
             <Plus size={18} />
@@ -572,12 +410,7 @@ export default function AdvancedProtocolAdmin() {
         </div>
 
         {/* CARDS */}
-        <div className="
-          grid
-          md:grid-cols-2
-          lg:grid-cols-4
-          gap-7
-        ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-7">
 
           {cards.map(
             (
@@ -614,15 +447,9 @@ export default function AdvancedProtocolAdmin() {
                 >
 
                   {/* TOP */}
-                  <div className="
-                    flex
-                    items-center
-                    justify-between
-                  ">
+                  <div className="flex items-center justify-between">
 
-                    <div className="
-                      text-cyan-500
-                    ">
+                    <div className="text-cyan-500">
                       <Icon
                         size={20}
                       />
@@ -634,16 +461,7 @@ export default function AdvancedProtocolAdmin() {
                           card.id
                         )
                       }
-                      className="
-                        w-10
-                        h-10
-                        rounded-xl
-                        bg-red-50
-                        flex
-                        items-center
-                        justify-center
-                        text-red-500
-                      "
+                      className="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center text-red-500"
                     >
 
                       <Trash2
@@ -666,19 +484,7 @@ export default function AdvancedProtocolAdmin() {
                         e.target.value
                       )
                     }
-                    className="
-                      w-full
-                      h-[48px]
-                      rounded-xl
-                      border
-                      border-gray-200
-                      px-4
-                      outline-none
-                      text-black
-                      uppercase
-                      tracking-[2px]
-                      text-[11px]
-                    "
+                    className="w-full h-[48px] rounded-xl border border-gray-200 px-4 outline-none text-black uppercase tracking-[2px] text-[11px]"
                   />
 
                   {/* TITLE */}
@@ -693,17 +499,7 @@ export default function AdvancedProtocolAdmin() {
                         e.target.value
                       )
                     }
-                    className="
-                      w-full
-                      h-[52px]
-                      rounded-xl
-                      border
-                      border-gray-200
-                      px-4
-                      outline-none
-                      text-black
-                      font-semibold
-                    "
+                    className="w-full h-[52px] rounded-xl border border-gray-200 px-4 outline-none text-black font-semibold"
                   />
 
                   {/* DESCRIPTION */}
@@ -719,16 +515,7 @@ export default function AdvancedProtocolAdmin() {
                         e.target.value
                       )
                     }
-                    className="
-                      w-full
-                      rounded-2xl
-                      border
-                      border-gray-200
-                      p-4
-                      outline-none
-                      resize-none
-                      text-black
-                    "
+                    className="w-full rounded-2xl border border-gray-200 p-4 outline-none resize-none text-black"
                   />
 
                   {/* ICON */}
@@ -743,16 +530,7 @@ export default function AdvancedProtocolAdmin() {
                         e.target.value
                       )
                     }
-                    className="
-                      w-full
-                      h-[50px]
-                      rounded-xl
-                      border
-                      border-gray-200
-                      px-4
-                      outline-none
-                      text-black
-                    "
+                    className="w-full h-[50px] rounded-xl border border-gray-200 px-4 outline-none text-black"
                   >
 
                     {Object.keys(
@@ -775,16 +553,9 @@ export default function AdvancedProtocolAdmin() {
                   </select>
 
                   {/* HIGHLIGHT */}
-                  <div className="
-                    flex
-                    items-center
-                    justify-between
-                  ">
+                  <div className="flex items-center justify-between">
 
-                    <span className="
-                      text-sm
-                      text-black
-                    ">
+                    <span className="text-sm text-black">
                       Highlight
                     </span>
 
@@ -800,10 +571,7 @@ export default function AdvancedProtocolAdmin() {
                           e.target.checked
                         )
                       }
-                      className="
-                        w-5
-                        h-5
-                      "
+                      className="w-5 h-5"
                     />
 
                   </div>

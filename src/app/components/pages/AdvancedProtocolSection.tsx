@@ -35,8 +35,7 @@ export function AdvancedProtocolSection() {
 
     const load = async () => {
 
-      const res =
-        await getAdvancedProtocol();
+      const res = await getAdvancedProtocol();
 
       setSection(res.section);
 
@@ -51,35 +50,16 @@ export function AdvancedProtocolSection() {
 
   return (
 
-    <section className="
-      py-32
-      bg-[#f3f6f9]
-    ">
+    <section className="py-32 bg-[#f3f6f9]">
 
       {/* HEADER */}
-      <div className="
-        text-center
-        max-w-4xl
-        mx-auto
-        px-6
-        mb-20
-      ">
+      <div className="text-center max-w-4xl mx-auto px-6 mb-20">
 
-        <p className="
-          text-[10px]
-          tracking-[4px]
-          text-cyan-500
-          mb-5
-        ">
+        <p className="text-[10px] tracking-[4px] text-cyan-500 mb-5">
           {section.top_label}
         </p>
 
-        <h2 className="
-          text-3xl
-          md:text-5xl
-          font-bold
-          text-[#0a0e27]
-        ">
+        <h2 className="text-3xl md:text-5xl font-bold text-[#0a0e27]">
 
           {section.title}{" "}
 
@@ -89,27 +69,14 @@ export function AdvancedProtocolSection() {
 
         </h2>
 
-        <p className="
-          mt-7
-          text-gray-500
-          max-w-2xl
-          mx-auto
-          leading-[1.9]
-        ">
+        <p className="mt-7 text-gray-500 max-w-2xl mx-auto leading-[1.9]">
           {section.description}
         </p>
 
       </div>
 
       {/* CARDS */}
-      <div className="
-        max-w-6xl
-        mx-auto
-        px-6
-        grid
-        md:grid-cols-4
-        gap-7
-      ">
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-7">
 
         {cards.map((card) => (
 
@@ -131,35 +98,19 @@ export function AdvancedProtocolSection() {
             `}
           >
 
-            <div className="
-              text-cyan-500
-              mb-5
-            ">
+            <div className="text-cyan-500 mb-5">
               {icons[card.icon]}
             </div>
 
-            <div className="
-              text-[10px]
-              tracking-[2px]
-              text-cyan-500
-              mb-4
-            ">
+            <div className="text-[10px] tracking-[2px] text-cyan-500 mb-4">
               {card.tag}
             </div>
 
-            <h3 className="
-              font-semibold
-              text-[#0a0e27]
-              mb-4
-            ">
+            <h3 className="font-semibold text-[#0a0e27] mb-4">
               {card.title}
             </h3>
 
-            <p className="
-              text-sm
-              text-gray-500
-              leading-[1.9]
-            ">
+            <p className="text-sm text-gray-500 leading-[1.9]">
               {card.description}
             </p>
 
@@ -168,51 +119,22 @@ export function AdvancedProtocolSection() {
         ))}
 
         {/* CTA */}
-        <div className="
-          p-7
-          rounded-2xl
-          border
-          border-gray-200
-          bg-white
-          flex
-          flex-col
-          items-center
-          justify-center
-          text-center
-        ">
+        <div className="p-7 rounded-2xl border border-gray-200 bg-white flex flex-col items-center justify-center text-center">
 
           <MessageCircle
-            className="
-              text-cyan-500
-              mb-5
-            "
+            className="text-cyan-500 mb-5"
             size={22}
           />
 
-          <h3 className="
-            font-semibold
-            text-[#0a0e27]
-            mb-4
-          ">
+          <h3 className="font-semibold text-[#0a0e27] mb-4">
             {section.cta_title}
           </h3>
 
-          <p className="
-            text-sm
-            text-gray-500
-            mb-6
-            leading-[1.8]
-          ">
+          <p className="text-sm text-gray-500 mb-6 leading-[1.8]">
             {section.cta_description}
           </p>
 
-          <button className="
-            px-5
-            py-3
-            rounded-xl
-            border
-            border-gray-300
-          ">
+          <button className="px-5 py-3 rounded-xl border border-gray-300">
             {section.cta_button}
           </button>
 

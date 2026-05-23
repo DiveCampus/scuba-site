@@ -49,8 +49,7 @@ export function MasterScubaCTA() {
 
           data,
 
-        } =
-          await getMasterScubaCTA();
+        } = await getMasterScubaCTA();
 
         console.log(
           "MASTER SCUBA CTA =>",
@@ -71,15 +70,7 @@ export function MasterScubaCTA() {
   return (
 
     <section
-      className="
-        relative
-        py-28
-        overflow-hidden
-        bg-gradient-to-r
-        from-[#081c2c]
-        to-[#0d2f45]
-        text-white
-      "
+      className="relative py-28 overflow-hidden bg-gradient-to-r from-[#081c2c] to-[#0d2f45] text-white"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -87,27 +78,9 @@ export function MasterScubaCTA() {
     >
 
       {/* BACKGROUND GLOW */}
-      <div className="
-        absolute
-        top-0
-        left-0
-        w-72
-        h-72
-        bg-cyan-400/10
-        blur-[120px]
-        rounded-full
-      " />
+      <div className="absolute top-0 left-0 w-72 h-72 bg-cyan-400/10 blur-[120px] rounded-full" />
 
-      <div className="
-        absolute
-        bottom-0
-        right-0
-        w-72
-        h-72
-        bg-blue-500/10
-        blur-[120px]
-        rounded-full
-      " />
+      <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
       {/* CONTENT */}
       <motion.div
@@ -126,25 +99,12 @@ export function MasterScubaCTA() {
           duration: 0.5,
         }}
 
-        className="
-          relative
-          z-10
-          max-w-[760px]
-          mx-auto
-          text-center
-          px-6
-        "
+        className="relative z-10 max-w-[760px] mx-auto text-center px-6"
 
       >
 
         {/* SMALL TITLE */}
-        <p className="
-          text-[11px]
-          md:text-[12px]
-          text-white/55
-          tracking-[3px]
-          uppercase
-        ">
+        <p className="text-[11px] md:text-[12px] text-white/55 tracking-[3px] uppercase">
 
           {
             section.top_text
@@ -153,14 +113,7 @@ export function MasterScubaCTA() {
         </p>
 
         {/* MAIN TITLE */}
-        <h2 className="
-          text-3xl
-          md:text-5xl
-          font-semibold
-          mt-6
-          leading-[1.18]
-          tracking-[1px]
-        ">
+        <h2 className="text-3xl md:text-5xl font-semibold mt-6 leading-[1.18] tracking-[1px]">
 
           {
             section.title
@@ -169,16 +122,7 @@ export function MasterScubaCTA() {
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="
-          text-[15px]
-          md:text-[16px]
-          text-white/60
-          mt-8
-          leading-[2]
-          tracking-[0.45px]
-          max-w-[620px]
-          mx-auto
-        ">
+        <p className="text-[15px] md:text-[16px] text-white/60 mt-8 leading-[2] tracking-[0.45px] max-w-[620px] mx-auto">
 
           {
             section.description
@@ -187,14 +131,7 @@ export function MasterScubaCTA() {
         </p>
 
         {/* BUTTONS */}
-        <div className="
-          mt-12
-          flex
-          items-center
-          justify-center
-          gap-4
-          flex-wrap
-        ">
+        <div className="mt-12 flex items-center justify-center gap-4 flex-wrap">
 
           {/* PRIMARY BUTTON */}
           <a
@@ -203,20 +140,7 @@ export function MasterScubaCTA() {
               section.primary_button_link
             }
 
-            className="
-              px-7
-              py-3.5
-              text-[12px]
-              tracking-[1px]
-              rounded-2xl
-              bg-white
-              text-[#0a0e27]
-              font-medium
-              hover:scale-[1.03]
-              transition
-              duration-300
-              shadow-lg
-            "
+            className="px-7 py-3.5 text-[12px] tracking-[1px] rounded-2xl bg-white text-[#0a0e27] font-medium hover:scale-[1.03] transition duration-300 shadow-lg"
 
           >
 
@@ -237,29 +161,11 @@ export function MasterScubaCTA() {
 
             rel="noopener noreferrer"
 
-            className="
-              flex
-              items-center
-              gap-2
-              px-7
-              py-3.5
-              text-[12px]
-              tracking-[1px]
-              rounded-2xl
-              border
-              border-green-400
-              text-green-400
-              hover:bg-green-400
-              hover:text-white
-              transition
-              duration-300
-            "
+            className="flex items-center gap-2 px-7 py-3.5 text-[12px] tracking-[1px] rounded-2xl border border-green-400 text-green-400 hover:bg-green-400 hover:text-white transition duration-300"
 
           >
 
-            <FaWhatsapp className="
-              text-sm
-            " />
+            <FaWhatsapp className="text-sm" />
 
             {
               section.whatsapp_button_text

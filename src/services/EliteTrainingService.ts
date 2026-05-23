@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getEliteTrainingSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_training_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateEliteTrainingSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_training_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateEliteTrainingSection =
 export const getEliteTrainingCards =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_training_cards")
         .select("*")
         .order("sort_order", {
@@ -90,8 +87,7 @@ export const updateEliteTrainingCard =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_training_cards")
         .update({
           ...payload,

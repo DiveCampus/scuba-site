@@ -26,8 +26,7 @@ export function Gallery() {
   }, []);
 
   const loadGallery = async () => {
-    const { data, error } =
-      await getGallery();
+    const { data, error } = await getGallery();
 
     if (error) {
       console.error(

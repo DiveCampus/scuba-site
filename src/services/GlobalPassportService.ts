@@ -11,8 +11,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getGlobalPassportSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("global_passport_section")
         .select("*")
         .limit(1)
@@ -35,8 +34,7 @@ export const updateGlobalPassportSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("global_passport_section")
         .update({
           ...payload,
@@ -60,8 +58,7 @@ export const updateGlobalPassportSection =
 export const getGlobalPassportReviews =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("global_passport_reviews")
         .select("*")
         .order("sort_order", {
@@ -82,8 +79,7 @@ export const getGlobalPassportReviews =
 export const createGlobalPassportReview =
   async (payload: any) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("global_passport_reviews")
         .insert([payload])
         .select()
@@ -106,8 +102,7 @@ export const updateGlobalPassportReview =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("global_passport_reviews")
         .update(payload)
         .eq("id", id)
@@ -128,8 +123,7 @@ export const updateGlobalPassportReview =
 export const deleteGlobalPassportReview =
   async (id: string) => {
 
-    const { error } =
-      await supabase
+    const { error } = await supabase
         .from("global_passport_reviews")
         .delete()
         .eq("id", id);
@@ -148,8 +142,7 @@ export const deleteGlobalPassportReview =
 export const getGlobalPassportFaqs =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("global_passport_faqs")
         .select("*")
         .order("sort_order", {
@@ -170,8 +163,7 @@ export const getGlobalPassportFaqs =
 export const createGlobalPassportFaq =
   async (payload: any) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("global_passport_faqs")
         .insert([payload])
         .select()
@@ -194,8 +186,7 @@ export const updateGlobalPassportFaq =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("global_passport_faqs")
         .update(payload)
         .eq("id", id)
@@ -216,8 +207,7 @@ export const updateGlobalPassportFaq =
 export const deleteGlobalPassportFaq =
   async (id: string) => {
 
-    const { error } =
-      await supabase
+    const { error } = await supabase
         .from("global_passport_faqs")
         .delete()
         .eq("id", id);

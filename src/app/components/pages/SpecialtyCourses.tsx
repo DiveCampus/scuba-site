@@ -78,53 +78,21 @@ export function SpecialtyCourses() {
 
           {/* PRICE CARD */}
           <div
-            className="
-    mt-14
-
-    bg-white/10
-    backdrop-blur-xl
-
-    border
-    border-white/20
-
-    rounded-2xl
-
-    px-12
-    py-8
-
-    shadow-xl
-  "
+            className="mt-14 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-12 py-8 shadow-xl"
           >
             {/* LABEL */}
             <p
-              className="
-      text-xs
-      text-white/45
-      mb-3
-      tracking-[2px]
-      uppercase
-    "
+              className="text-xs text-white/45 mb-3 tracking-[2px] uppercase"
             >
               Starting From
             </p>
 
             {/* PRICE */}
             <p
-              className="
-      text-5xl
-      font-bold
-      tracking-[1px]
-      leading-none
-    "
+              className="text-5xl font-bold tracking-[1px] leading-none"
             >
               <span
-                className="
-        text-cyan-400
-        text-lg
-        tracking-[2px]
-        font-medium
-        mr-2
-      "
+                className="text-cyan-400 text-lg tracking-[2px] font-medium mr-2"
               >
                 AED
               </span>
@@ -134,13 +102,7 @@ export function SpecialtyCourses() {
 
             {/* SUBTEXT */}
             <p
-              className="
-      text-xs
-      text-white/55
-      mt-5
-      tracking-[1px]
-      leading-[1.8]
-    "
+              className="text-xs text-white/55 mt-5 tracking-[1px] leading-[1.8]"
             >
               Flexible Courses · International
               Certification

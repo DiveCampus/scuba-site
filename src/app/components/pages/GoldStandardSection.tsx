@@ -66,13 +66,7 @@ export function GoldStandardSection() {
 
   return (
     <section
-      className="
-        py-32
-        bg-gradient-to-b
-        from-[#f5f7fa]
-        to-[#eef2f6]
-        overflow-hidden
-      "
+      className="py-32 bg-gradient-to-b from-[#f5f7fa] to-[#eef2f6] overflow-hidden"
     >
 
       <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 px-6 items-center">
@@ -113,16 +107,7 @@ export function GoldStandardSection() {
             whileHover={{
               y: -6,
             }}
-            className="
-              relative
-              p-6
-              rounded-2xl
-              border
-              border-yellow-300/40
-              bg-gradient-to-br
-              from-[#fffdf7]
-              to-[#fff7d6]
-            "
+            className="relative p-6 rounded-2xl border border-yellow-300/40 bg-gradient-to-br from-[#fffdf7] to-[#fff7d6]"
           >
 
             <div className="absolute -top-5 left-6 bg-white p-2.5 rounded-full border border-yellow-300">
@@ -153,19 +138,7 @@ export function GoldStandardSection() {
               {tags.map((tag) => (
                 <span
                   key={tag.id}
-                  className="
-                    px-4
-                    py-2
-                    text-xs
-                    rounded-lg
-                    flex
-                    items-center
-                    gap-2
-                    border
-                    border-yellow-400/50
-                    bg-yellow-50
-                    text-yellow-600
-                  "
+                  className="px-4 py-2 text-xs rounded-lg flex items-center gap-2 border border-yellow-400/50 bg-yellow-50 text-yellow-600"
                 >
 
                   {

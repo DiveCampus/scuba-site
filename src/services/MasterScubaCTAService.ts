@@ -11,13 +11,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getMasterScubaCTA =
   async () => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "master_scuba_cta"
@@ -66,13 +60,7 @@ export const updateMasterScubaCTA =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "master_scuba_cta"

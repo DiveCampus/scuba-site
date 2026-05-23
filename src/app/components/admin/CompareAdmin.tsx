@@ -33,10 +33,7 @@ export default function CompareAdmin() {
   }, []);
 
   const load = async () => {
-    const {
-      section,
-      items,
-    } = await getCompare();
+    const { section, items } = await getCompare();
 
     setSection(section);
 
@@ -90,20 +87,7 @@ export default function CompareAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                w-full
-                text-center
-                text-3xl
-                md:text-5xl
-                font-bold
-                bg-white/10
-                border
-                border-cyan-400/30
-                rounded-2xl
-                px-6
-                py-4
-                outline-none
-              "
+              className="w-full text-center text-3xl md:text-5xl font-bold bg-white/10 border border-cyan-400/30 rounded-2xl px-6 py-4 outline-none"
             />
 
             <input
@@ -117,22 +101,7 @@ export default function CompareAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                w-full
-                mt-4
-                text-center
-                text-2xl
-                md:text-4xl
-                text-cyan-400
-                font-bold
-                bg-white/10
-                border
-                border-cyan-400/30
-                rounded-2xl
-                px-6
-                py-4
-                outline-none
-              "
+              className="w-full mt-4 text-center text-2xl md:text-4xl text-cyan-400 font-bold bg-white/10 border border-cyan-400/30 rounded-2xl px-6 py-4 outline-none"
             />
 
             <textarea
@@ -146,19 +115,7 @@ export default function CompareAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                w-full
-                mt-4
-                text-center
-                bg-white/10
-                border
-                border-cyan-400/30
-                rounded-2xl
-                px-6
-                py-4
-                outline-none
-                text-white/70
-              "
+              className="w-full mt-4 text-center bg-white/10 border border-cyan-400/30 rounded-2xl px-6 py-4 outline-none text-white/70"
             />
 
           </div>
@@ -295,16 +252,7 @@ export default function CompareAdmin() {
                             updated
                           );
                         }}
-                        className="
-                          w-full
-                          bg-white/10
-                          border
-                          border-cyan-400/30
-                          rounded-xl
-                          px-4
-                          py-3
-                          outline-none
-                        "
+                        className="w-full bg-white/10 border border-cyan-400/30 rounded-xl px-4 py-3 outline-none"
                       />
                     ) : (
                       row.feature
@@ -337,17 +285,7 @@ export default function CompareAdmin() {
                             updated
                           );
                         }}
-                        className="
-                          w-full
-                          bg-white/10
-                          border
-                          border-red-400/30
-                          rounded-xl
-                          px-4
-                          py-3
-                          outline-none
-                          text-red-400
-                        "
+                        className="w-full bg-white/10 border border-red-400/30 rounded-xl px-4 py-3 outline-none text-red-400"
                       />
                     ) : (
                       <div className="flex items-center gap-2 text-red-400">
@@ -392,17 +330,7 @@ export default function CompareAdmin() {
                             updated
                           );
                         }}
-                        className="
-                          w-full
-                          bg-white/10
-                          border
-                          border-cyan-400/30
-                          rounded-xl
-                          px-4
-                          py-3
-                          outline-none
-                          text-cyan-300
-                        "
+                        className="w-full bg-white/10 border border-cyan-400/30 rounded-xl px-4 py-3 outline-none text-cyan-300"
                       />
                     ) : (
                       <div className="flex items-center gap-2 px-5 py-2 rounded-xl border border-cyan-400/30 bg-cyan-400/5 text-cyan-300">
@@ -442,15 +370,7 @@ export default function CompareAdmin() {
             scale: 0.95,
           }}
           onClick={handleSave}
-          className="
-            px-10
-            py-4
-            bg-cyan-400
-            text-black
-            rounded-full
-            font-semibold
-            shadow-[0_0_30px_rgba(0,255,255,0.25)]
-          "
+          className="px-10 py-4 bg-cyan-400 text-black rounded-full font-semibold shadow-[0_0_30px_rgba(0,255,255,0.25)]"
         >
           {saving
             ? "Saving..."

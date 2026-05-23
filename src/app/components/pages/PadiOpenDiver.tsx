@@ -30,8 +30,7 @@ export function PadiOpenDiver() {
 
         const {
           data,
-        } =
-          await getPadiOpenDiver();
+        } = await getPadiOpenDiver();
 
         setData(data);
 
@@ -44,14 +43,7 @@ export function PadiOpenDiver() {
 
   if (loading) {
     return (
-      <div className="
-        min-h-screen
-        flex
-        items-center
-        justify-center
-        bg-[#02182b]
-        text-white
-      ">
+      <div className="min-h-screen flex items-center justify-center bg-[#02182b] text-white">
         Loading...
       </div>
     );
@@ -61,12 +53,7 @@ export function PadiOpenDiver() {
     <>
       <Navbar />
 
-      <section className="
-        relative
-        min-h-screen
-        overflow-hidden
-        text-white
-      ">
+      <section className="relative min-h-screen overflow-hidden text-white">
 
         {/* BG */}
         <div className="absolute inset-0">
@@ -75,45 +62,18 @@ export function PadiOpenDiver() {
             src={
               data?.background_image
             }
-            className="
-              w-full
-              h-full
-              object-cover
-            "
+            className="w-full h-full object-cover"
           />
 
-          <div className="
-            absolute
-            inset-0
-            bg-[#02182b]/70
-          " />
+          <div className="absolute inset-0 bg-[#02182b]/70" />
 
         </div>
 
         {/* GLOW */}
-        <div className="
-          absolute
-          top-0
-          right-0
-          w-[500px]
-          h-[500px]
-          bg-cyan-400/20
-          blur-[180px]
-          rounded-full
-        " />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-cyan-400/20 blur-[180px] rounded-full" />
 
         {/* CONTENT */}
-        <div className="
-          relative
-          z-10
-          min-h-screen
-          flex
-          flex-col
-          items-center
-          justify-center
-          text-center
-          px-6
-        ">
+        <div className="relative z-10 min-h-screen flex flex-col items-center justify-center text-center px-6">
 
           {/* BADGE */}
           <motion.div
@@ -125,20 +85,7 @@ export function PadiOpenDiver() {
               opacity: 1,
               y: 0,
             }}
-            className="
-              px-6
-              py-2
-              rounded-full
-              border
-              border-cyan-400/30
-              text-cyan-300
-              text-xs
-              tracking-[4px]
-              uppercase
-              mb-6
-              backdrop-blur-xl
-              bg-white/5
-            "
+            className="px-6 py-2 rounded-full border border-cyan-400/30 text-cyan-300 text-xs tracking-[4px] uppercase mb-6 backdrop-blur-xl bg-white/5"
           >
 
             {data?.top_badge}
@@ -146,36 +93,18 @@ export function PadiOpenDiver() {
           </motion.div>
 
           {/* SUBTEXT */}
-          <p className="
-            text-white/60
-            tracking-[4px]
-            text-xs
-            uppercase
-            mb-4
-          ">
+          <p className="text-white/60 tracking-[4px] text-xs uppercase mb-4">
 
             {data?.sub_text}
 
           </p>
 
           {/* TITLE */}
-          <h1 className="
-            text-5xl
-            md:text-7xl
-            font-bold
-            max-w-5xl
-            leading-tight
-          ">
+          <h1 className="text-5xl md:text-7xl font-bold max-w-5xl leading-tight">
 
             {data?.title}{" "}
 
-            <span className="
-              bg-gradient-to-r
-              from-cyan-300
-              to-blue-500
-              bg-clip-text
-              text-transparent
-            ">
+            <span className="bg-gradient-to-r from-cyan-300 to-blue-500 bg-clip-text text-transparent">
 
               {data?.highlighted_text}
 
@@ -184,51 +113,24 @@ export function PadiOpenDiver() {
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="
-            mt-6
-            text-white/70
-            max-w-2xl
-            text-lg
-            leading-relaxed
-          ">
+          <p className="mt-6 text-white/70 max-w-2xl text-lg leading-relaxed">
 
             {data?.description}
 
           </p>
 
           {/* PRICE CARD */}
-          <div className="
-            mt-10
-            px-10
-            py-7
-            rounded-[30px]
-            bg-white/10
-            backdrop-blur-xl
-            border
-            border-white/10
-            shadow-[0_20px_80px_rgba(0,0,0,0.4)]
-          ">
+          <div className="mt-10 px-10 py-7 rounded-[30px] bg-white/10 backdrop-blur-xl border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.4)]">
 
-            <p className="
-              text-white/40
-              line-through
-              text-sm
-            ">
+            <p className="text-white/40 line-through text-sm">
 
               AED {data?.old_price}
 
             </p>
 
-            <h2 className="
-              mt-1
-              text-5xl
-              font-bold
-            ">
+            <h2 className="mt-1 text-5xl font-bold">
 
-              <span className="
-                text-cyan-400
-                text-xl
-              ">
+              <span className="text-cyan-400 text-xl">
                 AED
               </span>{" "}
 
@@ -236,11 +138,7 @@ export function PadiOpenDiver() {
 
             </h2>
 
-            <p className="
-              mt-3
-              text-white/60
-              text-sm
-            ">
+            <p className="mt-3 text-white/60 text-sm">
 
               {data?.price_note}
 
@@ -249,41 +147,17 @@ export function PadiOpenDiver() {
           </div>
 
           {/* BUTTONS */}
-          <div className="
-            mt-10
-            flex
-            gap-5
-            flex-wrap
-            justify-center
-          ">
+          <div className="mt-10 flex gap-5 flex-wrap justify-center">
 
             <button
               onClick={() => navigate("/booking?course=padi-scuba-diver")}
-              className="
-              px-8
-              py-4
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-bold
-              hover:scale-105
-              transition
-            ">
+              className="px-8 py-4 rounded-2xl bg-cyan-400 text-black font-bold hover:scale-105 transition">
 
               {data?.primary_button}
 
             </button>
 
-            <button className="
-              px-8
-              py-4
-              rounded-2xl
-              border
-              border-white/20
-              bg-white/5
-              hover:bg-white/10
-              transition
-            ">
+            <button className="px-8 py-4 rounded-2xl border border-white/20 bg-white/5 hover:bg-white/10 transition">
 
               {data?.secondary_button}
 
@@ -292,14 +166,7 @@ export function PadiOpenDiver() {
           </div>
 
           {/* FEATURES */}
-          <div className="
-            mt-14
-            grid
-            md:grid-cols-4
-            gap-4
-            max-w-6xl
-            w-full
-          ">
+          <div className="mt-14 grid md:grid-cols-4 gap-4 max-w-6xl w-full">
 
             {[
               data?.feature_1,
@@ -313,16 +180,7 @@ export function PadiOpenDiver() {
               ) => (
                 <div
                   key={i}
-                  className="
-                    px-6
-                    py-5
-                    rounded-2xl
-                    bg-white/5
-                    border
-                    border-white/10
-                    backdrop-blur-xl
-                    text-white/80
-                  "
+                  className="px-6 py-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-xl text-white/80"
                 >
 
                   {item}

@@ -59,10 +59,7 @@ export default function WhyChooseAdmin() {
   }, []);
 
   const load = async () => {
-    const {
-      section,
-      features,
-    } = await getWhyChoose();
+    const { section, features } = await getWhyChoose();
 
     setSection(section);
 
@@ -92,13 +89,7 @@ export default function WhyChooseAdmin() {
   return (
     <>
       <section
-        className="
-          relative
-          py-32
-          bg-[#02131d]
-          text-white
-          overflow-hidden
-        "
+        className="relative py-32 bg-[#02131d] text-white overflow-hidden"
       >
 
         {/* BG */}
@@ -129,16 +120,7 @@ export default function WhyChooseAdmin() {
                 onBlur={() =>
                   setEditing(null)
                 }
-                className="
-                  bg-white/10
-                  border
-                  border-cyan-400/30
-                  px-4
-                  py-2
-                  rounded-xl
-                  outline-none
-                  mb-4
-                "
+                className="bg-white/10 border border-cyan-400/30 px-4 py-2 rounded-xl outline-none mb-4"
               />
             ) : (
               <p
@@ -147,14 +129,7 @@ export default function WhyChooseAdmin() {
                     "tag"
                   )
                 }
-                className="
-                  text-cyan-400
-                  tracking-[4px]
-                  text-[11px]
-                  mb-4
-                  uppercase
-                  cursor-pointer
-                "
+                className="text-cyan-400 tracking-[4px] text-[11px] mb-4 uppercase cursor-pointer"
               >
                 {section.tag}
               </p>
@@ -181,18 +156,7 @@ export default function WhyChooseAdmin() {
                   onBlur={() =>
                     setEditing(null)
                   }
-                  className="
-                    w-full
-                    bg-white/10
-                    border
-                    border-cyan-400/30
-                    px-5
-                    py-3
-                    rounded-2xl
-                    text-5xl
-                    font-bold
-                    outline-none
-                  "
+                  className="w-full bg-white/10 border border-cyan-400/30 px-5 py-3 rounded-2xl text-5xl font-bold outline-none"
                 />
               ) : (
                 <h2
@@ -201,13 +165,7 @@ export default function WhyChooseAdmin() {
                       "title"
                     )
                   }
-                  className="
-                    text-4xl
-                    md:text-5xl
-                    font-bold
-                    leading-tight
-                    cursor-pointer
-                  "
+                  className="text-4xl md:text-5xl font-bold leading-tight cursor-pointer"
                 >
                   {
                     section.title
@@ -245,16 +203,7 @@ export default function WhyChooseAdmin() {
                 onBlur={() =>
                   setEditing(null)
                 }
-                className="
-                  bg-white/10
-                  border
-                  border-cyan-400/30
-                  px-4
-                  py-2
-                  rounded-xl
-                  outline-none
-                  mb-6
-                "
+                className="bg-white/10 border border-cyan-400/30 px-4 py-2 rounded-xl outline-none mb-6"
               />
             ) : null}
 
@@ -277,16 +226,7 @@ export default function WhyChooseAdmin() {
                 onBlur={() =>
                   setEditing(null)
                 }
-                className="
-                  w-full
-                  bg-white/10
-                  border
-                  border-cyan-400/30
-                  p-4
-                  rounded-2xl
-                  outline-none
-                  mb-10
-                "
+                className="w-full bg-white/10 border border-cyan-400/30 p-4 rounded-2xl outline-none mb-10"
               />
             ) : (
               <p
@@ -295,13 +235,7 @@ export default function WhyChooseAdmin() {
                     "description"
                   )
                 }
-                className="
-                  text-white/60
-                  mb-10
-                  max-w-lg
-                  leading-relaxed
-                  cursor-pointer
-                "
+                className="text-white/60 mb-10 max-w-lg leading-relaxed cursor-pointer"
               >
                 {
                   section.description
@@ -327,27 +261,12 @@ export default function WhyChooseAdmin() {
                       opacity: 1,
                       x: 0,
                     }}
-                    className="
-                      flex
-                      gap-4
-                      items-start
-                    "
+                    className="flex gap-4 items-start"
                   >
 
                     {/* ICON */}
                     <div
-                      className="
-                        w-12
-                        h-12
-                        flex
-                        items-center
-                        justify-center
-                        rounded-full
-                        border
-                        border-cyan-400/30
-                        bg-cyan-400/10
-                        text-cyan-400
-                      "
+                      className="w-12 h-12 flex items-center justify-center rounded-full border border-cyan-400/30 bg-cyan-400/10 text-cyan-400"
                     >
                       {
                         iconMap[
@@ -391,16 +310,7 @@ export default function WhyChooseAdmin() {
                               null
                             )
                           }
-                          className="
-                            w-full
-                            bg-white/10
-                            border
-                            border-cyan-400/30
-                            px-4
-                            py-2
-                            rounded-xl
-                            outline-none
-                          "
+                          className="w-full bg-white/10 border border-cyan-400/30 px-4 py-2 rounded-xl outline-none"
                         />
                       ) : (
                         <h3
@@ -409,11 +319,7 @@ export default function WhyChooseAdmin() {
                               `title-${i}`
                             )
                           }
-                          className="
-                            font-semibold
-                            mb-2
-                            cursor-pointer
-                          "
+                          className="font-semibold mb-2 cursor-pointer"
                         >
                           {
                             item.title
@@ -453,15 +359,7 @@ export default function WhyChooseAdmin() {
                               null
                             )
                           }
-                          className="
-                            w-full
-                            bg-white/10
-                            border
-                            border-cyan-400/30
-                            p-4
-                            rounded-xl
-                            outline-none
-                          "
+                          className="w-full bg-white/10 border border-cyan-400/30 p-4 rounded-xl outline-none"
                         />
                       ) : (
                         <p
@@ -470,12 +368,7 @@ export default function WhyChooseAdmin() {
                               `desc-${i}`
                             )
                           }
-                          className="
-                            text-sm
-                            text-white/60
-                            leading-relaxed
-                            cursor-pointer
-                          "
+                          className="text-sm text-white/60 leading-relaxed cursor-pointer"
                         >
                           {
                             item.description
@@ -514,16 +407,7 @@ export default function WhyChooseAdmin() {
                 onBlur={() =>
                   setEditing(null)
                 }
-                className="
-                  w-full
-                  bg-white/10
-                  border
-                  border-cyan-400/30
-                  p-4
-                  rounded-2xl
-                  outline-none
-                  mb-4
-                "
+                className="w-full bg-white/10 border border-cyan-400/30 p-4 rounded-2xl outline-none mb-4"
               />
             ) : null}
 
@@ -539,11 +423,7 @@ export default function WhyChooseAdmin() {
                   "image"
                 )
               }
-              className="
-                rounded-3xl
-                cursor-pointer
-                shadow-[0_30px_100px_rgba(0,0,0,0.7)]
-              "
+              className="rounded-3xl cursor-pointer shadow-[0_30px_100px_rgba(0,0,0,0.7)]"
             />
 
           </div>
@@ -555,18 +435,7 @@ export default function WhyChooseAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              flex
-              items-center
-              gap-3
-              px-8
-              py-4
-              bg-cyan-400
-              text-black
-              rounded-2xl
-              font-semibold
-              shadow-[0_0_40px_rgba(34,211,238,0.35)]
-            "
+            className="flex items-center gap-3 px-8 py-4 bg-cyan-400 text-black rounded-2xl font-semibold shadow-[0_0_40px_rgba(34,211,238,0.35)]"
           >
 
             <Save className="w-5 h-5" />

@@ -13,10 +13,7 @@ export const getDiveTrainingShowcase =
 async () => {
 
   /* SECTION */
-  const {
-    data: section,
-    error: sectionError,
-  } = await supabase
+  const { data: section, error: sectionError } = await supabase
     .from(
       "dive_training_showcase_section"
     )
@@ -25,10 +22,7 @@ async () => {
     .maybeSingle();
 
   /* TAGS */
-  const {
-    data: tags,
-    error: tagsError,
-  } = await supabase
+  const { data: tags, error: tagsError } = await supabase
     .from(
       "dive_training_showcase_tags"
     )
@@ -38,10 +32,7 @@ async () => {
     });
 
   /* IMAGES */
-  const {
-    data: images,
-    error: imagesError,
-  } = await supabase
+  const { data: images, error: imagesError } = await supabase
     .from(
       "dive_training_showcase_images"
     )
@@ -92,10 +83,7 @@ async (
   payload: any
 ) => {
 
-  const {
-    data,
-    error,
-  } = await supabase
+  const { data, error } = await supabase
     .from(
       "dive_training_showcase_section"
     )
@@ -133,10 +121,7 @@ async (
   payload: any
 ) => {
 
-  const {
-    data,
-    error,
-  } = await supabase
+  const { data, error } = await supabase
     .from(
       "dive_training_showcase_tags"
     )
@@ -174,10 +159,7 @@ async (
   payload: any
 ) => {
 
-  const {
-    data,
-    error,
-  } = await supabase
+  const { data, error } = await supabase
     .from(
       "dive_training_showcase_images"
     )

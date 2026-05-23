@@ -8,13 +8,7 @@ export const getFirstDiveSteps =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "first_dive_steps_section"
@@ -27,13 +21,7 @@ export const getFirstDiveSteps =
       .single();
 
     /* CARDS */
-    const {
-
-      data: cards,
-
-      error: cardsError,
-
-    } = await supabase
+    const { data: cards, error: cardsError } = await supabase
 
       .from(
         "first_dive_steps_cards"
@@ -99,13 +87,7 @@ export const updateFirstDiveStepsSection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "first_dive_steps_section"
@@ -160,13 +142,7 @@ export const updateFirstDiveStepsCard =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "first_dive_steps_cards"

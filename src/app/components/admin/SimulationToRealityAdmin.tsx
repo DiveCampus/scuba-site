@@ -49,14 +49,7 @@ export default function SimulationRealityAdmin() {
     const load =
       async () => {
 
-        const {
-
-          section,
-
-          features,
-
-        } =
-          await getSimulationReality();
+        const { section, features } = await getSimulationReality();
 
         setSection(section);
 
@@ -141,45 +134,22 @@ export default function SimulationRealityAdmin() {
 
   return (
 
-    <section className="
-      min-h-screen
-      bg-[#f4f7fb]
-      py-20
-      px-6
-    ">
+    <section className="min-h-screen bg-[#f4f7fb] py-20 px-6">
 
-      <div className="
-        max-w-7xl
-        mx-auto
-      ">
+      <div className="max-w-7xl mx-auto">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-16
-        ">
+        <div className="flex items-center justify-between mb-16">
 
           <div>
 
-            <p className="
-              text-cyan-500
-              text-[10px]
-              tracking-[4px]
-              uppercase
-              mb-3
-            ">
+            <p className="text-cyan-500 text-[10px] tracking-[4px] uppercase mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-semibold
-              text-[#0a0e27]
-            ">
+            <h2 className="text-4xl font-semibold text-[#0a0e27]">
 
               Simulation To Reality
 
@@ -193,19 +163,7 @@ export default function SimulationRealityAdmin() {
               saveSection
             }
 
-            className="
-              h-[56px]
-              px-8
-              rounded-2xl
-              bg-cyan-500
-              hover:bg-cyan-400
-              transition
-              text-white
-              flex
-              items-center
-              gap-3
-              font-semibold
-            "
+            className="h-[56px] px-8 rounded-2xl bg-cyan-500 hover:bg-cyan-400 transition text-white flex items-center gap-3 font-semibold"
 
           >
 
@@ -224,12 +182,7 @@ export default function SimulationRealityAdmin() {
         </div>
 
         {/* SECTION FORM */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-6
-          mb-20
-        ">
+        <div className="grid md:grid-cols-2 gap-6 mb-20">
 
           {Object.keys(section).map(
 
@@ -255,20 +208,11 @@ export default function SimulationRealityAdmin() {
 
                   key={key}
 
-                  className="
-                    flex
-                    flex-col
-                    gap-2
-                  "
+                  className="flex flex-col gap-2"
 
                 >
 
-                  <label className="
-                    text-sm
-                    uppercase
-                    tracking-[2px]
-                    text-gray-500
-                  ">
+                  <label className="text-sm uppercase tracking-[2px] text-gray-500">
 
                     {key}
 
@@ -291,15 +235,7 @@ export default function SimulationRealityAdmin() {
                       })
                     }
 
-                    className="
-                      h-[56px]
-                      rounded-2xl
-                      border
-                      border-gray-200
-                      bg-white
-                      px-5
-                      outline-none
-                    "
+                    className="h-[56px] rounded-2xl border border-gray-200 bg-white px-5 outline-none"
 
                   />
 
@@ -314,11 +250,7 @@ export default function SimulationRealityAdmin() {
         </div>
 
         {/* FEATURES */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-8
-        ">
+        <div className="grid md:grid-cols-2 gap-8">
 
           {features.map(
 
@@ -331,14 +263,7 @@ export default function SimulationRealityAdmin() {
 
                 key={feature.id}
 
-                className="
-                  bg-white
-                  border
-                  border-gray-200
-                  rounded-3xl
-                  p-7
-                  shadow-sm
-                "
+                className="bg-white border border-gray-200 rounded-3xl p-7 shadow-sm"
 
               >
 
@@ -363,16 +288,7 @@ export default function SimulationRealityAdmin() {
 
                   placeholder="Feature Title"
 
-                  className="
-                    w-full
-                    h-[52px]
-                    rounded-2xl
-                    border
-                    border-gray-200
-                    px-5
-                    outline-none
-                    mb-5
-                  "
+                  className="w-full h-[52px] rounded-2xl border border-gray-200 px-5 outline-none mb-5"
 
                 />
 
@@ -401,17 +317,7 @@ export default function SimulationRealityAdmin() {
 
                   rows={5}
 
-                  className="
-                    w-full
-                    rounded-2xl
-                    border
-                    border-gray-200
-                    px-5
-                    py-4
-                    outline-none
-                    mb-5
-                    resize-none
-                  "
+                  className="w-full rounded-2xl border border-gray-200 px-5 py-4 outline-none mb-5 resize-none"
 
                 />
 
@@ -424,16 +330,7 @@ export default function SimulationRealityAdmin() {
                     )
                   }
 
-                  className="
-                    w-full
-                    h-[52px]
-                    rounded-2xl
-                    bg-cyan-500
-                    hover:bg-cyan-400
-                    transition
-                    text-white
-                    font-semibold
-                  "
+                  className="w-full h-[52px] rounded-2xl bg-cyan-500 hover:bg-cyan-400 transition text-white font-semibold"
 
                 >
 

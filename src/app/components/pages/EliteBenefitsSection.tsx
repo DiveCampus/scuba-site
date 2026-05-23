@@ -37,11 +37,9 @@ export function EliteBenefitsSection() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getEliteBenefitsSection();
+      const { data: sectionData } = await getEliteBenefitsSection();
 
-      const { data: pointsData } =
-        await getEliteBenefitsPoints();
+      const { data: pointsData } = await getEliteBenefitsPoints();
 
       setSection(sectionData);
 
@@ -68,26 +66,14 @@ export function EliteBenefitsSection() {
   return (
 
     <section
-      className="
-        py-32
-        bg-[#03121c]
-        text-white
-      "
+      className="py-32 bg-[#03121c] text-white"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        grid
-        lg:grid-cols-2
-        gap-20
-        px-6
-        items-center
-      ">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 px-6 items-center">
 
         {/* IMAGE */}
         <motion.div
@@ -102,29 +88,16 @@ export function EliteBenefitsSection() {
           transition={{
             duration: 0.6,
           }}
-          className="
-            flex
-            justify-center
-          "
+          className="flex justify-center"
         >
 
-          <div className="
-            rounded-3xl
-            overflow-hidden
-            shadow-[0_20px_80px_rgba(0,0,0,0.6)]
-            max-w-[440px]
-            w-full
-          ">
+          <div className="rounded-3xl overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.6)] max-w-[440px] w-full">
 
             <img
               src={
                 section?.image_url
               }
-              className="
-                w-full
-                h-full
-                object-cover
-              "
+              className="w-full h-full object-cover"
             />
 
           </div>
@@ -135,32 +108,18 @@ export function EliteBenefitsSection() {
         <div>
 
           {/* LABEL */}
-          <p className="
-            text-[10px]
-            tracking-[4px]
-            text-cyan-400
-            mb-5
-          ">
+          <p className="text-[10px] tracking-[4px] text-cyan-400 mb-5">
 
             {section?.label}
 
           </p>
 
           {/* TITLE */}
-          <h2 className="
-            text-3xl
-            md:text-5xl
-            font-bold
-            leading-[1.2]
-            tracking-[1px]
-            mb-8
-          ">
+          <h2 className="text-3xl md:text-5xl font-bold leading-[1.2] tracking-[1px] mb-8">
 
             {section?.title}{" "}
 
-            <span className="
-              text-cyan-400
-            ">
+            <span className="text-cyan-400">
 
               {
                 section?.highlighted_title
@@ -171,24 +130,14 @@ export function EliteBenefitsSection() {
           </h2>
 
           {/* DESC */}
-          <p className="
-            text-white/60
-            max-w-xl
-            text-[15px]
-            md:text-[16px]
-            leading-[1.95]
-            tracking-[0.45px]
-            mb-14
-          ">
+          <p className="text-white/60 max-w-xl text-[15px] md:text-[16px] leading-[1.95] tracking-[0.45px] mb-14">
 
             {section?.description}
 
           </p>
 
           {/* POINTS */}
-          <div className="
-            space-y-8
-          ">
+          <div className="space-y-8">
 
             {points.map((item, i) => (
 
@@ -205,31 +154,13 @@ export function EliteBenefitsSection() {
                 transition={{
                   delay: i * 0.08,
                 }}
-                className="
-                  flex
-                  gap-5
-                  border-b
-                  border-white/10
-                  pb-7
-                  last:border-none
-                "
+                className="flex gap-5 border-b border-white/10 pb-7 last:border-none"
               >
 
                 {/* ICON */}
-                <div className="
-                  mt-1
-                ">
+                <div className="mt-1">
 
-                  <div className="
-                    w-7
-                    h-7
-                    flex
-                    items-center
-                    justify-center
-                    rounded-full
-                    bg-cyan-400/10
-                    text-cyan-400
-                  ">
+                  <div className="w-7 h-7 flex items-center justify-center rounded-full bg-cyan-400/10 text-cyan-400">
 
                     <Check size={14} />
 
@@ -240,26 +171,13 @@ export function EliteBenefitsSection() {
                 {/* TEXT */}
                 <div>
 
-                  <h3 className="
-                    text-[15px]
-                    font-semibold
-                    tracking-[0.7px]
-                    leading-[1.65]
-                    text-white
-                    mb-2.5
-                  ">
+                  <h3 className="text-[15px] font-semibold tracking-[0.7px] leading-[1.65] text-white mb-2.5">
 
                     {item.title}
 
                   </h3>
 
-                  <p className="
-                    text-[13px]
-                    text-white/60
-                    leading-[1.95]
-                    tracking-[0.35px]
-                    max-w-lg
-                  ">
+                  <p className="text-[13px] text-white/60 leading-[1.95] tracking-[0.35px] max-w-lg">
 
                     {item.description}
 

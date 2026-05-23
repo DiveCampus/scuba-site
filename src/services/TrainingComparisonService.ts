@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getTrainingComparisonSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "training_comparison_section"
         )
@@ -36,8 +35,7 @@ export const updateTrainingComparisonSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "training_comparison_section"
         )
@@ -66,8 +64,7 @@ export const updateTrainingComparisonSection =
 export const getTrainingComparisonRows =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "training_comparison_rows"
         )
@@ -96,8 +93,7 @@ export const updateTrainingComparisonRow =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "training_comparison_rows"
         )

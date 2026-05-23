@@ -42,14 +42,11 @@ export function EliteFooter() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getEliteFooterSection();
+      const { data: sectionData } = await getEliteFooterSection();
 
-      const { data: groupsData } =
-        await getEliteFooterGroups();
+      const { data: groupsData } = await getEliteFooterGroups();
 
-      const { data: linksData } =
-        await getEliteFooterLinks();
+      const { data: linksData } = await getEliteFooterLinks();
 
       setSection(sectionData);
 
@@ -80,14 +77,7 @@ export function EliteFooter() {
   return (
 
     <footer
-      className="
-        relative
-        overflow-hidden
-        bg-[#02131d]
-        text-white
-        pt-24
-        pb-10
-      "
+      className="relative overflow-hidden bg-[#02131d] text-white pt-24 pb-10"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -96,40 +86,17 @@ export function EliteFooter() {
 
       {/* GLOW */}
       <div
-        className="
-          absolute
-          top-0
-          left-[-300px]
-          w-[700px]
-          h-[700px]
-          bg-cyan-500/10
-          blur-[180px]
-          rounded-full
-        "
+        className="absolute top-0 left-[-300px] w-[700px] h-[700px] bg-cyan-500/10 blur-[180px] rounded-full"
       />
 
       <div
-        className="
-          relative
-          max-w-7xl
-          mx-auto
-          px-6
-        "
+        className="relative max-w-7xl mx-auto px-6"
       >
 
         {/* ================= TOP ================= */}
 
         <div
-          className="
-            grid
-            grid-cols-1
-            md:grid-cols-2
-            lg:grid-cols-5
-            gap-14
-            pb-20
-            border-b
-            border-white/10
-          "
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-14 pb-20 border-b border-white/10"
         >
 
           {/* GROUPS */}
@@ -141,12 +108,7 @@ export function EliteFooter() {
               {/* TITLE */}
 
               <h4
-                className="
-                  text-[10px]
-                  tracking-[4px]
-                  text-white/60
-                  mb-8
-                "
+                className="text-[10px] tracking-[4px] text-white/60 mb-8"
               >
 
                 {group.title}
@@ -156,11 +118,7 @@ export function EliteFooter() {
               {/* LINKS */}
 
               <div
-                className="
-                  flex
-                  flex-col
-                  gap-5
-                "
+                className="flex flex-col gap-5"
               >
 
                 {getLinksByGroup(
@@ -172,13 +130,7 @@ export function EliteFooter() {
                       item.link_url || "#"
                     }
                     key={item.id}
-                    className="
-                      text-white
-                      text-[15px]
-                      hover:text-cyan-400
-                      transition
-                      duration-300
-                    "
+                    className="text-white text-[15px] hover:text-cyan-400 transition duration-300"
                   >
 
                     {/* APP BUTTON */}
@@ -187,19 +139,7 @@ export function EliteFooter() {
                     "DOWNLOAD APP" ? (
 
                       <div
-                        className="
-                          w-full
-                          h-[78px]
-                          border
-                          border-white/15
-                          rounded-3xl
-                          flex
-                          items-center
-                          px-6
-                          gap-4
-                          hover:border-cyan-400/40
-                          transition
-                        "
+                        className="w-full h-[78px] border border-white/15 rounded-3xl flex items-center px-6 gap-4 hover:border-cyan-400/40 transition"
                       >
 
                         {item.icon_type ===
@@ -247,11 +187,7 @@ export function EliteFooter() {
                   <div className="mt-10">
 
                     <p
-                      className="
-                        text-cyan-400
-                        text-[15px]
-                        mb-5
-                      "
+                      className="text-cyan-400 text-[15px] mb-5"
                     >
 
                       {
@@ -264,33 +200,11 @@ export function EliteFooter() {
                       placeholder={
                         section.subscribe_placeholder
                       }
-                      className="
-                        w-full
-                        h-[60px]
-                        rounded-full
-                        bg-white/10
-                        border
-                        border-white/10
-                        px-6
-                        outline-none
-                        text-white
-                        placeholder:text-white/40
-                        mb-5
-                      "
+                      className="w-full h-[60px] rounded-full bg-white/10 border border-white/10 px-6 outline-none text-white placeholder:text-white/40 mb-5"
                     />
 
                     <button
-                      className="
-                        w-full
-                        h-[58px]
-                        rounded-full
-                        bg-gradient-to-r
-                        from-cyan-400
-                        to-blue-500
-                        text-white
-                        font-semibold
-                        tracking-[1px]
-                      "
+                      className="w-full h-[58px] rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 text-white font-semibold tracking-[1px]"
                     >
 
                       {
@@ -314,40 +228,17 @@ export function EliteFooter() {
         {/* ================= BOTTOM ================= */}
 
         <div
-          className="
-            pt-14
-            flex
-            flex-col
-            lg:flex-row
-            items-center
-            justify-between
-            gap-10
-          "
+          className="pt-14 flex flex-col lg:flex-row items-center justify-between gap-10"
         >
 
           {/* SOCIAL */}
 
           <div
-            className="
-              flex
-              items-center
-              gap-5
-            "
+            className="flex items-center gap-5"
           >
 
             <div
-              className="
-                w-14
-                h-14
-                rounded-full
-                border
-                border-white/20
-                flex
-                items-center
-                justify-center
-                hover:border-cyan-400
-                transition
-              "
+              className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:border-cyan-400 transition"
             >
 
               <Facebook size={18} />
@@ -355,18 +246,7 @@ export function EliteFooter() {
             </div>
 
             <div
-              className="
-                w-14
-                h-14
-                rounded-full
-                border
-                border-white/20
-                flex
-                items-center
-                justify-center
-                hover:border-cyan-400
-                transition
-              "
+              className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:border-cyan-400 transition"
             >
 
               <Instagram size={18} />
@@ -374,18 +254,7 @@ export function EliteFooter() {
             </div>
 
             <div
-              className="
-                w-14
-                h-14
-                rounded-full
-                border
-                border-white/20
-                flex
-                items-center
-                justify-center
-                hover:border-cyan-400
-                transition
-              "
+              className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center hover:border-cyan-400 transition"
             >
 
               <Twitter size={18} />
@@ -397,27 +266,11 @@ export function EliteFooter() {
           {/* CTA */}
 
           <div
-            className="
-              flex
-              items-center
-              bg-white/5
-              rounded-full
-              p-2
-              border
-              border-white/10
-            "
+            className="flex items-center bg-white/5 rounded-full p-2 border border-white/10"
           >
 
             <button
-              className="
-                h-[58px]
-                px-10
-                rounded-full
-                bg-cyan-400
-                text-black
-                font-bold
-                tracking-[1px]
-              "
+              className="h-[58px] px-10 rounded-full bg-cyan-400 text-black font-bold tracking-[1px]"
             >
 
               {
@@ -432,25 +285,13 @@ export function EliteFooter() {
               }
               target="_blank"
               rel="noreferrer"
-              className="
-                ml-3
-                w-14
-                h-14
-                rounded-full
-                bg-[#1acb5f]
-                flex
-                items-center
-                justify-center
-              "
+              className="ml-3 w-14 h-14 rounded-full bg-[#1acb5f] flex items-center justify-center"
             >
 
               <img
                 src="/whatsapp.webp"
                 alt="whatsapp"
-                className="
-                  w-6
-                  h-6
-                "
+                className="w-6 h-6"
               />
 
             </a>
@@ -460,12 +301,7 @@ export function EliteFooter() {
           {/* COPYRIGHT */}
 
           <p
-            className="
-              text-[11px]
-              tracking-[2px]
-              text-white/55
-              text-center
-            "
+            className="text-[11px] tracking-[2px] text-white/55 text-center"
           >
 
             {

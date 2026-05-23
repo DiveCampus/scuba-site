@@ -56,14 +56,11 @@ export default function EliteFooterAdmin() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getEliteFooterSection();
+      const { data: sectionData } = await getEliteFooterSection();
 
-      const { data: groupsData } =
-        await getEliteFooterGroups();
+      const { data: groupsData } = await getEliteFooterGroups();
 
-      const { data: linksData } =
-        await getEliteFooterLinks();
+      const { data: linksData } = await getEliteFooterLinks();
 
       setSection(sectionData);
 
@@ -112,48 +109,27 @@ export default function EliteFooterAdmin() {
   return (
 
     <section
-      className="
-        bg-[#02131d]
-        text-white
-        py-24
-      "
+      className="bg-[#02131d] text-white py-24"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* TOP */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-20
-        ">
+        <div className="flex items-center justify-between mb-20">
 
           <div>
 
-            <p className="
-              text-cyan-400
-              tracking-[4px]
-              text-[10px]
-              mb-3
-            ">
+            <p className="text-cyan-400 tracking-[4px] text-[10px] mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-bold
-            ">
+            <h2 className="text-4xl font-bold">
 
               Elite Footer
 
@@ -163,17 +139,7 @@ export default function EliteFooterAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-7
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-7 rounded-2xl bg-cyan-400 text-black font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -189,12 +155,7 @@ export default function EliteFooterAdmin() {
         </div>
 
         {/* SECTION FORM */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-6
-          mb-20
-        ">
+        <div className="grid md:grid-cols-2 gap-6 mb-20">
 
           <input
             value={
@@ -210,15 +171,7 @@ export default function EliteFooterAdmin() {
             placeholder="
               Footer Note
             "
-            className="
-              h-[60px]
-              rounded-2xl
-              bg-white/5
-              border
-              border-white/10
-              px-6
-              outline-none
-            "
+            className="h-[60px] rounded-2xl bg-white/5 border border-white/10 px-6 outline-none"
           />
 
           <input
@@ -235,15 +188,7 @@ export default function EliteFooterAdmin() {
             placeholder="
               Subscribe Placeholder
             "
-            className="
-              h-[60px]
-              rounded-2xl
-              bg-white/5
-              border
-              border-white/10
-              px-6
-              outline-none
-            "
+            className="h-[60px] rounded-2xl bg-white/5 border border-white/10 px-6 outline-none"
           />
 
           <input
@@ -260,15 +205,7 @@ export default function EliteFooterAdmin() {
             placeholder="
               Subscribe Button
             "
-            className="
-              h-[60px]
-              rounded-2xl
-              bg-white/5
-              border
-              border-white/10
-              px-6
-              outline-none
-            "
+            className="h-[60px] rounded-2xl bg-white/5 border border-white/10 px-6 outline-none"
           />
 
           <input
@@ -285,38 +222,19 @@ export default function EliteFooterAdmin() {
             placeholder="
               CTA Button
             "
-            className="
-              h-[60px]
-              rounded-2xl
-              bg-white/5
-              border
-              border-white/10
-              px-6
-              outline-none
-            "
+            className="h-[60px] rounded-2xl bg-white/5 border border-white/10 px-6 outline-none"
           />
 
         </div>
 
         {/* GROUPS */}
-        <div className="
-          grid
-          md:grid-cols-2
-          lg:grid-cols-4
-          gap-10
-        ">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10">
 
           {groups.map((group) => (
 
             <div
               key={group.id}
-              className="
-                rounded-3xl
-                border
-                border-white/10
-                bg-white/[0.03]
-                p-7
-              "
+              className="rounded-3xl border border-white/10 bg-white/[0.03] p-7"
             >
 
               {/* GROUP TITLE */}
@@ -345,24 +263,11 @@ export default function EliteFooterAdmin() {
                   );
 
                 }}
-                className="
-                  bg-transparent
-                  text-cyan-400
-                  text-[11px]
-                  tracking-[4px]
-                  uppercase
-                  mb-8
-                  outline-none
-                  w-full
-                "
+                className="bg-transparent text-cyan-400 text-[11px] tracking-[4px] uppercase mb-8 outline-none w-full"
               />
 
               {/* LINKS */}
-              <div className="
-                flex
-                flex-col
-                gap-4
-              ">
+              <div className="flex flex-col gap-4">
 
                 {getLinksByGroup(
                   group.id
@@ -396,15 +301,7 @@ export default function EliteFooterAdmin() {
                       );
 
                     }}
-                    className="
-                      h-[52px]
-                      rounded-2xl
-                      bg-white/5
-                      border
-                      border-white/10
-                      px-5
-                      outline-none
-                    "
+                    className="h-[52px] rounded-2xl bg-white/5 border border-white/10 px-5 outline-none"
                   />
 
                 ))}

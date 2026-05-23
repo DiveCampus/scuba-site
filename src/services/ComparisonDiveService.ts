@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getComparisonDiveSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("comparison_dive_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateComparisonDiveSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("comparison_dive_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateComparisonDiveSection =
 export const getComparisonDiveRows =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("comparison_dive_rows")
         .select("*")
         .order("sort_order", {
@@ -90,8 +87,7 @@ export const updateComparisonDiveRow =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("comparison_dive_rows")
         .update({
           ...payload,

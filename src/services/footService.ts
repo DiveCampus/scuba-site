@@ -13,8 +13,7 @@ export const getFooter =
       .select("*")
       .limit(1);
 
-    const { data: links } =
-      await supabase
+    const { data: links } = await supabase
         .from(
           "kadir_footer_links"
         )
@@ -28,8 +27,7 @@ export const getFooter =
       )
       .select("*");
 
-    const { data: apps } =
-      await supabase
+    const { data: apps } = await supabase
         .from(
           "kadir_footer_apps"
         )

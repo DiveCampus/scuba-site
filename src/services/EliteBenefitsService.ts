@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getEliteBenefitsSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_benefits_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateEliteBenefitsSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_benefits_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateEliteBenefitsSection =
 export const getEliteBenefitsPoints =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_benefits_points")
         .select("*")
         .order("sort_order", {
@@ -90,8 +87,7 @@ export const updateEliteBenefitsPoint =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("elite_benefits_points")
         .update({
           ...payload,

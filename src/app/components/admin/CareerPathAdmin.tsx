@@ -57,14 +57,11 @@ export default function CareerPathAdmin() {
     const fetchData =
       async () => {
 
-        const sectionRes =
-          await getCareerPathSection();
+        const sectionRes = await getCareerPathSection();
 
-        const benefitsRes =
-          await getCareerPathBenefits();
+        const benefitsRes = await getCareerPathBenefits();
 
-        const faqRes =
-          await getCareerPathFaqs();
+        const faqRes = await getCareerPathFaqs();
 
         setSection(
           sectionRes.data
@@ -111,50 +108,27 @@ export default function CareerPathAdmin() {
   return (
 
     <section
-      className="
-        py-28
-        bg-[#f4f7fb]
-      "
+      className="py-28 bg-[#f4f7fb]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* TOP */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          flex-wrap
-          gap-5
-          mb-14
-        ">
+        <div className="flex items-center justify-between flex-wrap gap-5 mb-14">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-500
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-500 mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-bold
-              text-[#0a0e27]
-            ">
+            <h2 className="text-4xl font-bold text-[#0a0e27]">
 
               Career Path Section
 
@@ -164,17 +138,7 @@ export default function CareerPathAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-8
-              rounded-2xl
-              bg-cyan-500
-              text-white
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-8 rounded-2xl bg-cyan-500 text-white font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -190,12 +154,7 @@ export default function CareerPathAdmin() {
         </div>
 
         {/* SECTION */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-6
-          mb-16
-        ">
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
 
           <textarea
             rows={2}
@@ -209,16 +168,7 @@ export default function CareerPathAdmin() {
                   e.target.value,
               })
             }
-            className="
-              rounded-3xl
-              border
-              border-gray-200
-              bg-white
-              p-5
-              outline-none
-              resize-none
-              text-[#0a0e27]
-            "
+            className="rounded-3xl border border-gray-200 bg-white p-5 outline-none resize-none text-[#0a0e27]"
           />
 
           <textarea
@@ -233,16 +183,7 @@ export default function CareerPathAdmin() {
                   e.target.value,
               })
             }
-            className="
-              rounded-3xl
-              border
-              border-cyan-200
-              bg-cyan-50
-              p-5
-              outline-none
-              resize-none
-              text-cyan-600
-            "
+            className="rounded-3xl border border-cyan-200 bg-cyan-50 p-5 outline-none resize-none text-cyan-600"
           />
 
           <textarea
@@ -257,17 +198,7 @@ export default function CareerPathAdmin() {
                   e.target.value,
               })
             }
-            className="
-              rounded-3xl
-              border
-              border-gray-200
-              bg-white
-              p-5
-              outline-none
-              resize-none
-              text-gray-500
-              md:col-span-2
-            "
+            className="rounded-3xl border border-gray-200 bg-white p-5 outline-none resize-none text-gray-500 md:col-span-2"
           />
 
           <input
@@ -282,56 +213,31 @@ export default function CareerPathAdmin() {
                   e.target.value,
               })
             }
-            className="
-              h-[58px]
-              rounded-3xl
-              border
-              border-gray-200
-              bg-white
-              px-5
-              outline-none
-            "
+            className="h-[58px] rounded-3xl border border-gray-200 bg-white px-5 outline-none"
           />
 
         </div>
 
         {/* BENEFITS + FAQ */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-10
-        ">
+        <div className="grid md:grid-cols-2 gap-10">
 
           {/* BENEFITS */}
           <div>
 
-            <h3 className="
-              text-2xl
-              font-semibold
-              text-[#0a0e27]
-              mb-6
-            ">
+            <h3 className="text-2xl font-semibold text-[#0a0e27] mb-6">
 
               Benefits
 
             </h3>
 
-            <div className="
-              space-y-4
-            ">
+            <div className="space-y-4">
 
               {benefits.map(
                 (item, i) => (
 
                   <div
                     key={item.id}
-                    className="
-                      bg-white
-                      border
-                      border-gray-200
-                      rounded-3xl
-                      p-5
-                    "
+                    className="bg-white border border-gray-200 rounded-3xl p-5"
                   >
 
                     <textarea
@@ -355,16 +261,7 @@ export default function CareerPathAdmin() {
                         );
 
                       }}
-                      className="
-                        w-full
-                        rounded-2xl
-                        border
-                        border-gray-200
-                        p-4
-                        outline-none
-                        resize-none
-                        mb-4
-                      "
+                      className="w-full rounded-2xl border border-gray-200 p-4 outline-none resize-none mb-4"
                     />
 
                     <input
@@ -388,17 +285,7 @@ export default function CareerPathAdmin() {
                         );
 
                       }}
-                      className="
-                        w-full
-                        h-[52px]
-                        rounded-2xl
-                        border
-                        border-cyan-200
-                        bg-cyan-50
-                        px-4
-                        outline-none
-                        text-cyan-600
-                      "
+                      className="w-full h-[52px] rounded-2xl border border-cyan-200 bg-cyan-50 px-4 outline-none text-cyan-600"
                     />
 
                   </div>
@@ -413,33 +300,20 @@ export default function CareerPathAdmin() {
           {/* FAQ */}
           <div>
 
-            <h3 className="
-              text-2xl
-              font-semibold
-              text-[#0a0e27]
-              mb-6
-            ">
+            <h3 className="text-2xl font-semibold text-[#0a0e27] mb-6">
 
               FAQ
 
             </h3>
 
-            <div className="
-              space-y-4
-            ">
+            <div className="space-y-4">
 
               {faqs.map(
                 (item, i) => (
 
                   <div
                     key={item.id}
-                    className="
-                      bg-white
-                      border
-                      border-gray-200
-                      rounded-3xl
-                      p-5
-                    "
+                    className="bg-white border border-gray-200 rounded-3xl p-5"
                   >
 
                     <textarea
@@ -463,16 +337,7 @@ export default function CareerPathAdmin() {
                         );
 
                       }}
-                      className="
-                        w-full
-                        rounded-2xl
-                        border
-                        border-gray-200
-                        p-4
-                        outline-none
-                        resize-none
-                        mb-4
-                      "
+                      className="w-full rounded-2xl border border-gray-200 p-4 outline-none resize-none mb-4"
                     />
 
                     <textarea
@@ -496,16 +361,7 @@ export default function CareerPathAdmin() {
                         );
 
                       }}
-                      className="
-                        w-full
-                        rounded-2xl
-                        border
-                        border-gray-200
-                        p-4
-                        outline-none
-                        resize-none
-                        text-gray-500
-                      "
+                      className="w-full rounded-2xl border border-gray-200 p-4 outline-none resize-none text-gray-500"
                     />
 
                   </div>

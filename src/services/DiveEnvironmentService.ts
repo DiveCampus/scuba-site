@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getDiveEnvironmentSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("dive_environment_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateDiveEnvironmentSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("dive_environment_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateDiveEnvironmentSection =
 export const getDiveEnvironmentCards =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("dive_environment_cards")
         .select("*")
         .order("sort_order", {
@@ -90,8 +87,7 @@ export const updateDiveEnvironmentCard =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("dive_environment_cards")
         .update({
           ...payload,

@@ -5,8 +5,7 @@ import { supabase } from "@/lib/supabaseClient";
 // ========================================
 
 export const getFAQ = async () => {
-  const { data: section, error: secErr } =
-    await supabase
+  const { data: section, error: secErr } = await supabase
       .from(
         "kadir_community_faq_section"
       )
@@ -16,8 +15,7 @@ export const getFAQ = async () => {
       })
       .limit(1);
 
-  const { data: items, error: itemErr } =
-    await supabase
+  const { data: items, error: itemErr } = await supabase
       .from(
         "kadir_community_faq_items"
       )
@@ -41,8 +39,7 @@ export const getFAQ = async () => {
 
 export const updateFAQItem =
   async (item: any) => {
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "kadir_community_faq_items"
         )
@@ -74,8 +71,7 @@ export const updateFAQItem =
 
 export const updateFAQSection =
   async (section: any) => {
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "kadir_community_faq_section"
         )
@@ -112,8 +108,7 @@ export const updateFAQSection =
 
 export const createFAQItem =
   async (item: any) => {
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "kadir_community_faq_items"
         )
@@ -138,8 +133,7 @@ export const createFAQItem =
 
 export const deleteFAQItem =
   async (id: string) => {
-    const { error } =
-      await supabase
+    const { error } = await supabase
         .from(
           "kadir_community_faq_items"
         )

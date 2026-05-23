@@ -74,11 +74,9 @@ export default function HybridProtocolAdmin() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getHybridProtocolSection();
+      const { data: sectionData } = await getHybridProtocolSection();
 
-      const { data: cardsData } =
-        await getHybridProtocolCards();
+      const { data: cardsData } = await getHybridProtocolCards();
 
       setSection(sectionData);
 
@@ -124,10 +122,7 @@ export default function HybridProtocolAdmin() {
   return (
 
     <section
-      className="
-        py-32
-        bg-[#f5f7fa]
-      "
+      className="py-32 bg-[#f5f7fa]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -135,36 +130,17 @@ export default function HybridProtocolAdmin() {
     >
 
       {/* HEADER */}
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-        flex
-        items-center
-        justify-between
-        mb-16
-        flex-wrap
-        gap-5
-      ">
+      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between mb-16 flex-wrap gap-5">
 
         <div>
 
-          <p className="
-            text-[10px]
-            tracking-[4px]
-            text-cyan-500
-            mb-3
-          ">
+          <p className="text-[10px] tracking-[4px] text-cyan-500 mb-3">
 
             ADMIN PANEL
 
           </p>
 
-          <h2 className="
-            text-4xl
-            font-bold
-            text-[#0a0e27]
-          ">
+          <h2 className="text-4xl font-bold text-[#0a0e27]">
 
             Hybrid Protocol
 
@@ -174,17 +150,7 @@ export default function HybridProtocolAdmin() {
 
         <button
           onClick={handleSave}
-          className="
-            h-[56px]
-            px-7
-            rounded-2xl
-            bg-cyan-500
-            text-white
-            font-semibold
-            flex
-            items-center
-            gap-3
-          "
+          className="h-[56px] px-7 rounded-2xl bg-cyan-500 text-white font-semibold flex items-center gap-3"
         >
 
           <Save size={18} />
@@ -200,13 +166,7 @@ export default function HybridProtocolAdmin() {
       </div>
 
       {/* HEADER SECTION */}
-      <div className="
-        text-center
-        max-w-4xl
-        mx-auto
-        px-6
-        mb-20
-      ">
+      <div className="text-center max-w-4xl mx-auto px-6 mb-20">
 
         <input
           value={
@@ -219,29 +179,11 @@ export default function HybridProtocolAdmin() {
                 e.target.value,
             })
           }
-          className="
-            w-full
-            h-[54px]
-            rounded-2xl
-            border
-            border-gray-200
-            bg-white
-            text-center
-            text-cyan-500
-            text-[10px]
-            tracking-[4px]
-            outline-none
-            mb-6
-          "
+          className="w-full h-[54px] rounded-2xl border border-gray-200 bg-white text-center text-cyan-500 text-[10px] tracking-[4px] outline-none mb-6"
         />
 
         {/* TITLES */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-5
-          mb-6
-        ">
+        <div className="grid md:grid-cols-2 gap-5 mb-6">
 
           <input
             value={
@@ -254,18 +196,7 @@ export default function HybridProtocolAdmin() {
                   e.target.value,
               })
             }
-            className="
-              h-[68px]
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              px-6
-              text-3xl
-              font-bold
-              text-[#0a0e27]
-              outline-none
-            "
+            className="h-[68px] rounded-2xl border border-gray-200 bg-white px-6 text-3xl font-bold text-[#0a0e27] outline-none"
           />
 
           <input
@@ -279,18 +210,7 @@ export default function HybridProtocolAdmin() {
                   e.target.value,
               })
             }
-            className="
-              h-[68px]
-              rounded-2xl
-              border
-              border-cyan-200
-              bg-cyan-50
-              px-6
-              text-3xl
-              font-bold
-              text-cyan-500
-              outline-none
-            "
+            className="h-[68px] rounded-2xl border border-cyan-200 bg-cyan-50 px-6 text-3xl font-bold text-cyan-500 outline-none"
           />
 
         </div>
@@ -308,29 +228,11 @@ export default function HybridProtocolAdmin() {
                 e.target.value,
             })
           }
-          className="
-            w-full
-            rounded-3xl
-            border
-            border-gray-200
-            bg-white
-            p-6
-            text-gray-600
-            outline-none
-            resize-none
-            mb-8
-          "
+          className="w-full rounded-3xl border border-gray-200 bg-white p-6 text-gray-600 outline-none resize-none mb-8"
         />
 
         {/* INFO BOX */}
-        <div className="
-          bg-white
-          border
-          border-gray-200
-          rounded-3xl
-          p-7
-          shadow-sm
-        ">
+        <div className="bg-white border border-gray-200 rounded-3xl p-7 shadow-sm">
 
           <textarea
             rows={3}
@@ -344,18 +246,7 @@ export default function HybridProtocolAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              rounded-2xl
-              border
-              border-gray-200
-              bg-[#f8fafc]
-              p-4
-              text-gray-600
-              outline-none
-              resize-none
-              mb-4
-            "
+            className="w-full rounded-2xl border border-gray-200 bg-[#f8fafc] p-4 text-gray-600 outline-none resize-none mb-4"
           />
 
           <textarea
@@ -370,17 +261,7 @@ export default function HybridProtocolAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              rounded-2xl
-              border
-              border-gray-200
-              bg-[#f8fafc]
-              p-4
-              text-gray-600
-              outline-none
-              resize-none
-            "
+            className="w-full rounded-2xl border border-gray-200 bg-[#f8fafc] p-4 text-gray-600 outline-none resize-none"
           />
 
         </div>
@@ -388,14 +269,7 @@ export default function HybridProtocolAdmin() {
       </div>
 
       {/* CARDS */}
-      <div className="
-        max-w-6xl
-        mx-auto
-        px-6
-        grid
-        md:grid-cols-4
-        gap-7
-      ">
+      <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-4 gap-7">
 
         {cards.map((card, i) => (
 
@@ -440,27 +314,11 @@ export default function HybridProtocolAdmin() {
                 );
 
               }}
-              className="
-                w-full
-                h-[42px]
-                rounded-xl
-                border
-                border-gray-200
-                bg-[#f8fafc]
-                px-4
-                text-[10px]
-                tracking-[3px]
-                text-cyan-500
-                outline-none
-                mb-6
-              "
+              className="w-full h-[42px] rounded-xl border border-gray-200 bg-[#f8fafc] px-4 text-[10px] tracking-[3px] text-cyan-500 outline-none mb-6"
             />
 
             {/* ICON */}
-            <div className="
-              text-cyan-500
-              mb-6
-            ">
+            <div className="text-cyan-500 mb-6">
 
               {
                 icons[
@@ -491,19 +349,7 @@ export default function HybridProtocolAdmin() {
                 );
 
               }}
-              className="
-                w-full
-                h-[56px]
-                rounded-2xl
-                border
-                border-gray-200
-                bg-white
-                px-5
-                text-[#0a0e27]
-                font-semibold
-                outline-none
-                mb-4
-              "
+              className="w-full h-[56px] rounded-2xl border border-gray-200 bg-white px-5 text-[#0a0e27] font-semibold outline-none mb-4"
             />
 
             {/* DESCRIPTION */}
@@ -530,19 +376,7 @@ export default function HybridProtocolAdmin() {
                 );
 
               }}
-              className="
-                w-full
-                rounded-2xl
-                border
-                border-gray-200
-                bg-white
-                p-4
-                text-gray-500
-                text-[13px]
-                leading-[1.9]
-                outline-none
-                resize-none
-              "
+              className="w-full rounded-2xl border border-gray-200 bg-white p-4 text-gray-500 text-[13px] leading-[1.9] outline-none resize-none"
             />
 
           </motion.div>
@@ -550,25 +384,10 @@ export default function HybridProtocolAdmin() {
         ))}
 
         {/* CTA CARD */}
-        <div className="
-          p-7
-          rounded-3xl
-          border
-          border-gray-200
-          bg-white
-          shadow-sm
-          flex
-          flex-col
-          justify-center
-          items-center
-          text-center
-        ">
+        <div className="p-7 rounded-3xl border border-gray-200 bg-white shadow-sm flex flex-col justify-center items-center text-center">
 
           <MessageCircle
-            className="
-              text-cyan-500
-              mb-5
-            "
+            className="text-cyan-500 mb-5"
             size={22}
           />
 
@@ -583,20 +402,7 @@ export default function HybridProtocolAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              h-[56px]
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              px-5
-              text-center
-              text-[#0a0e27]
-              font-semibold
-              outline-none
-              mb-4
-            "
+            className="w-full h-[56px] rounded-2xl border border-gray-200 bg-white px-5 text-center text-[#0a0e27] font-semibold outline-none mb-4"
           />
 
           <textarea
@@ -611,19 +417,7 @@ export default function HybridProtocolAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              p-4
-              text-gray-500
-              text-center
-              outline-none
-              resize-none
-              mb-5
-            "
+            className="w-full rounded-2xl border border-gray-200 bg-white p-4 text-gray-500 text-center outline-none resize-none mb-5"
           />
 
           <input
@@ -637,18 +431,7 @@ export default function HybridProtocolAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              h-[48px]
-              rounded-xl
-              border
-              border-gray-300
-              bg-[#f8fafc]
-              text-center
-              text-[11px]
-              tracking-[1.5px]
-              outline-none
-            "
+            className="w-full h-[48px] rounded-xl border border-gray-300 bg-[#f8fafc] text-center text-[11px] tracking-[1.5px] outline-none"
           />
 
         </div>

@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getAdvancedTrainingGoldSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "advanced_training_gold_section"
         )
@@ -36,8 +35,7 @@ export const updateAdvancedTrainingGoldSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "advanced_training_gold_section"
         )

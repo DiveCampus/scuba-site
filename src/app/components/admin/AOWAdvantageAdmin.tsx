@@ -39,8 +39,7 @@ export default function AOWAdvantageAdmin() {
 
     const load = async () => {
 
-      const res =
-        await getAOWAdvantage();
+      const res = await getAOWAdvantage();
 
       setSection(res.section);
 
@@ -94,47 +93,20 @@ export default function AOWAdvantageAdmin() {
 
   return (
 
-    <section className="
-      py-20
-      bg-[#f4f7fb]
-      min-h-screen
-    ">
+    <section className="py-20 bg-[#f4f7fb] min-h-screen">
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* TOP */}
-        <div className="
-          flex
-          justify-between
-          items-center
-          mb-10
-        ">
+        <div className="flex justify-between items-center mb-10">
 
-          <h2 className="
-            text-4xl
-            font-bold
-            text-black
-          ">
+          <h2 className="text-4xl font-bold text-black">
             AOW Advantage
           </h2>
 
           <button
             onClick={handleSave}
-            className="
-              h-[54px]
-              px-7
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-semibold
-              flex
-              items-center
-              gap-2
-            "
+            className="h-[54px] px-7 rounded-2xl bg-cyan-400 text-black font-semibold flex items-center gap-2"
           >
 
             <Save size={18} />
@@ -148,17 +120,7 @@ export default function AOWAdvantageAdmin() {
         </div>
 
         {/* SECTION */}
-        <div className="
-          bg-white
-          border
-          border-gray-200
-          rounded-3xl
-          p-7
-          mb-12
-          grid
-          md:grid-cols-2
-          gap-5
-        ">
+        <div className="bg-white border border-gray-200 rounded-3xl p-7 mb-12 grid md:grid-cols-2 gap-5">
 
           <input
             value={section.top_label || ""}
@@ -170,15 +132,7 @@ export default function AOWAdvantageAdmin() {
               })
             }
             placeholder="Top Label"
-            className="
-              h-[56px]
-              rounded-2xl
-              border
-              border-gray-200
-              px-5
-              text-black
-              outline-none
-            "
+            className="h-[56px] rounded-2xl border border-gray-200 px-5 text-black outline-none"
           />
 
           <input
@@ -191,15 +145,7 @@ export default function AOWAdvantageAdmin() {
               })
             }
             placeholder="Image URL"
-            className="
-              h-[56px]
-              rounded-2xl
-              border
-              border-gray-200
-              px-5
-              text-black
-              outline-none
-            "
+            className="h-[56px] rounded-2xl border border-gray-200 px-5 text-black outline-none"
           />
 
           <input
@@ -212,15 +158,7 @@ export default function AOWAdvantageAdmin() {
               })
             }
             placeholder="Title"
-            className="
-              h-[56px]
-              rounded-2xl
-              border
-              border-gray-200
-              px-5
-              text-black
-              outline-none
-            "
+            className="h-[56px] rounded-2xl border border-gray-200 px-5 text-black outline-none"
           />
 
           <input
@@ -235,15 +173,7 @@ export default function AOWAdvantageAdmin() {
               })
             }
             placeholder="Highlighted Title"
-            className="
-              h-[56px]
-              rounded-2xl
-              border
-              border-gray-200
-              px-5
-              text-black
-              outline-none
-            "
+            className="h-[56px] rounded-2xl border border-gray-200 px-5 text-black outline-none"
           />
 
           <textarea
@@ -259,24 +189,13 @@ export default function AOWAdvantageAdmin() {
               })
             }
             placeholder="Description"
-            className="
-              md:col-span-2
-              rounded-2xl
-              border
-              border-gray-200
-              p-5
-              text-black
-              outline-none
-              resize-none
-            "
+            className="md:col-span-2 rounded-2xl border border-gray-200 p-5 text-black outline-none resize-none"
           />
 
         </div>
 
         {/* POINTS */}
-        <div className="
-          space-y-6
-        ">
+        <div className="space-y-6">
 
           {points.map(
             (item, i) => (
@@ -291,39 +210,18 @@ export default function AOWAdvantageAdmin() {
                   opacity: 1,
                   y: 0,
                 }}
-                className="
-                  bg-white
-                  border
-                  border-gray-200
-                  rounded-3xl
-                  p-6
-                  flex
-                  gap-5
-                "
+                className="bg-white border border-gray-200 rounded-3xl p-6 flex gap-5"
               >
 
                 {/* ICON */}
-                <div className="
-                  w-10
-                  h-10
-                  rounded-full
-                  bg-cyan-100
-                  text-cyan-500
-                  flex
-                  items-center
-                  justify-center
-                  mt-1
-                ">
+                <div className="w-10 h-10 rounded-full bg-cyan-100 text-cyan-500 flex items-center justify-center mt-1">
 
                   <Check size={16} />
 
                 </div>
 
                 {/* CONTENT */}
-                <div className="
-                  flex-1
-                  space-y-4
-                ">
+                <div className="flex-1 space-y-4">
 
                   <input
                     value={item.title}
@@ -334,17 +232,7 @@ export default function AOWAdvantageAdmin() {
                         e.target.value
                       )
                     }
-                    className="
-                      w-full
-                      h-[54px]
-                      rounded-2xl
-                      border
-                      border-gray-200
-                      px-5
-                      text-black
-                      outline-none
-                      font-semibold
-                    "
+                    className="w-full h-[54px] rounded-2xl border border-gray-200 px-5 text-black outline-none font-semibold"
                   />
 
                   <textarea
@@ -359,16 +247,7 @@ export default function AOWAdvantageAdmin() {
                         e.target.value
                       )
                     }
-                    className="
-                      w-full
-                      rounded-2xl
-                      border
-                      border-gray-200
-                      p-5
-                      text-black
-                      outline-none
-                      resize-none
-                    "
+                    className="w-full rounded-2xl border border-gray-200 p-5 text-black outline-none resize-none"
                   />
 
                 </div>

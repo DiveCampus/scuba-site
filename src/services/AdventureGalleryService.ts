@@ -8,13 +8,7 @@ export const getAdventureGallery =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "adventure_gallery_section"
@@ -27,13 +21,7 @@ export const getAdventureGallery =
       .single();
 
     /* IMAGES */
-    const {
-
-      data: images,
-
-      error: imagesError,
-
-    } = await supabase
+    const { data: images, error: imagesError } = await supabase
 
       .from(
         "adventure_gallery_images"
@@ -104,13 +92,7 @@ export const updateAdventureGallerySection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "adventure_gallery_section"
@@ -172,13 +154,7 @@ export const updateAdventureGalleryImage =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "adventure_gallery_images"
@@ -238,13 +214,7 @@ export const createAdventureGalleryImage =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "adventure_gallery_images"

@@ -70,11 +70,9 @@ export function CommandOceanSection() {
     const fetchData =
       async () => {
 
-        const sectionResponse =
-          await getCommandOceanSection();
+        const sectionResponse = await getCommandOceanSection();
 
-        const itemsResponse =
-          await getCommandOceanItems();
+        const itemsResponse = await getCommandOceanItems();
 
         console.log(
           "COMMAND SECTION =>",
@@ -108,10 +106,7 @@ export function CommandOceanSection() {
   return (
 
     <section
-      className="
-        py-28
-        bg-[#f4f7fb]
-      "
+      className="py-28 bg-[#f4f7fb]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -119,51 +114,24 @@ export function CommandOceanSection() {
     >
 
       {/* HEADER */}
-      <div className="
-        text-center
-        max-w-[720px]
-        mx-auto
-        px-4
-      ">
+      <div className="text-center max-w-[720px] mx-auto px-4">
 
         {/* TOP */}
-        <p className="
-          text-[11px]
-          tracking-[3px]
-          text-gray-500
-          mb-4
-          uppercase
-        ">
+        <p className="text-[11px] tracking-[3px] text-gray-500 mb-4 uppercase">
 
           {section.top_text}
 
         </p>
 
         {/* TITLE */}
-        <h2 className="
-          text-3xl
-          md:text-4xl
-          font-semibold
-          leading-[1.22]
-          tracking-[1px]
-          text-cyan-500
-        ">
+        <h2 className="text-3xl md:text-4xl font-semibold leading-[1.22] tracking-[1px] text-cyan-500">
 
           {section.title}
 
         </h2>
 
         {/* DESC */}
-        <p className="
-          mt-7
-          text-[15px]
-          md:text-[16px]
-          leading-[1.95]
-          tracking-[0.45px]
-          text-gray-500
-          max-w-2xl
-          mx-auto
-        ">
+        <p className="mt-7 text-[15px] md:text-[16px] leading-[1.95] tracking-[0.45px] text-gray-500 max-w-2xl mx-auto">
 
           {section.description}
 
@@ -172,17 +140,7 @@ export function CommandOceanSection() {
       </div>
 
       {/* GRID */}
-      <div className="
-        max-w-[980px]
-        mx-auto
-        mt-16
-        grid
-        grid-cols-1
-        md:grid-cols-2
-        lg:grid-cols-4
-        gap-10
-        px-4
-      ">
+      <div className="max-w-[980px] mx-auto mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 px-4">
 
         {items.map((item, i) => {
 
@@ -204,34 +162,16 @@ export function CommandOceanSection() {
               transition={{
                 delay: i * 0.08,
               }}
-              className="
-                text-center
-                flex
-                flex-col
-                items-center
-              "
+              className="text-center flex flex-col items-center"
             >
 
               {/* ICON */}
-              <div className="
-                w-14
-                h-14
-                flex
-                items-center
-                justify-center
-                rounded-full
-                bg-cyan-100
-                text-cyan-500
-                mb-6
-              ">
+              <div className="w-14 h-14 flex items-center justify-center rounded-full bg-cyan-100 text-cyan-500 mb-6">
 
                 {Icon && (
 
                   <Icon
-                    className="
-                      w-5
-                      h-5
-                    "
+                    className="w-5 h-5"
                   />
 
                 )}
@@ -239,27 +179,14 @@ export function CommandOceanSection() {
               </div>
 
               {/* TITLE */}
-              <h3 className="
-                text-[14px]
-                font-semibold
-                tracking-[0.8px]
-                leading-[1.7]
-                text-[#0a0e27]
-              ">
+              <h3 className="text-[14px] font-semibold tracking-[0.8px] leading-[1.7] text-[#0a0e27]">
 
                 {item.title}
 
               </h3>
 
               {/* DESC */}
-              <p className="
-                text-[13px]
-                text-gray-500
-                mt-4
-                max-w-[240px]
-                leading-[1.95]
-                tracking-[0.35px]
-              ">
+              <p className="text-[13px] text-gray-500 mt-4 max-w-[240px] leading-[1.95] tracking-[0.35px]">
 
                 {item.description}
 

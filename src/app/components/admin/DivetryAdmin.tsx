@@ -59,13 +59,7 @@ export default function DivetryAdmin() {
   const loadData =
     async () => {
 
-      const {
-
-        section,
-        cards,
-
-      } =
-        await getDivetry();
+      const { section, cards } = await getDivetry();
 
       setSection(section);
 
@@ -165,14 +159,7 @@ export default function DivetryAdmin() {
   return (
 
     <section
-      className="
-      relative
-      min-h-screen
-      text-white
-      bg-cover
-      bg-center
-      overflow-hidden
-      "
+      className="relative min-h-screen text-white bg-cover bg-center overflow-hidden"
       style={{
 
         backgroundImage:
@@ -192,15 +179,7 @@ export default function DivetryAdmin() {
     >
 
       <div
-        className="
-        min-h-screen
-        flex
-        flex-col
-        items-center
-        justify-center
-        px-6
-        text-center
-        "
+        className="min-h-screen flex flex-col items-center justify-center px-6 text-center"
       >
 
         {/* TOP TAG */}
@@ -215,20 +194,7 @@ export default function DivetryAdmin() {
                 e.target.value,
             })
           }
-          className="
-          bg-white/10
-          border
-          border-white/20
-          px-5
-          py-2
-          rounded-full
-          text-center
-          text-sm
-          w-full
-          max-w-[700px]
-          mb-6
-          backdrop-blur
-          "
+          className="bg-white/10 border border-white/20 px-5 py-2 rounded-full text-center text-sm w-full max-w-[700px] mb-6 backdrop-blur"
         />
 
         {/* LABEL */}
@@ -243,16 +209,7 @@ export default function DivetryAdmin() {
                 e.target.value,
             })
           }
-          className="
-          bg-transparent
-          text-cyan-300
-          text-center
-          uppercase
-          tracking-[5px]
-          outline-none
-          text-sm
-          mb-4
-          "
+          className="bg-transparent text-cyan-300 text-center uppercase tracking-[5px] outline-none text-sm mb-4"
         />
 
         {/* TITLE */}
@@ -267,16 +224,7 @@ export default function DivetryAdmin() {
                 e.target.value,
             })
           }
-          className="
-          bg-transparent
-          text-center
-          text-5xl
-          font-semibold
-          outline-none
-          resize-none
-          w-full
-          max-w-4xl
-          "
+          className="bg-transparent text-center text-5xl font-semibold outline-none resize-none w-full max-w-4xl"
         />
 
         {/* SUBTITLE */}
@@ -291,24 +239,12 @@ export default function DivetryAdmin() {
                 e.target.value,
             })
           }
-          className="
-          bg-transparent
-          text-cyan-300
-          text-center
-          mt-4
-          mb-12
-          outline-none
-          "
+          className="bg-transparent text-cyan-300 text-center mt-4 mb-12 outline-none"
         />
 
         {/* CARDS */}
         <div
-          className="
-          flex
-          flex-col
-          md:flex-row
-          gap-8
-          "
+          className="flex flex-col md:flex-row gap-8"
         >
 
           {[
@@ -371,16 +307,7 @@ export default function DivetryAdmin() {
                       e.target.value
                     )
                   }
-                  className="
-                  bg-transparent
-                  text-cyan-300
-                  text-center
-                  text-xs
-                  tracking-[3px]
-                  w-full
-                  outline-none
-                  mb-3
-                  "
+                  className="bg-transparent text-cyan-300 text-center text-xs tracking-[3px] w-full outline-none mb-3"
                 />
 
                 {/* TITLE */}
@@ -398,15 +325,7 @@ export default function DivetryAdmin() {
                       e.target.value
                     )
                   }
-                  className="
-                  bg-transparent
-                  text-center
-                  text-xl
-                  font-semibold
-                  outline-none
-                  w-full
-                  mb-4
-                  "
+                  className="bg-transparent text-center text-xl font-semibold outline-none w-full mb-4"
                 />
 
                 {/* DESCRIPTION */}
@@ -424,16 +343,7 @@ export default function DivetryAdmin() {
                       e.target.value
                     )
                   }
-                  className="
-                  bg-transparent
-                  text-center
-                  text-sm
-                  text-gray-300
-                  resize-none
-                  outline-none
-                  w-full
-                  mb-4
-                  "
+                  className="bg-transparent text-center text-sm text-gray-300 resize-none outline-none w-full mb-4"
                 />
 
                 {/* PRICE */}
@@ -455,14 +365,7 @@ export default function DivetryAdmin() {
                       )
                     )
                   }
-                  className="
-                  bg-transparent
-                  text-center
-                  text-2xl
-                  font-bold
-                  outline-none
-                  w-full
-                  "
+                  className="bg-transparent text-center text-2xl font-bold outline-none w-full"
                 />
 
               </div>
@@ -472,15 +375,7 @@ export default function DivetryAdmin() {
 
         {/* CTA BUTTON */}
         <button
-          className="
-          mt-10
-          px-8
-          py-4
-          rounded-xl
-          bg-cyan-500
-          text-black
-          font-semibold
-          "
+          className="mt-10 px-8 py-4 rounded-xl bg-cyan-500 text-black font-semibold"
         >
 
           {selected ===
@@ -502,15 +397,7 @@ export default function DivetryAdmin() {
           disabled={
             saving
           }
-          className="
-          mt-10
-          px-8
-          py-4
-          rounded-xl
-          bg-green-500
-          hover:bg-green-400
-          font-semibold
-          "
+          className="mt-10 px-8 py-4 rounded-xl bg-green-500 hover:bg-green-400 font-semibold"
         >
 
           {saving

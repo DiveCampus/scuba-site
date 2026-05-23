@@ -53,8 +53,7 @@ export default function DiveTrainingShowcaseAdmin() {
     const load =
       async () => {
 
-        const res =
-          await getDiveTrainingShowcase();
+        const res = await getDiveTrainingShowcase();
 
         console.log(
           "ADMIN DATA =>",
@@ -148,15 +147,7 @@ export default function DiveTrainingShowcaseAdmin() {
   return (
 
     <section
-      className="
-        relative
-        py-32
-        bg-gradient-to-b
-        from-[#031421]
-        to-[#02101a]
-        text-white
-        overflow-hidden
-      "
+      className="relative py-32 bg-gradient-to-b from-[#031421] to-[#02101a] text-white overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -164,51 +155,17 @@ export default function DiveTrainingShowcaseAdmin() {
     >
 
       {/* GLOW */}
-      <div className="
-        absolute
-        top-10
-        left-10
-        w-72
-        h-72
-        bg-cyan-400/10
-        blur-[120px]
-        rounded-full
-      " />
+      <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-400/10 blur-[120px] rounded-full" />
 
-      <div className="
-        absolute
-        bottom-10
-        right-10
-        w-72
-        h-72
-        bg-blue-500/10
-        blur-[120px]
-        rounded-full
-      " />
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
       {/* SAVE BUTTON */}
-      <div className="
-        fixed
-        top-6
-        right-6
-        z-50
-      ">
+      <div className="fixed top-6 right-6 z-50">
 
         <button
           onClick={handleSave}
           disabled={saving}
-          className="
-            h-[56px]
-            px-7
-            rounded-2xl
-            bg-cyan-400
-            text-black
-            font-semibold
-            flex
-            items-center
-            gap-3
-            shadow-xl
-          "
+          className="h-[56px] px-7 rounded-2xl bg-cyan-400 text-black font-semibold flex items-center gap-3 shadow-xl"
         >
 
           <Save size={18} />
@@ -223,16 +180,7 @@ export default function DiveTrainingShowcaseAdmin() {
 
       </div>
 
-      <div className="
-        relative
-        max-w-[1120px]
-        mx-auto
-        grid
-        md:grid-cols-2
-        gap-16
-        items-center
-        px-6
-      ">
+      <div className="relative max-w-[1120px] mx-auto grid md:grid-cols-2 gap-16 items-center px-6">
 
         {/* =========================================
             LEFT
@@ -251,20 +199,7 @@ export default function DiveTrainingShowcaseAdmin() {
                   e.target.value,
               })
             }
-            className="
-              px-5
-              py-2
-              text-[10px]
-              tracking-[3px]
-              border
-              border-cyan-400/30
-              bg-transparent
-              text-cyan-400
-              rounded-full
-              mb-7
-              outline-none
-              w-full
-            "
+            className="px-5 py-2 text-[10px] tracking-[3px] border border-cyan-400/30 bg-transparent text-cyan-400 rounded-full mb-7 outline-none w-full"
           />
 
           {/* TITLE */}
@@ -280,15 +215,7 @@ export default function DiveTrainingShowcaseAdmin() {
                   e.target.value,
               })
             }
-            className="
-              bg-transparent
-              text-3xl
-              md:text-5xl
-              font-semibold
-              w-full
-              outline-none
-              resize-none
-            "
+            className="bg-transparent text-3xl md:text-5xl font-semibold w-full outline-none resize-none"
           />
 
           {/* HIGHLIGHT */}
@@ -304,17 +231,7 @@ export default function DiveTrainingShowcaseAdmin() {
                   e.target.value,
               })
             }
-            className="
-              bg-transparent
-              text-cyan-400
-              text-3xl
-              md:text-5xl
-              font-semibold
-              w-full
-              outline-none
-              resize-none
-              mt-2
-            "
+            className="bg-transparent text-cyan-400 text-3xl md:text-5xl font-semibold w-full outline-none resize-none mt-2"
           />
 
           {/* DESCRIPTION */}
@@ -330,27 +247,11 @@ export default function DiveTrainingShowcaseAdmin() {
                   e.target.value,
               })
             }
-            className="
-              mt-8
-              w-full
-              bg-transparent
-              text-white/60
-              outline-none
-              resize-none
-              leading-[2]
-            "
+            className="mt-8 w-full bg-transparent text-white/60 outline-none resize-none leading-[2]"
           />
 
           {/* CARD */}
-          <div className="
-            mt-10
-            border
-            border-yellow-400/30
-            rounded-3xl
-            p-7
-            bg-[#02131d]/90
-            backdrop-blur-xl
-          ">
+          <div className="mt-10 border border-yellow-400/30 rounded-3xl p-7 bg-[#02131d]/90 backdrop-blur-xl">
 
             <input
               value={
@@ -363,14 +264,7 @@ export default function DiveTrainingShowcaseAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                bg-transparent
-                text-yellow-400
-                uppercase
-                tracking-[2px]
-                w-full
-                outline-none
-              "
+              className="bg-transparent text-yellow-400 uppercase tracking-[2px] w-full outline-none"
             />
 
             <textarea
@@ -385,24 +279,11 @@ export default function DiveTrainingShowcaseAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                mt-5
-                bg-transparent
-                text-white/60
-                w-full
-                outline-none
-                resize-none
-                leading-[2]
-              "
+              className="mt-5 bg-transparent text-white/60 w-full outline-none resize-none leading-[2]"
             />
 
             {/* TAGS */}
-            <div className="
-              flex
-              flex-wrap
-              gap-3
-              mt-7
-            ">
+            <div className="flex flex-wrap gap-3 mt-7">
 
               {tags.map(
                 (
@@ -454,11 +335,7 @@ export default function DiveTrainingShowcaseAdmin() {
         {/* =========================================
             RIGHT IMAGES
         ========================================= */}
-        <div className="
-          grid
-          grid-cols-2
-          gap-4
-        ">
+        <div className="grid grid-cols-2 gap-4">
 
           {images.map(
             (
@@ -508,17 +385,7 @@ export default function DiveTrainingShowcaseAdmin() {
                     );
 
                   }}
-                  className="
-                    mt-3
-                    w-full
-                    bg-white/10
-                    border
-                    border-white/10
-                    rounded-2xl
-                    p-4
-                    outline-none
-                    text-sm
-                  "
+                  className="mt-3 w-full bg-white/10 border border-white/10 rounded-2xl p-4 outline-none text-sm"
                 />
 
               </motion.div>

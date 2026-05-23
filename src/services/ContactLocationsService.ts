@@ -7,13 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getContactLocations =
   async () => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "contact_locations"
@@ -65,13 +59,7 @@ export const updateContactLocation =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "contact_locations"
@@ -131,13 +119,7 @@ export const createContactLocation =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "contact_locations"

@@ -68,8 +68,7 @@ ContactLocationsAdmin() {
 
         locations,
 
-      } =
-        await getContactLocations();
+      } = await getContactLocations();
 
       setLocations(
         locations
@@ -166,10 +165,7 @@ ContactLocationsAdmin() {
   return (
 
     <section
-      className="
-      py-24
-      bg-[#f5f8fb]
-      "
+      className="py-24 bg-[#f5f8fb]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -177,14 +173,7 @@ ContactLocationsAdmin() {
     >
 
       <div
-        className="
-        max-w-3xl
-        mx-auto
-        grid
-        md:grid-cols-2
-        gap-7
-        px-6
-        "
+        className="max-w-3xl mx-auto grid md:grid-cols-2 gap-7 px-6"
       >
 
         {locations.map(
@@ -204,15 +193,7 @@ ContactLocationsAdmin() {
                 duration:
                   0.25,
               }}
-              className="
-              rounded-2xl
-              border
-              border-[#d9e2ec]
-              bg-white
-              p-7
-              shadow-sm
-              relative
-              "
+              className="rounded-2xl border border-[#d9e2ec] bg-white p-7 shadow-sm relative"
             >
 
 
@@ -232,54 +213,26 @@ ContactLocationsAdmin() {
                       .value
                   )
                 }
-                className="
-                w-full
-                text-center
-                text-[12px]
-                tracking-[2px]
-                text-[#23364d]
-                uppercase
-                mb-10
-                bg-transparent
-                outline-none
-                "
+                className="w-full text-center text-[12px] tracking-[2px] text-[#23364d] uppercase mb-10 bg-transparent outline-none"
               />
 
               {/* INFO */}
               <div
-                className="
-                space-y-5
-                "
+                className="space-y-5"
               >
 
                 {/* ADDRESS */}
                 <div
-                  className="
-                  flex
-                  items-center
-                  gap-4
-                  "
+                  className="flex items-center gap-4"
                 >
 
                   <div
-                    className="
-                    w-11
-                    h-11
-                    rounded-full
-                    bg-cyan-500
-                    flex
-                    items-center
-                    justify-center
-                    shadow-md
-                    shrink-0
-                    "
+                    className="w-11 h-11 rounded-full bg-cyan-500 flex items-center justify-center shadow-md shrink-0"
                   >
 
                     <MapPin
                       size={17}
-                      className="
-                      text-white
-                      "
+                      className="text-white"
                     />
 
                   </div>
@@ -300,47 +253,23 @@ ContactLocationsAdmin() {
                       )
                     }
                     rows={3}
-                    className="
-                    w-full
-                    bg-transparent
-                    outline-none
-                    text-[13px]
-                    leading-[1.7]
-                    text-[#7b8794]
-                    resize-none
-                    "
+                    className="w-full bg-transparent outline-none text-[13px] leading-[1.7] text-[#7b8794] resize-none"
                   />
 
                 </div>
 
                 {/* EMAIL */}
                 <div
-                  className="
-                  flex
-                  items-center
-                  gap-4
-                  "
+                  className="flex items-center gap-4"
                 >
 
                   <div
-                    className="
-                    w-11
-                    h-11
-                    rounded-full
-                    bg-cyan-500
-                    flex
-                    items-center
-                    justify-center
-                    shadow-md
-                    shrink-0
-                    "
+                    className="w-11 h-11 rounded-full bg-cyan-500 flex items-center justify-center shadow-md shrink-0"
                   >
 
                     <Mail
                       size={17}
-                      className="
-                      text-white
-                      "
+                      className="text-white"
                     />
 
                   </div>
@@ -360,45 +289,23 @@ ContactLocationsAdmin() {
                           .value
                       )
                     }
-                    className="
-                    w-full
-                    bg-transparent
-                    outline-none
-                    text-[13px]
-                    text-[#7b8794]
-                    "
+                    className="w-full bg-transparent outline-none text-[13px] text-[#7b8794]"
                   />
 
                 </div>
 
                 {/* PHONE */}
                 <div
-                  className="
-                  flex
-                  items-center
-                  gap-4
-                  "
+                  className="flex items-center gap-4"
                 >
 
                   <div
-                    className="
-                    w-11
-                    h-11
-                    rounded-full
-                    bg-cyan-500
-                    flex
-                    items-center
-                    justify-center
-                    shadow-md
-                    shrink-0
-                    "
+                    className="w-11 h-11 rounded-full bg-cyan-500 flex items-center justify-center shadow-md shrink-0"
                   >
 
                     <Phone
                       size={17}
-                      className="
-                      text-white
-                      "
+                      className="text-white"
                     />
 
                   </div>
@@ -418,13 +325,7 @@ ContactLocationsAdmin() {
                           .value
                       )
                     }
-                    className="
-                    w-full
-                    bg-transparent
-                    outline-none
-                    text-[13px]
-                    text-[#7b8794]
-                    "
+                    className="w-full bg-transparent outline-none text-[13px] text-[#7b8794]"
                   />
 
                 </div>
@@ -433,46 +334,18 @@ ContactLocationsAdmin() {
 
               {/* MAP */}
               <div
-                className="
-                mt-7
-                relative
-                overflow-hidden
-                rounded-xl
-                border
-                border-[#d9e2ec]
-                "
+                className="mt-7 relative overflow-hidden rounded-xl border border-[#d9e2ec]"
               >
 
                 <img
                   src={
                     item.map_image
                   }
-                  className="
-                  w-full
-                  h-[145px]
-                  object-cover
-                  "
+                  className="w-full h-[145px] object-cover"
                 />
 
                 <button
-                  className="
-                  absolute
-                  top-3
-                  left-3
-                  flex
-                  items-center
-                  gap-1
-                  px-3
-                  py-2
-                  rounded-md
-                  bg-white
-                  text-[11px]
-                  font-medium
-                  text-cyan-600
-                  shadow-md
-                  border
-                  border-[#d9e2ec]
-                  "
+                  className="absolute top-3 left-3 flex items-center gap-1 px-3 py-2 rounded-md bg-white text-[11px] font-medium text-cyan-600 shadow-md border border-[#d9e2ec]"
                 >
 
                   Open in Maps
@@ -504,17 +377,7 @@ ContactLocationsAdmin() {
                 placeholder="
                 Google Maps URL
                 "
-                className="
-                mt-4
-                w-full
-                rounded-xl
-                border
-                border-[#d9e2ec]
-                px-4
-                py-3
-                outline-none
-                text-sm
-                "
+                className="mt-4 w-full rounded-xl border border-[#d9e2ec] px-4 py-3 outline-none text-sm"
               />
 
               {/* IMAGE */}
@@ -536,17 +399,7 @@ ContactLocationsAdmin() {
                 placeholder="
                 Image URL
                 "
-                className="
-                mt-3
-                w-full
-                rounded-xl
-                border
-                border-[#d9e2ec]
-                px-4
-                py-3
-                outline-none
-                text-sm
-                "
+                className="mt-3 w-full rounded-xl border border-[#d9e2ec] px-4 py-3 outline-none text-sm"
               />
 
             </motion.div>
@@ -557,12 +410,7 @@ ContactLocationsAdmin() {
 
       {/* BUTTONS */}
       <div
-        className="
-        flex
-        justify-center
-        gap-4
-        mt-16
-        "
+        className="flex justify-center gap-4 mt-16"
       >
 
         <button
@@ -572,19 +420,7 @@ ContactLocationsAdmin() {
           disabled={
             saving
           }
-          className="
-          flex
-          items-center
-          gap-3
-          px-8
-          py-4
-          rounded-2xl
-          bg-cyan-500
-          text-white
-          hover:scale-[1.03]
-          transition
-          shadow-lg
-          "
+          className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-500 text-white hover:scale-[1.03] transition shadow-lg"
         >
 
           <Save

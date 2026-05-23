@@ -8,13 +8,7 @@ export const getDiveConfidenceFAQ =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "dive_confidence_section"
@@ -27,13 +21,7 @@ export const getDiveConfidenceFAQ =
       .single();
 
     /* REVIEWS */
-    const {
-
-      data: reviews,
-
-      error: reviewError,
-
-    } = await supabase
+    const { data: reviews, error: reviewError } = await supabase
 
       .from(
         "dive_confidence_reviews"
@@ -49,13 +37,7 @@ export const getDiveConfidenceFAQ =
       );
 
     /* FAQS */
-    const {
-
-      data: faqs,
-
-      error: faqError,
-
-    } = await supabase
+    const { data: faqs, error: faqError } = await supabase
 
       .from(
         "dive_confidence_faqs"
@@ -137,13 +119,7 @@ export const updateDiveConfidenceSection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "dive_confidence_section"
@@ -190,13 +166,7 @@ export const updateDiveConfidenceReview =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "dive_confidence_reviews"
@@ -243,13 +213,7 @@ export const updateDiveConfidenceFAQItem =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "dive_confidence_faqs"

@@ -8,13 +8,7 @@ export const getGoldStandardDive =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
       .from(
         "gold_standard_dive_section"
       )
@@ -23,13 +17,7 @@ export const getGoldStandardDive =
       .single();
 
     /* TAGS */
-    const {
-
-      data: tags,
-
-      error: tagsError,
-
-    } = await supabase
+    const { data: tags, error: tagsError } = await supabase
       .from(
         "gold_standard_dive_tags"
       )
@@ -42,13 +30,7 @@ export const getGoldStandardDive =
       );
 
     /* IMAGES */
-    const {
-
-      data: images,
-
-      error: imagesError,
-
-    } = await supabase
+    const { data: images, error: imagesError } = await supabase
       .from(
         "gold_standard_dive_images"
       )
@@ -109,13 +91,7 @@ export const updateGoldStandardDiveSection =
     payload: any
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
       .from(
         "gold_standard_dive_section"
       )
@@ -157,13 +133,7 @@ export const updateGoldStandardDiveTag =
     payload: any
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
       .from(
         "gold_standard_dive_tags"
       )
@@ -205,13 +175,7 @@ export const updateGoldStandardDiveImage =
     payload: any
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
       .from(
         "gold_standard_dive_images"
       )

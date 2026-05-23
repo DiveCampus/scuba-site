@@ -380,16 +380,7 @@ export default function AdminDashboard() {
     <div className="bg-[#020617] text-white min-h-screen px-4 py-6">
 
       <div
-        className="
-          w-full
-          max-w-md
-          sm:max-w-xl
-          md:max-w-3xl
-          lg:max-w-5xl
-          xl:max-w-6xl
-          mx-auto
-          space-y-10
-        "
+        className="w-full max-w-md sm:max-w-xl md:max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto space-y-10"
       >
 
         {/* LOGOUT */}
@@ -398,15 +389,7 @@ export default function AdminDashboard() {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={handleLogout}
-            className="
-              h-[44px]
-              px-5
-              rounded-2xl
-              bg-red-500
-              text-white
-              text-sm
-              font-medium
-            "
+            className="h-[44px] px-5 rounded-2xl bg-red-500 text-white text-sm font-medium"
           >
             Logout
           </motion.button>
@@ -417,16 +400,7 @@ export default function AdminDashboard() {
         <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="
-            rounded-2xl
-            p-5
-            sm:p-6
-            md:p-8
-            bg-white/5
-            backdrop-blur
-            shadow-lg
-            text-center
-          "
+          className="rounded-2xl p-5 sm:p-6 md:p-8 bg-white/5 backdrop-blur shadow-lg text-center"
         >
 
           {/* TOP TEXT */}
@@ -441,27 +415,12 @@ export default function AdminDashboard() {
               }
               onBlur={() => setEditingField(null)}
               autoFocus
-              className="
-                w-full
-                text-[11px]
-                tracking-widest
-                uppercase
-                text-cyan-300
-                bg-transparent
-                outline-none
-                text-center
-              "
+              className="w-full text-[11px] tracking-widest uppercase text-cyan-300 bg-transparent outline-none text-center"
             />
           ) : (
             <p
               onClick={() => setEditingField("top_text")}
-              className="
-                text-[11px]
-                tracking-widest
-                uppercase
-                text-cyan-300
-                cursor-pointer
-              "
+              className="text-[11px] tracking-widest uppercase text-cyan-300 cursor-pointer"
             >
               {hero.top_text || "Click to edit"}
             </p>
@@ -469,14 +428,7 @@ export default function AdminDashboard() {
 
           {/* TITLE */}
           <h1
-            className="
-              mt-3
-              text-2xl
-              sm:text-3xl
-              md:text-4xl
-              font-semibold
-              leading-tight
-            "
+            className="mt-3 text-2xl sm:text-3xl md:text-4xl font-semibold leading-tight"
           >
 
             {editingField === "title" ? (
@@ -489,12 +441,7 @@ export default function AdminDashboard() {
                   })
                 }
                 onBlur={() => setEditingField(null)}
-                className="
-                  w-full
-                  bg-transparent
-                  outline-none
-                  text-center
-                "
+                className="w-full bg-transparent outline-none text-center"
               />
             ) : (
               <span
@@ -517,21 +464,12 @@ export default function AdminDashboard() {
                   })
                 }
                 onBlur={() => setEditingField(null)}
-                className="
-                  w-full
-                  bg-transparent
-                  outline-none
-                  text-cyan-400
-                  text-center
-                "
+                className="w-full bg-transparent outline-none text-cyan-400 text-center"
               />
             ) : (
               <span
                 onClick={() => setEditingField("subtitle")}
-                className="
-                  text-cyan-400
-                  cursor-pointer
-                "
+                className="text-cyan-400 cursor-pointer"
               >
                 {hero.subtitle || ""}
               </span>
@@ -541,13 +479,7 @@ export default function AdminDashboard() {
 
           {/* DESCRIPTION */}
           <div
-            className="
-              mt-4
-              text-sm
-              sm:text-base
-              md:text-lg
-              text-white/80
-            "
+            className="mt-4 text-sm sm:text-base md:text-lg text-white/80"
           >
 
             {editingField === "description" ? (
@@ -561,20 +493,12 @@ export default function AdminDashboard() {
                 }
                 onBlur={() => setEditingField(null)}
                 autoFocus
-                className="
-                  w-full
-                  bg-transparent
-                  outline-none
-                  text-center
-                "
+                className="w-full bg-transparent outline-none text-center"
               />
             ) : (
               <p
                 onClick={() => setEditingField("description")}
-                className="
-                  cursor-pointer
-                  w-full
-                "
+                className="cursor-pointer w-full"
               >
                 {hero.description || "Click to edit description"}
               </p>
@@ -597,25 +521,12 @@ export default function AdminDashboard() {
                 }
                 onBlur={() => setEditingField(null)}
                 autoFocus
-                className="
-                  w-full
-                  text-center
-                  bg-transparent
-                  outline-none
-                  text-white/50
-                  line-through
-                "
+                className="w-full text-center bg-transparent outline-none text-white/50 line-through"
               />
             ) : (
               <p
                 onClick={() => setEditingField("old_price")}
-                className="
-                  text-white/50
-                  line-through
-                  text-sm
-                  sm:text-base
-                  cursor-pointer
-                "
+                className="text-white/50 line-through text-sm sm:text-base cursor-pointer"
               >
                 AED {hero.old_price || 0}
               </p>
@@ -632,29 +543,12 @@ export default function AdminDashboard() {
                   })
                 }
                 onBlur={() => setEditingField(null)}
-                className="
-                  w-full
-                  text-center
-                  bg-transparent
-                  outline-none
-                  text-cyan-400
-                  text-xl
-                  sm:text-2xl
-                  md:text-3xl
-                  font-bold
-                "
+                className="w-full text-center bg-transparent outline-none text-cyan-400 text-xl sm:text-2xl md:text-3xl font-bold"
               />
             ) : (
               <p
                 onClick={() => setEditingField("price")}
-                className="
-                  text-cyan-400
-                  text-xl
-                  sm:text-2xl
-                  md:text-3xl
-                  font-bold
-                  cursor-pointer
-                "
+                className="text-cyan-400 text-xl sm:text-2xl md:text-3xl font-bold cursor-pointer"
               >
                 AED {hero.price || 0}
               </p>
@@ -665,16 +559,7 @@ export default function AdminDashboard() {
           {/* CTA */}
           <motion.button
             whileTap={{ scale: 0.95 }}
-            className="
-              mt-6
-              w-full
-              h-[48px]
-              sm:h-[52px]
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-medium
-            "
+            className="mt-6 w-full h-[48px] sm:h-[52px] rounded-2xl bg-cyan-400 text-black font-medium"
           >
             {hero.cta_text || "Get Started"}
           </motion.button>
@@ -683,16 +568,7 @@ export default function AdminDashboard() {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={handleSave}
-            className="
-              mt-4
-              w-full
-              h-[48px]
-              sm:h-[52px]
-              rounded-2xl
-              bg-green-400
-              text-black
-              font-medium
-            "
+            className="mt-4 w-full h-[48px] sm:h-[52px] rounded-2xl bg-green-400 text-black font-medium"
           >
             {saving ? "Saving..." : "Save Changes"}
           </motion.button>
@@ -701,12 +577,7 @@ export default function AdminDashboard() {
 
         {/* PAGINATION BUTTONS */}
         <div
-          className="
-            flex
-            flex-wrap
-            gap-3
-            justify-center
-          "
+          className="flex flex-wrap gap-3 justify-center"
         >
 
           {pages.map((page, index) => (
@@ -755,13 +626,7 @@ export default function AdminDashboard() {
             onClick={() =>
               setCurrentPage((prev) => prev - 1)
             }
-            className="
-              flex-1
-              h-[50px]
-              rounded-2xl
-              bg-white/10
-              disabled:opacity-40
-            "
+            className="flex-1 h-[50px] rounded-2xl bg-white/10 disabled:opacity-40"
           >
             Previous
           </button>
@@ -771,15 +636,7 @@ export default function AdminDashboard() {
             onClick={() =>
               setCurrentPage((prev) => prev + 1)
             }
-            className="
-              flex-1
-              h-[50px]
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-medium
-              disabled:opacity-40
-            "
+            className="flex-1 h-[50px] rounded-2xl bg-cyan-400 text-black font-medium disabled:opacity-40"
           >
             Next
           </button>

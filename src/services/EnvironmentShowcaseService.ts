@@ -8,13 +8,7 @@ export const getEnvironmentShowcase =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
       .from(
         "environment_showcase_section"
       )
@@ -23,13 +17,7 @@ export const getEnvironmentShowcase =
       .single();
 
     /* CARDS */
-    const {
-
-      data: cards,
-
-      error: cardsError,
-
-    } = await supabase
+    const { data: cards, error: cardsError } = await supabase
       .from(
         "environment_showcase_cards"
       )
@@ -42,13 +30,7 @@ export const getEnvironmentShowcase =
       );
 
     /* FOOTER GROUPS */
-    const {
-
-      data: footerGroups,
-
-      error: groupsError,
-
-    } = await supabase
+    const { data: footerGroups, error: groupsError } = await supabase
       .from(
         "environment_showcase_footer_groups"
       )
@@ -61,13 +43,7 @@ export const getEnvironmentShowcase =
       );
 
     /* FOOTER LINKS */
-    const {
-
-      data: footerLinks,
-
-      error: linksError,
-
-    } = await supabase
+    const { data: footerLinks, error: linksError } = await supabase
       .from(
         "environment_showcase_footer_links"
       )
@@ -139,13 +115,7 @@ export const updateEnvironmentShowcaseSection =
     payload: any
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
       .from(
         "environment_showcase_section"
       )
@@ -187,13 +157,7 @@ export const updateEnvironmentShowcaseCard =
     payload: any
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
       .from(
         "environment_showcase_cards"
       )
@@ -235,13 +199,7 @@ export const updateEnvironmentShowcaseFooterGroup =
     payload: any
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
       .from(
         "environment_showcase_footer_groups"
       )
@@ -283,13 +241,7 @@ export const updateEnvironmentShowcaseFooterLink =
     payload: any
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
       .from(
         "environment_showcase_footer_links"
       )

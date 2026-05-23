@@ -29,8 +29,7 @@ export default function OpenDiverAdmin() {
 
     const fetchCourse = async () => {
 
-      const { data } =
-        await getOpenDiverCourse();
+      const { data } = await getOpenDiverCourse();
 
       setCourse(data);
 
@@ -61,75 +60,35 @@ export default function OpenDiverAdmin() {
 
   return (
 
-    <section className="
-      relative
-      min-h-screen
-      overflow-hidden
-      font-habara
-      text-white
-    ">
+    <section className="relative min-h-screen overflow-hidden font-habara text-white">
 
       {/* BG */}
-      <div className="
-        absolute
-        inset-0
-      ">
+      <div className="absolute inset-0">
 
         <img
           src={
             course?.background_image
           }
-          className="
-            w-full
-            h-full
-            object-cover
-          "
+          className="w-full h-full object-cover"
         />
 
-        <div className="
-          absolute
-          inset-0
-          bg-[#02182b]/85
-          backdrop-blur-sm
-        " />
+        <div className="absolute inset-0 bg-[#02182b]/85 backdrop-blur-sm" />
 
       </div>
 
       {/* CONTENT */}
-      <div className="
-        relative
-        z-10
-        max-w-7xl
-        mx-auto
-        px-6
-        py-24
-      ">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-24">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-16
-          flex-wrap
-          gap-5
-        ">
+        <div className="flex items-center justify-between mb-16 flex-wrap gap-5">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-300
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-300 mb-3">
               ADMIN PANEL
             </p>
 
-            <h2 className="
-              text-4xl
-              font-bold
-            ">
+            <h2 className="text-4xl font-bold">
               Open Diver Course
             </h2>
 
@@ -137,17 +96,7 @@ export default function OpenDiverAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-7
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-7 rounded-2xl bg-cyan-400 text-black font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -161,11 +110,7 @@ export default function OpenDiverAdmin() {
         </div>
 
         {/* HERO PREVIEW */}
-        <div className="
-          text-center
-          max-w-5xl
-          mx-auto
-        ">
+        <div className="text-center max-w-5xl mx-auto">
 
           {/* BADGE */}
           <input
@@ -179,29 +124,11 @@ export default function OpenDiverAdmin() {
                   e.target.value,
               })
             }
-            className="
-              mb-8
-              px-6
-              py-3
-              rounded-full
-              bg-white/10
-              border
-              border-cyan-300/30
-              text-cyan-200
-              text-center
-              outline-none
-              w-full
-              max-w-md
-            "
+            className="mb-8 px-6 py-3 rounded-full bg-white/10 border border-cyan-300/30 text-cyan-200 text-center outline-none w-full max-w-md"
           />
 
           {/* TITLES */}
-          <div className="
-            grid
-            md:grid-cols-2
-            gap-5
-            mb-6
-          ">
+          <div className="grid md:grid-cols-2 gap-5 mb-6">
 
             <input
               value={
@@ -214,17 +141,7 @@ export default function OpenDiverAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                h-[64px]
-                rounded-2xl
-                bg-white/10
-                border
-                border-white/10
-                px-6
-                text-white
-                text-2xl
-                outline-none
-              "
+              className="h-[64px] rounded-2xl bg-white/10 border border-white/10 px-6 text-white text-2xl outline-none"
             />
 
             <input
@@ -238,17 +155,7 @@ export default function OpenDiverAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                h-[64px]
-                rounded-2xl
-                bg-cyan-400/10
-                border
-                border-cyan-400/20
-                px-6
-                text-cyan-300
-                text-2xl
-                outline-none
-              "
+              className="h-[64px] rounded-2xl bg-cyan-400/10 border border-cyan-400/20 px-6 text-cyan-300 text-2xl outline-none"
             />
 
           </div>
@@ -266,32 +173,11 @@ export default function OpenDiverAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              rounded-3xl
-              bg-white/10
-              border
-              border-white/10
-              p-6
-              text-white
-              outline-none
-              resize-none
-              mb-12
-            "
+            className="w-full rounded-3xl bg-white/10 border border-white/10 p-6 text-white outline-none resize-none mb-12"
           />
 
           {/* PRICE CARD */}
-          <div className="
-            max-w-md
-            mx-auto
-            bg-white/10
-            backdrop-blur-xl
-            border
-            border-white/20
-            rounded-3xl
-            p-8
-            mb-12
-          ">
+          <div className="max-w-md mx-auto bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl p-8 mb-12">
 
             <input
               value={
@@ -304,20 +190,7 @@ export default function OpenDiverAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                w-full
-                h-[50px]
-                rounded-xl
-                bg-white/5
-                border
-                border-white/10
-                px-5
-                text-center
-                text-white/50
-                line-through
-                outline-none
-                mb-4
-              "
+              className="w-full h-[50px] rounded-xl bg-white/5 border border-white/10 px-5 text-center text-white/50 line-through outline-none mb-4"
             />
 
             <input
@@ -331,21 +204,7 @@ export default function OpenDiverAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                w-full
-                h-[72px]
-                rounded-2xl
-                bg-cyan-400/10
-                border
-                border-cyan-400/20
-                px-5
-                text-center
-                text-cyan-300
-                text-4xl
-                font-bold
-                outline-none
-                mb-4
-              "
+              className="w-full h-[72px] rounded-2xl bg-cyan-400/10 border border-cyan-400/20 px-5 text-center text-cyan-300 text-4xl font-bold outline-none mb-4"
             />
 
             <textarea
@@ -360,30 +219,13 @@ export default function OpenDiverAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                w-full
-                rounded-2xl
-                bg-white/5
-                border
-                border-white/10
-                p-4
-                text-white/70
-                text-center
-                outline-none
-                resize-none
-              "
+              className="w-full rounded-2xl bg-white/5 border border-white/10 p-4 text-white/70 text-center outline-none resize-none"
             />
 
           </div>
 
           {/* BUTTONS */}
-          <div className="
-            flex
-            flex-col
-            items-center
-            gap-5
-            mb-14
-          ">
+          <div className="flex flex-col items-center gap-5 mb-14">
 
             <input
               value={
@@ -396,32 +238,12 @@ export default function OpenDiverAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                h-[58px]
-                rounded-xl
-                bg-cyan-400
-                px-8
-                text-black
-                font-semibold
-                text-center
-                outline-none
-                w-full
-                max-w-md
-              "
+              className="h-[58px] rounded-xl bg-cyan-400 px-8 text-black font-semibold text-center outline-none w-full max-w-md"
             />
 
-            <div className="
-              flex
-              items-center
-              gap-3
-              w-full
-              max-w-md
-            ">
+            <div className="flex items-center gap-3 w-full max-w-md">
 
-              <FaWhatsapp className="
-                text-green-400
-                text-xl
-              " />
+              <FaWhatsapp className="text-green-400 text-xl" />
 
               <input
                 value={
@@ -434,17 +256,7 @@ export default function OpenDiverAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  flex-1
-                  h-[58px]
-                  rounded-xl
-                  bg-white/10
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
+                className="flex-1 h-[58px] rounded-xl bg-white/10 border border-white/10 px-5 text-white outline-none"
               />
 
             </div>
@@ -452,11 +264,7 @@ export default function OpenDiverAdmin() {
           </div>
 
           {/* FEATURES */}
-          <div className="
-            grid
-            md:grid-cols-2
-            gap-5
-          ">
+          <div className="grid md:grid-cols-2 gap-5">
 
             {[
               "feature_1",
@@ -477,16 +285,7 @@ export default function OpenDiverAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  h-[56px]
-                  rounded-2xl
-                  bg-white/10
-                  border
-                  border-white/10
-                  px-5
-                  text-white
-                  outline-none
-                "
+                className="h-[56px] rounded-2xl bg-white/10 border border-white/10 px-5 text-white outline-none"
               />
 
             ))}

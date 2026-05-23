@@ -30,8 +30,7 @@ export const getSteps = async () => {
 
 export const updateStepsSection =
   async (section: any) => {
-    const { error } =
-      await supabase
+    const { error } = await supabase
         .from(
           "kadir_steps_section"
         )
@@ -59,8 +58,7 @@ export const updateStepsSection =
 
 export const updateStepItem =
   async (item: any) => {
-    const { error } =
-      await supabase
+    const { error } = await supabase
         .from(
           "kadir_steps_list"
         )

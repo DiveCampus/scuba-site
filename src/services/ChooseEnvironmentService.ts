@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getChooseEnvironmentSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("choose_environment_section")
         .select("*")
         .limit(1)
@@ -31,8 +30,7 @@ export const updateChooseEnvironmentSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("choose_environment_section")
         .update({
           ...payload,
@@ -56,8 +54,7 @@ export const updateChooseEnvironmentSection =
 export const getChooseEnvironmentCards =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("choose_environment_cards")
         .select("*")
         .order("sort_order", {
@@ -81,8 +78,7 @@ export const updateChooseEnvironmentCard =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("choose_environment_cards")
         .update(payload)
         .eq("id", id)

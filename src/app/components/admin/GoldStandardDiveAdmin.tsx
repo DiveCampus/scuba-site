@@ -101,44 +101,22 @@ export default function GoldStandardDiveAdmin() {
 
   return (
 
-    <section className="
-      py-24
-      bg-[#f5f7fa]
-      min-h-screen
-    ">
+    <section className="py-24 bg-[#f5f7fa] min-h-screen">
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-14
-        ">
+        <div className="flex items-center justify-between mb-14">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-500
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-500 mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-bold
-              text-[#0a0e27]
-            ">
+            <h2 className="text-4xl font-bold text-[#0a0e27]">
 
               Gold Standard Section
 
@@ -148,17 +126,7 @@ export default function GoldStandardDiveAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-8
-              rounded-2xl
-              bg-cyan-500
-              text-white
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-8 rounded-2xl bg-cyan-500 text-white font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -174,12 +142,7 @@ export default function GoldStandardDiveAdmin() {
         </div>
 
         {/* SECTION FORM */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-6
-          mb-14
-        ">
+        <div className="grid md:grid-cols-2 gap-6 mb-14">
 
           <input
             type="text"
@@ -192,15 +155,7 @@ export default function GoldStandardDiveAdmin() {
               })
             }
             placeholder="Badge"
-            className="
-              h-[58px]
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              px-5
-              outline-none
-            "
+            className="h-[58px] rounded-2xl border border-gray-200 bg-white px-5 outline-none"
           />
 
           <input
@@ -214,16 +169,7 @@ export default function GoldStandardDiveAdmin() {
               })
             }
             placeholder="Highlight"
-            className="
-              h-[58px]
-              rounded-2xl
-              border
-              border-cyan-200
-              bg-cyan-50
-              px-5
-              outline-none
-              text-cyan-600
-            "
+            className="h-[58px] rounded-2xl border border-cyan-200 bg-cyan-50 px-5 outline-none text-cyan-600"
           />
 
           <textarea
@@ -237,15 +183,7 @@ export default function GoldStandardDiveAdmin() {
               })
             }
             placeholder="Title"
-            className="
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              p-5
-              outline-none
-              resize-none
-            "
+            className="rounded-2xl border border-gray-200 bg-white p-5 outline-none resize-none"
           />
 
           <textarea
@@ -261,15 +199,7 @@ export default function GoldStandardDiveAdmin() {
               })
             }
             placeholder="Description"
-            className="
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              p-5
-              outline-none
-              resize-none
-            "
+            className="rounded-2xl border border-gray-200 bg-white p-5 outline-none resize-none"
           />
 
           <textarea
@@ -285,15 +215,7 @@ export default function GoldStandardDiveAdmin() {
               })
             }
             placeholder="Card Title"
-            className="
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              p-5
-              outline-none
-              resize-none
-            "
+            className="rounded-2xl border border-gray-200 bg-white p-5 outline-none resize-none"
           />
 
           <textarea
@@ -309,15 +231,7 @@ export default function GoldStandardDiveAdmin() {
               })
             }
             placeholder="Card Description"
-            className="
-              rounded-2xl
-              border
-              border-gray-200
-              bg-white
-              p-5
-              outline-none
-              resize-none
-            "
+            className="rounded-2xl border border-gray-200 bg-white p-5 outline-none resize-none"
           />
 
         </div>
@@ -325,34 +239,19 @@ export default function GoldStandardDiveAdmin() {
         {/* TAGS */}
         <div className="mb-16">
 
-          <h3 className="
-            text-2xl
-            font-semibold
-            text-[#0a0e27]
-            mb-6
-          ">
+          <h3 className="text-2xl font-semibold text-[#0a0e27] mb-6">
 
             Tags
 
           </h3>
 
-          <div className="
-            grid
-            md:grid-cols-3
-            gap-6
-          ">
+          <div className="grid md:grid-cols-3 gap-6">
 
             {tags.map((tag, i) => (
 
               <div
                 key={tag.id}
-                className="
-                  bg-white
-                  border
-                  border-gray-200
-                  rounded-3xl
-                  p-5
-                "
+                className="bg-white border border-gray-200 rounded-3xl p-5"
               >
 
                 <input
@@ -375,16 +274,7 @@ export default function GoldStandardDiveAdmin() {
 
                   }}
                   placeholder="Shield"
-                  className="
-                    w-full
-                    h-[50px]
-                    rounded-2xl
-                    border
-                    border-gray-200
-                    px-4
-                    outline-none
-                    mb-4
-                  "
+                  className="w-full h-[50px] rounded-2xl border border-gray-200 px-4 outline-none mb-4"
                 />
 
                 <textarea
@@ -406,15 +296,7 @@ export default function GoldStandardDiveAdmin() {
                     );
 
                   }}
-                  className="
-                    w-full
-                    rounded-2xl
-                    border
-                    border-gray-200
-                    p-4
-                    outline-none
-                    resize-none
-                  "
+                  className="w-full rounded-2xl border border-gray-200 p-4 outline-none resize-none"
                 />
 
               </div>
@@ -428,43 +310,24 @@ export default function GoldStandardDiveAdmin() {
         {/* IMAGES */}
         <div>
 
-          <h3 className="
-            text-2xl
-            font-semibold
-            text-[#0a0e27]
-            mb-6
-          ">
+          <h3 className="text-2xl font-semibold text-[#0a0e27] mb-6">
 
             Images
 
           </h3>
 
-          <div className="
-            grid
-            md:grid-cols-3
-            gap-6
-          ">
+          <div className="grid md:grid-cols-3 gap-6">
 
             {images.map((img, i) => (
 
               <div
                 key={img.id}
-                className="
-                  bg-white
-                  border
-                  border-gray-200
-                  rounded-3xl
-                  overflow-hidden
-                "
+                className="bg-white border border-gray-200 rounded-3xl overflow-hidden"
               >
 
                 <img
                   src={img.image_url}
-                  className="
-                    w-full
-                    h-[220px]
-                    object-cover
-                  "
+                  className="w-full h-[220px] object-cover"
                 />
 
                 <div className="p-5">
@@ -492,15 +355,7 @@ export default function GoldStandardDiveAdmin() {
                       );
 
                     }}
-                    className="
-                      w-full
-                      h-[52px]
-                      rounded-2xl
-                      border
-                      border-gray-200
-                      px-4
-                      outline-none
-                    "
+                    className="w-full h-[52px] rounded-2xl border border-gray-200 px-4 outline-none"
                   />
 
                 </div>

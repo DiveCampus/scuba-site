@@ -49,8 +49,7 @@ export default function RescueFAQAdmin() {
 
         try {
 
-          const res =
-            await getRescueFAQ();
+          const res = await getRescueFAQ();
 
           console.log(
             "RESCUE ADMIN =>",
@@ -165,12 +164,7 @@ export default function RescueFAQAdmin() {
   return (
 
     <section
-      className="
-        relative
-        py-28
-        bg-[#f4f7fb]
-        overflow-hidden
-      "
+      className="relative py-28 bg-[#f4f7fb] overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -181,21 +175,7 @@ export default function RescueFAQAdmin() {
       <button
         onClick={handleSave}
         disabled={saving}
-        className="
-          fixed
-          top-6
-          right-6
-          z-50
-          flex
-          items-center
-          gap-2
-          px-6
-          py-3
-          rounded-2xl
-          bg-cyan-500
-          text-white
-          shadow-xl
-        "
+        className="fixed top-6 right-6 z-50 flex items-center gap-2 px-6 py-3 rounded-2xl bg-cyan-500 text-white shadow-xl"
       >
 
         <Save size={18} />
@@ -209,36 +189,12 @@ export default function RescueFAQAdmin() {
       </button>
 
       {/* GLOW */}
-      <div className="
-        absolute
-        top-10
-        left-10
-        w-72
-        h-72
-        bg-cyan-400/10
-        blur-[120px]
-        rounded-full
-      " />
+      <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-400/10 blur-[120px] rounded-full" />
 
-      <div className="
-        absolute
-        bottom-10
-        right-10
-        w-72
-        h-72
-        bg-blue-500/10
-        blur-[120px]
-        rounded-full
-      " />
+      <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
       {/* HEADER */}
-      <div className="
-        relative
-        text-center
-        max-w-[760px]
-        mx-auto
-        px-4
-      ">
+      <div className="relative text-center max-w-[760px] mx-auto px-4">
 
         <input
           value={
@@ -251,25 +207,11 @@ export default function RescueFAQAdmin() {
                 e.target.value,
             })
           }
-          className="
-            text-center
-            bg-transparent
-            text-[10px]
-            tracking-[3px]
-            uppercase
-            text-cyan-500
-            w-full
-            outline-none
-            mb-5
-          "
+          className="text-center bg-transparent text-[10px] tracking-[3px] uppercase text-cyan-500 w-full outline-none mb-5"
         />
 
         {/* TITLE */}
-        <div className="
-          flex
-          flex-col
-          gap-2
-        ">
+        <div className="flex flex-col gap-2">
 
           <input
             value={
@@ -282,15 +224,7 @@ export default function RescueFAQAdmin() {
                   e.target.value,
               })
             }
-            className="
-              bg-transparent
-              text-center
-              text-3xl
-              md:text-5xl
-              font-semibold
-              text-black
-              outline-none
-            "
+            className="bg-transparent text-center text-3xl md:text-5xl font-semibold text-black outline-none"
           />
 
           <input
@@ -304,15 +238,7 @@ export default function RescueFAQAdmin() {
                   e.target.value,
               })
             }
-            className="
-              bg-transparent
-              text-center
-              text-3xl
-              md:text-5xl
-              font-semibold
-              text-cyan-500
-              outline-none
-            "
+            className="bg-transparent text-center text-3xl md:text-5xl font-semibold text-cyan-500 outline-none"
           />
 
         </div>
@@ -330,43 +256,16 @@ export default function RescueFAQAdmin() {
                 e.target.value,
             })
           }
-          className="
-            mt-8
-            bg-transparent
-            text-center
-            text-[16px]
-            text-gray-600
-            leading-[2]
-            w-full
-            outline-none
-            resize-none
-          "
+          className="mt-8 bg-transparent text-center text-[16px] text-gray-600 leading-[2] w-full outline-none resize-none"
         />
 
       </div>
 
       {/* MAIN GRID */}
-      <div className="
-        relative
-        max-w-[980px]
-        mx-auto
-        grid
-        md:grid-cols-2
-        gap-12
-        mt-16
-        px-4
-      ">
+      <div className="relative max-w-[980px] mx-auto grid md:grid-cols-2 gap-12 mt-16 px-4">
 
         {/* LEFT */}
-        <div className="
-          bg-white
-          rounded-3xl
-          p-8
-          border
-          border-gray-200
-          shadow-sm
-          text-center
-        ">
+        <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-sm text-center">
 
           <input
             value={
@@ -379,15 +278,7 @@ export default function RescueFAQAdmin() {
                   e.target.value,
               })
             }
-            className="
-              w-full
-              bg-transparent
-              text-center
-              text-[22px]
-              font-semibold
-              text-black
-              outline-none
-            "
+            className="w-full bg-transparent text-center text-[22px] font-semibold text-black outline-none"
           />
 
           <textarea
@@ -402,24 +293,11 @@ export default function RescueFAQAdmin() {
                   e.target.value,
               })
             }
-            className="
-              mt-4
-              w-full
-              bg-transparent
-              text-center
-              text-gray-600
-              outline-none
-              resize-none
-            "
+            className="mt-4 w-full bg-transparent text-center text-gray-600 outline-none resize-none"
           />
 
           {/* REVIEWS */}
-          <div className="
-            mt-8
-            grid
-            grid-cols-2
-            gap-4
-          ">
+          <div className="mt-8 grid grid-cols-2 gap-4">
 
             {reviews.map(
               (item, i) => (
@@ -444,15 +322,7 @@ export default function RescueFAQAdmin() {
                   );
 
                 }}
-                className="
-                  bg-[#f9fbfd]
-                  rounded-2xl
-                  p-4
-                  text-black
-                  text-[12px]
-                  outline-none
-                  resize-none
-                "
+                className="bg-[#f9fbfd] rounded-2xl p-4 text-black text-[12px] outline-none resize-none"
               />
 
             ))}
@@ -475,20 +345,10 @@ export default function RescueFAQAdmin() {
                   e.target.value,
               })
             }
-            className="
-              bg-transparent
-              text-[14px]
-              font-semibold
-              uppercase
-              text-black
-              mb-6
-              outline-none
-            "
+            className="bg-transparent text-[14px] font-semibold uppercase text-black mb-6 outline-none"
           />
 
-          <div className="
-            space-y-4
-          ">
+          <div className="space-y-4">
 
             {faqs.map(
               (item, i) => (
@@ -510,12 +370,7 @@ export default function RescueFAQAdmin() {
               >
 
                 <div
-                  className="
-                    flex
-                    justify-between
-                    items-center
-                    cursor-pointer
-                  "
+                  className="flex justify-between items-center cursor-pointer"
                   onClick={() =>
                     setActive(
                       active === i
@@ -543,23 +398,13 @@ export default function RescueFAQAdmin() {
                       );
 
                     }}
-                    className="
-                      bg-transparent
-                      text-black
-                      font-medium
-                      w-full
-                      outline-none
-                    "
+                    className="bg-transparent text-black font-medium w-full outline-none"
                   />
 
                   {active === i ? (
-                    <X className="
-                      text-cyan-500
-                    " />
+                    <X className="text-cyan-500" />
                   ) : (
-                    <Plus className="
-                      text-gray-400
-                    " />
+                    <Plus className="text-gray-400" />
                   )}
 
                 </div>
@@ -585,14 +430,7 @@ export default function RescueFAQAdmin() {
                       );
 
                     }}
-                    className="
-                      mt-5
-                      w-full
-                      bg-transparent
-                      text-gray-600
-                      outline-none
-                      resize-none
-                    "
+                    className="mt-5 w-full bg-transparent text-gray-600 outline-none resize-none"
                   />
 
                 )}

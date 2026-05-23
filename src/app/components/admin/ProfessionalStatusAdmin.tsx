@@ -50,11 +50,9 @@ export default function ProfessionalStatusAdmin() {
     const fetchData =
       async () => {
 
-        const sectionResponse =
-          await getProfessionalStatusSection();
+        const sectionResponse = await getProfessionalStatusSection();
 
-        const itemsResponse =
-          await getProfessionalStatusItems();
+        const itemsResponse = await getProfessionalStatusItems();
 
         setSection(
           sectionResponse.data
@@ -97,50 +95,27 @@ export default function ProfessionalStatusAdmin() {
   return (
 
     <section
-      className="
-        py-28
-        bg-[#f4f7fb]
-      "
+      className="py-28 bg-[#f4f7fb]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* TOP */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          flex-wrap
-          gap-5
-          mb-16
-        ">
+        <div className="flex items-center justify-between flex-wrap gap-5 mb-16">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-500
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-500 mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-bold
-              text-[#0a0e27]
-            ">
+            <h2 className="text-4xl font-bold text-[#0a0e27]">
 
               Professional Status
 
@@ -150,17 +125,7 @@ export default function ProfessionalStatusAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-8
-              rounded-2xl
-              bg-cyan-500
-              text-white
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-8 rounded-2xl bg-cyan-500 text-white font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -176,12 +141,7 @@ export default function ProfessionalStatusAdmin() {
         </div>
 
         {/* SECTION */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-6
-          mb-16
-        ">
+        <div className="grid md:grid-cols-2 gap-6 mb-16">
 
           <textarea
             rows={2}
@@ -195,16 +155,7 @@ export default function ProfessionalStatusAdmin() {
                   e.target.value,
               })
             }
-            className="
-              rounded-3xl
-              border
-              border-gray-200
-              bg-white
-              p-5
-              outline-none
-              resize-none
-              text-gray-600
-            "
+            className="rounded-3xl border border-gray-200 bg-white p-5 outline-none resize-none text-gray-600"
           />
 
           <textarea
@@ -219,17 +170,7 @@ export default function ProfessionalStatusAdmin() {
                   e.target.value,
               })
             }
-            className="
-              rounded-3xl
-              border
-              border-gray-200
-              bg-white
-              p-5
-              outline-none
-              resize-none
-              text-[#0a0e27]
-              font-semibold
-            "
+            className="rounded-3xl border border-gray-200 bg-white p-5 outline-none resize-none text-[#0a0e27] font-semibold"
           />
 
           <textarea
@@ -244,17 +185,7 @@ export default function ProfessionalStatusAdmin() {
                   e.target.value,
               })
             }
-            className="
-              rounded-3xl
-              border
-              border-gray-200
-              bg-white
-              p-5
-              outline-none
-              resize-none
-              text-gray-500
-              md:col-span-2
-            "
+            className="rounded-3xl border border-gray-200 bg-white p-5 outline-none resize-none text-gray-500 md:col-span-2"
           />
 
           <input
@@ -270,16 +201,7 @@ export default function ProfessionalStatusAdmin() {
               })
             }
             placeholder="/divemaster.webp"
-            className="
-              h-[58px]
-              rounded-3xl
-              border
-              border-gray-200
-              bg-white
-              px-5
-              outline-none
-              md:col-span-2
-            "
+            className="h-[58px] rounded-3xl border border-gray-200 bg-white px-5 outline-none md:col-span-2"
           />
 
         </div>
@@ -289,34 +211,19 @@ export default function ProfessionalStatusAdmin() {
 
           <img
             src={section.image_url}
-            className="
-              w-full
-              h-[340px]
-              object-cover
-              rounded-3xl
-            "
+            className="w-full h-[340px] object-cover rounded-3xl"
           />
 
         </div>
 
         {/* ITEMS */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-7
-        ">
+        <div className="grid md:grid-cols-2 gap-7">
 
           {items.map((item, i) => (
 
             <div
               key={item.id}
-              className="
-                bg-white
-                rounded-3xl
-                p-7
-                border
-                border-gray-100
-              "
+              className="bg-white rounded-3xl p-7 border border-gray-100"
             >
 
               {/* TITLE */}
@@ -341,18 +248,7 @@ export default function ProfessionalStatusAdmin() {
                   );
 
                 }}
-                className="
-                  w-full
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  p-4
-                  outline-none
-                  resize-none
-                  mb-5
-                  font-semibold
-                  text-[#0a0e27]
-                "
+                className="w-full rounded-2xl border border-gray-200 p-4 outline-none resize-none mb-5 font-semibold text-[#0a0e27]"
               />
 
               {/* DESC */}
@@ -382,17 +278,7 @@ export default function ProfessionalStatusAdmin() {
                   );
 
                 }}
-                className="
-                  w-full
-                  rounded-2xl
-                  border
-                  border-gray-200
-                  p-4
-                  outline-none
-                  resize-none
-                  mb-5
-                  text-gray-500
-                "
+                className="w-full rounded-2xl border border-gray-200 p-4 outline-none resize-none mb-5 text-gray-500"
               />
 
               {/* HIGHLIGHT */}
@@ -420,17 +306,7 @@ export default function ProfessionalStatusAdmin() {
 
                 }}
                 placeholder="Optional highlight text"
-                className="
-                  w-full
-                  rounded-2xl
-                  border
-                  border-cyan-200
-                  bg-cyan-50
-                  p-4
-                  outline-none
-                  resize-none
-                  text-cyan-600
-                "
+                className="w-full rounded-2xl border border-cyan-200 bg-cyan-50 p-4 outline-none resize-none text-cyan-600"
               />
 
             </div>

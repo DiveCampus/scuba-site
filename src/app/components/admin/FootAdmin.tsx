@@ -38,8 +38,7 @@ export default function FooterAdmin() {
   }, []);
 
   const load = async () => {
-    const res =
-      await getFooter();
+    const res = await getFooter();
 
     setSection(
       res.section
@@ -148,18 +147,7 @@ export default function FooterAdmin() {
                             .value,
                       })
                     }
-                    className="
-                      w-full
-                      px-5
-                      py-4
-                      rounded-2xl
-                      border
-                      border-gray-300
-                      text-black
-                      placeholder:text-gray-500
-                      outline-none
-                      focus:border-cyan-400
-                    "
+                    className="w-full px-5 py-4 rounded-2xl border border-gray-300 text-black placeholder:text-gray-500 outline-none focus:border-cyan-400"
                     placeholder="Whatsapp Text"
                   />
                 </div>
@@ -183,18 +171,7 @@ export default function FooterAdmin() {
                             .value,
                       })
                     }
-                    className="
-                      w-full
-                      px-5
-                      py-4
-                      rounded-2xl
-                      border
-                      border-gray-300
-                      text-black
-                      placeholder:text-gray-500
-                      outline-none
-                      focus:border-cyan-400
-                    "
+                    className="w-full px-5 py-4 rounded-2xl border border-gray-300 text-black placeholder:text-gray-500 outline-none focus:border-cyan-400"
                     placeholder="Subscribe Placeholder"
                   />
                 </div>
@@ -218,18 +195,7 @@ export default function FooterAdmin() {
                             .value,
                       })
                     }
-                    className="
-                      w-full
-                      px-5
-                      py-4
-                      rounded-2xl
-                      border
-                      border-gray-300
-                      text-black
-                      placeholder:text-gray-500
-                      outline-none
-                      focus:border-cyan-400
-                    "
+                    className="w-full px-5 py-4 rounded-2xl border border-gray-300 text-black placeholder:text-gray-500 outline-none focus:border-cyan-400"
                     placeholder="Copyright"
                   />
                 </div>
@@ -282,15 +248,7 @@ export default function FooterAdmin() {
                               updated
                             );
                           }}
-                          className="
-                            w-full
-                            px-5
-                            py-4
-                            rounded-2xl
-                            border
-                            border-gray-300
-                            text-black
-                          "
+                          className="w-full px-5 py-4 rounded-2xl border border-gray-300 text-black"
                           placeholder="App Name"
                         />
 
@@ -315,15 +273,7 @@ export default function FooterAdmin() {
                               updated
                             );
                           }}
-                          className="
-                            w-full
-                            px-5
-                            py-4
-                            rounded-2xl
-                            border
-                            border-gray-300
-                            text-black
-                          "
+                          className="w-full px-5 py-4 rounded-2xl border border-gray-300 text-black"
                           placeholder="App Link"
                         />
 
@@ -384,14 +334,7 @@ export default function FooterAdmin() {
                             updated
                           );
                         }}
-                        className="
-                          px-5
-                          py-4
-                          rounded-2xl
-                          border
-                          border-gray-300
-                          text-black
-                        "
+                        className="px-5 py-4 rounded-2xl border border-gray-300 text-black"
                         placeholder="Label"
                       />
 
@@ -416,14 +359,7 @@ export default function FooterAdmin() {
                             updated
                           );
                         }}
-                        className="
-                          px-5
-                          py-4
-                          rounded-2xl
-                          border
-                          border-gray-300
-                          text-black
-                        "
+                        className="px-5 py-4 rounded-2xl border border-gray-300 text-black"
                         placeholder="Category"
                       />
 
@@ -477,14 +413,7 @@ export default function FooterAdmin() {
                             updated
                           );
                         }}
-                        className="
-                          px-5
-                          py-4
-                          rounded-2xl
-                          border
-                          border-gray-300
-                          text-black
-                        "
+                        className="px-5 py-4 rounded-2xl border border-gray-300 text-black"
                         placeholder="Platform"
                       />
 
@@ -509,14 +438,7 @@ export default function FooterAdmin() {
                             updated
                           );
                         }}
-                        className="
-                          px-5
-                          py-4
-                          rounded-2xl
-                          border
-                          border-gray-300
-                          text-black
-                        "
+                        className="px-5 py-4 rounded-2xl border border-gray-300 text-black"
                         placeholder="URL"
                       />
 
@@ -539,20 +461,7 @@ export default function FooterAdmin() {
             onClick={
               handleSave
             }
-            className="
-              flex
-              items-center
-              gap-3
-              px-8
-              py-4
-              rounded-2xl
-              bg-cyan-400
-              hover:bg-cyan-300
-              transition
-              text-black
-              font-bold
-              shadow-2xl
-            "
+            className="flex items-center gap-3 px-8 py-4 rounded-2xl bg-cyan-400 hover:bg-cyan-300 transition text-black font-bold shadow-2xl"
           >
 
             <Save className="w-5 h-5" />

@@ -8,13 +8,7 @@ export const getExpertHands =
   async () => {
 
     /* SECTION */
-    const {
-
-      data: section,
-
-      error: sectionError,
-
-    } = await supabase
+    const { data: section, error: sectionError } = await supabase
 
       .from(
         "expert_hands_section"
@@ -27,13 +21,7 @@ export const getExpertHands =
       .single();
 
     /* FEATURES */
-    const {
-
-      data: features,
-
-      error: featuresError,
-
-    } = await supabase
+    const { data: features, error: featuresError } = await supabase
 
       .from(
         "expert_hands_features"
@@ -103,13 +91,7 @@ export const updateExpertHandsSection =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "expert_hands_section"
@@ -171,13 +153,7 @@ export const updateExpertHandsFeature =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "expert_hands_features"
@@ -237,13 +213,7 @@ export const createExpertHandsFeature =
 
   ) => {
 
-    const {
-
-      data,
-
-      error,
-
-    } = await supabase
+    const { data, error } = await supabase
 
       .from(
         "expert_hands_features"

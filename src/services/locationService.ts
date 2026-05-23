@@ -4,8 +4,7 @@ import { supabase } from "@/lib/supabaseClient";
 
 export const getLocations =
   async () => {
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from(
           "kadir_locations"
         )

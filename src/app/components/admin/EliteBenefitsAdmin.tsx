@@ -50,11 +50,9 @@ export default function EliteBenefitsAdmin() {
 
     const fetchData = async () => {
 
-      const { data: sectionData } =
-        await getEliteBenefitsSection();
+      const { data: sectionData } = await getEliteBenefitsSection();
 
-      const { data: pointsData } =
-        await getEliteBenefitsPoints();
+      const { data: pointsData } = await getEliteBenefitsPoints();
 
       setSection(sectionData);
 
@@ -100,50 +98,27 @@ export default function EliteBenefitsAdmin() {
   return (
 
     <section
-      className="
-        py-32
-        bg-[#03121c]
-        text-white
-      "
+      className="py-32 bg-[#03121c] text-white"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="
-        max-w-7xl
-        mx-auto
-        px-6
-      ">
+      <div className="max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-16
-          flex-wrap
-          gap-5
-        ">
+        <div className="flex items-center justify-between mb-16 flex-wrap gap-5">
 
           <div>
 
-            <p className="
-              text-[10px]
-              tracking-[4px]
-              text-cyan-400
-              mb-3
-            ">
+            <p className="text-[10px] tracking-[4px] text-cyan-400 mb-3">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-bold
-            ">
+            <h2 className="text-4xl font-bold">
 
               Elite Benefits
 
@@ -153,17 +128,7 @@ export default function EliteBenefitsAdmin() {
 
           <button
             onClick={handleSave}
-            className="
-              h-[56px]
-              px-7
-              rounded-2xl
-              bg-cyan-400
-              text-black
-              font-semibold
-              flex
-              items-center
-              gap-3
-            "
+            className="h-[56px] px-7 rounded-2xl bg-cyan-400 text-black font-semibold flex items-center gap-3"
           >
 
             <Save size={18} />
@@ -179,34 +144,21 @@ export default function EliteBenefitsAdmin() {
         </div>
 
         {/* MAIN */}
-        <div className="
-          grid
-          lg:grid-cols-2
-          gap-20
-          items-center
-        ">
+        <div className="grid lg:grid-cols-2 gap-20 items-center">
 
           {/* IMAGE */}
           <motion.div
             whileHover={{
               scale: 1.02,
             }}
-            className="
-              rounded-3xl
-              overflow-hidden
-              shadow-[0_20px_80px_rgba(0,0,0,0.5)]
-            "
+            className="rounded-3xl overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.5)]"
           >
 
             <img
               src={
                 section?.image_url
               }
-              className="
-                w-full
-                h-full
-                object-cover
-              "
+              className="w-full h-full object-cover"
             />
 
           </motion.div>
@@ -226,29 +178,11 @@ export default function EliteBenefitsAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                w-full
-                h-[52px]
-                rounded-2xl
-                bg-white/5
-                border
-                border-white/10
-                px-5
-                text-cyan-400
-                text-[10px]
-                tracking-[4px]
-                outline-none
-                mb-5
-              "
+              className="w-full h-[52px] rounded-2xl bg-white/5 border border-white/10 px-5 text-cyan-400 text-[10px] tracking-[4px] outline-none mb-5"
             />
 
             {/* TITLES */}
-            <div className="
-              grid
-              md:grid-cols-2
-              gap-5
-              mb-6
-            ">
+            <div className="grid md:grid-cols-2 gap-5 mb-6">
 
               <input
                 value={
@@ -261,17 +195,7 @@ export default function EliteBenefitsAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  h-[68px]
-                  rounded-2xl
-                  bg-white/5
-                  border
-                  border-white/10
-                  px-6
-                  text-3xl
-                  font-bold
-                  outline-none
-                "
+                className="h-[68px] rounded-2xl bg-white/5 border border-white/10 px-6 text-3xl font-bold outline-none"
               />
 
               <input
@@ -285,18 +209,7 @@ export default function EliteBenefitsAdmin() {
                       e.target.value,
                   })
                 }
-                className="
-                  h-[68px]
-                  rounded-2xl
-                  bg-cyan-400/10
-                  border
-                  border-cyan-400/20
-                  px-6
-                  text-3xl
-                  font-bold
-                  text-cyan-400
-                  outline-none
-                "
+                className="h-[68px] rounded-2xl bg-cyan-400/10 border border-cyan-400/20 px-6 text-3xl font-bold text-cyan-400 outline-none"
               />
 
             </div>
@@ -314,18 +227,7 @@ export default function EliteBenefitsAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                w-full
-                rounded-3xl
-                bg-white/5
-                border
-                border-white/10
-                p-6
-                text-white/70
-                outline-none
-                resize-none
-                mb-12
-              "
+              className="w-full rounded-3xl bg-white/5 border border-white/10 p-6 text-white/70 outline-none resize-none mb-12"
             />
 
             {/* IMAGE URL */}
@@ -340,25 +242,12 @@ export default function EliteBenefitsAdmin() {
                     e.target.value,
                 })
               }
-              className="
-                w-full
-                h-[56px]
-                rounded-2xl
-                bg-white/5
-                border
-                border-white/10
-                px-5
-                text-white
-                outline-none
-                mb-10
-              "
+              className="w-full h-[56px] rounded-2xl bg-white/5 border border-white/10 px-5 text-white outline-none mb-10"
               placeholder="Image URL"
             />
 
             {/* POINTS */}
-            <div className="
-              space-y-6
-            ">
+            <div className="space-y-6">
 
               {points.map((item, i) => (
 
@@ -367,30 +256,13 @@ export default function EliteBenefitsAdmin() {
                   whileHover={{
                     y: -3,
                   }}
-                  className="
-                    flex
-                    gap-5
-                    border-b
-                    border-white/10
-                    pb-7
-                  "
+                  className="flex gap-5 border-b border-white/10 pb-7"
                 >
 
                   {/* ICON */}
-                  <div className="
-                    mt-1
-                  ">
+                  <div className="mt-1">
 
-                    <div className="
-                      w-7
-                      h-7
-                      flex
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-cyan-400/10
-                      text-cyan-400
-                    ">
+                    <div className="w-7 h-7 flex items-center justify-center rounded-full bg-cyan-400/10 text-cyan-400">
 
                       <Check size={14} />
 
@@ -399,9 +271,7 @@ export default function EliteBenefitsAdmin() {
                   </div>
 
                   {/* INPUTS */}
-                  <div className="
-                    flex-1
-                  ">
+                  <div className="flex-1">
 
                     <input
                       value={
@@ -423,19 +293,7 @@ export default function EliteBenefitsAdmin() {
                         );
 
                       }}
-                      className="
-                        w-full
-                        h-[52px]
-                        rounded-2xl
-                        bg-white/5
-                        border
-                        border-white/10
-                        px-5
-                        text-white
-                        font-semibold
-                        outline-none
-                        mb-4
-                      "
+                      className="w-full h-[52px] rounded-2xl bg-white/5 border border-white/10 px-5 text-white font-semibold outline-none mb-4"
                     />
 
                     <textarea
@@ -461,17 +319,7 @@ export default function EliteBenefitsAdmin() {
                         );
 
                       }}
-                      className="
-                        w-full
-                        rounded-2xl
-                        bg-white/5
-                        border
-                        border-white/10
-                        p-5
-                        text-white/70
-                        outline-none
-                        resize-none
-                      "
+                      className="w-full rounded-2xl bg-white/5 border border-white/10 p-5 text-white/70 outline-none resize-none"
                     />
 
                   </div>

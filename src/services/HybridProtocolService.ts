@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getHybridProtocolSection =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("hybrid_protocol_section")
         .select("*")
         .limit(1)
@@ -34,8 +33,7 @@ export const updateHybridProtocolSection =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("hybrid_protocol_section")
         .update({
           ...payload,
@@ -62,8 +60,7 @@ export const updateHybridProtocolSection =
 export const getHybridProtocolCards =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("hybrid_protocol_cards")
         .select("*")
         .order("sort_order", {
@@ -90,8 +87,7 @@ export const updateHybridProtocolCard =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("hybrid_protocol_cards")
         .update({
           ...payload,

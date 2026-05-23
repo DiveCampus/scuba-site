@@ -49,14 +49,7 @@ export default function RescueComparisonAdmin() {
     const load =
       async () => {
 
-        const {
-
-          section,
-
-          rows,
-
-        } =
-          await getEliteRescueComparison();
+        const { section, rows } = await getEliteRescueComparison();
 
         setSection(section);
 
@@ -139,44 +132,22 @@ export default function RescueComparisonAdmin() {
 
   return (
 
-    <section className="
-      min-h-screen
-      bg-[#02131d]
-      text-white
-      py-20
-      px-6
-    ">
+    <section className="min-h-screen bg-[#02131d] text-white py-20 px-6">
 
-      <div className="
-        max-w-7xl
-        mx-auto
-      ">
+      <div className="max-w-7xl mx-auto">
 
         {/* HEADER */}
-        <div className="
-          flex
-          items-center
-          justify-between
-          mb-16
-        ">
+        <div className="flex items-center justify-between mb-16">
 
           <div>
 
-            <p className="
-              text-cyan-400
-              tracking-[4px]
-              text-[10px]
-              mb-4
-            ">
+            <p className="text-cyan-400 tracking-[4px] text-[10px] mb-4">
 
               ADMIN PANEL
 
             </p>
 
-            <h2 className="
-              text-4xl
-              font-semibold
-            ">
+            <h2 className="text-4xl font-semibold">
 
               Rescue Comparison
 
@@ -190,18 +161,7 @@ export default function RescueComparisonAdmin() {
               handleSaveSection
             }
 
-            className="
-              h-[56px]
-              px-8
-              rounded-2xl
-              bg-cyan-500
-              hover:bg-cyan-400
-              transition
-              flex
-              items-center
-              gap-3
-              font-semibold
-            "
+            className="h-[56px] px-8 rounded-2xl bg-cyan-500 hover:bg-cyan-400 transition flex items-center gap-3 font-semibold"
 
           >
 
@@ -220,12 +180,7 @@ export default function RescueComparisonAdmin() {
         </div>
 
         {/* SECTION FORM */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-6
-          mb-20
-        ">
+        <div className="grid md:grid-cols-2 gap-6 mb-20">
 
           {Object.keys(section).map(
 
@@ -251,20 +206,11 @@ export default function RescueComparisonAdmin() {
 
                   key={key}
 
-                  className="
-                    flex
-                    flex-col
-                    gap-2
-                  "
+                  className="flex flex-col gap-2"
 
                 >
 
-                  <label className="
-                    text-sm
-                    uppercase
-                    tracking-[2px]
-                    text-white/60
-                  ">
+                  <label className="text-sm uppercase tracking-[2px] text-white/60">
 
                     {key}
 
@@ -287,15 +233,7 @@ export default function RescueComparisonAdmin() {
                       })
                     }
 
-                    className="
-                      h-[56px]
-                      rounded-2xl
-                      bg-white/5
-                      border
-                      border-white/10
-                      px-5
-                      outline-none
-                    "
+                    className="h-[56px] rounded-2xl bg-white/5 border border-white/10 px-5 outline-none"
 
                   />
 
@@ -310,11 +248,7 @@ export default function RescueComparisonAdmin() {
         </div>
 
         {/* ROWS */}
-        <div className="
-          grid
-          md:grid-cols-2
-          gap-8
-        ">
+        <div className="grid md:grid-cols-2 gap-8">
 
           {rows.map(
 
@@ -327,13 +261,7 @@ export default function RescueComparisonAdmin() {
 
                 key={row.id}
 
-                className="
-                  bg-white/5
-                  border
-                  border-white/10
-                  rounded-3xl
-                  p-7
-                "
+                className="bg-white/5 border border-white/10 rounded-3xl p-7"
 
               >
 
@@ -358,17 +286,7 @@ export default function RescueComparisonAdmin() {
 
                   placeholder="Label"
 
-                  className="
-                    w-full
-                    h-[52px]
-                    rounded-2xl
-                    bg-black/20
-                    border
-                    border-white/10
-                    px-5
-                    outline-none
-                    mb-5
-                  "
+                  className="w-full h-[52px] rounded-2xl bg-black/20 border border-white/10 px-5 outline-none mb-5"
 
                 />
 
@@ -395,17 +313,7 @@ export default function RescueComparisonAdmin() {
 
                   placeholder="Other Text"
 
-                  className="
-                    w-full
-                    h-[52px]
-                    rounded-2xl
-                    bg-black/20
-                    border
-                    border-white/10
-                    px-5
-                    outline-none
-                    mb-5
-                  "
+                  className="w-full h-[52px] rounded-2xl bg-black/20 border border-white/10 px-5 outline-none mb-5"
 
                 />
 
@@ -432,17 +340,7 @@ export default function RescueComparisonAdmin() {
 
                   placeholder="Nemo Text"
 
-                  className="
-                    w-full
-                    h-[52px]
-                    rounded-2xl
-                    bg-black/20
-                    border
-                    border-white/10
-                    px-5
-                    outline-none
-                    mb-5
-                  "
+                  className="w-full h-[52px] rounded-2xl bg-black/20 border border-white/10 px-5 outline-none mb-5"
 
                 />
 
@@ -455,15 +353,7 @@ export default function RescueComparisonAdmin() {
                     )
                   }
 
-                  className="
-                    w-full
-                    h-[52px]
-                    rounded-2xl
-                    bg-cyan-500
-                    hover:bg-cyan-400
-                    transition
-                    font-semibold
-                  "
+                  className="w-full h-[52px] rounded-2xl bg-cyan-500 hover:bg-cyan-400 transition font-semibold"
 
                 >
 

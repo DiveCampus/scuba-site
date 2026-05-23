@@ -7,8 +7,7 @@ import { supabase } from "@/lib/supabaseClient";
 export const getDivemasterHero =
   async () => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("divemaster_hero_section")
         .select("*")
         .limit(1)
@@ -35,8 +34,7 @@ export const updateDivemasterHero =
     payload: any
   ) => {
 
-    const { data, error } =
-      await supabase
+    const { data, error } = await supabase
         .from("divemaster_hero_section")
         .update({
           ...payload,
