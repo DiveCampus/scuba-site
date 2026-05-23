@@ -3,8 +3,10 @@
 import { getMainHero } from "@/services/kadirheroService";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function HeroSection() {
+  const navigate = useNavigate();
   const [hero, setHero] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
@@ -206,6 +208,7 @@ export function HeroSection() {
 
         {/* CTA */}
         <button
+          onClick={() => navigate("/booking?course=padi-open-water")}
           className="
             mt-8
             px-8
