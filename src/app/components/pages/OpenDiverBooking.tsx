@@ -132,9 +132,9 @@ export function OpenDiverBooking({ isOpen, onClose }: any) {
                         </p>
 
                         <div className="flex items-center gap-2">
-                          <img src="/visa.webp" className="h-5" />
-                          <img src="/mastercard.webp" className="h-5" />
-                          <img src="/amex.webp" className="h-5" />
+                          <img src="/visa.webp" className="h-5" loading="lazy" decoding="async" />
+                          <img src="/mastercard.webp" className="h-5" loading="lazy" decoding="async" />
+                          <img src="/amex.webp" className="h-5" loading="lazy" decoding="async" />
                         </div>
                       </div>
 

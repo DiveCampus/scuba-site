@@ -36,7 +36,7 @@ export function Hero() {
 
       {/* BACKGROUND */}
       <motion.div className="absolute inset-0 z-0" style={{ y }}>
-        <video autoPlay muted loop playsInline className="w-full h-full object-cover scale-105">
+        <video autoPlay muted loop playsInline preload="auto" className="w-full h-full object-cover scale-105">
           <source src="/vid1.mp4" type="video/mp4" />
         </video>
 

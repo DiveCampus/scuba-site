@@ -35,6 +35,7 @@ export function FeaturedExperiences() {
         muted
         loop
         playsInline
+        preload="metadata"
         className="absolute inset-0 w-full h-full object-cover"
       >
         <source src="/vid1.mp4" type="video/mp4" />

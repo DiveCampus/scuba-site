@@ -8,17 +8,8 @@ type CheckoutSessionResponse = {
 };
 
 function getCheckoutSessionPayload(course: CourseData) {
-  const origin = window.location.origin;
-
   return {
     courseSlug: course.slug,
-    title: course.title,
-    description: course.description,
-    amount: course.price,
-    currency: course.currency,
-    metadata: course.stripeMetadata,
-    successUrl: `${origin}/payment-success?course=${course.slug}`,
-    cancelUrl: `${origin}/payment-cancel?course=${course.slug}`,
   };
 }
 

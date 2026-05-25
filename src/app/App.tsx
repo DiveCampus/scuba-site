@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from "react";
 
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./components/Hero";
@@ -13,19 +14,33 @@ import { BookingForm } from "./components/BookingForm";
 import { Footer } from "./components/Footer";
 
 import Login from "./components/Login";
-import AdminLogin from "./components/admin/AdminLogin";
-import AdminDashboard from "./components/admin/AdminDashboard";
-import { AdvancedOpenWater } from "./components/pages/AdvancedOpenWater";
-import { SpecialtyCourses } from "./components/pages/SpecialtyCourses";
-import { PadiRescueDiver } from "./components/pages/PadiRescueDiver";
-import { PadiOpenWater } from "./components/pages/PadiOpenWater";
-import DivemasterPage from "./divemaster/PadIDivemaster";
-import AboutDive from "./About/AboutDive";
-import { AdvancedPadiOpenDiver } from "./components/pages/AdvancedPadiOpenDiver";
-import { TryDive } from "./TryDive/TryDive";
-import BookingPage from "./booking/BookingPage";
-import PaymentSuccess from "./booking/PaymentSuccess";
-import PaymentCancel from "./booking/PaymentCancel";
+
+// Non-Home routes are code-split. They load on navigation, not on first paint.
+const AdminLogin = lazy(() => import("./components/admin/AdminLogin"));
+const AdminDashboard = lazy(() => import("./components/admin/AdminDashboard"));
+const AdvancedOpenWater = lazy(() =>
+  import("./components/pages/AdvancedOpenWater").then((m) => ({ default: m.AdvancedOpenWater }))
+);
+const SpecialtyCourses = lazy(() =>
+  import("./components/pages/SpecialtyCourses").then((m) => ({ default: m.SpecialtyCourses }))
+);
+const PadiRescueDiver = lazy(() =>
+  import("./components/pages/PadiRescueDiver").then((m) => ({ default: m.PadiRescueDiver }))
+);
+const PadiOpenWater = lazy(() =>
+  import("./components/pages/PadiOpenWater").then((m) => ({ default: m.PadiOpenWater }))
+);
+const DivemasterPage = lazy(() => import("./divemaster/PadIDivemaster"));
+const AboutDive = lazy(() => import("./About/AboutDive"));
+const AdvancedPadiOpenDiver = lazy(() =>
+  import("./components/pages/AdvancedPadiOpenDiver").then((m) => ({ default: m.AdvancedPadiOpenDiver }))
+);
+const TryDive = lazy(() =>
+  import("./TryDive/TryDive").then((m) => ({ default: m.TryDive }))
+);
+const BookingPage = lazy(() => import("./booking/BookingPage"));
+const PaymentSuccess = lazy(() => import("./booking/PaymentSuccess"));
+const PaymentCancel = lazy(() => import("./booking/PaymentCancel"));
 
 function Home() {
   const isLoggedIn = localStorage.getItem("auth") === "true";
@@ -55,29 +70,31 @@ export default function App() {
   const isAdminAuth = localStorage.getItem("adminAuth") === "true";
 
   return (
-    <Routes>
-      {/* HOME */}
-      <Route path="/" element={<Home />} />
+    <Suspense fallback={null}>
+      <Routes>
+        {/* HOME */}
+        <Route path="/" element={<Home />} />
 
-      {/* ADMIN */}
-      <Route path="/admin" element={<AdminLogin />} />
-      <Route
-        path="/admin/dashboard"
-        element={isAdminAuth ? <AdminDashboard /> : <AdminLogin />}
-      />
-      <Route path="/advanced-open-water" element={<AdvancedOpenWater />} />
-      <Route path="/try-dive" element={<TryDive />} />
-      <Route path="/specialty-courses" element={<SpecialtyCourses/>}/>
-      <Route path="/padi-divemaster" element={<DivemasterPage />} />
-      <Route path="/padi-rescue-diver" element={<PadiRescueDiver />} />
-      <Route path="/padi-scuba-diver" element={<AdvancedPadiOpenDiver />} /> 
-      <Route path="/padi-open-water" element={<PadiOpenWater />} />
-      <Route path="/about" element={<AboutDive />} />
-      <Route path="/booking" element={<BookingPage />} />
-      <Route path="/open-diver/booking" element={<BookingPage />} />
-      <Route path="/payment-success" element={<PaymentSuccess />} />
-      <Route path="/payment-cancel" element={<PaymentCancel />} />
+        {/* ADMIN */}
+        <Route path="/admin" element={<AdminLogin />} />
+        <Route
+          path="/admin/dashboard/*"
+          element={isAdminAuth ? <AdminDashboard /> : <AdminLogin />}
+        />
+        <Route path="/advanced-open-water" element={<AdvancedOpenWater />} />
+        <Route path="/try-dive" element={<TryDive />} />
+        <Route path="/specialty-courses" element={<SpecialtyCourses/>}/>
+        <Route path="/padi-divemaster" element={<DivemasterPage />} />
+        <Route path="/padi-rescue-diver" element={<PadiRescueDiver />} />
+        <Route path="/padi-scuba-diver" element={<AdvancedPadiOpenDiver />} />
+        <Route path="/padi-open-water" element={<PadiOpenWater />} />
+        <Route path="/about" element={<AboutDive />} />
+        <Route path="/booking" element={<BookingPage />} />
+        <Route path="/open-diver/booking" element={<BookingPage />} />
+        <Route path="/payment-success" element={<PaymentSuccess />} />
+        <Route path="/payment-cancel" element={<PaymentCancel />} />
 
-    </Routes>
+      </Routes>
+    </Suspense>
   );
 }

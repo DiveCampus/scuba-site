@@ -1,80 +1,163 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "@/lib/supabaseClient";
 import { getHero, updateHero } from "@/services/heroService";
-import { useNavigate } from "react-router-dom";
+import {
+  useNavigate,
+  useLocation,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
 
-import CoursesPage from "./CoursesPage";
-import { Gallery } from "./gallerypage";
-import { PricingPage } from "./PricingPage";
-import { FaqAdmin } from "./FaqAdmin";
-import { FeaturedAdmin } from "./FeaturedAdmin";
-import { TestimonialsAdmin } from "./TestimonialsAdmin";
-import { WhyAdmin } from "./WhyAdmin";
-import { FooterAdmin } from "./FooterAdmin";
-import HeroSectionAdmin from "./HeroSectionAdmin";
-import FeaturesAdmin from "./FeaturesAdmin";
-import CompareAdmin from "./CompareAdmin";
-import CommunityFAQSelectionAdmin from "./CommunityFAQSelectionAdmin";
-import WhyChooseAdmin from "./WhyChooseAdmin";
-import GoldStandardAdmin from "./GoldStandardAdmin";
-import LocationAdmin from "./LocationAdmin";
-import FootAdmin from "./FootAdmin";
-import PadiOpenDiverAdmin from "./PadiOpenDiverAdmin";
-import AdvancedProtocolAdmin from "./AdvancedProtocolAdmin";
-import AOWAdvantageAdmin from "./AOWAdvantageAdmin";
-import GlobalPassportAdmin from "./GlobalPassportAdmin";
-import ChooseEnvironmentAdmin from "./ChooseEnvironmentAdmin";
-import AdvancedTrainingGoldAdmin from "./AdvancedTrainingGoldAdmin";
-import MasteryGapAdmin from "./MasteryGapAdmin";
-import PremiumFooterAdmin from "./PremiumFooterAdmin";
-import OpenDiverAdmin from "./OpenDiverAdmin";
-import HybridProtocolAdmin from "./HybridProtocolAdmin";
-import EliteBenefitsAdmin from "./EliteBenefitsAdmin";
-import OceanEliteAdmin from "./OceanEliteAdmin";
-import DiveEnvironmentAdmin from "./DiveEnvironmentAdmin";
-import AdvancedTrainingGoldElitedAdmin from "./AdvancedTrainingGoldEliteAdmin";
-import TrainingComparisonAdmin from "./TrainingComparisonAdmin";
-import EliteFooterAdmin from "./EliteFooterAdmin";
-import DivemasterHeroAdmin from "./DivemasterHeroAdmin";
-import CommandOceanAdmin from "./CommandOceanAdmin";
-import ComparisonDiveAdmin from "./ComparisonDiveAdmin";
-import ProfessionalStatusAdmin from "./ProfessionalStatusAdmin";
-import CareerPathAdmin from "./CareerPathAdmin";
-import GoldStandardDiveAdmin from "./GoldStandardDiveAdmin";
-import RescueHeroAdmin from "./RescueHeroAdmin";
-import RescueCapabilitiesAdmin from "./RescueCapabilitiesAdmin";
-import RescueComparisonAdmin from "./RescueComparisonAdmin";
-import SimulationRealityAdmin from "./SimulationToRealityAdmin";
-import MasterScubaCTAAdmin from "./MasterScubaCTAAdmin";
-import { StepsAdmin } from "./AdminSteps";
-import RescueFAQAdmin from "./RescueFAQAdmin";
-import DiveTrainingShowcaseAdmin from "./DiveTrainingShowcaseAdmin";
-import LocationFooterAdmin from "./LocationFooterAdmin";
-import DivetryAdmin from "./DivetryAdmin";
-import FirstDiveStepsAdmin from "./FirstDiveStepsAdmin";
-import WeekendRoutineAdmin from "./WeekendRoutineAdmin";
-import DiveConfidenceFAQAdmin from "./DiveConfidenceFAQAdmin";
-import ChooseDiveSiteAdmin from "./ChooseDiveSiteAdmin";
-import ExpertHandsAdmin from "./ExpertHandsAdmin";
-import LegacyOfTrustAdmin from "./LegacyOfTrustAdmin";
-import ContactLocationsAdmin from "./ContactLocationsAdmin";
-import AdventureGalleryAdmin from "./AdventureGalleryAdmin";
-import TryDiveFooterAdmin from "./TryDiveFooterAdmin";
-import { MediaManager } from "./MediaManager";
+// All admin sub-components are code-split. Only the actively selected
+// section's chunk is fetched. Visual layout is unchanged.
+const CoursesPage = lazy(() => import("./CoursesPage"));
+const Gallery = lazy(() => import("./gallerypage").then((m) => ({ default: m.Gallery })));
+const PricingPage = lazy(() => import("./PricingPage").then((m) => ({ default: m.PricingPage })));
+const FaqAdmin = lazy(() => import("./FaqAdmin").then((m) => ({ default: m.FaqAdmin })));
+const FeaturedAdmin = lazy(() => import("./FeaturedAdmin").then((m) => ({ default: m.FeaturedAdmin })));
+const TestimonialsAdmin = lazy(() => import("./TestimonialsAdmin").then((m) => ({ default: m.TestimonialsAdmin })));
+const WhyAdmin = lazy(() => import("./WhyAdmin").then((m) => ({ default: m.WhyAdmin })));
+const FooterAdmin = lazy(() => import("./FooterAdmin").then((m) => ({ default: m.FooterAdmin })));
+const HeroSectionAdmin = lazy(() => import("./HeroSectionAdmin"));
+const FeaturesAdmin = lazy(() => import("./FeaturesAdmin"));
+const CompareAdmin = lazy(() => import("./CompareAdmin"));
+const CommunityFAQSelectionAdmin = lazy(() => import("./CommunityFAQSelectionAdmin"));
+const WhyChooseAdmin = lazy(() => import("./WhyChooseAdmin"));
+const GoldStandardAdmin = lazy(() => import("./GoldStandardAdmin"));
+const LocationAdmin = lazy(() => import("./LocationAdmin"));
+const FootAdmin = lazy(() => import("./FootAdmin"));
+const PadiOpenDiverAdmin = lazy(() => import("./PadiOpenDiverAdmin"));
+const AdvancedProtocolAdmin = lazy(() => import("./AdvancedProtocolAdmin"));
+const AOWAdvantageAdmin = lazy(() => import("./AOWAdvantageAdmin"));
+const GlobalPassportAdmin = lazy(() => import("./GlobalPassportAdmin"));
+const ChooseEnvironmentAdmin = lazy(() => import("./ChooseEnvironmentAdmin"));
+const AdvancedTrainingGoldAdmin = lazy(() => import("./AdvancedTrainingGoldAdmin"));
+const MasteryGapAdmin = lazy(() => import("./MasteryGapAdmin"));
+const PremiumFooterAdmin = lazy(() => import("./PremiumFooterAdmin"));
+const OpenDiverAdmin = lazy(() => import("./OpenDiverAdmin"));
+const HybridProtocolAdmin = lazy(() => import("./HybridProtocolAdmin"));
+const EliteBenefitsAdmin = lazy(() => import("./EliteBenefitsAdmin"));
+const OceanEliteAdmin = lazy(() => import("./OceanEliteAdmin"));
+const DiveEnvironmentAdmin = lazy(() => import("./DiveEnvironmentAdmin"));
+const AdvancedTrainingGoldElitedAdmin = lazy(() => import("./AdvancedTrainingGoldEliteAdmin"));
+const TrainingComparisonAdmin = lazy(() => import("./TrainingComparisonAdmin"));
+const EliteFooterAdmin = lazy(() => import("./EliteFooterAdmin"));
+const DivemasterHeroAdmin = lazy(() => import("./DivemasterHeroAdmin"));
+const CommandOceanAdmin = lazy(() => import("./CommandOceanAdmin"));
+const ComparisonDiveAdmin = lazy(() => import("./ComparisonDiveAdmin"));
+const ProfessionalStatusAdmin = lazy(() => import("./ProfessionalStatusAdmin"));
+const CareerPathAdmin = lazy(() => import("./CareerPathAdmin"));
+const GoldStandardDiveAdmin = lazy(() => import("./GoldStandardDiveAdmin"));
+const RescueHeroAdmin = lazy(() => import("./RescueHeroAdmin"));
+const RescueCapabilitiesAdmin = lazy(() => import("./RescueCapabilitiesAdmin"));
+const RescueComparisonAdmin = lazy(() => import("./RescueComparisonAdmin"));
+const SimulationRealityAdmin = lazy(() => import("./SimulationToRealityAdmin"));
+const MasterScubaCTAAdmin = lazy(() => import("./MasterScubaCTAAdmin"));
+const StepsAdmin = lazy(() => import("./AdminSteps").then((m) => ({ default: m.StepsAdmin })));
+const RescueFAQAdmin = lazy(() => import("./RescueFAQAdmin"));
+const DiveTrainingShowcaseAdmin = lazy(() => import("./DiveTrainingShowcaseAdmin"));
+const LocationFooterAdmin = lazy(() => import("./LocationFooterAdmin"));
+const DivetryAdmin = lazy(() => import("./DivetryAdmin"));
+const FirstDiveStepsAdmin = lazy(() => import("./FirstDiveStepsAdmin"));
+const WeekendRoutineAdmin = lazy(() => import("./WeekendRoutineAdmin"));
+const DiveConfidenceFAQAdmin = lazy(() => import("./DiveConfidenceFAQAdmin"));
+const ChooseDiveSiteAdmin = lazy(() => import("./ChooseDiveSiteAdmin"));
+const ExpertHandsAdmin = lazy(() => import("./ExpertHandsAdmin"));
+const LegacyOfTrustAdmin = lazy(() => import("./LegacyOfTrustAdmin"));
+const ContactLocationsAdmin = lazy(() => import("./ContactLocationsAdmin"));
+const AdventureGalleryAdmin = lazy(() => import("./AdventureGalleryAdmin"));
+const TryDiveFooterAdmin = lazy(() => import("./TryDiveFooterAdmin"));
+const MediaManager = lazy(() => import("./MediaManager").then((m) => ({ default: m.MediaManager })));
 // import EnvironmentSectionAdmin from "./EnvironmentSectionAdmin";
+// SECTIONS REGISTRY
+// Order preserved from the original pages[] (visual order of nav buttons).
+// Names preserved exactly (including original spacing) to keep UI identical.
+// Slugs drive URL routing; renaming a slug is a URL-breaking change.
+type AdminSection = {
+  slug: string;
+  name: string;
+  Component: React.LazyExoticComponent<React.ComponentType<any>>;
+};
+
+const sections: AdminSection[] = [
+  { slug: "courses", name: "Courses", Component: CoursesPage },
+  { slug: "featured", name: "Featured", Component: FeaturedAdmin },
+  { slug: "gallery", name: "Gallery", Component: Gallery },
+  { slug: "pricing", name: "Pricing", Component: PricingPage },
+  { slug: "testimonials", name: "Testimonials", Component: TestimonialsAdmin },
+  { slug: "why", name: "Why", Component: WhyAdmin },
+  { slug: "faq", name: "FAQ", Component: FaqAdmin },
+  { slug: "footer", name: "Footer", Component: FooterAdmin },
+  { slug: "hero-section", name: "Hero Section", Component: HeroSectionAdmin },
+  { slug: "features", name: "Features", Component: FeaturesAdmin },
+  { slug: "steps", name: "Steps", Component: StepsAdmin },
+  { slug: "compare", name: "Compare", Component: CompareAdmin },
+  { slug: "community-faq", name: "Community FAQ", Component: CommunityFAQSelectionAdmin },
+  { slug: "why-choose", name: "Why Choose", Component: WhyChooseAdmin },
+  { slug: "gold-standard", name: "Gold Standard", Component: GoldStandardAdmin },
+  { slug: "location", name: "Location", Component: LocationAdmin },
+  { slug: "foot", name: "Foot", Component: FootAdmin },
+  { slug: "padi-open-diver", name: "PADI Open Diver", Component: PadiOpenDiverAdmin },
+  { slug: "advanced-protocol", name: "Advanced Protocol", Component: AdvancedProtocolAdmin },
+  { slug: "aow-advantage", name: "AOW Advantage", Component: AOWAdvantageAdmin },
+  { slug: "global-passport", name: "Global Passport", Component: GlobalPassportAdmin },
+  { slug: "choose-environment", name: "Choose Environment", Component: ChooseEnvironmentAdmin },
+  { slug: "advanced-training-gold", name: " Advanced Training Gold Section", Component: AdvancedTrainingGoldAdmin },
+  { slug: "mastery-gap", name: "Mastery Gap", Component: MasteryGapAdmin },
+  { slug: "premium-footer", name: "Premium Footer", Component: PremiumFooterAdmin },
+  { slug: "open-diver", name: "Open Diver", Component: OpenDiverAdmin },
+  { slug: "hybrid-protocol", name: "Hybrid Protocol", Component: HybridProtocolAdmin },
+  { slug: "elite-benefits", name: "Elite Benefits", Component: EliteBenefitsAdmin },
+  { slug: "ocean-elite", name: " Ocean Elite", Component: OceanEliteAdmin },
+  { slug: "dive-environment", name: "Dive Environment", Component: DiveEnvironmentAdmin },
+  { slug: "advanced-training-gold-elite", name: "Advanced Training Gold EliteAdmin", Component: AdvancedTrainingGoldElitedAdmin },
+  { slug: "training-comparison", name: " Training Comparison", Component: TrainingComparisonAdmin },
+  { slug: "elite-footer", name: " Elite Footer", Component: EliteFooterAdmin },
+  { slug: "divemaster-hero", name: " Divemaster Hero", Component: DivemasterHeroAdmin },
+  { slug: "command-ocean", name: "Command Ocean", Component: CommandOceanAdmin },
+  { slug: "comparison-dive", name: "Comparison Dive", Component: ComparisonDiveAdmin },
+  { slug: "professional-status", name: "Professional Status", Component: ProfessionalStatusAdmin },
+  { slug: "career-path", name: "Career Path", Component: CareerPathAdmin },
+  { slug: "gold-standard-dive", name: "Gold Standard Dive", Component: GoldStandardDiveAdmin },
+  { slug: "rescue-hero", name: "Rescue Hero", Component: RescueHeroAdmin },
+  { slug: "rescue-capabilities", name: "Rescue Capabilities", Component: RescueCapabilitiesAdmin },
+  { slug: "rescue-comparison", name: " Rescue Comparison", Component: RescueComparisonAdmin },
+  { slug: "simulation-to-reality", name: "Simulation to Reality", Component: SimulationRealityAdmin },
+  { slug: "master-scuba-cta", name: "Master Scuba CTA", Component: MasterScubaCTAAdmin },
+  { slug: "rescue-faq", name: "Rescue FAQ Admin", Component: RescueFAQAdmin },
+  { slug: "dive-training-showcase", name: "Dive TrainingShowcase Admin", Component: DiveTrainingShowcaseAdmin },
+  { slug: "location-footer", name: "Location Footer Admin", Component: LocationFooterAdmin },
+  { slug: "divetry", name: "Divetry Admin", Component: DivetryAdmin },
+  { slug: "first-dive-steps", name: "First DiveSteps Admin", Component: FirstDiveStepsAdmin },
+  { slug: "weekend-routine", name: "Weekend Routine Admin", Component: WeekendRoutineAdmin },
+  { slug: "dive-confidence-faq", name: "Dive ConfidenceFAQ Admin", Component: DiveConfidenceFAQAdmin },
+  { slug: "choose-dive-site", name: "Choose DiveSite Admin", Component: ChooseDiveSiteAdmin },
+  { slug: "expert-hands", name: "ExpertHands Admin", Component: ExpertHandsAdmin },
+  { slug: "legacy-of-trust", name: "LegacyOfTrustAdmin", Component: LegacyOfTrustAdmin },
+  { slug: "contact-locations", name: "ContactLocationsAdmin", Component: ContactLocationsAdmin },
+  { slug: "adventure-gallery", name: "Adventure Gallery Admin", Component: AdventureGalleryAdmin },
+  { slug: "try-dive-footer", name: "TryDiveFooterAdmin", Component: TryDiveFooterAdmin },
+  { slug: "media-manager", name: "Image Uploads & Url", Component: MediaManager },
+];
+
 export default function AdminDashboard() {
   const [hero, setHero] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [editingField, setEditingField] = useState<string | null>(null);
 
-  // PAGINATION STATE
-  const [currentPage, setCurrentPage] = useState(0);
-
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Derive active section from URL (no local pagination state).
+  const slugFromUrl = location.pathname.split("/").pop() || "";
+  const matchedIndex = sections.findIndex((s) => s.slug === slugFromUrl);
+  const currentIndex = matchedIndex >= 0 ? matchedIndex : 0;
+  const currentSlug = sections[currentIndex].slug;
 
   useEffect(() => {
     const init = async () => {
@@ -115,250 +198,8 @@ export default function AdminDashboard() {
     navigate("/admin");
   };
 
-  // PAGINATED COMPONENTS
-  const pages = [
-    {
-      name: "Courses",
-      component: <CoursesPage />,
-    },
-    {
-      name: "Featured",
-      component: <FeaturedAdmin />,
-    },
-    {
-      name: "Gallery",
-      component: <Gallery />,
-    },
-    {
-      name: "Pricing",
-      component: <PricingPage />,
-    },
-    {
-      name: "Testimonials",
-      component: <TestimonialsAdmin />,
-    },
-    {
-      name: "Why",
-      component: <WhyAdmin />,
-    },
-    {
-      name: "FAQ",
-      component: <FaqAdmin />,
-    },
-    {
-      name: "Footer",
-      component: <FooterAdmin />,
-    },
-    {
-      name: "Hero Section",
-      component: <HeroSectionAdmin />,
-    },
-    {
-      name: "Features",
-      component: <FeaturesAdmin />,
-    },
-    {
-      name: "Steps",
-      component: <StepsAdmin />,
-    },
-    {
-      name: "Compare",
-      component: <CompareAdmin />,
-    },
-    {
-      name: "Community FAQ",
-      component: <CommunityFAQSelectionAdmin />,
-    },
-    {
-      name: "Why Choose",
-      component: <WhyChooseAdmin />,
-    },
-    {
-      name: "Gold Standard",
-      component: <GoldStandardAdmin />,
-    },
-    {
-      name: "Location",
-      component: <LocationAdmin />,
-    },
-    {
-      name: "Foot",
-      component: <FootAdmin />,
-    },
-    {
-      name: "PADI Open Diver",
-      component: <PadiOpenDiverAdmin />,
-    },
-    {
-      name: "Advanced Protocol",
-      component: <AdvancedProtocolAdmin />,
-    },
-    {
-      name: "AOW Advantage",
-      component: <AOWAdvantageAdmin />,
-    },
-    {
-      name : "Global Passport",
-      component : <GlobalPassportAdmin />
-    },
-    {
-      name :"Choose Environment",
-      component : <ChooseEnvironmentAdmin />
-    },
-    {
-      name:" Advanced Training Gold Section",
-      component:<AdvancedTrainingGoldAdmin/>
-    },
-    {
-      name :  "Mastery Gap",
-      component : <MasteryGapAdmin />
-    },
-    {
-      name: "Premium Footer",
-      component: <PremiumFooterAdmin/>
-    },
-    {
-      name :"Open Diver",
-      component:<OpenDiverAdmin />
-    },
-    {
-      name :"Hybrid Protocol",
-      component:<HybridProtocolAdmin/>
-    },
-    {
-      name :"Elite Benefits",
-      component:<EliteBenefitsAdmin />
-    },
-    {
-      name :" Ocean Elite",
-      component:<OceanEliteAdmin />
-    },
-    {
-      name :"Dive Environment",
-      component :<DiveEnvironmentAdmin />
-    },
-    {
-      name :"Advanced Training Gold EliteAdmin",
-      component:<AdvancedTrainingGoldElitedAdmin />
-    },
-    {
-      name :" Training Comparison",
-      component:<TrainingComparisonAdmin />
-    },
-    {
-      name :" Elite Footer",
-      component:<EliteFooterAdmin />
-    },
-    {
-      name :" Divemaster Hero",
-      component:<DivemasterHeroAdmin />
-    },
-    {
-      name: "Command Ocean",
-      component: <CommandOceanAdmin />
-    }, 
-    {
-     name :"Comparison Dive",
-     component:<ComparisonDiveAdmin />
-    },
-    {
-      name :"Professional Status",
-      component:<ProfessionalStatusAdmin />
-    },
-    {
-      name :"Career Path",
-      component:<CareerPathAdmin />
-    },
-    {
-      name: "Gold Standard Dive",
-      component:<GoldStandardDiveAdmin />
-    },
-    
-    // {
-    //   name :" Environment Section",
-    //   component :<EnvironmentSectionAdmin />
-    // }
-
-    {
-      name :"Rescue Hero",
-      component:<RescueHeroAdmin />
-    },
-    {
-      name :"Rescue Capabilities",
-      component:<RescueCapabilitiesAdmin />
-    },
-    {
-      name :" Rescue Comparison",
-      component:<RescueComparisonAdmin />
-    },
-    {
-      name :"Simulation to Reality",
-      component:<SimulationRealityAdmin />
-    },
-    {
-      name :"Master Scuba CTA",
-      component :<MasterScubaCTAAdmin />
-    },
-    {
-      name :"Rescue FAQ Admin",
-      component : <RescueFAQAdmin />
-    },
-    {
-      name : "Dive TrainingShowcase Admin",
-      component : <DiveTrainingShowcaseAdmin />
-    },
-    {
-      name : "Location Footer Admin",
-      component : <LocationFooterAdmin />
-    },
-    {
-      name :"Divetry Admin",
-      component: <DivetryAdmin />
-    },
-    {
-      name :"First DiveSteps Admin",
-      component: <FirstDiveStepsAdmin />
-    },
-    {
-      name : "Weekend Routine Admin",
-      component: <WeekendRoutineAdmin />
-    },
-    {
-      name :"Dive ConfidenceFAQ Admin",
-      component : <DiveConfidenceFAQAdmin />
-    },
-    {
-      name :"Choose DiveSite Admin",
-      component : <ChooseDiveSiteAdmin />  
-    },
-    {
-      name :"ExpertHands Admin",
-      component:<ExpertHandsAdmin/>
-
-    },
-    {
-      name :"LegacyOfTrustAdmin",
-      component : <LegacyOfTrustAdmin />
-    },
-    {
-      name :"ContactLocationsAdmin",
-      component: <ContactLocationsAdmin />
-    },
-    {
-      name :"Adventure Gallery Admin",
-      component:<AdventureGalleryAdmin />
-    },
-    {
-      name:"TryDiveFooterAdmin",
-      component: <TryDiveFooterAdmin />
-    },
-    
-    {
-     name:"Image Uploads & Url",
-     component:<MediaManager />
-     },
-    
-  ];
+  // Sections come from the module-scope `sections` registry above.
+  // currentIndex / currentSlug are derived from the URL.
 
   if (loading) {
     return (
@@ -580,11 +421,11 @@ export default function AdminDashboard() {
           className="flex flex-wrap gap-3 justify-center"
         >
 
-          {pages.map((page, index) => (
+          {sections.map((s, index) => (
 
             <button
-              key={index}
-              onClick={() => setCurrentPage(index)}
+              key={s.slug}
+              onClick={() => navigate(`/admin/dashboard/${s.slug}`)}
               className={`
                 px-4
                 py-2
@@ -594,13 +435,13 @@ export default function AdminDashboard() {
                 border
 
                 ${
-                  currentPage === index
+                  currentIndex === index
                     ? "bg-cyan-400 text-black border-cyan-400"
                     : "bg-white/5 text-white border-white/10 hover:bg-white/10"
                 }
               `}
             >
-              {page.name}
+              {s.name}
             </button>
 
           ))}
@@ -609,22 +450,47 @@ export default function AdminDashboard() {
 
         {/* CURRENT COMPONENT */}
         <motion.div
-          key={currentPage}
+          key={currentSlug}
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.25 }}
           className="w-full"
         >
-          {pages[currentPage].component}
+          <Suspense
+            fallback={
+              <div className="text-white/60 text-center py-8">Loading...</div>
+            }
+          >
+            <Routes>
+              <Route
+                index
+                element={<Navigate to={sections[0].slug} replace />}
+              />
+              {sections.map((s) => {
+                const Section = s.Component;
+                return (
+                  <Route
+                    key={s.slug}
+                    path={s.slug}
+                    element={<Section />}
+                  />
+                );
+              })}
+              <Route
+                path="*"
+                element={<Navigate to={sections[0].slug} replace />}
+              />
+            </Routes>
+          </Suspense>
         </motion.div>
 
         {/* PREV NEXT */}
         <div className="flex items-center justify-between gap-4">
 
           <button
-            disabled={currentPage === 0}
+            disabled={currentIndex === 0}
             onClick={() =>
-              setCurrentPage((prev) => prev - 1)
+              navigate(`/admin/dashboard/${sections[currentIndex - 1].slug}`)
             }
             className="flex-1 h-[50px] rounded-2xl bg-white/10 disabled:opacity-40"
           >
@@ -632,9 +498,9 @@ export default function AdminDashboard() {
           </button>
 
           <button
-            disabled={currentPage === pages.length - 1}
+            disabled={currentIndex === sections.length - 1}
             onClick={() =>
-              setCurrentPage((prev) => prev + 1)
+              navigate(`/admin/dashboard/${sections[currentIndex + 1].slug}`)
             }
             className="flex-1 h-[50px] rounded-2xl bg-cyan-400 text-black font-medium disabled:opacity-40"
           >

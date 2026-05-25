@@ -95,7 +95,7 @@ export function Footer() {
           {/* LEFT */}
           <div className="space-y-6">
 
-            <img src="/logow.svg" className="w-32" />
+            <img src="/logow.svg" className="w-32" loading="lazy" decoding="async" />
 
             <p className="text-white/70 max-w-md">
               {footer.description || "No description"}
