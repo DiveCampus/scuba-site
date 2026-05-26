@@ -76,6 +76,9 @@ export function DiveConfidenceFAQ() {
 
                 <img
                   src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
+                  alt="Google reviews"
+                  loading="lazy"
+                  decoding="async"
                   className="w-12 object-contain"
                 />
 

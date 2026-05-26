@@ -25,6 +25,9 @@ export function ExperiencesPage() {
             <motion.img
               layout
               src="/dubai.webp"
+              alt="Scuba diving Dubai - Palm Jumeirah dive site"
+              loading="lazy"
+              decoding="async"
               className="w-full h-[300px] object-cover"
             />
 
@@ -78,7 +81,10 @@ export function ExperiencesPage() {
           >
             <motion.img
               layout
-              src="/khor.webp"
+              src="/Khorfakkan.webp"
+              alt="Khor Fakkan scuba diving UAE - East Coast dive site"
+              loading="lazy"
+              decoding="async"
               className="w-full h-[300px] object-cover"
             />
 

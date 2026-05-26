@@ -4,17 +4,23 @@ import { motion } from "framer-motion";
 
 export function AdventureGallery() {
   const images = [
-    "/gallery/1.webp",
-    "/gallery/2.webp",
-    "/gallery/3.webp",
-    "/gallery/4.webp",
-    "/gallery/5.webp",
-    "/gallery/6.webp",
-    "/gallery/7.webp",
-    "/gallery/8.webp",
-    "/gallery/9.webp",
-    "/gallery/10.webp",
-    "/gallery/11.webp",
+  "/A59I9631.webp",
+  "/dubai.webp",
+  "/Khorfakkan.webp",
+  "/img1.webp",
+  "/img2.webp",
+  "/img3.webp",
+  "/img4.webp",
+  "/img5.webp",
+  "/Brice.webp",
+  "/Islam.webp",
+  // "/Justin.webp",
+  // "/Khushi.webp",
+  // "/Sneha.webp",
+  // "/Surie.webp",
+  // "/Aye.webp",
+  // "/Abdullah.webp",
+
   ];
 
   return (
@@ -160,30 +166,6 @@ export function AdventureGallery() {
 
           </div>
 
-          {/* ROW 3 */}
-          <div className="grid grid-cols-5 gap-3">
-
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="col-span-3 overflow-hidden rounded-[4px]"
-            >
-              <img
-                src="/gallery/12.webp"
-                className="w-full h-[200px] object-cover"
-              />
-            </motion.div>
-
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              className="col-span-2 overflow-hidden rounded-[4px]"
-            >
-              <img
-                src="/gallery/13.webp"
-                className="w-full h-[200px] object-cover"
-              />
-            </motion.div>
-
-          </div>
 
         </div>
 

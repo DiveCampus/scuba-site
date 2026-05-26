@@ -4,14 +4,30 @@ import { motion } from "framer-motion";
 
 export function WeekendRoutine() {
     const images = [
-        "/1.avif",
-        "/2.avif",
-        "/3.avif",
-        "/4.avif",
-        "/5.avif",
-        "/6.avif",
-        "/7.avif",
-        "/8.avif",
+        "/A59I0374.webp",
+        "/A59I0450.webp",
+        "/A59I0656.webp",
+        "/A59I9512.webp",
+        "/A59I9544.webp",
+        "/A59I9590.webp",
+        "/A59I9631.webp",
+        "/dubai.webp",
+        "/Khorfakkan.webp",
+        "/img1.webp",
+        "/img2.webp",
+        "/img3.webp",
+        "/img4.webp",
+        "/img5.webp",
+        "/Brice.webp",
+        "/Islam.webp",
+        "/Justin.webp",
+        "/Khushi.webp",
+        "/Sneha.webp",
+        "/Surie.webp",
+        "/Aye.webp",
+        "/Abdullah.webp",
+        "/img2.webp",
+
     ];
 
     return (

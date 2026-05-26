@@ -3,9 +3,12 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { getHero } from "@/services/heroService";
 
 export function Hero() {
+  const navigate = useNavigate();
+
   const { scrollY } = useScroll();
   const y = useTransform(scrollY, [0, 500], [0, 120]);
 
@@ -95,7 +98,10 @@ export function Hero() {
 
         {/* 🔥 CTA BUTTON (NOW DYNAMIC) */}
         <div className="mt-10">
-          <button className="px-10 py-4 bg-cyan-400 text-black rounded-full">
+          <button
+            onClick={() => navigate("/booking?course=padi-open-water")}
+            className="px-10 py-4 bg-cyan-400 text-black rounded-full"
+          >
             {hero?.cta_text || "Get Certified →"}
           </button>
         </div>
