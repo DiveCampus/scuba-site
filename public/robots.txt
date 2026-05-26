@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin/
+Disallow: /booking
+Disallow: /open-diver/booking
+Disallow: /payment-success
+Disallow: /payment-cancel
 
 Sitemap: https://uaedive.com/sitemap.xml

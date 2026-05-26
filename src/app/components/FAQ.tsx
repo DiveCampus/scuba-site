@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import {
   Accordion,
   AccordionContent,
@@ -59,8 +60,32 @@ export function FAQ() {
     );
   }
 
+  // FAQ Schema for Google rich results - no UI change
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs
+      .filter((f) => f?.question && f?.answer)
+      .map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: f.answer,
+        },
+      })),
+  };
+
   return (
     <section className="relative py-32 overflow-hidden">
+
+      {faqs.length > 0 && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify(faqSchema)}
+          </script>
+        </Helmet>
+      )}
 
       {/* BG */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45]" />

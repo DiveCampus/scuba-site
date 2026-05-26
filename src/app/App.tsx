@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import { Navbar } from "./components/Navbar";
@@ -14,6 +14,9 @@ import { BookingForm } from "./components/BookingForm";
 import { Footer } from "./components/Footer";
 
 import Login from "./components/Login";
+
+import { SEO } from "./components/SEO";
+import { getRouteSeo } from "./components/seoConfig";
 
 // Non-Home routes are code-split. They load on navigation, not on first paint.
 const AdminLogin = lazy(() => import("./components/admin/AdminLogin"));
@@ -41,6 +44,16 @@ const TryDive = lazy(() =>
 const BookingPage = lazy(() => import("./booking/BookingPage"));
 const PaymentSuccess = lazy(() => import("./booking/PaymentSuccess"));
 const PaymentCancel = lazy(() => import("./booking/PaymentCancel"));
+
+/**
+ * Reads current pathname and injects per-route Helmet metadata.
+ * Renders nothing visible. Does not change UI/UX/auth.
+ */
+function RouteSeo() {
+  const { pathname } = useLocation();
+  const meta = getRouteSeo(pathname);
+  return <SEO {...meta} />;
+}
 
 function Home() {
   const isLoggedIn = localStorage.getItem("auth") === "true";
@@ -70,31 +83,41 @@ export default function App() {
   const isAdminAuth = localStorage.getItem("adminAuth") === "true";
 
   return (
-    <Suspense fallback={null}>
-      <Routes>
-        {/* HOME */}
-        <Route path="/" element={<Home />} />
+    <>
+      <RouteSeo />
+      <Suspense fallback={null}>
+        <Routes>
+          {/* HOME */}
+          <Route path="/" element={<Home />} />
 
-        {/* ADMIN */}
-        <Route path="/admin" element={<AdminLogin />} />
-        <Route
-          path="/admin/dashboard/*"
-          element={isAdminAuth ? <AdminDashboard /> : <AdminLogin />}
-        />
-        <Route path="/advanced-open-water" element={<AdvancedOpenWater />} />
-        <Route path="/try-dive" element={<TryDive />} />
-        <Route path="/specialty-courses" element={<SpecialtyCourses/>}/>
-        <Route path="/padi-divemaster" element={<DivemasterPage />} />
-        <Route path="/padi-rescue-diver" element={<PadiRescueDiver />} />
-        <Route path="/padi-scuba-diver" element={<AdvancedPadiOpenDiver />} />
-        <Route path="/padi-open-water" element={<PadiOpenWater />} />
-        <Route path="/about" element={<AboutDive />} />
-        <Route path="/booking" element={<BookingPage />} />
-        <Route path="/open-diver/booking" element={<BookingPage />} />
-        <Route path="/payment-success" element={<PaymentSuccess />} />
-        <Route path="/payment-cancel" element={<PaymentCancel />} />
+          {/* ADMIN */}
+          <Route path="/admin" element={<AdminLogin />} />
+          <Route
+            path="/admin/dashboard/*"
+            element={isAdminAuth ? <AdminDashboard /> : <AdminLogin />}
+          />
+          <Route path="/advanced-open-water" element={<AdvancedOpenWater />} />
+          <Route path="/try-dive" element={<TryDive />} />
+          <Route path="/specialty-courses" element={<SpecialtyCourses/>}/>
+          <Route path="/padi-divemaster" element={<DivemasterPage />} />
+          <Route path="/padi-rescue-diver" element={<PadiRescueDiver />} />
+          <Route path="/padi-scuba-diver" element={<AdvancedPadiOpenDiver />} />
+          <Route path="/padi-open-water" element={<PadiOpenWater />} />
+          <Route path="/about" element={<AboutDive />} />
+          <Route path="/booking" element={<BookingPage />} />
+          <Route path="/open-diver/booking" element={<BookingPage />} />
+          <Route path="/payment-success" element={<PaymentSuccess />} />
+          <Route path="/payment-cancel" element={<PaymentCancel />} />
 
-      </Routes>
-    </Suspense>
+          {/* LOCAL SEO LANDING PAGES — reuse existing components, unique <head> metadata only */}
+          <Route path="/scuba-diving-dubai" element={<Home />} />
+          <Route path="/palm-jumeirah-diving" element={<Home />} />
+          <Route path="/fujairah-scuba-diving" element={<Home />} />
+          <Route path="/padi-course-dubai" element={<PadiOpenWater />} />
+          <Route path="/try-scuba-diving-dubai" element={<TryDive />} />
+
+        </Routes>
+      </Suspense>
+    </>
   );
 }

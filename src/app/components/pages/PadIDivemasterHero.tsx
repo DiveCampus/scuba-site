@@ -59,7 +59,12 @@ export function PadiDivemasterHero() {
   if (loading) {
 
     return (
-      <div className="text-white">
+      <div className="min-h-screen flex items-center justify-center bg-[#02182b] text-white">
+        {/* SEO-only crawler fallback (invisible to users) */}
+        <h1 className="sr-only">PADI Divemaster Course Dubai</h1>
+        <p className="sr-only">
+          Become a PADI Divemaster in Dubai with UAE Dive. Professional-level scuba dive training, leadership skills and career path support.
+        </p>
         Loading...
       </div>
     );
@@ -92,7 +97,9 @@ export function PadiDivemasterHero() {
             src={
               data.background_image
             }
-            alt="diving"
+            alt="PADI Divemaster Course Dubai - professional scuba training"
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover"
           />
 

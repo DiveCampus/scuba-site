@@ -69,7 +69,15 @@ export function Rescue() {
   }, []);
 
   if (!section)
-    return null;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-[#02131d] text-white">
+        {/* SEO-only crawler fallback (invisible to users) */}
+        <h1 className="sr-only">PADI Rescue Diver Course Dubai</h1>
+        <p className="sr-only">
+          Become a PADI Rescue Diver in Dubai with UAE Dive. Real scenario-based rescue training, problem solving and emergency response with PADI-certified instructors.
+        </p>
+      </div>
+    );
 
   return (
 
@@ -91,6 +99,12 @@ export function Rescue() {
             src={
               section.background_image
             }
+
+            alt="PADI Rescue Diver Course Dubai - underwater rescue training"
+
+            loading="eager"
+
+            decoding="async"
 
             className="w-full h-full object-cover scale-110"
 

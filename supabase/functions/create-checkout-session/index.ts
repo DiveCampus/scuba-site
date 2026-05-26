@@ -1,4 +1,5 @@
 import { serve } from "std/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 type CourseSlug =
   | "open-diver"
@@ -158,6 +159,50 @@ function getCheckoutBaseUrl(req: Request) {
   return null;
 }
 
+// Insert a pending booking row and return its id. Returns null on any failure
+// — callers must tolerate that and let the webhook create the row instead.
+async function createPendingBooking(
+  courseSlug: CourseSlug,
+  course: {
+    title: string;
+    amount: number;
+    currency: string;
+  }
+): Promise<string | null> {
+  const supabaseUrl = Deno.env.get("SUPABASE_URL");
+  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+
+  if (!supabaseUrl || !serviceKey) return null;
+
+  try {
+    const supabase = createClient(supabaseUrl, serviceKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
+    });
+
+    const { data, error } = await supabase
+      .from("bookings")
+      .insert({
+        course_slug: courseSlug,
+        course_title: course.title,
+        amount_total: course.amount,
+        currency: course.currency.toLowerCase(),
+        payment_status: "pending",
+        booking_status: "pending",
+      })
+      .select("id")
+      .single();
+
+    if (error) {
+      console.error("[create-checkout-session] booking insert failed:", error.message);
+      return null;
+    }
+    return data?.id ?? null;
+  } catch (err) {
+    console.error("[create-checkout-session] booking insert threw:", err);
+    return null;
+  }
+}
+
 serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
@@ -189,10 +234,17 @@ serve(async (req) => {
 
     const successUrl = `${checkoutBaseUrl}/payment-success?course=${courseSlug}`;
     const cancelUrl = `${checkoutBaseUrl}/payment-cancel?course=${courseSlug}`;
-    const checkoutMetadata = {
+
+    // Pre-create a pending booking row so the webhook has something to UPDATE.
+    // If the insert fails (DB unavailable, table missing) we proceed without a
+    // booking_id; the webhook will then UPSERT by stripe_session_id instead.
+    const bookingId = await createPendingBooking(courseSlug, course);
+
+    const checkoutMetadata: Record<string, string> = {
       course_slug: courseSlug,
       ...course.metadata,
     };
+    if (bookingId) checkoutMetadata.booking_id = bookingId;
 
     const params = new URLSearchParams({
       mode: "payment",
@@ -203,7 +255,17 @@ serve(async (req) => {
       "line_items[0][price_data][unit_amount]": String(course.amount),
       "line_items[0][price_data][product_data][name]": course.title,
       "line_items[0][price_data][product_data][description]": course.description,
+      // Stripe Checkout collects phone in its hosted form; surfaces in
+      // customer_details.phone on the webhook event.
+      "phone_number_collection[enabled]": "true",
+      // Mirror metadata onto the underlying PaymentIntent so the
+      // payment_intent.* webhooks can also find booking_id.
+      "payment_intent_data[metadata][course_slug]": courseSlug,
     });
+
+    if (bookingId) {
+      params.set("payment_intent_data[metadata][booking_id]", bookingId);
+    }
 
     for (const [key, value] of Object.entries(checkoutMetadata)) {
       params.set(`metadata[${key}]`, value);

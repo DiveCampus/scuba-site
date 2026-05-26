@@ -26,6 +26,13 @@ export function Hero() {
   if (!hero) {
     return (
       <div className="h-screen flex items-center justify-center bg-black text-white">
+        {/* SEO-only crawler fallback (invisible to users) */}
+        <h1 className="sr-only">PADI Scuba Diving Dubai - Open Water, Rescue Diver & Divemaster Courses UAE</h1>
+        <p className="sr-only">
+          UAE Dive offers PADI-certified scuba diving courses in Dubai and Fujairah.
+          From Try Dive experiences to Open Water, Advanced Open Water, Rescue Diver and Divemaster certification.
+          Dive sites in Palm Jumeirah, Khor Fakkan and Dibba.
+        </p>
         Loading...
       </div>
     );
@@ -36,7 +43,17 @@ export function Hero() {
 
       {/* BACKGROUND */}
       <motion.div className="absolute inset-0 z-0" style={{ y }}>
-        <video autoPlay muted loop playsInline preload="auto" className="w-full h-full object-cover scale-105">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/A59I0374.webp"
+          aria-label="Scuba diving in Dubai - underwater video"
+          title="Scuba Diving Dubai"
+          className="w-full h-full object-cover scale-105"
+        >
           <source src="/vid1.mp4" type="video/mp4" />
         </video>
 

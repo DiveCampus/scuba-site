@@ -1,7 +1,30 @@
 import { defineConfig, loadEnv } from 'vite'
 import path from 'path'
+import fs from 'node:fs'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
+
+/**
+ * Vite-preview-only middleware that serves prerendered nested index.html
+ * files before the SPA fallback fires. Matches Netlify's static-file-first
+ * production behavior so local `npm run preview` reflects what Google sees.
+ */
+const servePrerenderedRoutes = () => ({
+  name: 'serve-prerendered-routes',
+  configurePreviewServer(server) {
+    server.middlewares.use((req, res, next) => {
+      const url = (req.url || '/').split('?')[0].split('#')[0]
+      if (url === '/' || url.includes('.')) return next()
+      const filePath = path.join(__dirname, 'dist', url.replace(/^\//, ''), 'index.html')
+      if (fs.existsSync(filePath)) {
+        res.setHeader('Content-Type', 'text/html; charset=utf-8')
+        res.end(fs.readFileSync(filePath, 'utf-8'))
+        return
+      }
+      next()
+    })
+  },
+})
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
@@ -13,6 +36,7 @@ export default defineConfig(({ mode }) => {
       // Tailwind is not being actively used – do not remove them
       react(),
       tailwindcss(),
+      servePrerenderedRoutes(),
     ],
     define: {
       'import.meta.env.STRIPE_PUBLISHABLE_KEY': JSON.stringify(

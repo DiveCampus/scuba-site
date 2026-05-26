@@ -37,6 +37,11 @@
     if (loading) {
       return (
         <div className="h-screen flex items-center justify-center bg-black text-white">
+          {/* SEO-only crawler fallback (invisible to users) */}
+          <h1 className="sr-only">PADI Open Water Diver Course Dubai</h1>
+          <p className="sr-only">
+            Get your PADI Open Water Diver certification in Dubai with UAE Dive. eLearning, pool sessions and open-water dives with PADI-certified instructors.
+          </p>
           Loading...
         </div>
       );
@@ -46,6 +51,7 @@
     if (!hero) {
       return (
         <div className="h-screen flex items-center justify-center bg-black text-white">
+          <h1 className="sr-only">PADI Open Water Diver Course Dubai</h1>
           No Hero Data Found
         </div>
       );
@@ -63,6 +69,9 @@
         <div className="absolute inset-0">
           <img
             src="/1.avif"
+            alt="PADI Open Water Diver Course Dubai - underwater scuba diving"
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover"
           />
 

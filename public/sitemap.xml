@@ -1,41 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <urlset
-xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
   <url>
-    <loc>https://uaedive.com</loc>
+    <loc>https://uaedive.com/</loc>
     <priority>1.0</priority>
+    <changefreq>weekly</changefreq>
+    <image:image>
+      <image:loc>https://uaedive.com/A59I0374.webp</image:loc>
+      <image:title>PADI Scuba Diving Dubai</image:title>
+    </image:image>
   </url>
 
   <url>
     <loc>https://uaedive.com/about</loc>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
+    <changefreq>monthly</changefreq>
   </url>
 
   <url>
-    <loc>https://uaedive.com/booking</loc>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://uaedive.com/divemaster</loc>
+    <loc>https://uaedive.com/try-dive</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc>https://uaedive.com/padi-open-diver</loc>
+    <loc>https://uaedive.com/padi-open-water</loc>
+    <priority>0.95</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://uaedive.com/padi-scuba-diver</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
     <loc>https://uaedive.com/advanced-open-water</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
   <url>
-    <loc>https://uaedive.com/rescue-diver</loc>
+    <loc>https://uaedive.com/padi-rescue-diver</loc>
     <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://uaedive.com/padi-divemaster</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://uaedive.com/specialty-courses</loc>
+    <priority>0.8</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <!-- LOCAL SEO LANDING PAGES -->
+  <url>
+    <loc>https://uaedive.com/scuba-diving-dubai</loc>
+    <priority>0.95</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://uaedive.com/palm-jumeirah-diving</loc>
+    <priority>0.85</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://uaedive.com/fujairah-scuba-diving</loc>
+    <priority>0.85</priority>
+    <changefreq>monthly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://uaedive.com/padi-course-dubai</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
+  </url>
+
+  <url>
+    <loc>https://uaedive.com/try-scuba-diving-dubai</loc>
+    <priority>0.9</priority>
+    <changefreq>weekly</changefreq>
   </url>
 
 </urlset>

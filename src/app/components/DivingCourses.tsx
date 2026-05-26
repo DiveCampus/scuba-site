@@ -88,6 +88,9 @@ export function DivingCourses() {
                 >
                   <img
                     src={course.image ?? "/1.avif"}
+                    alt={course.title ? `${course.title} - PADI Scuba Course Dubai` : "PADI Scuba Diving Course Dubai"}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover"
                   />
 

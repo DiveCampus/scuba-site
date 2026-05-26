@@ -44,6 +44,11 @@ export function PadiOpenDiver() {
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#02182b] text-white">
+        {/* SEO-only crawler fallback (invisible to users) */}
+        <h1 className="sr-only">PADI Scuba Diver Course Dubai</h1>
+        <p className="sr-only">
+          The PADI Scuba Diver course in Dubai is a shorter entry-level scuba certification with UAE Dive. Perfect for first-time divers with limited time.
+        </p>
         Loading...
       </div>
     );
@@ -62,6 +67,9 @@ export function PadiOpenDiver() {
             src={
               data?.background_image
             }
+            alt="PADI Scuba Diver Course Dubai - underwater scuba training"
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover"
           />
 

@@ -146,6 +146,7 @@ export function Navbar() {
           >
             <img
               src="/logow.svg"
+              alt="UAE Dive - PADI Scuba Diving Dubai"
               className="h-full object-contain"
             />
           </div>

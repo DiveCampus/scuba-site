@@ -28,6 +28,17 @@ export function OpenDiver() {
   if (loading)
     return (
       <div className="h-screen flex items-center justify-center bg-black text-white font-habara">
+        {/* SEO-only crawler fallback (invisible to users) */}
+        <h1 className="sr-only">
+          {bookingCourse === "advanced-open-water"
+            ? "PADI Advanced Open Water Diver Course Dubai"
+            : "PADI Open Water Diver Course Dubai"}
+        </h1>
+        <p className="sr-only">
+          {bookingCourse === "advanced-open-water"
+            ? "Level up with the PADI Advanced Open Water Diver certification in Dubai. Five adventure dives including deep dive and underwater navigation."
+            : "Start your scuba journey with PADI Open Water certification in Dubai with UAE Dive."}
+        </p>
         Loading...
       </div>
     );
@@ -50,6 +61,13 @@ export function OpenDiver() {
             src={
               course?.background_image
             }
+            alt={
+              bookingCourse === "advanced-open-water"
+                ? "PADI Advanced Open Water Diver Course Dubai - underwater scuba"
+                : "PADI Open Water Diver Course Dubai - underwater scuba"
+            }
+            loading="eager"
+            decoding="async"
             className="w-full h-full object-cover scale-[1.02]"
           />
           <div className="absolute inset-0 bg-[#02182b]/70" />

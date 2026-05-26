@@ -1,0 +1,13 @@
+# Per-function settings. Defaults apply to anything not listed.
+
+# Stripe POSTs webhooks server-to-server with no Supabase JWT — the platform
+# default of verifying a JWT would 401 every delivery. Signature verification
+# is enforced inside the handler.
+[functions.stripe-webhook]
+verify_jwt = false
+
+# create-checkout-session is called from the browser without a session today.
+# Keep its current "no JWT" behavior explicit so behavior doesn't drift if the
+# platform default ever changes.
+[functions.create-checkout-session]
+verify_jwt = false
