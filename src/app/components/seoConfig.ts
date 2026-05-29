@@ -294,6 +294,14 @@ export const seoConfig: Record<string, SEOProps> = {
     description: "PADI scuba diving courses in Dubai and the UAE with UAE Dive.",
     canonical: "/",
   } as SEOProps,
+
+  // Unknown / unmatched routes (404). Must NOT be indexed.
+  __notFound: {
+    title: "Page Not Found | UAE Dive",
+    description: "The page you are looking for could not be found.",
+    canonical: "/",
+    noindex: true,
+  } as SEOProps,
 };
 
 export function getRouteSeo(pathname: string): SEOProps {
@@ -302,5 +310,6 @@ export function getRouteSeo(pathname: string): SEOProps {
   // Admin sub-routes all noindex
   if (pathname.startsWith("/admin")) return seoConfig["/admin"];
 
-  return seoConfig.__default;
+  // Any other unmatched path is a 404 → noindex (prevents soft-404 indexing).
+  return seoConfig.__notFound;
 }

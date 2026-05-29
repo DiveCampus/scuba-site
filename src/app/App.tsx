@@ -41,6 +41,7 @@ const AdvancedPadiOpenDiver = lazy(() =>
 const TryDive = lazy(() =>
   import("./TryDive/TryDive").then((m) => ({ default: m.TryDive }))
 );
+const NotFound = lazy(() => import("./components/NotFound"));
 const BookingPage = lazy(() => import("./booking/BookingPage"));
 const PaymentSuccess = lazy(() => import("./booking/PaymentSuccess"));
 const PaymentCancel = lazy(() => import("./booking/PaymentCancel"));
@@ -128,6 +129,9 @@ export default function App() {
           <Route path="/fujairah-scuba-diving" element={<Home />} />
           <Route path="/padi-course-dubai" element={<PadiOpenWater />} />
           <Route path="/try-scuba-diving-dubai" element={<TryDive />} />
+
+          {/* 404 — catch-all. SEO noindex via getRouteSeo() __notFound. */}
+          <Route path="*" element={<NotFound />} />
 
         </Routes>
       </Suspense>

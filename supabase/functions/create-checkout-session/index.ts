@@ -89,10 +89,15 @@ const COURSE_MAP: Record<
   },
 };
 
+// Restrict the checkout endpoint to the production site origin.
+// Override via the ALLOWED_ORIGIN env var (e.g. for staging/preview).
+const ALLOWED_ORIGIN = Deno.env.get("ALLOWED_ORIGIN") ?? "https://uaedive.com";
+
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Origin": ALLOWED_ORIGIN,
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
+  "Vary": "Origin",
 };
 
 function jsonResponse(body: Record<string, unknown>, status = 200) {

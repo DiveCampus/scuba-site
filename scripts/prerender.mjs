@@ -82,6 +82,8 @@ const routes = [
     description:
       "Learn scuba diving in Dubai with PADI-certified instructors at UAE Dive. Open Water, Advanced, Rescue Diver and Divemaster courses from AED 350.",
     ogImage: DEFAULT_OG_IMAGE,
+    // LCP element on the homepage is the hero <video> poster.
+    preloadImage: "/A59I0374.webp",
     jsonLd: [breadcrumb([{ name: "Home", url: `${SITE_URL}/` }])],
   },
 
@@ -494,6 +496,12 @@ function buildSeoBlock(route) {
   const c = escapeHtml(canonical);
   const img = escapeHtml(ogImage);
 
+  // Optional LCP image preload (only when explicitly set for a route, so we
+  // never preload the wrong hero on routes that use a different image).
+  const preload = route.preloadImage
+    ? `\n  <link rel="preload" as="image" href="${escapeHtml(route.preloadImage)}" fetchpriority="high" />`
+    : "";
+
   return [
     `  <title>${t}</title>`,
     `  <meta name="description" content="${d}" />`,
@@ -506,7 +514,7 @@ function buildSeoBlock(route) {
     `  <meta name="twitter:title" content="${t}" />`,
     `  <meta name="twitter:description" content="${d}" />`,
     `  <meta name="twitter:image" content="${img}" />`,
-  ].join("\n");
+  ].join("\n") + preload;
 }
 
 function buildJsonLdBlock(route) {
