@@ -19,7 +19,7 @@ const TIMESTAMP_TOLERANCE_SECONDS = 5 * 60;
 // Signature verification (Web Crypto, no external SDK)
 // -----------------------------------------------------------------------------
 
-async function verifyStripeSignature(
+export async function verifyStripeSignature(
   rawBody: string,
   sigHeader: string | null,
   secret: string
@@ -66,7 +66,7 @@ async function verifyStripeSignature(
   return signatures.some((sig) => constantTimeEqual(sig, expected));
 }
 
-function constantTimeEqual(a: string, b: string): boolean {
+export function constantTimeEqual(a: string, b: string): boolean {
   if (a.length !== b.length) return false;
   let diff = 0;
   for (let i = 0; i < a.length; i++) {

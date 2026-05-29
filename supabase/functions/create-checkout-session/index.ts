@@ -14,7 +14,7 @@ type CheckoutRequest = {
   courseSlug?: CourseSlug;
 };
 
-const COURSE_MAP: Record<
+export const COURSE_MAP: Record<
   CourseSlug,
   {
     title: string;
