@@ -376,26 +376,74 @@ const CONTENT = {
   "/scuba-diving-dubai": {
     h: "Scuba Diving in Dubai — Courses & Dive Trips",
     p: "A complete guide to scuba diving in Dubai with UAE Dive: PADI courses from Try Dive to Divemaster, Palm Jumeirah pool and training sessions, and East Coast dive trips in Fujairah.",
+    extra: [
+      "Dubai offers warm water year-round, with confined-water training run from our Palm Jumeirah base and open-water dives along the Dubai coast and the UAE East Coast. Conditions suit complete beginners and certified divers building experience alike.",
+      "Whether you want a one-off Discover Scuba session or a full certification pathway, every programme is led by PADI-certified instructors and follows international training standards.",
+    ],
+    list: [
+      "Beginner-friendly Try Dive — no certification needed",
+      "PADI Open Water, Advanced, Rescue Diver and Divemaster certification",
+      "Palm Jumeirah pool and training base in Dubai",
+      "East Coast boat and reef dive trips in Fujairah",
+    ],
     related: ["/try-dive", "/padi-open-water", "/padi-rescue-diver", "/padi-divemaster", "/palm-jumeirah-diving", "/fujairah-scuba-diving", "/padi-course-dubai"],
   },
   "/palm-jumeirah-diving": {
     h: "Diving on Palm Jumeirah, Dubai",
     p: "UAE Dive's Dubai base is at Azure Residences on Palm Jumeirah, where we run pool sessions, course briefings and dive planning. Open Water, Try Dive and the wider PADI course range are all available here.",
+    extra: [
+      "Palm Jumeirah is a convenient, central starting point for divers in Dubai — calm, controlled water for skill practice before progressing to open-water dives. It is an ideal location for first-time divers and for students completing the confined-water portion of a PADI course.",
+      "From the Palm Jumeirah base you can begin any certification level and arrange onward open-water and East Coast dives.",
+    ],
+    list: [
+      "Azure Residences dive base on Palm Jumeirah",
+      "Pool sessions and PADI course briefings",
+      "Suitable for first-time divers and course students",
+    ],
     related: ["/try-dive", "/padi-open-water", "/scuba-diving-dubai", "/padi-course-dubai"],
   },
   "/fujairah-scuba-diving": {
     h: "Scuba Diving in Fujairah & the UAE East Coast",
     p: "Boat and reef dives at Dibba and Khor Fakkan on the UAE East Coast, plus PADI courses and weekend dive trips. A natural next step after Open Water certification in Dubai.",
+    extra: [
+      "Fujairah sits on the Gulf of Oman, where richer reefs and better visibility make it the UAE's premier dive region. Sites around Dibba and Khor Fakkan are home to reef fish, rays, turtles and seasonal larger marine life.",
+      "We run regular weekend trips from our Royal Beach base in Dibba Fujairah, suitable for certified divers and for course training dives.",
+    ],
+    list: [
+      "Dibba and Khor Fakkan dive sites on the Gulf of Oman",
+      "Boat dives, reef dives and weekend dive trips",
+      "Marine life including reef fish, rays and turtles",
+      "Royal Beach base in Dibba Fujairah",
+    ],
     related: ["/padi-open-water", "/advanced-open-water", "/scuba-diving-dubai", "/try-dive"],
   },
   "/padi-course-dubai": {
     h: "PADI Courses in Dubai",
     p: "Every PADI course under one roof in Dubai — Open Water, Advanced Open Water, Rescue Diver and Divemaster — with internationally recognised certification from UAE Dive.",
+    extra: [
+      "PADI is the world's most widely recognised diver-training organisation, and a PADI certification earned in Dubai is valid for diving anywhere in the world. Courses combine eLearning theory, confined-water skills and open-water dives.",
+      "Whether you are starting with your first certification or going professional, there is a structured PADI pathway with prices ranging from AED 350 for a Try Dive up to professional-level training.",
+    ],
+    list: [
+      "PADI Open Water Diver — your first full certification",
+      "PADI Advanced Open Water — deep and navigation dives",
+      "PADI Rescue Diver — emergency-response training",
+      "PADI Divemaster — the first professional rating",
+    ],
     related: ["/padi-open-water", "/advanced-open-water", "/padi-rescue-diver", "/padi-divemaster", "/padi-scuba-diver"],
   },
   "/try-scuba-diving-dubai": {
     h: "Try Scuba Diving in Dubai",
     p: "A safe, guided first-time scuba experience in Dubai with PADI instructors — no certification required. The usual next step is the PADI Open Water Diver course.",
+    extra: [
+      "A Try Dive (Discover Scuba Diving) is the easiest way to breathe underwater for the first time. After a short briefing, you enter the water with an instructor at your side the whole time, so no prior experience or swimming qualification is needed.",
+      "It is ideal for holidaymakers, families and anyone curious about diving. If you love it, the session can count toward your full Open Water Diver certification.",
+    ],
+    list: [
+      "No certification or experience required",
+      "One-to-one instructor supervision throughout",
+      "From AED 350 — credited toward Open Water if you continue",
+    ],
     related: ["/try-dive", "/padi-open-water", "/scuba-diving-dubai"],
   },
   "/about": {
@@ -408,6 +456,13 @@ const CONTENT = {
 function buildContentBlock(route) {
   const c = CONTENT[route.path];
   if (!c) return "";
+  const paras = [c.p, ...(c.extra || [])]
+    .filter(Boolean)
+    .map((t) => `<p>${t}</p>`)
+    .join("");
+  const list = (c.list || []).length
+    ? `<ul>${c.list.map((li) => `<li>${li}</li>`).join("")}</ul>`
+    : "";
   const links = (c.related || [])
     .filter((p) => LINK_TEXT[p])
     .map((p) => `<li><a href="${SITE_URL}${p}">${LINK_TEXT[p]}</a></li>`)
@@ -415,7 +470,7 @@ function buildContentBlock(route) {
   const nav = links
     ? `<nav aria-label="Related scuba diving pages"><ul>${links}</ul></nav>`
     : "";
-  return `<h2>${c.h}</h2><p>${c.p}</p>${nav}`;
+  return `<h2>${c.h}</h2>${paras}${list}${nav}`;
 }
 
 /* ────────────────────────── HELPERS ────────────────────────── */
