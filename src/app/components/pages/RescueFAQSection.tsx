@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { Plus, X } from "lucide-react";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { getRescueFAQ } from "@/services/RescueFAQService";
 
 export function RescueFAQSection() {
@@ -78,6 +79,18 @@ export function RescueFAQSection() {
   if (loading || !section)
     return null;
 
+  // FAQ schema for Google rich results — no UI change.
+  const validFaqs = faqs.filter((f) => f?.question && f?.answer);
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: validFaqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+
   return (
 
     <section
@@ -87,6 +100,14 @@ export function RescueFAQSection() {
           "Harabara, sans-serif",
       }}
     >
+
+      {validFaqs.length > 0 && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify(faqSchema)}
+          </script>
+        </Helmet>
+      )}
 
       {/* BACKGROUND GLOW */}
       <div className="absolute top-10 left-10 w-72 h-72 bg-cyan-400/10 blur-[120px] rounded-full" />

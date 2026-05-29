@@ -307,6 +307,117 @@ const routes = [
   },
 ];
 
+/* ──────────────── SEO BODY CONTENT (crawlable, sr-only) ────────────────
+   Injected into the .sr-only <aside> sibling of #root (see index.html).
+   Purpose: give crawlers unique body text + real internal <a> links on the
+   first HTML fetch — the SPA navbar uses onClick buttons (not crawlable) and
+   the visible body is JS/Supabase-rendered. Visually hidden → no UX change.
+   Keep copy factual and concise; no keyword stuffing.
+   ──────────────────────────────────────────────────────────────────── */
+
+const LINK_TEXT = {
+  "/": "Scuba Diving Dubai",
+  "/try-dive": "Try Scuba Diving in Dubai (Discover Scuba)",
+  "/padi-open-water": "PADI Open Water Diver Course Dubai",
+  "/padi-scuba-diver": "PADI Scuba Diver Course Dubai",
+  "/advanced-open-water": "PADI Advanced Open Water Course Dubai",
+  "/padi-rescue-diver": "PADI Rescue Diver Course Dubai",
+  "/padi-divemaster": "PADI Divemaster Course Dubai",
+  "/specialty-courses": "PADI Specialty Courses Dubai",
+  "/scuba-diving-dubai": "Scuba Diving in Dubai",
+  "/palm-jumeirah-diving": "Palm Jumeirah Diving",
+  "/fujairah-scuba-diving": "Fujairah Scuba Diving",
+  "/padi-course-dubai": "PADI Courses Dubai",
+  "/about": "About UAE Dive",
+};
+
+// Per-route: short factual intro + contextual related internal links.
+const CONTENT = {
+  "/": {
+    h: "Scuba Diving in Dubai with UAE Dive",
+    p: "UAE Dive is a PADI dive centre based at Palm Jumeirah, Dubai, with East Coast trips in Fujairah. We run the full PADI pathway — from a first-time Try Dive through Open Water, Advanced, Rescue Diver and the professional Divemaster rating.",
+    related: ["/try-dive", "/padi-open-water", "/padi-rescue-diver", "/padi-divemaster", "/scuba-diving-dubai", "/fujairah-scuba-diving"],
+  },
+  "/try-dive": {
+    h: "Try Scuba Diving in Dubai — Discover Scuba",
+    p: "A guided, beginner-friendly first scuba experience in Dubai with PADI instructors. No certification or prior experience needed. Most divers continue with the Open Water Diver course after their Try Dive.",
+    related: ["/padi-open-water", "/padi-scuba-diver", "/scuba-diving-dubai"],
+  },
+  "/padi-open-water": {
+    h: "PADI Open Water Diver Course in Dubai",
+    p: "Your first full scuba certification — eLearning, confined-water pool sessions and open-water dives. Once certified you can continue to Advanced Open Water, then Rescue Diver and Divemaster.",
+    related: ["/try-dive", "/advanced-open-water", "/padi-rescue-diver", "/padi-divemaster"],
+  },
+  "/padi-scuba-diver": {
+    h: "PADI Scuba Diver Course in Dubai",
+    p: "A shorter entry-level certification for those with limited time. It is a recognised step toward the full Open Water Diver certification and the courses beyond it.",
+    related: ["/padi-open-water", "/advanced-open-water"],
+  },
+  "/advanced-open-water": {
+    h: "PADI Advanced Open Water Course in Dubai",
+    p: "Five adventure dives including deep and navigation, building on the Open Water Diver certification. Advanced Open Water is the prerequisite for the Rescue Diver course.",
+    related: ["/padi-open-water", "/padi-rescue-diver", "/specialty-courses"],
+  },
+  "/padi-rescue-diver": {
+    h: "PADI Rescue Diver Course in Dubai",
+    p: "Scenario-based rescue and emergency-response training. Rescue Diver follows Advanced Open Water and is the gateway to the professional Divemaster rating.",
+    related: ["/advanced-open-water", "/padi-divemaster"],
+  },
+  "/padi-divemaster": {
+    h: "PADI Divemaster Course in Dubai",
+    p: "The first PADI professional rating — lead and assist divers, with an internship at UAE Dive. Rescue Diver is the prerequisite for becoming a Divemaster.",
+    related: ["/padi-rescue-diver", "/advanced-open-water", "/specialty-courses"],
+  },
+  "/specialty-courses": {
+    h: "PADI Specialty Courses in Dubai",
+    p: "Focused courses such as Deep, Wreck, Night and Underwater Photography. Specialties count toward the Master Scuba Diver rating and complement Advanced and Divemaster training.",
+    related: ["/advanced-open-water", "/padi-divemaster"],
+  },
+  "/scuba-diving-dubai": {
+    h: "Scuba Diving in Dubai — Courses & Dive Trips",
+    p: "A complete guide to scuba diving in Dubai with UAE Dive: PADI courses from Try Dive to Divemaster, Palm Jumeirah pool and training sessions, and East Coast dive trips in Fujairah.",
+    related: ["/try-dive", "/padi-open-water", "/padi-rescue-diver", "/padi-divemaster", "/palm-jumeirah-diving", "/fujairah-scuba-diving", "/padi-course-dubai"],
+  },
+  "/palm-jumeirah-diving": {
+    h: "Diving on Palm Jumeirah, Dubai",
+    p: "UAE Dive's Dubai base is at Azure Residences on Palm Jumeirah, where we run pool sessions, course briefings and dive planning. Open Water, Try Dive and the wider PADI course range are all available here.",
+    related: ["/try-dive", "/padi-open-water", "/scuba-diving-dubai", "/padi-course-dubai"],
+  },
+  "/fujairah-scuba-diving": {
+    h: "Scuba Diving in Fujairah & the UAE East Coast",
+    p: "Boat and reef dives at Dibba and Khor Fakkan on the UAE East Coast, plus PADI courses and weekend dive trips. A natural next step after Open Water certification in Dubai.",
+    related: ["/padi-open-water", "/advanced-open-water", "/scuba-diving-dubai", "/try-dive"],
+  },
+  "/padi-course-dubai": {
+    h: "PADI Courses in Dubai",
+    p: "Every PADI course under one roof in Dubai — Open Water, Advanced Open Water, Rescue Diver and Divemaster — with internationally recognised certification from UAE Dive.",
+    related: ["/padi-open-water", "/advanced-open-water", "/padi-rescue-diver", "/padi-divemaster", "/padi-scuba-diver"],
+  },
+  "/try-scuba-diving-dubai": {
+    h: "Try Scuba Diving in Dubai",
+    p: "A safe, guided first-time scuba experience in Dubai with PADI instructors — no certification required. The usual next step is the PADI Open Water Diver course.",
+    related: ["/try-dive", "/padi-open-water", "/scuba-diving-dubai"],
+  },
+  "/about": {
+    h: "About UAE Dive",
+    p: "UAE Dive is a team of PADI-certified instructors and divemasters running scuba training in Dubai (Palm Jumeirah) and Fujairah (Dibba).",
+    related: ["/padi-open-water", "/try-dive", "/scuba-diving-dubai"],
+  },
+};
+
+function buildContentBlock(route) {
+  const c = CONTENT[route.path];
+  if (!c) return "";
+  const links = (c.related || [])
+    .filter((p) => LINK_TEXT[p])
+    .map((p) => `<li><a href="${SITE_URL}${p}">${LINK_TEXT[p]}</a></li>`)
+    .join("");
+  const nav = links
+    ? `<nav aria-label="Related scuba diving pages"><ul>${links}</ul></nav>`
+    : "";
+  return `<h2>${c.h}</h2><p>${c.p}</p>${nav}`;
+}
+
 /* ────────────────────────── HELPERS ────────────────────────── */
 
 function escapeHtml(s) {
@@ -366,6 +477,14 @@ function substituteMarkers(template, route) {
     /<!--prerender:jsonld:start-->[\s\S]*?<!--prerender:jsonld:end-->/,
     `<!--prerender:jsonld:start-->${jsonLdBlock}\n  <!--prerender:jsonld:end-->`,
   );
+
+  const contentBlock = buildContentBlock(route);
+  if (html.includes("<!--prerender:content:start-->")) {
+    html = html.replace(
+      /<!--prerender:content:start-->[\s\S]*?<!--prerender:content:end-->/,
+      `<!--prerender:content:start-->${contentBlock}<!--prerender:content:end-->`,
+    );
+  }
 
   return html;
 }

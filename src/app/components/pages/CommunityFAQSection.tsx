@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import { getFAQ } from "@/services/CommunityFAQService";
 
 export function CommunityFAQSection() {
@@ -39,8 +40,28 @@ export function CommunityFAQSection() {
     );
   }
 
+  // FAQ schema for Google rich results — no UI change.
+  const validFaqs = faqs.filter((f) => f?.question && f?.answer);
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: validFaqs.map((f) => ({
+      "@type": "Question",
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
+    })),
+  };
+
   return (
     <>
+      {validFaqs.length > 0 && (
+        <Helmet>
+          <script type="application/ld+json">
+            {JSON.stringify(faqSchema)}
+          </script>
+        </Helmet>
+      )}
+
       <section
         className="py-32 bg-gradient-to-b from-[#f5f7fa] to-[#eef2f6]"
         style={{ fontFamily: "Harabara, sans-serif" }}

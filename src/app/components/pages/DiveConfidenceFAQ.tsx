@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, X } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 
 export function DiveConfidenceFAQ() {
   const [active, setActive] = useState(0);
@@ -38,8 +39,25 @@ export function DiveConfidenceFAQ() {
     },
   ];
 
+  // FAQ schema for Google rich results — no UI change.
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  };
+
   return (
     <>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify(faqSchema)}
+        </script>
+      </Helmet>
+
       <section
         className="py-28 bg-[#f7f9fc]"
         style={{ fontFamily: "Harabara, sans-serif" }}

@@ -23,6 +23,20 @@ export function AdventureGallery() {
 
   ];
 
+  // Descriptive alt text for crawlable image SEO — no UI change.
+  const alts = [
+    "PADI divemaster guiding a scuba diving expedition with UAE Dive",
+    "Scuba diving in Dubai with UAE Dive divers",
+    "Reef scuba diving at Khor Fakkan on the UAE East Coast",
+    "Scuba divers exploring the Arabian Gulf with UAE Dive",
+    "Underwater scuba diving experience in the UAE",
+    "Discover Scuba Diving try dive session in Dubai",
+    "PADI course divers training underwater in Dubai",
+    "Marine life encounter during a UAE Dive scuba trip",
+    "UAE Dive scuba instructor leading a guided dive",
+    "UAE Dive community member on a Fujairah dive trip",
+  ];
+
   return (
     <>
       <section
@@ -65,6 +79,7 @@ export function AdventureGallery() {
             >
               <img
                 src={images[0]}
+                alt={alts[0]}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -75,6 +90,7 @@ export function AdventureGallery() {
             >
               <img
                 src={images[1]}
+                alt={alts[1]}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -85,6 +101,7 @@ export function AdventureGallery() {
             >
               <img
                 src={images[2]}
+                alt={alts[2]}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -95,6 +112,7 @@ export function AdventureGallery() {
             >
               <img
                 src={images[3]}
+                alt={alts[3]}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -105,6 +123,7 @@ export function AdventureGallery() {
             >
               <img
                 src={images[4]}
+                alt={alts[4]}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -120,6 +139,7 @@ export function AdventureGallery() {
             >
               <img
                 src={images[5]}
+                alt={alts[5]}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -130,6 +150,7 @@ export function AdventureGallery() {
             >
               <img
                 src={images[6]}
+                alt={alts[6]}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -140,6 +161,7 @@ export function AdventureGallery() {
             >
               <img
                 src={images[7]}
+                alt={alts[7]}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -150,6 +172,7 @@ export function AdventureGallery() {
             >
               <img
                 src={images[8]}
+                alt={alts[8]}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -160,6 +183,7 @@ export function AdventureGallery() {
             >
               <img
                 src={images[9]}
+                alt={alts[9]}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>

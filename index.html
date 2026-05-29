@@ -173,6 +173,17 @@
 
   <div id="root"></div>
 
+  <!--
+    SEO-only crawlable content. Sibling of #root, so React (which only
+    controls #root) never overwrites it. Visually hidden via .sr-only —
+    no UX/design change. Per-route content baked in at build time by
+    scripts/prerender.mjs. Gives crawlers unique body text + internal
+    links on the first HTML fetch, independent of JS/data-fetch timing.
+  -->
+  <aside class="sr-only" aria-hidden="true">
+    <!--prerender:content:start--><!--prerender:content:end-->
+  </aside>
+
   <script
     type="module"
     src="/src/main.tsx"

@@ -56,11 +56,24 @@ function RouteSeo() {
 }
 
 function Home() {
-  const isLoggedIn = localStorage.getItem("auth") === "true";
-
-  if (!isLoggedIn) {
-    return <Login onLogin={() => window.location.reload()} />;
-  }
+  // ────────────────────────────────────────────────────────────────
+  // TEMPORARILY DISABLED FOR SEO INDEXING
+  // Restore before private launch if needed.
+  //
+  // This "Launching Soon" login gate hid the public homepage (and the
+  // /scuba-diving-dubai, /palm-jumeirah-diving, /fujairah-scuba-diving
+  // landing routes that reuse <Home/>) from both visitors and Googlebot.
+  // Commented out so crawlers + users see the real public marketing page.
+  // NOTE: this gate uses the "auth" key only — admin uses "adminAuth"
+  // (see <App/> below) and is intentionally LEFT FULLY PROTECTED.
+  //
+  // To restore: uncomment the three lines below.
+  //
+  // const isLoggedIn = localStorage.getItem("auth") === "true";
+  // if (!isLoggedIn) {
+  //   return <Login onLogin={() => window.location.reload()} />;
+  // }
+  // ────────────────────────────────────────────────────────────────
 
   return (
     <div className="min-h-screen bg-[#0a0e27]">
