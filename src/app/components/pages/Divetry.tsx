@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import WhatsAppButton from "../WhatsAppButton";
 
 export default function Divetry() {
   const [selected, setSelected] = useState<"dubai" | "fujairah">("dubai");
@@ -134,11 +135,10 @@ export default function Divetry() {
             : "BOOK FUJAIRAH EXPERIENCE"}
         </button>
 
-        {/* 🔥 WHATSAPP */}
-        <button className="mt-5 flex items-center gap-2 text-sm tracking-[1.5px] leading-relaxed text-green-400 border border-green-400 px-5 py-2.5 rounded-full hover:bg-green-400 hover:text-black transition">
-          <span>🟢</span>
+        {/* WHATSAPP */}
+        <WhatsAppButton variant="outline" className="mt-5">
           QUICK BOOK VIA WHATSAPP
-        </button>
+        </WhatsAppButton>
 
       </div>
     </section>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Navbar } from "../Navbar";
+import WhatsAppButton from "../WhatsAppButton";
 
 export function SpecialtyCourses() {
   return (
@@ -119,11 +120,9 @@ export function SpecialtyCourses() {
             </button>
 
             {/* SECONDARY BUTTON */}
-            <button className="px-9 py-3.5 border border-white/25 rounded-xl text-white tracking-[1px] hover:bg-white/10 transition duration-300 backdrop-blur-md">
-
+            <WhatsAppButton variant="outline">
               BOOK VIA WHATSAPP
-
-            </button>
+            </WhatsAppButton>
 
           </div>
 

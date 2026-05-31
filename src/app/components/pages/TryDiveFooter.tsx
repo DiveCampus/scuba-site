@@ -3,11 +3,12 @@
 import {
   FaApple,
   FaGooglePlay,
-  FaWhatsapp,
   FaFacebookF,
   FaInstagram,
   FaXTwitter,
 } from "react-icons/fa6";
+
+import { WhatsAppIcon } from "../WhatsAppButton";
 
 export function TryDiveFooter() {
   return (
@@ -86,7 +87,7 @@ export function TryDiveFooter() {
               </h4>
 
               <div className="flex items-center gap-2 text-white/70 text-sm mb-5">
-                <FaWhatsapp className="text-cyan-400" />
+                <WhatsAppIcon className="text-[#25D366]" />
                 WhatsApp Support
               </div>
 

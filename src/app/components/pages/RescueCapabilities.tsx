@@ -39,6 +39,8 @@ import {
 
 } from "@/services/RescueCapabilitiesService";
 
+import { WhatsAppIcon } from "../WhatsAppButton";
+
 /* =========================================
    ICON MAP
 ========================================= */
@@ -284,6 +286,8 @@ export function RescueCapabilities() {
 
               {/* CONTENT */}
               <div className="relative z-10 bg-gradient-to-r from-cyan-400 to-blue-500 text-white py-3.5 rounded-2xl flex items-center justify-center gap-2 text-[13px]">
+
+                <WhatsAppIcon className="text-lg" />
 
                 {
                   section.premium_button

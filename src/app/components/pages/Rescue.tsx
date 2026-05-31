@@ -19,11 +19,7 @@ import {
 
 } from "framer-motion";
 
-import {
-
-  FaWhatsapp,
-
-} from "react-icons/fa";
+import WhatsAppButton from "../WhatsAppButton";
 
 import { useNavigate } from "react-router-dom";
 
@@ -351,21 +347,10 @@ export function Rescue() {
 
         </button>
 
-        <a
-
-          href={
-            section.whatsapp_link
-          }
-
-          target="_blank"
-
-          className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white shadow-xl hover:scale-110 transition duration-300"
-
-        >
-
-          <FaWhatsapp />
-
-        </a>
+        <WhatsAppButton
+          href={section.whatsapp_link}
+          variant="floating"
+        />
 
       </div>
 

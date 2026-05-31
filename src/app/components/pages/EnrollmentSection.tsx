@@ -1,7 +1,7 @@
 "use client";
 
 import { Shield, Clock, Monitor, Users, Globe } from "lucide-react";
-import { FaWhatsapp } from "react-icons/fa";
+import WhatsAppButton from "../WhatsAppButton";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 
@@ -130,14 +130,11 @@ export function EnrollmentSection() {
             </button>
 
             {/* WHATSAPP */}
-            <a
+            <WhatsAppButton
               href="https://wa.me/971XXXXXXXXX"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="ml-2 w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white shadow-lg hover:scale-110 transition"
-            >
-              <FaWhatsapp className="text-lg" />
-            </a>
+              variant="floating"
+              className="ml-2"
+            />
 
           </div>
 

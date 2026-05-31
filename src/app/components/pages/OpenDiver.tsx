@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FaWhatsapp } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Navbar } from "../Navbar";
+import WhatsAppButton from "../WhatsAppButton";
 import { getOpenDiverCourse } from "@/services/OpenDiverService";
 
 export function OpenDiver() {
@@ -128,19 +128,12 @@ export function OpenDiver() {
               }
             </button>
 
-            <a
-              href={
-                course?.whatsapp_link
-              }
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-xl border border-white/25 px-8 py-3.5 tracking-[1px] backdrop-blur-md transition duration-300 hover:bg-white/10"
+            <WhatsAppButton
+              href={course?.whatsapp_link}
+              variant="outline"
             >
-              <FaWhatsapp className="text-lg text-green-400" />
-              {
-                course?.whatsapp_text
-              }
-            </a>
+              {course?.whatsapp_text}
+            </WhatsAppButton>
 
             <p className="text-[11px] tracking-[1px] text-white/40">
               {course?.small_text}
@@ -174,16 +167,11 @@ export function OpenDiver() {
             }
           </button>
 
-          <a
-            href={
-              course?.whatsapp_link
-            }
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-2 flex h-11 w-11 items-center justify-center rounded-full bg-green-500 text-white shadow-md transition duration-300 hover:scale-110"
-          >
-            <FaWhatsapp className="text-lg" />
-          </a>
+          <WhatsAppButton
+            href={course?.whatsapp_link}
+            variant="floating"
+            className="ml-2"
+          />
         </div>
       </div>
     </>

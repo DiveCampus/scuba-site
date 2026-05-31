@@ -19,6 +19,8 @@ import {
   getEliteFooterLinks,
 } from "@/services/EliteFooterService";
 
+import WhatsAppButton from "../WhatsAppButton";
+
 /* =========================================
    FOOTER
 ========================================= */
@@ -279,22 +281,11 @@ export function EliteFooter() {
 
             </button>
 
-            <a
-              href={
-                section?.whatsapp_link
-              }
-              target="_blank"
-              rel="noreferrer"
-              className="ml-3 w-14 h-14 rounded-full bg-[#1acb5f] flex items-center justify-center"
-            >
-
-              <img
-                src="/whatsapp.webp"
-                alt="whatsapp"
-                className="w-6 h-6"
-              />
-
-            </a>
+            <WhatsAppButton
+              href={section?.whatsapp_link}
+              variant="floating"
+              className="ml-3"
+            />
 
           </div>
 

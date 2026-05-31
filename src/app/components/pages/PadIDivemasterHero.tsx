@@ -2,9 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FaWhatsapp } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Navbar } from "../Navbar";
+import WhatsAppButton from "../WhatsAppButton";
 import {
   getDivemasterHero,
 } from "@/services/DivemasterHeroService";
@@ -182,17 +182,12 @@ export function PadiDivemasterHero() {
 
             </button>
 
-            <a
+            <WhatsAppButton
               href="https://wa.me/971000000000"
-              target="_blank"
-              className="px-8 py-3 border border-white/20 rounded-2xl flex items-center gap-2"
+              variant="outline"
             >
-
-              <FaWhatsapp />
-
               WhatsApp
-
-            </a>
+            </WhatsAppButton>
 
           </div>
 

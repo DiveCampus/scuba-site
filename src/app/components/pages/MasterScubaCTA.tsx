@@ -13,11 +13,7 @@ import {
 
 } from "react";
 
-import {
-
-  FaWhatsapp,
-
-} from "react-icons/fa";
+import WhatsAppButton from "../WhatsAppButton";
 
 import {
 
@@ -151,27 +147,12 @@ export function MasterScubaCTA() {
           </a>
 
           {/* WHATSAPP BUTTON */}
-          <a
-
-            href={
-              section.whatsapp_link
-            }
-
-            target="_blank"
-
-            rel="noopener noreferrer"
-
-            className="flex items-center gap-2 px-7 py-3.5 text-[12px] tracking-[1px] rounded-2xl border border-green-400 text-green-400 hover:bg-green-400 hover:text-white transition duration-300"
-
+          <WhatsAppButton
+            href={section.whatsapp_link}
+            variant="outline"
           >
-
-            <FaWhatsapp className="text-sm" />
-
-            {
-              section.whatsapp_button_text
-            }
-
-          </a>
+            {section.whatsapp_button_text}
+          </WhatsAppButton>
 
         </div>
 
