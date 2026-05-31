@@ -1,0 +1,63 @@
+/* ────────────────────────────────────────────────────────────────
+   Chatbot FAB — premium AI / robot effect (GPU-only, CSS-only)
+   Every animation here touches ONLY transform / opacity so it stays
+   on the compositor thread: no layout, no paint, no CLS, no main-
+   thread cost. All effects are disabled under prefers-reduced-motion.
+   ──────────────────────────────────────────────────────────────── */
+
+/* Soft glowing pulse behind the button. */
+@keyframes cb-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.18);
+  }
+}
+
+/* A single dot orbiting the button — the "AI thinking" accent. */
+@keyframes cb-orbit {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Subtle idle "breathing" float on the robot icon itself. */
+@keyframes cb-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1.5px);
+  }
+}
+
+.cb-glow {
+  animation: cb-glow 2.8s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+.cb-orbit {
+  animation: cb-orbit 6s linear infinite;
+  will-change: transform;
+}
+
+.cb-float {
+  animation: cb-float 3.2s ease-in-out infinite;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cb-glow,
+  .cb-orbit,
+  .cb-float {
+    animation: none;
+  }
+}

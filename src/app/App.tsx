@@ -46,6 +46,10 @@ const BookingPage = lazy(() => import("./booking/BookingPage"));
 const PaymentSuccess = lazy(() => import("./booking/PaymentSuccess"));
 const PaymentCancel = lazy(() => import("./booking/PaymentCancel"));
 
+// Floating chatbot UI shell. Code-split + idle-mounted so it adds no
+// cost to first paint. UI only — see ./components/chatbot/.
+const FloatingChatbot = lazy(() => import("./components/chatbot"));
+
 /**
  * Reads current pathname and injects per-route Helmet metadata.
  * Renders nothing visible. Does not change UI/UX/auth.
@@ -134,6 +138,11 @@ export default function App() {
           <Route path="*" element={<NotFound />} />
 
         </Routes>
+      </Suspense>
+
+      {/* Global floating chatbot UI (lazy + idle-mounted, no SEO/perf impact) */}
+      <Suspense fallback={null}>
+        <FloatingChatbot />
       </Suspense>
     </>
   );
