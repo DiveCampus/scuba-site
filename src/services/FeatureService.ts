@@ -3,7 +3,7 @@ import { supabase } from "@/lib/supabaseClient";
 // GET
 export const getFeatured = async () => {
   return await supabase
-    .from("featured_content")
+    .from("kadir_featured_content")
     .select("*")
     .limit(1)
     .single();
@@ -12,7 +12,7 @@ export const getFeatured = async () => {
 // UPDATE
 export const updateFeatured = async (id: string, payload: any) => {
   return await supabase
-    .from("featured_content")
+    .from("kadir_featured_content")
     .update(payload)
     .eq("id", id);
 };
