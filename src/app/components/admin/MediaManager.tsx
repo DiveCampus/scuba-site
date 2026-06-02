@@ -12,6 +12,13 @@ import {
 const MAX_BYTES = 10 * 1024 * 1024; // 10MB (after conversion)
 const WEBP_QUALITY = 0.9;
 
+// Human-readable size: < 1MB → "450 KB", >= 1MB → "1.8 MB". null if unknown.
+function formatSize(bytes?: number | null): string | null {
+  if (!bytes || bytes <= 0) return null;
+  if (bytes < 1024 * 1024) return `${Math.round(bytes / 1024)} KB`;
+  return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
 // ──────────────────────────────────────────────────────────────────
 // Image helpers (module scope, no React state)
 // ──────────────────────────────────────────────────────────────────
@@ -118,6 +125,7 @@ export function MediaManager() {
   const loadImages = async () => {
     try {
       const data = await getMediaBySection(section);
+      console.log("📦 MEDIA IMAGES:", data); // temp: confirm each row has size
       setImages(data);
     } catch (error) {
       console.error("❌ LOAD IMAGES ERROR:", error);
@@ -354,6 +362,12 @@ export function MediaManager() {
                     className="w-full h-[180px] object-cover rounded-2xl border border-white/10"
                   />
 
+                  {formatSize(files[index]?.size) && (
+                    <span className="absolute top-2 left-2 px-2.5 py-1 rounded-full text-[10px] font-semibold text-cyan-200 bg-black/40 backdrop-blur-md border border-cyan-300/30 shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
+                      WEBP • {formatSize(files[index]?.size)}
+                    </span>
+                  )}
+
                   <button
                     onClick={() => removePreview(index)}
                     className="absolute top-2 right-2 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:scale-110"
@@ -400,10 +414,18 @@ export function MediaManager() {
               key={image.id}
               className="bg-[#0b1d2b] rounded-3xl overflow-hidden border border-white/10"
             >
-              <img
-                src={image.image_url}
-                className="w-full h-[180px] object-cover"
-              />
+              <div className="relative">
+                <img
+                  src={image.image_url}
+                  className="w-full h-[180px] object-cover"
+                />
+
+                {formatSize(image.size) && (
+                  <span className="absolute top-3 right-3 px-2.5 py-1 rounded-full text-[10px] font-semibold text-cyan-200 bg-black/40 backdrop-blur-md border border-cyan-300/30 shadow-[0_2px_10px_rgba(0,0,0,0.35)]">
+                    WEBP • {formatSize(image.size)}
+                  </span>
+                )}
+              </div>
 
               <div className="p-4 space-y-3">
                 <p className="text-xs text-white/50 truncate">

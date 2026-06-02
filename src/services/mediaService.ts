@@ -11,6 +11,7 @@ export interface MediaItem {
   file_name: string;
   position: number;
   created_at: string;
+  size: number | null; // final converted (webp) size in bytes
 }
 
 // ==========================================
@@ -23,7 +24,9 @@ export const getMediaBySection = async (
   try {
     const { data, error } = await supabase
       .from("media_library")
-      .select("*")
+      .select(
+        "id, section, image_url, file_name, position, created_at, size"
+      )
       .eq("section", section)
       .order("position", {
         ascending: true,
@@ -154,6 +157,7 @@ export const uploadMedia = async ({
               publicUrl,
             file_name:
               fileName,
+            size: file.size, // final converted (webp) size in bytes
           },
         ])
         .select()
