@@ -7,7 +7,8 @@ export const getCourses = async () => {
   const { data, error } = await supabase
     .from("kadir_courses")
     .select("*")
-    .order("created_at", { ascending: false });
+    .order("position", { ascending: true, nullsFirst: false })
+    .order("created_at", { ascending: true });
 
   // console.log("📦 [GET COURSES RESULT]", {
   //   data,
@@ -113,6 +114,29 @@ export const updateCourse = async (
   }
 
   return { data, error: null };
+};
+
+// ✅ REORDER COURSES — persist drag order into the `position` column (1-based).
+// Updates every affected row so the new sequence survives reload and is shown
+// to all visitors. Runs the per-row updates in parallel.
+export const reorderCourses = async (orderedIds: string[]) => {
+  const results = await Promise.all(
+    orderedIds.map((id, index) =>
+      supabase
+        .from("kadir_courses")
+        .update({ position: index + 1, updated_at: new Date().toISOString() })
+        .eq("id", id)
+    )
+  );
+
+  const error = results.find((r) => r.error)?.error ?? null;
+
+  if (error) {
+    console.error("❌ REORDER ERROR:", error);
+    return { error };
+  }
+
+  return { error: null };
 };
 
 // ✅ DELETE COURSE

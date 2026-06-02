@@ -18,8 +18,11 @@ export function DivingCourses() {
   }, []);
 
   const fetchCourses = async () => {
-    const { data } = await getCourses();
-    setCourses(data || []);
+    const { data } = await getCourses(); // ordered by position ASC from the service
+    const ordered = (data || [])
+      .slice()
+      .sort((a: any, b: any) => (a.position ?? 0) - (b.position ?? 0));
+    setCourses(ordered);
     setLoading(false);
   };
 
