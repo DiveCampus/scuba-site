@@ -196,41 +196,23 @@ export default function HeroAdminSection() {
           </p>
         )}
 
-        {/* CTA BUTTONS — primary + secondary, side by side on desktop, stacked on mobile. Click to edit. */}
+        {/* CTA BUTTONS — primary + secondary. Click text to edit inline (text only). */}
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-xl">
 
           {/* PRIMARY CTA */}
-          {editing === "primary_cta" ? (
-            <div
-              className="flex flex-col gap-2 w-full sm:w-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <input
-                value={hero?.primary_cta_text || ""}
-                onChange={(e) =>
-                  setHero({ ...hero, primary_cta_text: e.target.value })
-                }
-                placeholder="Primary button text"
-                className="bg-black/40 px-3 py-2 rounded text-center"
-              />
-              <input
-                value={hero?.primary_cta_link || ""}
-                onChange={(e) =>
-                  setHero({ ...hero, primary_cta_link: e.target.value })
-                }
-                placeholder="Primary link"
-                className="bg-black/40 px-3 py-2 rounded text-center text-xs"
-              />
-              <button
-                onClick={() => setEditing(null)}
-                className="text-xs text-cyan-300"
-              >
-                Done
-              </button>
-            </div>
+          {editing === "primary_cta_text" ? (
+            <input
+              value={hero?.primary_cta_text || ""}
+              onChange={(e) =>
+                setHero({ ...hero, primary_cta_text: e.target.value })
+              }
+              onBlur={() => setEditing(null)}
+              autoFocus
+              className="w-full sm:w-auto px-8 py-3 bg-cyan-400 text-black font-semibold rounded-full text-center outline-none"
+            />
           ) : (
             <button
-              onClick={() => setEditing("primary_cta")}
+              onClick={() => setEditing("primary_cta_text")}
               className="w-full sm:w-auto px-8 py-3 bg-cyan-400 text-black font-semibold rounded-full"
             >
               {hero?.primary_cta_text || "Get Started"}
@@ -238,37 +220,19 @@ export default function HeroAdminSection() {
           )}
 
           {/* SECONDARY CTA */}
-          {editing === "secondary_cta" ? (
-            <div
-              className="flex flex-col gap-2 w-full sm:w-auto"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <input
-                value={hero?.secondary_cta_text || ""}
-                onChange={(e) =>
-                  setHero({ ...hero, secondary_cta_text: e.target.value })
-                }
-                placeholder="Secondary button text"
-                className="bg-black/40 px-3 py-2 rounded text-center"
-              />
-              <input
-                value={hero?.secondary_cta_link || ""}
-                onChange={(e) =>
-                  setHero({ ...hero, secondary_cta_link: e.target.value })
-                }
-                placeholder="Secondary link"
-                className="bg-black/40 px-3 py-2 rounded text-center text-xs"
-              />
-              <button
-                onClick={() => setEditing(null)}
-                className="text-xs text-cyan-300"
-              >
-                Done
-              </button>
-            </div>
+          {editing === "secondary_cta_text" ? (
+            <input
+              value={hero?.secondary_cta_text || ""}
+              onChange={(e) =>
+                setHero({ ...hero, secondary_cta_text: e.target.value })
+              }
+              onBlur={() => setEditing(null)}
+              autoFocus
+              className="w-full sm:w-auto px-8 py-3 border border-white/40 text-white font-semibold rounded-full text-center bg-transparent outline-none"
+            />
           ) : (
             <button
-              onClick={() => setEditing("secondary_cta")}
+              onClick={() => setEditing("secondary_cta_text")}
               className="w-full sm:w-auto px-8 py-3 border border-white/40 text-white font-semibold rounded-full hover:bg-white/10 transition"
             >
               {hero?.secondary_cta_text || "Explore Courses"}

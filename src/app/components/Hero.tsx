@@ -4,7 +4,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { ChevronDown, MapPin } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { getHero } from "@/services/heroService";
+import { getMainHero } from "@/services/kadirheroService";
 
 export function Hero() {
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ export function Hero() {
   }, []);
 
   const fetchHero = async () => {
-    const { data } = await getHero();
+    const { data } = await getMainHero();
 
     setHero(data);
   };
