@@ -70,13 +70,13 @@ export const uploadMedia = async ({
     const uploadedData = [];
 
     for (const file of files) {
-      // VALIDATION
+      // VALIDATION — accept any image (the admin UI converts everything to
+      // JPG before calling this; keep a generic guard as a safety net).
       if (
-        file.type !==
-        "image/webp"
+        !file.type.startsWith("image/")
       ) {
         throw new Error(
-          `${file.name} is not .webp`
+          `${file.name} is not an image`
         );
       }
 
@@ -89,10 +89,14 @@ export const uploadMedia = async ({
         );
       }
 
-      // FILE NAME
-      const fileName = `${Date.now()}-${
-        file.name
-      }`;
+      // FILE NAME — always store as .webp. The admin UI converts the bytes
+      // to WEBP; forcing the extension here guarantees the storage path,
+      // public URL and DB record always end in .webp regardless of source.
+      const baseName =
+        file.name.replace(/\.[^./\\]+$/, "").trim() ||
+        "image";
+
+      const fileName = `${Date.now()}-${baseName}.webp`;
 
       // STORAGE PATH
       const filePath =
@@ -103,7 +107,8 @@ export const uploadMedia = async ({
         filePath
       );
 
-      // STORAGE UPLOAD
+      // STORAGE UPLOAD — force the webp content-type so the stored object's
+      // MIME is image/webp (not inherited from the source format).
       const {
         error: uploadError,
       } = await supabase.storage
@@ -115,6 +120,7 @@ export const uploadMedia = async ({
             cacheControl:
               "3600",
             upsert: false,
+            contentType: "image/webp",
           }
         );
 
