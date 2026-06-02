@@ -36,9 +36,10 @@ export const updateMainHero = async (
       title: data.title,
       subtitle: data.subtitle,
       description: data.description,
-      price: data.price,
-      old_price: data.old_price,
-      cta_text: data.cta_text,
+      primary_cta_text: data.primary_cta_text,
+      primary_cta_link: data.primary_cta_link,
+      secondary_cta_text: data.secondary_cta_text,
+      secondary_cta_link: data.secondary_cta_link,
       updated_at: new Date().toISOString(),
     })
     .eq("id", data.id)

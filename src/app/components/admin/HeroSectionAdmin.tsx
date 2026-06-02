@@ -196,122 +196,86 @@ export default function HeroAdminSection() {
           </p>
         )}
 
-        {/* PRICE CARD */}
-        <div className="mt-8 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-10 py-7">
+        {/* CTA BUTTONS — primary + secondary, side by side on desktop, stacked on mobile. Click to edit. */}
+        <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center items-center w-full max-w-xl">
 
-          {/* OLD PRICE */}
-          {editing ===
-          "old_price" ? (
-            <input
-              type="number"
-              value={
-                hero?.old_price ||
-                0
-              }
-              onChange={(e) =>
-                setHero({
-                  ...hero,
-                  old_price:
-                    Number(
-                      e.target
-                        .value
-                    ),
-                })
-              }
-              onBlur={() =>
-                setEditing(null)
-              }
-              className="bg-black/40 text-white/40 text-center line-through rounded px-2"
-            />
-          ) : (
-            <p
-              onClick={() =>
-                setEditing(
-                  "old_price"
-                )
-              }
-              className="text-sm text-white/40 line-through cursor-pointer"
+          {/* PRIMARY CTA */}
+          {editing === "primary_cta" ? (
+            <div
+              className="flex flex-col gap-2 w-full sm:w-auto"
+              onClick={(e) => e.stopPropagation()}
             >
-              AED{" "}
-              {
-                hero?.old_price
-              }
-            </p>
+              <input
+                value={hero?.primary_cta_text || ""}
+                onChange={(e) =>
+                  setHero({ ...hero, primary_cta_text: e.target.value })
+                }
+                placeholder="Primary button text"
+                className="bg-black/40 px-3 py-2 rounded text-center"
+              />
+              <input
+                value={hero?.primary_cta_link || ""}
+                onChange={(e) =>
+                  setHero({ ...hero, primary_cta_link: e.target.value })
+                }
+                placeholder="Primary link"
+                className="bg-black/40 px-3 py-2 rounded text-center text-xs"
+              />
+              <button
+                onClick={() => setEditing(null)}
+                className="text-xs text-cyan-300"
+              >
+                Done
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setEditing("primary_cta")}
+              className="w-full sm:w-auto px-8 py-3 bg-cyan-400 text-black font-semibold rounded-full"
+            >
+              {hero?.primary_cta_text || "Get Started"}
+            </button>
           )}
 
-          {/* PRICE */}
-          {editing ===
-          "price" ? (
-            <input
-              type="number"
-              value={
-                hero?.price || 0
-              }
-              onChange={(e) =>
-                setHero({
-                  ...hero,
-                  price: Number(
-                    e.target
-                      .value
-                  ),
-                })
-              }
-              onBlur={() =>
-                setEditing(null)
-              }
-              className="bg-black/40 text-cyan-400 text-4xl text-center rounded px-2"
-            />
-          ) : (
-            <p
-              onClick={() =>
-                setEditing(
-                  "price"
-                )
-              }
-              className="text-5xl font-bold cursor-pointer"
+          {/* SECONDARY CTA */}
+          {editing === "secondary_cta" ? (
+            <div
+              className="flex flex-col gap-2 w-full sm:w-auto"
+              onClick={(e) => e.stopPropagation()}
             >
-              {hero?.price}
-
-              <span className="text-cyan-400 text-xl ml-2">
-                AED
-              </span>
-            </p>
+              <input
+                value={hero?.secondary_cta_text || ""}
+                onChange={(e) =>
+                  setHero({ ...hero, secondary_cta_text: e.target.value })
+                }
+                placeholder="Secondary button text"
+                className="bg-black/40 px-3 py-2 rounded text-center"
+              />
+              <input
+                value={hero?.secondary_cta_link || ""}
+                onChange={(e) =>
+                  setHero({ ...hero, secondary_cta_link: e.target.value })
+                }
+                placeholder="Secondary link"
+                className="bg-black/40 px-3 py-2 rounded text-center text-xs"
+              />
+              <button
+                onClick={() => setEditing(null)}
+                className="text-xs text-cyan-300"
+              >
+                Done
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={() => setEditing("secondary_cta")}
+              className="w-full sm:w-auto px-8 py-3 border border-white/40 text-white font-semibold rounded-full hover:bg-white/10 transition"
+            >
+              {hero?.secondary_cta_text || "Explore Courses"}
+            </button>
           )}
+
         </div>
-
-        {/* CTA */}
-        {editing ===
-        "cta_text" ? (
-          <input
-            value={
-              hero?.cta_text ||
-              ""
-            }
-            onChange={(e) =>
-              setHero({
-                ...hero,
-                cta_text:
-                  e.target.value,
-              })
-            }
-            onBlur={() =>
-              setEditing(null)
-            }
-            autoFocus
-            className="mt-8 bg-black/40 px-4 py-2 rounded text-center"
-          />
-        ) : (
-          <button
-            onClick={() =>
-              setEditing(
-                "cta_text"
-              )
-            }
-            className="mt-8 px-8 py-3 bg-cyan-400 text-black font-semibold rounded-lg"
-          >
-            {hero?.cta_text}
-          </button>
-        )}
 
         {/* SAVE BUTTON */}
         <motion.button

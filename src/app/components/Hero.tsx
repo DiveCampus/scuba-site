@@ -24,6 +24,19 @@ export function Hero() {
     setHero(data);
   };
 
+  // CTA link comes ONLY from the DB. If empty/null the button still renders
+  // but performs no navigation/action. "#id" smooth-scrolls; else navigates.
+  const goTo = (link?: string) => {
+    if (!link) return;
+    if (link.startsWith("#")) {
+      document
+        .getElementById(link.slice(1))
+        ?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate(link);
+    }
+  };
+
   if (!hero) {
     return (
       <div className="h-screen flex items-center justify-center bg-black text-white">
@@ -83,24 +96,21 @@ export function Hero() {
           {hero?.description}
         </p>
 
-        {/* 🔥 CTA BUTTONS — primary + secondary, row on desktop, stacked on mobile */}
+        {/* 🔥 CTA BUTTONS — primary + secondary, DB-driven with fallbacks.
+            "#id" smooth-scrolls; anything else navigates a route. */}
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
-            onClick={() => navigate("/booking?course=padi-open-water")}
+            onClick={() => goTo(hero?.primary_cta_link)}
             className="w-full sm:w-auto px-10 py-4 bg-cyan-400 text-black rounded-full"
           >
-            {hero?.cta_text || "Get Certified →"}
+            {hero?.primary_cta_text || "Get Started"}
           </button>
 
           <button
-            onClick={() =>
-              document
-                .getElementById("courses")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => goTo(hero?.secondary_cta_link)}
             className="w-full sm:w-auto px-10 py-4 border border-white/30 text-white rounded-full hover:bg-white/10 hover:border-white/50 transition"
           >
-            Explore Courses
+            {hero?.secondary_cta_text || "Explore Courses"}
           </button>
         </div>
 
