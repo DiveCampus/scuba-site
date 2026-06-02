@@ -83,6 +83,7 @@ type AdminSection = {
 };
 
 const sections: AdminSection[] = [
+  { slug: "hero-section", name: "Hero Section", Component: HeroSectionAdmin },
   { slug: "courses", name: "Courses", Component: CoursesPage },
   { slug: "featured", name: "Featured", Component: FeaturedAdmin },
   { slug: "gallery", name: "Gallery", Component: Gallery },
@@ -91,7 +92,6 @@ const sections: AdminSection[] = [
   { slug: "why", name: "Why", Component: WhyAdmin },
   { slug: "faq", name: "FAQ", Component: FaqAdmin },
   { slug: "footer", name: "Footer", Component: FooterAdmin },
-  { slug: "hero-section", name: "Hero Section", Component: HeroSectionAdmin },
   { slug: "features", name: "Features", Component: FeaturesAdmin },
   { slug: "steps", name: "Steps", Component: StepsAdmin },
   { slug: "compare", name: "Compare", Component: CompareAdmin },
