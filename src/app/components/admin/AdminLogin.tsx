@@ -7,19 +7,13 @@ export default function AdminLogin() {
   const [loading, setLoading] = useState(false);
 
   const handleLogin = async () => {
-    console.log("🚀 [STEP 1] Login started");
-    console.log("📧 Email:", email);
-
     setLoading(true);
 
     // 🔐 AUTH LOGIN
-    console.log("🔐 [STEP 2] Calling Supabase auth...");
     const { data, error } = await supabase.auth.signInWithPassword({
       email,
       password,
     });
-
-    console.log("📦 [STEP 2 RESULT] Auth response:", { data, error });
 
     if (error) {
       console.error("❌ [ERROR] Login failed:", error.message);
@@ -29,7 +23,6 @@ export default function AdminLogin() {
     }
 
     const user = data.user;
-    console.log("✅ [STEP 3] User received:", user);
 
     if (!user) {
       console.error("❌ [ERROR] No user returned after login");
@@ -38,26 +31,17 @@ export default function AdminLogin() {
     }
 
     // 🔎 FETCH PROFILE
-    console.log("🔍 [STEP 4] Fetching profile for user ID:", user.id);
-
     const { data: profile, error: roleError } = await supabase
       .from("profiles")
       .select("role")
       .eq("user_id", user.id)
       .single();
 
-    console.log("📦 [STEP 4 RESULT] Profile response:", {
-      profile,
-      roleError,
-    });
-
     if (roleError) {
       console.error("❌ [ERROR] Profile fetch error:", roleError.message);
     }
 
     // 🔒 ROLE CHECK
-    console.log("🔐 [STEP 5] Checking role...");
-
     if (!profile) {
       console.error("❌ [ERROR] Profile not found");
       alert("Profile not found");
@@ -65,8 +49,6 @@ export default function AdminLogin() {
       setLoading(false);
       return;
     }
-
-    console.log("👤 [STEP 6] User role:", profile.role);
 
     if (profile.role !== "admin") {
       console.warn("⚠️ [WARNING] Not an admin user");
@@ -77,12 +59,7 @@ export default function AdminLogin() {
     }
 
     // ✅ SUCCESS
-    console.log("🎉 [STEP 7] Admin login successful!");
-
     localStorage.setItem("adminAuth", "true");
-    console.log("💾 [STEP 8] adminAuth saved to localStorage");
-
-    console.log("➡️ [STEP 9] Redirecting to dashboard...");
     window.location.href = "/admin/dashboard";
   };
 
@@ -98,7 +75,6 @@ export default function AdminLogin() {
           placeholder="Email"
           className="w-full p-2 mb-3 bg-black/50 rounded"
           onChange={(e) => {
-            console.log("📧 [INPUT] Email:", e.target.value);
             setEmail(e.target.value);
           }}
         />
@@ -108,7 +84,6 @@ export default function AdminLogin() {
           placeholder="Password"
           className="w-full p-2 mb-4 bg-black/50 rounded"
           onChange={(e) => {
-            console.log("🔑 [INPUT] Password changed");
             setPassword(e?.target?.value);
           }}
         />

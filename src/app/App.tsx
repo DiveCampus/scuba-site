@@ -13,7 +13,6 @@ import { FAQ } from "./components/FAQ";
 import { BookingForm } from "./components/BookingForm";
 import { Footer } from "./components/Footer";
 
-import Login from "./components/Login";
 
 import { SEO } from "./components/SEO";
 import { getRouteSeo } from "./components/seoConfig";

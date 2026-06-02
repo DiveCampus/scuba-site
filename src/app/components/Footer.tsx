@@ -27,9 +27,6 @@ export function Footer() {
   useEffect(() => {
     console.log("🚀 Footer Component Mounted");
 
-    // 🔥 ENV DEBUG
-    console.log("🌍 SUPABASE URL:", import.meta.env.VITE_SUPABASE_URL);
-
     load();
   }, []);
 
