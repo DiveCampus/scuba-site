@@ -15,7 +15,7 @@ import {
 // All admin sub-components are code-split. Only the actively selected
 // section's chunk is fetched. Visual layout is unchanged.
 const CoursesPage = lazy(() => import("./CoursesPage"));
-const Gallery = lazy(() => import("./gallerypage").then((m) => ({ default: m.Gallery })));
+const Gallery = lazy(() => import("./GalleryPage").then((m) => ({ default: m.Gallery })));
 const PricingPage = lazy(() => import("./PricingPage").then((m) => ({ default: m.PricingPage })));
 const FaqAdmin = lazy(() => import("./FaqAdmin").then((m) => ({ default: m.FaqAdmin })));
 const FeaturedAdmin = lazy(() => import("./FeaturedAdmin").then((m) => ({ default: m.FeaturedAdmin })));
