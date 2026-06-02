@@ -100,6 +100,11 @@ function Home() {
 export default function App() {
   const isAdminAuth = localStorage.getItem("adminAuth") === "true";
 
+  // Hide the floating chatbot on admin routes; keep it on the public site.
+  // To re-enable everywhere later, delete this flag and its usage below.
+  const { pathname } = useLocation();
+  const isAdminRoute = pathname.startsWith("/admin");
+
   return (
     <>
       <RouteSeo />
@@ -141,9 +146,12 @@ export default function App() {
       </Suspense>
 
       {/* Global floating chatbot UI (lazy + idle-mounted, no SEO/perf impact) */}
-      <Suspense fallback={null}>
-        <FloatingChatbot />
-      </Suspense>
+      {/* Public site only — intentionally hidden on /admin/* routes. */}
+      {!isAdminRoute && (
+        <Suspense fallback={null}>
+          <FloatingChatbot />
+        </Suspense>
+      )}
     </>
   );
 }
