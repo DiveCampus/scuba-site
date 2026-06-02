@@ -48,7 +48,7 @@ export function DivingCourses() {
   }
 
   return (
-    <section className="py-20 px-4 bg-[#18476D] font-habara">
+    <section id="courses" className="py-20 px-4 bg-[#18476D] font-habara">
       <div className="max-w-[1600px] mx-auto">
 
         <h2 className="text-center text-5xl font-bold text-white mb-14 uppercase">

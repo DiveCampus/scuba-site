@@ -19,9 +19,7 @@ export function Hero() {
   }, []);
 
   const fetchHero = async () => {
-    const { data, error } = await getHero();
-
-    console.log("🔥 HERO FRONTEND DATA:", data, error);
+    const { data } = await getHero();
 
     setHero(data);
   };
@@ -85,24 +83,24 @@ export function Hero() {
           {hero?.description}
         </p>
 
-        {/* 🔥 PRICE */}
-        <div className="mt-6">
-          <p className="text-white/50 line-through">
-            AED {hero?.old_price}
-          </p>
-
-          <p className="text-3xl font-bold text-cyan-400">
-            AED {hero?.price}
-          </p>
-        </div>
-
-        {/* 🔥 CTA BUTTON (NOW DYNAMIC) */}
-        <div className="mt-10">
+        {/* 🔥 CTA BUTTONS — primary + secondary, row on desktop, stacked on mobile */}
+        <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
           <button
             onClick={() => navigate("/booking?course=padi-open-water")}
-            className="px-10 py-4 bg-cyan-400 text-black rounded-full"
+            className="w-full sm:w-auto px-10 py-4 bg-cyan-400 text-black rounded-full"
           >
             {hero?.cta_text || "Get Certified →"}
+          </button>
+
+          <button
+            onClick={() =>
+              document
+                .getElementById("courses")
+                ?.scrollIntoView({ behavior: "smooth" })
+            }
+            className="w-full sm:w-auto px-10 py-4 border border-white/30 text-white rounded-full hover:bg-white/10 hover:border-white/50 transition"
+          >
+            Explore Courses
           </button>
         </div>
 
