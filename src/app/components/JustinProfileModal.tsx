@@ -35,7 +35,7 @@ export function JustinProfileModal({
             duration: 0.35,
           }}
           onClick={onClose}
-          className="absolute inset-0 z-[999] bg-black/60 flex items-center justify-center p-6"
+          className="fixed inset-0 z-[999] bg-black/60 flex items-center justify-center p-6 overflow-y-auto"
         >
 
           {/* PANEL */}
@@ -60,7 +60,7 @@ export function JustinProfileModal({
               ease: "easeOut",
             }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-6xl rounded-[40px] overflow-hidden border border-white/10 bg-white/10 backdrop-blur-2xl shadow-[0_20px_100px_rgba(0,0,0,0.45)]"
+            className="relative my-auto w-full max-w-6xl rounded-[40px] overflow-hidden border border-white/10 bg-white/10 backdrop-blur-2xl shadow-[0_20px_100px_rgba(0,0,0,0.45)]"
             style={{
               fontFamily: "Harabara, sans-serif",
             }}

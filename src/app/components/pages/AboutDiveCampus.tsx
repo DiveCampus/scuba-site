@@ -146,6 +146,11 @@ export function AboutDiveCampus() {
 
         </div>
 
+      </section>
+
+      {/* PROFILE MODALS — mounted OUTSIDE the section so their z-[999] escapes the
+          section's `isolate` stacking context and renders above the fixed navbar (z-50) */}
+
         {/* ISLAM MODAL */}
         <IslamProfileModal
           open={selectedMember === "ISLAM"}
@@ -204,7 +209,6 @@ export function AboutDiveCampus() {
             setSelectedMember(null)
           }
         />
-      </section>
 
       {/* GLOBAL STYLES */}
       <style>{`
