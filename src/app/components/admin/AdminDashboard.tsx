@@ -10,7 +10,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-
+const HeroAdminOpen = lazy(  () => import("./HeroAdminOpen"));
 // All admin sub-components are code-split. Only the actively selected
 // section's chunk is fetched. Visual layout is unchanged.
 const CoursesPage = lazy(() => import("./CoursesPage"));
@@ -92,6 +92,7 @@ const sections: AdminSection[] = [
   { slug: "why", name: "Why", Component: WhyAdmin },
   { slug: "faq", name: "FAQ", Component: FaqAdmin },
   { slug: "footer", name: "Footer", Component: FooterAdmin },
+  { slug: "HeroAdmin-Open", name: "HeroAdminOpen", Component: HeroAdminOpen },
   { slug: "features", name: "Features", Component: FeaturesAdmin },
   { slug: "steps", name: "Steps", Component: StepsAdmin },
   { slug: "compare", name: "Compare", Component: CompareAdmin },

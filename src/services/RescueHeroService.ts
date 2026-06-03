@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabaseClient";
+import { normalizePricing } from "./heroServiceOpen";
 
 /* =========================================
    GET SECTION
@@ -19,25 +20,16 @@ export const getRescueHero =
 
       .single();
 
-    console.log(
-      "RESCUE HERO DATA =>",
-      data
-    );
-
-    console.log(
-      "RESCUE HERO ERROR =>",
-      error
-    );
-
     if (error) {
 
       console.error(error);
 
     }
 
+    // Normalize new_price -> price so the public UI only reads `price`.
     return {
 
-      data,
+      data: normalizePricing(data),
 
       error,
 

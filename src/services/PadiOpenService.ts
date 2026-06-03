@@ -1,4 +1,5 @@
 import { supabase } from "@/lib/supabaseClient";
+import { normalizePricing } from "./heroServiceOpen";
 
 /* =========================
    GET DATA
@@ -15,8 +16,9 @@ export const getPadiOpenDiver =
       .limit(1)
       .single();
 
+    // Normalize new_price -> price so the public UI only reads `price`.
     return {
-      data,
+      data: normalizePricing(data),
       error,
     };
   };

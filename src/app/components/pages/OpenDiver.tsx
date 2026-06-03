@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { Navbar } from "../Navbar";
 import WhatsAppButton from "../WhatsAppButton";
 import { getOpenDiverCourse } from "@/services/OpenDiverService";
+import { PricingCard } from "../PricingCard";
 
 export function OpenDiver() {
   const navigate = useNavigate();
@@ -96,24 +97,17 @@ export function OpenDiver() {
           </p>
 
           {/* PRICE CARD */}
-          <div className="mt-14 rounded-2xl border border-white/20 bg-white/10 px-12 py-8 shadow-xl backdrop-blur-xl">
-            <p className="mb-2 text-xs tracking-[2px] text-white/40 line-through">
-              AED {course?.old_price}
-            </p>
-
-            <h2 className="text-5xl font-bold leading-none tracking-[1px]">
-              <span className="mr-2 text-lg tracking-[2px] text-cyan-400">
-                AED
-              </span>
-              {course?.price}
-            </h2>
-
-            <p className="mt-4 text-xs leading-relaxed tracking-[1px] text-white/55">
-              {
-                course?.price_subtext
-              }
-            </p>
-          </div>
+          <PricingCard
+            className="mt-14"
+            price={course?.price}
+            oldPrice={course?.old_price}
+          >
+            {course?.price_subtext && (
+              <p className="text-xs leading-relaxed tracking-[1px] text-white/55">
+                {course.price_subtext}
+              </p>
+            )}
+          </PricingCard>
 
           {/* BUTTONS */}
           <div className="mt-10 md:mt-12 flex flex-col items-center gap-5">

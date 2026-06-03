@@ -13,6 +13,7 @@ import { useNavigate } from "react-router-dom";
 import {
   getPadiOpenDiver,
 } from "@/services/PadiOpenService";
+import { PricingCard } from "../PricingCard";
 
 export function PadiOpenDiver() {
   const navigate = useNavigate();
@@ -128,31 +129,15 @@ export function PadiOpenDiver() {
           </p>
 
           {/* PRICE CARD */}
-          <div className="mt-10 px-10 py-7 rounded-[30px] bg-white/10 backdrop-blur-xl border border-white/10 shadow-[0_20px_80px_rgba(0,0,0,0.4)]">
-
-            <p className="text-white/40 line-through text-sm">
-
-              AED {data?.old_price}
-
-            </p>
-
-            <h2 className="mt-1 text-5xl font-bold">
-
-              <span className="text-cyan-400 text-xl">
-                AED
-              </span>{" "}
-
-              {data?.new_price}
-
-            </h2>
-
-            <p className="mt-3 text-white/60 text-sm">
-
-              {data?.price_note}
-
-            </p>
-
-          </div>
+          <PricingCard
+            className="mt-10"
+            price={data?.price}
+            oldPrice={data?.old_price}
+          >
+            {data?.price_note && (
+              <p className="text-white/60 text-sm">{data.price_note}</p>
+            )}
+          </PricingCard>
 
           {/* BUTTONS */}
           <div className="mt-10 flex gap-5 flex-wrap justify-center">

@@ -29,6 +29,8 @@ import {
 
 } from "@/services/RescueHeroService";
 
+import { PricingCard } from "../PricingCard";
+
 export function Rescue() {
 
   const navigate = useNavigate();
@@ -168,30 +170,13 @@ export function Rescue() {
           </p>
 
           {/* PRICE CARD */}
-          <div className="mt-14 backdrop-blur-xl bg-white/10 border border-white/20 rounded-2xl px-12 py-9 shadow-xl">
-
-            {/* OLD PRICE */}
-            <p className="text-xs text-white/40 line-through mb-2 tracking-[2px]">
-
-              AED {section.old_price}
-
-            </p>
-
-            {/* NEW PRICE */}
-            <h2 className="text-5xl font-semibold tracking-[1px] leading-none">
-
-              <span className="text-cyan-400 text-lg font-medium tracking-[2px] mr-2">
-
-                AED
-
-              </span>
-
-              {section.new_price}
-
-            </h2>
-
+          <PricingCard
+            className="mt-14"
+            price={section.price}
+            oldPrice={section.old_price}
+          >
             {/* TAGS */}
-            <div className="flex justify-center gap-3 mt-6 flex-wrap text-[11px] text-white/60 tracking-[1px]">
+            <div className="flex justify-center gap-3 flex-wrap text-[11px] text-white/60 tracking-[1px]">
 
               {[
 
@@ -225,8 +210,7 @@ export function Rescue() {
               )}
 
             </div>
-
-          </div>
+          </PricingCard>
 
           {/* CTA */}
           <div className="mt-10 flex flex-col items-center gap-5">

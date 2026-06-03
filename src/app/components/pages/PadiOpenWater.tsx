@@ -1,7 +1,6 @@
 //PadiOpenWater.tsx
 "use client";
 
-import { HeroSection } from "./HeroSection";
 import { EnrollmentSection } from "./EnrollmentSection";
 import { StepsSection } from "./StepsSection";
 import { ComparisonSection } from "./ComparisonSection";
@@ -12,7 +11,7 @@ import { GoldStandardSection } from "./GoldStandardSection";
 import { LocationSection } from "./LocationSection";
 import { PremiumFooter } from "./PremiumFooter";
 import { Navbar } from "../Navbar";
-
+import { HeroSection } from "./HeroSection";
 export function PadiOpenWater() {
   return (
     <>

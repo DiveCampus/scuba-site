@@ -8,6 +8,7 @@ import WhatsAppButton from "../WhatsAppButton";
 import {
   getDivemasterHero,
 } from "@/services/DivemasterHeroService";
+import { PricingCard } from "../PricingCard";
 
 export function PadiDivemasterHero() {
 
@@ -147,26 +148,11 @@ export function PadiDivemasterHero() {
           </p>
 
           {/* PRICE */}
-          <div className="mt-12 bg-white/10 border border-white/20 rounded-3xl px-10 py-8">
-
-            <p className="text-sm text-white/40 line-through mb-3">
-
-              AED {data.old_price}
-
-            </p>
-
-            <h2 className="text-5xl font-semibold">
-
-              <span className="text-cyan-400 text-lg mr-2">
-
-                AED
-
-              </span>
-
-              {data.price}
-            </h2>
-
-          </div>
+          <PricingCard
+            className="mt-12"
+            price={data.price}
+            oldPrice={data.old_price}
+          />
 
           {/* BUTTONS */}
           <div className="mt-10 flex gap-4">

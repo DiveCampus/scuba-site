@@ -2,7 +2,6 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import { lazy, Suspense } from "react";
 
 import { Navbar } from "./components/Navbar";
-import { Hero } from "./components/Hero";
 import { DivingCourses } from "./components/DivingCourses";
 import { FeaturedExperiences } from "./components/FeaturedExperiences";
 import { Testimonials } from "./components/Testimonials";
@@ -17,6 +16,7 @@ import { Footer } from "./components/Footer";
 import { SEO } from "./components/SEO";
 import { getRouteSeo } from "./components/seoConfig";
 import Login from "./components/Login";
+import { Hero } from "./components/Hero";
 
 // Non-Home routes are code-split. They load on navigation, not on first paint.
 const AdminLogin = lazy(() => import("./components/admin/AdminLogin"));

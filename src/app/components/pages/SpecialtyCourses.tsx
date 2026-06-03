@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Navbar } from "../Navbar";
 import WhatsAppButton from "../WhatsAppButton";
+import { PricingCard } from "../PricingCard";
 
 export function SpecialtyCourses() {
   return (
@@ -78,37 +79,11 @@ export function SpecialtyCourses() {
           </p>
 
           {/* PRICE CARD */}
-          <div
-            className="mt-12 md:mt-16 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-12 py-8 shadow-xl"
-          >
-            {/* LABEL */}
-            <p
-              className="text-[12px] font-semibold text-white/45 mb-3 tracking-[3px] uppercase"
-            >
-              Starting From
+          <PricingCard className="mt-12 md:mt-16" price="799">
+            <p className="text-xs text-white/55 tracking-[1px] leading-relaxed">
+              Starting From · Flexible Courses · International Certification
             </p>
-
-            {/* PRICE */}
-            <p
-              className="text-5xl font-bold tracking-[1px] leading-none"
-            >
-              <span
-                className="text-cyan-400 text-lg tracking-[2px] font-medium mr-2"
-              >
-                AED
-              </span>
-
-              799
-            </p>
-
-            {/* SUBTEXT */}
-            <p
-              className="text-xs text-white/55 mt-5 tracking-[1px] leading-relaxed"
-            >
-              Flexible Courses · International
-              Certification
-            </p>
-          </div>
+          </PricingCard>
           {/* BUTTONS */}
           <div className="mt-10 md:mt-12 flex gap-5 flex-wrap justify-center">
 
