@@ -16,6 +16,7 @@ import { Footer } from "./components/Footer";
 
 import { SEO } from "./components/SEO";
 import { getRouteSeo } from "./components/seoConfig";
+import Login from "./components/Login";
 
 // Non-Home routes are code-split. They load on navigation, not on first paint.
 const AdminLogin = lazy(() => import("./components/admin/AdminLogin"));
@@ -73,10 +74,10 @@ function Home() {
   //
   // To restore: uncomment the three lines below.
   //
-  // const isLoggedIn = localStorage.getItem("auth") === "true";
-  // if (!isLoggedIn) {
-  //   return <Login onLogin={() => window.location.reload()} />;
-  // }
+  const isLoggedIn = localStorage.getItem("auth") === "true";
+  if (!isLoggedIn) {
+    return <Login onLogin={() => window.location.reload()} />;
+  }
   // ────────────────────────────────────────────────────────────────
 
   return (
