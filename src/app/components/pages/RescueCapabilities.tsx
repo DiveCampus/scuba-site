@@ -106,7 +106,7 @@ export function RescueCapabilities() {
     <>
 
       <section
-        className="py-32 bg-[#f4f7fb] relative overflow-hidden"
+        className="py-16 md:py-24 bg-[#f4f7fb] relative overflow-hidden"
         style={{
           fontFamily:
             "Harabara, sans-serif",
@@ -122,7 +122,7 @@ export function RescueCapabilities() {
         <div className="text-center mb-12 md:mb-16 px-6 relative z-10">
 
           {/* TITLE */}
-          <h2 className="text-3xl md:text-5xl font-semibold leading-[1.18] tracking-[1px] text-[#0a0e27]">
+          <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px] text-[#0a0e27]">
 
             {section.title}
 
@@ -137,7 +137,7 @@ export function RescueCapabilities() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="mt-5 max-w-3xl mx-auto text-[15px] md:text-[16px] text-gray-500 leading-relaxed tracking-[0.45px]">
+          <p className="mt-5 max-w-3xl mx-auto text-[15px] md:text-[16px] font-normal text-gray-500 leading-[1.7] tracking-[0.45px]">
 
             {section.description}
 
@@ -195,7 +195,7 @@ export function RescueCapabilities() {
                 </div>
 
                 {/* TITLE */}
-                <h3 className="font-semibold text-[#0a0e27] text-[18px] tracking-[0.6px] leading-[1.5] mb-4">
+                <h3 className="font-semibold text-[#0a0e27] text-[20px] md:text-[24px] tracking-[0.5px] leading-[1.2] mb-4">
 
                   {item.title}
 
@@ -242,7 +242,7 @@ export function RescueCapabilities() {
               </span>
 
               {/* TITLE */}
-              <h3 className="mt-6 font-semibold text-2xl tracking-[0.8px] leading-[1.45]">
+              <h3 className="mt-4 font-semibold text-[20px] md:text-[24px] tracking-[0.5px] leading-[1.2]">
 
                 {section.premium_title}
 

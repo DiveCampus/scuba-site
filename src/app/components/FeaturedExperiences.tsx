@@ -47,11 +47,11 @@ export function FeaturedExperiences() {
       {/* 🔥 DYNAMIC TEXT */}
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
         
-        <p className="text-white/80 text-xl mb-4 uppercase">
+        <p className="text-white/80 text-[12px] font-semibold tracking-[3px] uppercase mb-3">
           {data?.subtitle || "SPECIAL PROJECTS"}
         </p>
 
-        <h2 className="text-white text-4xl md:text-6xl font-bold max-w-5xl uppercase">
+        <h2 className="text-white text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] max-w-5xl uppercase mt-3">
           {data?.title || "LET’S MAKE YOUR EVENT OR PROJECT EXTRAORDINARY"}
         </h2>
 

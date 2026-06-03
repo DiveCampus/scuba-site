@@ -110,7 +110,7 @@ export function EliteFooter() {
               {/* TITLE */}
 
               <h4
-                className="text-[10px] tracking-[4px] text-white/60 mb-8"
+                className="text-[12px] font-semibold tracking-[3px] uppercase text-white/60 mb-3"
               >
 
                 {group.title}
@@ -292,7 +292,7 @@ export function EliteFooter() {
           {/* COPYRIGHT */}
 
           <p
-            className="text-[11px] tracking-[2px] text-white/55 text-center"
+            className="text-[12px] font-semibold tracking-[3px] text-white/55 text-center"
           >
 
             {

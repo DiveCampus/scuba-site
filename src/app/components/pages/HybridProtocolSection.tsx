@@ -102,7 +102,7 @@ export function HybridProtocolSection() {
   return (
 
     <section
-      className="py-32 bg-[#f5f7fa]"
+      className="py-16 md:py-24 bg-[#f5f7fa]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -112,13 +112,13 @@ export function HybridProtocolSection() {
       {/* HEADER */}
       <div className="text-center max-w-4xl mx-auto px-6 mb-12 md:mb-16">
 
-        <p className="text-[10px] tracking-[4px] text-cyan-500 mb-5">
+        <p className="text-[12px] font-semibold tracking-[3px] text-cyan-500 mb-3">
 
           {section?.top_label}
 
         </p>
 
-        <h2 className="text-3xl md:text-5xl font-bold text-[#0a0e27] leading-[1.2] tracking-[1px]">
+        <h2 className="text-[36px] md:text-[52px] font-semibold text-[#0a0e27] leading-[1.1] tracking-[1px]">
 
           {section?.title}{" "}
 
@@ -130,7 +130,7 @@ export function HybridProtocolSection() {
 
         </h2>
 
-        <p className="mt-5 text-[15px] md:text-[16px] leading-relaxed tracking-[0.5px] text-gray-500 max-w-2xl mx-auto">
+        <p className="mt-5 text-[15px] md:text-[16px] font-normal leading-[1.7] tracking-[0.5px] text-gray-500 max-w-2xl mx-auto">
 
           {section?.description}
 
@@ -184,7 +184,7 @@ export function HybridProtocolSection() {
           >
 
             {/* TAG */}
-            <p className="text-[9px] tracking-[3px] text-cyan-500 mb-6">
+            <p className="text-[12px] font-semibold tracking-[3px] text-cyan-500 mb-3">
 
               {card.tag}
 
@@ -202,14 +202,14 @@ export function HybridProtocolSection() {
             </div>
 
             {/* TITLE */}
-            <h3 className="text-[17px] font-semibold text-[#0a0e27] leading-[1.5] mb-4">
+            <h3 className="text-[20px] md:text-[24px] font-semibold text-[#0a0e27] leading-[1.2] tracking-[0.5px] mb-4">
 
               {card.title}
 
             </h3>
 
             {/* DESC */}
-            <p className="text-[13px] text-gray-500 leading-relaxed">
+            <p className="text-[14px] md:text-[15px] text-gray-500 leading-relaxed">
 
               {card.description}
 
@@ -227,13 +227,13 @@ export function HybridProtocolSection() {
             size={22}
           />
 
-          <h3 className="text-[18px] font-semibold text-[#0a0e27] mb-4">
+          <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-[#0a0e27] mb-4">
 
             {section?.cta_title}
 
           </h3>
 
-          <p className="text-[13px] text-gray-500 leading-relaxed mb-6">
+          <p className="text-[14px] md:text-[15px] text-gray-500 leading-relaxed mb-6">
 
             {section?.cta_description}
 

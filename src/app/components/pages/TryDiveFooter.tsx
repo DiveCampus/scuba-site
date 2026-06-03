@@ -37,7 +37,7 @@ export function TryDiveFooter() {
 
             {/* DOWNLOAD */}
             <div>
-              <h4 className="text-white text-[11px] tracking-[2px] font-semibold mb-6">
+              <h4 className="text-white text-[12px] font-semibold tracking-[3px] uppercase mb-6">
                 DOWNLOAD APP
               </h4>
 
@@ -82,7 +82,7 @@ export function TryDiveFooter() {
 
             {/* CONNECT */}
             <div>
-              <h4 className="text-white text-[11px] tracking-[2px] font-semibold mb-6">
+              <h4 className="text-white text-[12px] font-semibold tracking-[3px] uppercase mb-6">
                 CONNECT
               </h4>
 
@@ -108,7 +108,7 @@ export function TryDiveFooter() {
 
             {/* INFO */}
             <div>
-              <h4 className="text-white text-[11px] tracking-[2px] font-semibold mb-6">
+              <h4 className="text-white text-[12px] font-semibold tracking-[3px] uppercase mb-6">
                 INFORMATION
               </h4>
 
@@ -135,7 +135,7 @@ export function TryDiveFooter() {
 
             {/* EXPERIENCES */}
             <div>
-              <h4 className="text-white text-[11px] tracking-[2px] font-semibold mb-6">
+              <h4 className="text-white text-[12px] font-semibold tracking-[3px] uppercase mb-6">
                 EXPERIENCES
               </h4>
 
@@ -162,7 +162,7 @@ export function TryDiveFooter() {
 
             {/* COURSES */}
             <div>
-              <h4 className="text-white text-[11px] tracking-[2px] font-semibold mb-6">
+              <h4 className="text-white text-[12px] font-semibold tracking-[3px] uppercase mb-6">
                 DIVING COURSES
               </h4>
 

@@ -118,7 +118,7 @@ export function EnvironmentSection() {
   return (
 
     <section
-      className="bg-[#02131d] text-white py-32 relative overflow-hidden"
+      className="bg-[#02131d] text-white py-16 md:py-24 relative overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -134,7 +134,7 @@ export function EnvironmentSection() {
       <div className="relative max-w-[1120px] mx-auto text-center px-6">
 
         {/* TITLE */}
-        <h2 className="text-3xl md:text-5xl font-semibold leading-[1.18] tracking-[1.2px]">
+        <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px]">
 
           {section.title}{" "}
 
@@ -147,14 +147,14 @@ export function EnvironmentSection() {
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="text-white/55 text-[15px] md:text-[16px] mt-5 max-w-[760px] mx-auto leading-relaxed tracking-[0.5px]">
+        <p className="text-white/55 text-[15px] md:text-[16px] font-normal mt-5 max-w-[760px] mx-auto leading-[1.7] tracking-[0.5px]">
 
           {section.description}
 
         </p>
 
         {/* CARDS */}
-        <div className="grid md:grid-cols-2 gap-8 mt-20">
+        <div className="grid md:grid-cols-2 gap-8 mt-8 md:mt-12">
 
           {cards.map((card, i) => (
 
@@ -170,14 +170,14 @@ export function EnvironmentSection() {
             >
 
               {/* LABEL */}
-              <p className="text-[10px] text-cyan-400 tracking-[3.2px] mb-6">
+              <p className="text-[12px] font-semibold text-cyan-400 tracking-[3px] uppercase mb-3">
 
                 {card.label}
 
               </p>
 
               {/* TITLE */}
-              <h3 className="text-2xl font-semibold tracking-[0.9px] leading-[1.5]">
+              <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2]">
 
                 {card.title}
 
@@ -224,7 +224,7 @@ export function EnvironmentSection() {
       </div>
 
       {/* FOOTER */}
-      <div className="relative mt-28 border-t border-white/10 pt-16 px-6">
+      <div className="relative mt-12 md:mt-16 border-t border-white/10 pt-16 px-6">
 
         <div className="max-w-[1150px] mx-auto grid md:grid-cols-5 gap-12 text-sm">
 
@@ -235,7 +235,7 @@ export function EnvironmentSection() {
                 key={group.id}
               >
 
-                <p className="text-white/50 text-[10px] tracking-[3.2px] mb-6">
+                <p className="text-white/50 text-[12px] font-semibold tracking-[3px] uppercase mb-3">
 
                   {group.title}
 
@@ -270,7 +270,7 @@ export function EnvironmentSection() {
         </div>
 
         {/* COPYRIGHT */}
-        <div className="text-center text-white/35 text-[11px] tracking-[1.2px] mt-20 leading-relaxed">
+        <div className="text-center text-white/35 text-[11px] tracking-[1.2px] mt-12 md:mt-16 leading-relaxed">
 
           {section.footer_text}
 

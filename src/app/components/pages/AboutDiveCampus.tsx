@@ -130,14 +130,14 @@ export function AboutDiveCampus() {
 
               {/* NAME */}
               <h3
-                className="relative z-10 text-[12px] sm:text-[14px] md:text-[16px] lg:text-[18px] tracking-[2px] md:tracking-[3px] font-semibold uppercase leading-[1.4] text-center"
+                className="relative z-10 text-[14px] md:text-[18px] font-semibold tracking-[0.5px] leading-[1.2] uppercase text-center"
               >
                 {member.name}
               </h3>
 
               {/* ROLE */}
               <p
-                className="relative z-10 text-cyan-300 text-[8px] sm:text-[9px] md:text-[10px] tracking-[2px] md:tracking-[3px] uppercase mt-2 md:mt-3 text-center leading-relaxed px-2"
+                className="relative z-10 text-cyan-300 text-[12px] font-semibold tracking-[3px] uppercase mt-3 text-center px-2"
               >
                 {member.role}
               </p>

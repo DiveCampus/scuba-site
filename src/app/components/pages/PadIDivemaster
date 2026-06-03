@@ -42,18 +42,18 @@ export function PadIDivemaster() {
         </div>
 
         {/* SUB TEXT */}
-        <p className="text-xs tracking-[3px] text-white/60 mb-4">
+        <p className="text-[12px] font-semibold tracking-[3px] text-white/60 mb-3">
           PROFESSIONAL LEVEL | LEAD & ASSIST DIVERS
         </p>
 
         {/* MAIN HEADING */}
-        <h1 className="text-4xl md:text-6xl font-bold leading-tight max-w-4xl">
+        <h1 className="text-4xl md:text-6xl font-semibold tracking-[1px] leading-[1.1] max-w-4xl">
           BECOME A{" "}
           <span className="text-cyan-400">PROFESSIONAL DIVEMASTER</span>
         </h1>
 
         {/* DESCRIPTION */}
-        <p className="mt-4 text-white/70 max-w-2xl">
+        <p className="mt-5 text-[14px] md:text-[15px] text-white/70 leading-relaxed max-w-2xl">
           Start your professional diving journey. Learn to guide divers,
           assist instructors, and lead real underwater experiences.
         </p>

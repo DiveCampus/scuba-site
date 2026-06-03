@@ -66,7 +66,7 @@ export function MasterScubaCTA() {
   return (
 
     <section
-      className="relative py-28 overflow-hidden bg-gradient-to-r from-[#081c2c] to-[#0d2f45] text-white"
+      className="relative py-16 md:py-24 overflow-hidden bg-gradient-to-r from-[#081c2c] to-[#0d2f45] text-white"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -100,7 +100,7 @@ export function MasterScubaCTA() {
       >
 
         {/* SMALL TITLE */}
-        <p className="text-[11px] md:text-[12px] text-white/55 tracking-[3px] uppercase">
+        <p className="text-[12px] font-semibold text-white/55 tracking-[3px] uppercase">
 
           {
             section.top_text
@@ -109,7 +109,7 @@ export function MasterScubaCTA() {
         </p>
 
         {/* MAIN TITLE */}
-        <h2 className="text-3xl md:text-5xl font-semibold mt-6 leading-[1.18] tracking-[1px]">
+        <h2 className="text-[36px] md:text-[52px] font-semibold mt-3 leading-[1.1] tracking-[1px]">
 
           {
             section.title
@@ -127,7 +127,7 @@ export function MasterScubaCTA() {
         </p>
 
         {/* BUTTONS */}
-        <div className="mt-12 flex items-center justify-center gap-4 flex-wrap">
+        <div className="mt-10 md:mt-12 flex items-center justify-center gap-4 flex-wrap">
 
           {/* PRIMARY BUTTON */}
           <a

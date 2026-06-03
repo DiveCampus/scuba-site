@@ -59,17 +59,17 @@ export function DiveConfidenceFAQ() {
       </Helmet>
 
       <section
-        className="py-28 bg-[#f7f9fc]"
+        className="py-16 md:py-24 bg-[#f7f9fc]"
         style={{ fontFamily: "Harabara, sans-serif" }}
       >
 
-        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 px-6">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-16 px-6">
 
           {/* LEFT SIDE */}
           <div className="max-w-md">
 
             {/* TITLE */}
-            <h2 className="text-4xl md:text-5xl leading-[1.05] tracking-[-1px] font-semibold text-[#0a0e27]">
+            <h2 className="text-[36px] md:text-[52px] leading-[1.1] tracking-[1px] font-semibold text-[#0a0e27]">
 
               Dive with <br />
 
@@ -157,7 +157,7 @@ export function DiveConfidenceFAQ() {
                     className="w-full flex items-center justify-between px-6 py-5 text-left"
                   >
 
-                    <h3 className="text-[15px] text-[#243447] font-medium tracking-[-0.2px]">
+                    <h3 className="text-[15px] md:text-[16px] text-[#243447] font-semibold tracking-[0.5px]">
                       {item.q}
                     </h3>
 

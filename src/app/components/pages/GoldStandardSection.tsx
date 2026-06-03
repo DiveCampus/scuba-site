@@ -66,21 +66,21 @@ export function GoldStandardSection() {
 
   return (
     <section
-      className="py-32 bg-gradient-to-b from-[#f5f7fa] to-[#eef2f6] overflow-hidden"
+      className="py-16 md:py-24 bg-gradient-to-b from-[#f5f7fa] to-[#eef2f6] overflow-hidden"
     >
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 px-6 items-center">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-16 px-6 items-center">
 
         {/* LEFT */}
         <div>
 
-          <div className="inline-block px-4 py-2 text-[11px] tracking-[3px] rounded-full border border-cyan-400/30 text-cyan-500 mb-6">
+          <div className="inline-block px-4 py-2 text-[12px] font-semibold tracking-[3px] uppercase rounded-full border border-cyan-400/30 text-cyan-500 mb-3">
 
             {section.badge}
 
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0a0e27] mb-6 leading-tight">
+          <h2 className="text-[36px] md:text-[52px] font-semibold text-[#0a0e27] mt-3 mb-5 leading-[1.1] tracking-[1px]">
 
             {section.title}{" "}
 
@@ -94,7 +94,7 @@ export function GoldStandardSection() {
 
           </h2>
 
-          <p className="text-gray-500 max-w-xl mb-10 text-sm md:text-base leading-relaxed">
+          <p className="text-gray-500 max-w-xl mt-5 mb-8 md:mb-12 text-[14px] md:text-[15px] leading-relaxed">
 
             {
               section.description
@@ -116,7 +116,7 @@ export function GoldStandardSection() {
 
             </div>
 
-            <h3 className="text-lg font-semibold text-[#0a0e27] mb-3 mt-3">
+            <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-[#0a0e27] mb-4 mt-3">
 
               {
                 section.card_title
@@ -124,7 +124,7 @@ export function GoldStandardSection() {
 
             </h3>
 
-            <p className="text-sm text-gray-600 leading-relaxed mb-6">
+            <p className="text-[14px] md:text-[15px] text-gray-600 leading-relaxed mb-6">
 
               {
                 section.card_description

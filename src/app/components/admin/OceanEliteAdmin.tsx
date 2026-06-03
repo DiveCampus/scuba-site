@@ -215,7 +215,7 @@ export default function OceanEliteAdmin() {
 
                 Real stories from divers
                 who pushed their limits
-                with the Nemo Advanced
+                with the DiveCampus Advanced
                 Team.
 
               </p>

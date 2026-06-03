@@ -64,7 +64,7 @@ export function TrainingComparisonSection() {
   return (
 
     <section
-      className="relative py-36 overflow-hidden bg-[#02131d] text-white"
+      className="relative py-16 md:py-24 overflow-hidden bg-[#02131d] text-white"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -77,10 +77,10 @@ export function TrainingComparisonSection() {
       <div className="relative max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center max-w-5xl mx-auto mb-12 md:mb-16">
+        <div className="text-center max-w-5xl mx-auto mb-8 md:mb-12">
 
           {/* TITLE */}
-          <h2 className="text-5xl md:text-6xl font-bold leading-[1.1] tracking-[-2px] mb-5">
+          <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px] mb-5">
 
             {section?.title}{" "}
 
@@ -95,7 +95,7 @@ export function TrainingComparisonSection() {
           </h2>
 
           {/* DESC */}
-          <p className="text-white/55 text-[17px] leading-relaxed max-w-4xl mx-auto">
+          <p className="text-white/55 text-[15px] md:text-[16px] font-normal leading-[1.7] max-w-4xl mx-auto">
 
             {section?.description}
 
@@ -109,19 +109,19 @@ export function TrainingComparisonSection() {
           {/* HEAD */}
           <div className="grid grid-cols-3 border-b border-white/10 bg-white/[0.02]">
 
-            <div className="p-8 text-[10px] tracking-[4px] text-white/35">
+            <div className="p-8 text-[12px] font-semibold tracking-[3px] text-white/35">
 
               PROTOCOL METRIC
 
             </div>
 
-            <div className="p-8 text-center text-[10px] tracking-[4px] text-white/35">
+            <div className="p-8 text-center text-[12px] font-semibold tracking-[3px] text-white/35">
 
               {section?.left_heading}
 
             </div>
 
-            <div className="p-8 text-center text-[10px] tracking-[4px] text-cyan-400">
+            <div className="p-8 text-center text-[12px] font-semibold tracking-[3px] text-cyan-400">
 
               {section?.right_heading}
 

@@ -76,7 +76,7 @@ export function OceanEliteSection() {
   return (
 
     <section
-      className="py-32 bg-[#f5f7fa]"
+      className="py-16 md:py-24 bg-[#f5f7fa]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -86,9 +86,9 @@ export function OceanEliteSection() {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
+        <div className="text-center max-w-4xl mx-auto mb-8 md:mb-12">
 
-          <h2 className="text-4xl md:text-6xl font-bold text-[#07142b] leading-[1.15] tracking-[-1px] mb-5">
+          <h2 className="text-[36px] md:text-[52px] font-semibold text-[#07142b] leading-[1.1] tracking-[1px] mb-5">
 
             {section?.title}
 
@@ -104,7 +104,7 @@ export function OceanEliteSection() {
 
           </h2>
 
-          <p className="text-[16px] leading-relaxed text-gray-500 max-w-3xl mx-auto">
+          <p className="text-[15px] md:text-[16px] font-normal leading-[1.7] text-gray-500 max-w-3xl mx-auto mt-5">
 
             {section?.description}
 
@@ -121,7 +121,7 @@ export function OceanEliteSection() {
             {/* MAIN CARD */}
             <div className="bg-white rounded-[32px] p-14 shadow-sm border border-gray-200 mb-8">
 
-              <h3 className="text-4xl font-bold text-[#07142b] leading-[1.3] text-center mb-8">
+              <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-[#07142b] text-center mb-4">
 
                 Dont Take Our
                 <br />
@@ -129,11 +129,11 @@ export function OceanEliteSection() {
 
               </h3>
 
-              <p className="text-center text-gray-500 leading-relaxed max-w-md mx-auto mb-12">
+              <p className="text-center text-gray-500 text-[14px] md:text-[15px] leading-relaxed max-w-md mx-auto mt-4 mb-10 md:mb-12">
 
                 Real stories from divers
                 who pushed their limits
-                with the Nemo Advanced
+                with the DiveCampus Advanced
                 Team.
 
               </p>
@@ -196,7 +196,7 @@ export function OceanEliteSection() {
 
                   </h4>
 
-                  <p className="text-gray-500 leading-relaxed text-[14px]">
+                  <p className="text-gray-500 leading-relaxed text-[14px] md:text-[15px]">
 
                     {item.review_text}
 
@@ -213,7 +213,7 @@ export function OceanEliteSection() {
           {/* FAQ */}
           <div>
 
-            <h3 className="text-3xl font-bold text-[#07142b] mb-10">
+            <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-[#07142b] mb-8 md:mb-12">
 
               Tactical Briefing
 

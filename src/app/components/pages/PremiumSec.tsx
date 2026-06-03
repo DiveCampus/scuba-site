@@ -106,7 +106,7 @@ export function PremiumSec() {
             {/* DOWNLOAD */}
             <div>
 
-              <h4 className="text-[10px] tracking-[3.5px] text-gray-400 mb-6">
+              <h4 className="text-[12px] font-semibold tracking-[3px] text-gray-400 mb-6">
 
                 {
                   groups[0]
@@ -167,7 +167,7 @@ export function PremiumSec() {
             {/* CONNECT */}
             <div>
 
-              <h4 className="text-[10px] tracking-[3.5px] text-gray-400 mb-6">
+              <h4 className="text-[12px] font-semibold tracking-[3px] text-gray-400 mb-6">
 
                 CONNECT
 
@@ -209,7 +209,7 @@ export function PremiumSec() {
 
                 <div key={group.id}>
 
-                  <h4 className="text-[10px] tracking-[3.5px] text-gray-400 mb-6">
+                  <h4 className="text-[12px] font-semibold tracking-[3px] text-gray-400 mb-6">
 
                     {group.group_title}
 
@@ -245,7 +245,7 @@ export function PremiumSec() {
           </div>
 
           {/* DIVIDER */}
-          <div className="border-t border-white/10 my-14" />
+          <div className="border-t border-white/10 my-10" />
 
           {/* BOTTOM */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-8">

@@ -87,18 +87,18 @@ export function Footer() {
 
       <div className="relative max-w-[1400px] mx-auto px-6 py-20">
 
-        <div className="grid lg:grid-cols-2 gap-16">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-16">
 
           {/* LEFT */}
           <div className="space-y-6">
 
             <img src="/logow.svg" alt="UAE Dive - PADI Scuba Diving Dubai" className="w-32" loading="lazy" decoding="async" />
 
-            <p className="text-white/70 max-w-md">
+            <p className="text-white/70 text-[14px] md:text-[15px] leading-relaxed max-w-md">
               {footer.description || "No description"}
             </p>
 
-            <div className="space-y-3 text-white/70 text-sm">
+            <div className="space-y-3 text-white/70 text-[14px] md:text-[15px]">
 
               <div className="flex gap-3 items-center">
                 <Mail className="text-cyan-300" size={16} />
@@ -163,12 +163,12 @@ export function Footer() {
                 >
 
                   <div className="p-3">
-                    <h4 className="text-white text-xs font-semibold flex items-center gap-2">
+                    <h4 className="text-white text-[12px] font-semibold tracking-[3px] uppercase flex items-center gap-2">
                       <MapPin className="text-cyan-300" size={14} />
                       {loc.title}
                     </h4>
 
-                    <p className="text-white/50 text-[11px] mt-1">
+                    <p className="text-white/50 text-[14px] md:text-[15px] leading-relaxed mt-1">
                       {loc.address}
                     </p>
                   </div>

@@ -76,12 +76,12 @@ export function OpenDiver() {
         {/* CONTENT */}
         <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 text-center">
           {/* BADGE */}
-          <div className="mb-8 rounded-full border border-cyan-300/40 px-6 py-2.5 text-[11px] tracking-[2.8px] text-cyan-200 backdrop-blur-md">
+          <div className="mb-8 rounded-full border border-cyan-300/40 px-6 py-2.5 text-[12px] font-semibold tracking-[3px] text-cyan-200 backdrop-blur-md uppercase">
             {course?.badge}
           </div>
 
           {/* TITLE */}
-          <h1 className="max-w-5xl text-4xl font-bold leading-[1.18] tracking-[1px] md:text-6xl">
+          <h1 className="max-w-5xl text-4xl font-semibold leading-[1.1] tracking-[1px] md:text-6xl">
             {course?.title}{" "}
             <span className="text-cyan-400">
               {
@@ -116,7 +116,7 @@ export function OpenDiver() {
           </div>
 
           {/* BUTTONS */}
-          <div className="mt-11 flex flex-col items-center gap-5">
+          <div className="mt-10 md:mt-12 flex flex-col items-center gap-5">
             <button
               onClick={() =>
                 navigate(`/booking?course=${bookingCourse}`)
@@ -141,7 +141,7 @@ export function OpenDiver() {
           </div>
 
           {/* FEATURES */}
-          <div className="mt-14 flex flex-wrap justify-center gap-10 text-[11px] tracking-[1.3px] text-white/55">
+          <div className="mt-12 md:mt-16 flex flex-wrap justify-center gap-10 text-[11px] tracking-[1.3px] text-white/55">
             {features.map(
               (feature, i) => (
                 <span key={i}>

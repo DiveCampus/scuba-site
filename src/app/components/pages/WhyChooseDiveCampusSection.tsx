@@ -31,7 +31,7 @@ const iconMap: any = {
   ),
 };
 
-export function WhyChooseNemoSection() {
+export function WhyChooseDiveCampusSection() {
   const [section, setSection] =
     useState<any>(null);
 
@@ -55,7 +55,7 @@ export function WhyChooseNemoSection() {
   return (
     <>
       <section
-        className="relative py-32 bg-[#02131d] text-white overflow-hidden"
+        className="relative py-16 md:py-24 bg-[#02131d] text-white overflow-hidden"
         style={{
           fontFamily:
             "Harabara, sans-serif",
@@ -67,7 +67,7 @@ export function WhyChooseNemoSection() {
 
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 px-6 items-center">
+        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-16 px-6 items-center">
 
           {/* LEFT CONTENT */}
           <div>
@@ -82,7 +82,7 @@ export function WhyChooseNemoSection() {
                 opacity: 1,
                 y: 0,
               }}
-              className="text-cyan-400 tracking-[4px] text-[11px] mb-4 uppercase"
+              className="text-cyan-400 tracking-[3px] text-[12px] font-semibold mb-3 uppercase"
             >
               {section.tag}
             </motion.p>
@@ -100,7 +100,7 @@ export function WhyChooseNemoSection() {
               transition={{
                 delay: 0.1,
               }}
-              className="text-4xl md:text-5xl font-bold mb-6 leading-tight"
+              className="text-[36px] md:text-[52px] font-semibold mb-5 leading-[1.1] tracking-[1px]"
             >
 
               {section.title}{" "}
@@ -128,7 +128,7 @@ export function WhyChooseNemoSection() {
               transition={{
                 delay: 0.15,
               }}
-              className="text-white/60 mb-10 max-w-lg text-sm md:text-base leading-relaxed"
+              className="text-white/60 mb-8 md:mb-12 max-w-lg text-[14px] md:text-[15px] leading-relaxed"
             >
               {
                 section.description
@@ -175,7 +175,7 @@ export function WhyChooseNemoSection() {
                     <div>
 
                       <h3
-                        className="font-semibold mb-1 text-white"
+                        className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] mb-1 text-white"
                       >
                         {
                           item.title
@@ -183,7 +183,7 @@ export function WhyChooseNemoSection() {
                       </h3>
 
                       <p
-                        className="text-sm text-white/60 leading-relaxed"
+                        className="text-[14px] md:text-[15px] text-white/60 leading-relaxed"
                       >
                         {
                           item.description

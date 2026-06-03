@@ -70,7 +70,7 @@ export function DiveTrainingShowcase() {
   return (
 
     <section
-      className="relative py-32 bg-gradient-to-b from-[#031421] to-[#02101a] text-white overflow-hidden"
+      className="relative py-16 md:py-24 bg-gradient-to-b from-[#031421] to-[#02101a] text-white overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -82,7 +82,7 @@ export function DiveTrainingShowcase() {
 
       <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
-      <div className="relative max-w-[1120px] mx-auto grid md:grid-cols-2 gap-16 items-center px-6">
+      <div className="relative max-w-[1120px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center px-6">
 
         {/* =========================================
             LEFT CONTENT
@@ -90,14 +90,14 @@ export function DiveTrainingShowcase() {
         <div>
 
           {/* BADGE */}
-          <div className="inline-block px-5 py-2 text-[10px] tracking-[3px] border border-cyan-400/30 text-cyan-400 rounded-full mb-7">
+          <div className="inline-block px-5 py-2 text-[12px] font-semibold tracking-[3px] uppercase border border-cyan-400/30 text-cyan-400 rounded-full mb-3">
 
             {section.badge}
 
           </div>
 
           {/* TITLE */}
-          <h2 className="text-3xl md:text-5xl font-semibold leading-[1.18] tracking-[1px]">
+          <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px]">
 
             {section.title}
 
@@ -114,7 +114,7 @@ export function DiveTrainingShowcase() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="text-[15px] md:text-[16px] text-white/60 mt-5 max-w-[520px] leading-relaxed tracking-[0.45px]">
+          <p className="text-[15px] md:text-[16px] font-normal text-white/60 mt-5 max-w-[520px] leading-[1.7] tracking-[0.45px]">
 
             {
               section.description
@@ -128,7 +128,7 @@ export function DiveTrainingShowcase() {
           <div className="mt-10 border border-yellow-400/30 rounded-3xl p-7 bg-[#02131d]/90 backdrop-blur-xl shadow-[0_20px_60px_rgba(0,0,0,0.35)]">
 
             {/* CARD TITLE */}
-            <h4 className="text-yellow-400 text-[12px] tracking-[2px] uppercase font-semibold">
+            <h4 className="text-yellow-400 text-[12px] font-semibold tracking-[3px] uppercase">
 
               {
                 section.card_title

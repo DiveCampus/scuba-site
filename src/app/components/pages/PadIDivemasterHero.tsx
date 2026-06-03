@@ -118,14 +118,14 @@ export function PadiDivemasterHero() {
           </div>
 
           {/* SUBTITLE */}
-          <p className="text-white/60 uppercase tracking-[4px] mb-5">
+          <p className="text-white/60 uppercase tracking-[3px] font-semibold text-[12px] mb-3">
 
             {data.subtitle}
 
           </p>
 
           {/* TITLE */}
-          <h1 className="text-4xl md:text-6xl font-bold max-w-5xl">
+          <h1 className="text-4xl md:text-6xl font-semibold tracking-[1px] leading-[1.1] max-w-5xl">
 
             {data.title}{" "}
 
@@ -140,7 +140,7 @@ export function PadiDivemasterHero() {
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="mt-6 text-white/70 max-w-2xl">
+          <p className="mt-5 text-[14px] md:text-[15px] text-white/70 leading-relaxed max-w-2xl">
 
             {data.description}
 
@@ -155,7 +155,7 @@ export function PadiDivemasterHero() {
 
             </p>
 
-            <h2 className="text-5xl font-bold">
+            <h2 className="text-5xl font-semibold">
 
               <span className="text-cyan-400 text-lg mr-2">
 

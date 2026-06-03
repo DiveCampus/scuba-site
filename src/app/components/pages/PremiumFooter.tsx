@@ -79,7 +79,7 @@ export function PremiumFooter() {
           {/* APPS */}
           <div>
 
-            <h4 className="text-[11px] tracking-[3px] text-gray-400 mb-5">
+            <h4 className="text-[12px] font-semibold tracking-[3px] text-gray-400 mb-5">
 
               DOWNLOAD APP
 
@@ -110,7 +110,7 @@ export function PremiumFooter() {
           {/* CONNECT */}
           <div>
 
-            <h4 className="text-[11px] tracking-[3px] text-gray-400 mb-5">
+            <h4 className="text-[12px] font-semibold tracking-[3px] text-gray-400 mb-5">
 
               CONNECT
 
@@ -144,7 +144,7 @@ export function PremiumFooter() {
           {/* INFO */}
           <div>
 
-            <h4 className="text-[11px] tracking-[3px] text-gray-400 mb-5">
+            <h4 className="text-[12px] font-semibold tracking-[3px] text-gray-400 mb-5">
 
               INFORMATION
 
@@ -176,7 +176,7 @@ export function PremiumFooter() {
           {/* EXPERIENCES */}
           <div>
 
-            <h4 className="text-[11px] tracking-[3px] text-gray-400 mb-5">
+            <h4 className="text-[12px] font-semibold tracking-[3px] text-gray-400 mb-5">
 
               EXPERIENCES
 
@@ -208,7 +208,7 @@ export function PremiumFooter() {
           {/* COURSES */}
           <div>
 
-            <h4 className="text-[11px] tracking-[3px] text-gray-400 mb-5">
+            <h4 className="text-[12px] font-semibold tracking-[3px] text-gray-400 mb-5">
 
               DIVING COURSES
 

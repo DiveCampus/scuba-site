@@ -108,7 +108,7 @@
               opacity: 1,
               y: 0,
             }}
-            className="text-4xl md:text-6xl font-bold leading-tight max-w-4xl"
+            className="text-4xl md:text-6xl font-semibold leading-[1.1] max-w-4xl"
           >
             {hero.title}{" "}
 

@@ -49,14 +49,14 @@ export function SpecialtyCourses() {
           </div>
 
           {/* SUB TEXT */}
-          <p className="text-[11px] tracking-[4px] text-white/55 mb-5 uppercase">
+          <p className="text-[12px] font-semibold tracking-[3px] text-white/55 mb-3 uppercase">
 
             EXPAND YOUR SKILLS · MASTER NEW ADVENTURES
 
           </p>
 
           {/* MAIN HEADING */}
-          <h1 className="text-4xl md:text-6xl font-bold leading-[1.18] tracking-[1px] max-w-5xl">
+          <h1 className="text-4xl md:text-6xl font-semibold leading-[1.1] tracking-[1px] max-w-5xl">
 
             EXPLORE{" "}
 
@@ -79,11 +79,11 @@ export function SpecialtyCourses() {
 
           {/* PRICE CARD */}
           <div
-            className="mt-14 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-12 py-8 shadow-xl"
+            className="mt-12 md:mt-16 bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl px-12 py-8 shadow-xl"
           >
             {/* LABEL */}
             <p
-              className="text-xs text-white/45 mb-3 tracking-[2px] uppercase"
+              className="text-[12px] font-semibold text-white/45 mb-3 tracking-[3px] uppercase"
             >
               Starting From
             </p>
@@ -110,7 +110,7 @@ export function SpecialtyCourses() {
             </p>
           </div>
           {/* BUTTONS */}
-          <div className="mt-11 flex gap-5 flex-wrap justify-center">
+          <div className="mt-10 md:mt-12 flex gap-5 flex-wrap justify-center">
 
             {/* PRIMARY BUTTON */}
             <button className="px-9 py-3.5 bg-cyan-400 text-black font-semibold rounded-xl tracking-[1px] hover:scale-105 transition duration-300 shadow-lg">
@@ -127,7 +127,7 @@ export function SpecialtyCourses() {
           </div>
 
           {/* FEATURES */}
-          <div className="mt-14 flex gap-10 text-white/55 text-[11px] tracking-[1.3px] flex-wrap justify-center">
+          <div className="mt-12 md:mt-16 flex gap-10 text-white/55 text-[11px] tracking-[1.3px] flex-wrap justify-center">
 
             <span>✔ Night Diving</span>
 

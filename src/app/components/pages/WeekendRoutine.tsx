@@ -33,7 +33,7 @@ export function WeekendRoutine() {
     return (
         <>
             <section
-                className="relative overflow-hidden py-24 bg-[#071c2d]"
+                className="relative overflow-hidden py-16 md:py-24 bg-[#071c2d]"
                 style={{ fontFamily: "Harabara, sans-serif" }}
             >
 
@@ -48,14 +48,14 @@ export function WeekendRoutine() {
                     {/* HEADER */}
                     <div className="text-center px-6">
 
-                        <h2 className="text-3xl md:text-5xl font-semibold tracking-[-1px] text-white leading-[1.1]">
+                        <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] text-white leading-[1.1]">
                             YOUR NEW FAVORITE{" "}
                             <span className="text-cyan-400">
                                 WEEKEND ROUTINE
                             </span>
                         </h2>
 
-                        <p className="mt-5 text-white/45 text-sm max-w-2xl mx-auto leading-[1.7]">
+                        <p className="mt-5 text-white/45 text-[15px] md:text-[16px] font-normal max-w-2xl mx-auto leading-[1.7]">
                             Trade the mall for the ocean. Grab a friend, hop on the boat,
                             and let's make some memories. Sun, sea, and a whole lot of laughs.
                         </p>
@@ -64,7 +64,7 @@ export function WeekendRoutine() {
 
                     {/* IMAGE STRIP */}
                     {/* IMAGE STRIP */}
-                    <div className="relative mt-16 overflow-hidden">
+                    <div className="relative mt-8 md:mt-12 overflow-hidden">
 
                         {/* LEFT FADE */}
                         <div className="absolute left-0 top-0 z-20 h-full w-24 bg-gradient-to-r from-[#071c2d] to-transparent" />
@@ -119,7 +119,7 @@ export function WeekendRoutine() {
                         initial={{ opacity: 0, y: 40 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
-                        className="mt-20 max-w-[470px] mx-auto px-6"
+                        className="mt-12 md:mt-16 max-w-[470px] mx-auto px-6"
                     >
 
                         <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-10 text-center shadow-[0_20px_80px_rgba(0,0,0,0.45)]">
@@ -130,12 +130,12 @@ export function WeekendRoutine() {
                             </div>
 
                             {/* TITLE */}
-                            <h3 className="text-white text-[22px] font-semibold tracking-[-0.5px] leading-[1.3]">
+                            <h3 className="text-white text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2]">
                                 THE PERFECT GIFT FOR BIRTHDAYS & ANNIVERSARIES
                             </h3>
 
                             {/* DESC */}
-                            <p className="mt-4 text-white/50 text-sm leading-[1.7] max-w-md mx-auto">
+                            <p className="mt-4 text-white/50 text-[14px] md:text-[15px] leading-relaxed max-w-md mx-auto">
                                 Want to surprise someone? A scuba diving experience is a gift
                                 they will never forget. We will plan an underwater surprise.
                             </p>
@@ -152,7 +152,7 @@ export function WeekendRoutine() {
                     </motion.div>
 
                     {/* CTA */}
-                    <div className="flex justify-center mt-14">
+                    <div className="flex justify-center mt-10 md:mt-12">
 
                         <button className="group relative overflow-hidden rounded-xl">
 

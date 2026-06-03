@@ -70,7 +70,7 @@ export function MasteryGapSection() {
   return (
 
     <section
-      className="relative py-36 bg-[#02131d] text-white overflow-hidden"
+      className="relative py-16 md:py-24 bg-[#02131d] text-white overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -85,9 +85,9 @@ export function MasteryGapSection() {
       <div className="relative max-w-6xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center mb-12 md:mb-16 max-w-4xl mx-auto">
+        <div className="text-center mb-8 md:mb-12 max-w-4xl mx-auto">
 
-          <h2 className="text-3xl md:text-5xl font-bold leading-[1.2] tracking-[1px]">
+          <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px]">
 
             {section?.title}{" "}
 
@@ -99,7 +99,7 @@ export function MasteryGapSection() {
 
           </h2>
 
-          <p className="text-white/60 mt-5 max-w-3xl mx-auto text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px]">
+          <p className="text-white/60 mt-5 max-w-3xl mx-auto text-[15px] md:text-[16px] font-normal leading-[1.7] tracking-[0.45px]">
 
             {section?.description}
 
@@ -111,7 +111,7 @@ export function MasteryGapSection() {
         <div className="rounded-3xl border border-white/10 overflow-hidden bg-white/5 backdrop-blur-xl shadow-[0_20px_80px_rgba(0,0,0,0.45)]">
 
           {/* TABLE HEAD */}
-          <div className="grid grid-cols-3 text-[10px] tracking-[3px] text-white/40 border-b border-white/10 bg-white/[0.03]">
+          <div className="grid grid-cols-3 text-[12px] font-semibold tracking-[3px] uppercase text-white/40 border-b border-white/10 bg-white/[0.03]">
 
             <div className="p-6">
 
@@ -175,7 +175,7 @@ export function MasteryGapSection() {
 
               </div>
 
-              {/* NEMO */}
+              {/* DIVECAMPUS */}
               <div className="p-6 flex items-center justify-center">
 
                 <div className="flex items-center gap-3 px-6 py-3 rounded-xl border border-cyan-400/30 bg-cyan-400/5 text-cyan-300 text-[13px] tracking-[0.35px] leading-[1.7]">
@@ -187,7 +187,7 @@ export function MasteryGapSection() {
 
                   <span>
 
-                    {row.nemo_text}
+                    {row.diveCampus_text}
 
                   </span>
 

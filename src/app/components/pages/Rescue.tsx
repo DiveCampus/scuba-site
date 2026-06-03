@@ -114,7 +114,7 @@ export function Rescue() {
         <div className="relative z-10 flex flex-col items-center justify-center text-center min-h-screen px-6">
 
           {/* BADGE */}
-          <div className="relative overflow-hidden mb-8 px-6 py-2.5 text-[11px] tracking-[2.5px] border border-cyan-400/30 rounded-full text-cyan-300 backdrop-blur-md">
+          <div className="relative overflow-hidden mb-3 px-6 py-2.5 text-[12px] font-semibold tracking-[3px] border border-cyan-400/30 rounded-full text-cyan-300 backdrop-blur-md">
 
             {section.badge}
 
@@ -141,14 +141,14 @@ export function Rescue() {
           </div>
 
           {/* SUBTEXT */}
-          <p className="text-[11px] tracking-[4px] text-white/50 mb-5 uppercase">
+          <p className="text-[12px] font-semibold tracking-[3px] text-white/50 mb-3 uppercase">
 
             {section.sub_text}
 
           </p>
 
           {/* TITLE */}
-          <h1 className="text-4xl md:text-6xl font-semibold tracking-[1px] leading-[1.18] max-w-4xl">
+          <h1 className="text-4xl md:text-6xl font-semibold tracking-[1px] leading-[1.1] max-w-4xl">
 
             {section.title}{" "}
 

@@ -317,11 +317,11 @@ export default function RescueComparisonAdmin() {
 
                 />
 
-                {/* NEMO */}
+                {/* DIVECAMPUS */}
                 <input
 
                   value={
-                    row.nemo_text || ""
+                    row.diveCampus_text || ""
                   }
 
                   onChange={(e) => {
@@ -331,14 +331,14 @@ export default function RescueComparisonAdmin() {
 
                     updated[
                       i
-                    ].nemo_text =
+                    ].diveCampus_text =
                       e.target.value;
 
                     setRows(updated);
 
                   }}
 
-                  placeholder="Nemo Text"
+                  placeholder="DiveCampus Text"
 
                   className="w-full h-[52px] rounded-2xl bg-black/20 border border-white/10 px-5 outline-none mb-5"
 

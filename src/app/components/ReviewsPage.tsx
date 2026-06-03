@@ -48,12 +48,12 @@ export function ReviewsPage() {
       <div className="relative z-10">
 
         {/* HEADER */}
-        <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-bold mb-4 text-white">
+        <div className="text-center mb-8 md:mb-12">
+          <h1 className="text-4xl md:text-6xl font-semibold leading-[1.1] mb-4 text-white">
             Customer <span className="text-cyan-300">Experiences</span>
           </h1>
 
-          <p className="text-white/60 max-w-2xl mx-auto">
+          <p className="mt-5 text-white/60 text-[15px] md:text-[16px] font-normal leading-[1.7] max-w-2xl mx-auto">
             Real feedback from divers who trusted us with their journey.
           </p>
         </div>
@@ -96,7 +96,7 @@ export function ReviewsPage() {
               </div>
 
               {/* TEXT */}
-              <p className="text-white/70 text-sm leading-relaxed">
+              <p className="text-white/70 text-[14px] md:text-[15px] leading-relaxed">
                 "{review.text}"
               </p>
 

@@ -72,7 +72,7 @@ export function ChooseEnvironmentSection() {
   return (
 
     <section
-      className="relative py-36 bg-[#03121c] text-white overflow-hidden"
+      className="relative py-16 md:py-24 bg-[#03121c] text-white overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -92,7 +92,7 @@ export function ChooseEnvironmentSection() {
         <div className="text-center mb-12 md:mb-16 max-w-4xl mx-auto">
 
           {/* TITLE */}
-          <h2 className="text-3xl md:text-5xl font-bold leading-[1.2] tracking-[1px]">
+          <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px]">
 
             {section?.title}{" "}
 
@@ -105,7 +105,7 @@ export function ChooseEnvironmentSection() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="text-white/55 mt-5 max-w-3xl mx-auto text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px]">
+          <p className="text-white/55 mt-5 max-w-3xl mx-auto text-[15px] md:text-[16px] font-normal leading-[1.7] tracking-[0.45px]">
 
             {section?.description}
 
@@ -131,14 +131,14 @@ export function ChooseEnvironmentSection() {
               >
 
                 {/* TOP LABEL */}
-                <p className="text-[10px] tracking-[3.5px] text-cyan-400 mb-6">
+                <p className="text-[12px] font-semibold tracking-[3px] uppercase text-cyan-400 mb-3">
 
                   {card.top_label}
 
                 </p>
 
                 {/* TITLE */}
-                <h3 className="text-2xl font-semibold tracking-[0.8px] leading-[1.4] mb-6">
+                <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] mt-3 mb-4">
 
                   {card.title}
 

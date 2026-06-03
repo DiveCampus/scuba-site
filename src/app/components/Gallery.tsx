@@ -152,7 +152,7 @@ export function Gallery() {
   }, [images]);
 
   return (
-    <section className="relative py-32 overflow-hidden font-habara">
+    <section className="relative py-16 md:py-24 overflow-hidden font-habara">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45]" />
@@ -160,8 +160,8 @@ export function Gallery() {
       <div className="relative max-w-[1400px] mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center mb-20">
-          <h2 className="text-5xl lg:text-6xl font-bold text-white tracking-wide">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] text-white">
             Underwater{" "}
             <span className="text-cyan-300">
               Gallery

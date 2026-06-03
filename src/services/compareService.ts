@@ -69,7 +69,7 @@ export const updateCompareItem =
           others:
             item.others,
 
-          nemo: item.nemo,
+          diveCampus: item.diveCampus,
 
           updated_at:
             new Date().toISOString(),

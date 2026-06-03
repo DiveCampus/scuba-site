@@ -89,7 +89,7 @@ export function GlobalPassportSection() {
   return (
 
     <section
-      className="py-32 bg-[#f5f7fa]"
+      className="py-16 md:py-24 bg-[#f5f7fa]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -99,10 +99,10 @@ export function GlobalPassportSection() {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* ================= HEADER ================= */}
-        <div className="text-center mb-12 md:mb-16 max-w-4xl mx-auto">
+        <div className="text-center mb-8 md:mb-12 max-w-4xl mx-auto">
 
           {/* HEADING */}
-          <h2 className="text-3xl md:text-5xl font-bold leading-[1.2] tracking-[1px] text-[#0a0e27]">
+          <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px] text-[#0a0e27]">
 
             {section?.title}
 
@@ -117,7 +117,7 @@ export function GlobalPassportSection() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="text-gray-500 mt-5 text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px] max-w-3xl mx-auto">
+          <p className="text-gray-500 mt-5 text-[15px] md:text-[16px] font-normal leading-[1.7] tracking-[0.45px] max-w-3xl mx-auto">
 
             {section?.description}
 
@@ -126,7 +126,7 @@ export function GlobalPassportSection() {
         </div>
 
         {/* ================= GRID ================= */}
-        <div className="grid lg:grid-cols-2 gap-20">
+        <div className="grid lg:grid-cols-2 gap-12 md:gap-16">
 
           {/* ================= LEFT ================= */}
           <div>
@@ -135,7 +135,7 @@ export function GlobalPassportSection() {
             <div className="bg-white border border-gray-200 rounded-3xl p-10 shadow-sm text-center">
 
               {/* TITLE */}
-              <h3 className="text-2xl font-semibold tracking-[0.8px] leading-[1.45] text-[#0a0e27]">
+              <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-[#0a0e27]">
 
                 {section?.testimonial_title}
 
@@ -215,7 +215,7 @@ export function GlobalPassportSection() {
           <div>
 
             {/* TITLE */}
-            <h3 className="text-[20px] font-semibold tracking-[0.8px] leading-[1.5] text-[#0a0e27] mb-8">
+            <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-[#0a0e27] mb-8">
 
               {section?.faq_title}
 

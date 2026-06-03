@@ -65,7 +65,7 @@ export function ChooseDiveSite() {
   return (
     <>
       <section
-        className="relative overflow-hidden py-28 bg-[#071c2d]"
+        className="relative overflow-hidden py-16 md:py-24 bg-[#071c2d]"
         style={{ fontFamily: "Harabara, sans-serif" }}
       >
 
@@ -83,11 +83,11 @@ export function ChooseDiveSite() {
           {/* HEADER */}
           <div className="text-center">
 
-            <h2 className="text-4xl md:text-5xl font-semibold tracking-[-1px] text-white">
+            <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] text-white">
               CHOOSE YOUR DIVE SITE
             </h2>
 
-            <p className="mt-5 text-white/45 text-sm leading-relaxed max-w-2xl mx-auto">
+            <p className="mt-5 text-white/45 text-[15px] md:text-[16px] font-normal leading-[1.7] max-w-2xl mx-auto">
               Select your perfect environment. Experience the convenience
               of Palm Jumeirah or the crystal clear waters of Fujairah.
             </p>
@@ -95,7 +95,7 @@ export function ChooseDiveSite() {
           </div>
 
           {/* CARDS */}
-          <div className="mt-20 grid lg:grid-cols-2 gap-8">
+          <div className="mt-8 md:mt-12 grid lg:grid-cols-2 gap-8">
 
             {diveSites.map((site, i) => (
               <motion.div
@@ -121,12 +121,12 @@ export function ChooseDiveSite() {
                 <div className="p-8">
 
                   {/* BADGE */}
-                  <p className="text-[10px] tracking-[3px] text-cyan-400 uppercase">
+                  <p className="text-[12px] font-semibold tracking-[3px] text-cyan-400 uppercase">
                     {site.badge}
                   </p>
 
                   {/* TITLE */}
-                  <h3 className="mt-4 text-[34px] leading-[1.1] tracking-[-0.8px] font-semibold text-white">
+                  <h3 className="mt-3 text-[20px] md:text-[24px] leading-[1.2] tracking-[0.5px] font-semibold text-white">
                     {site.title}
                   </h3>
 
@@ -142,7 +142,7 @@ export function ChooseDiveSite() {
                         className="flex items-center justify-between py-6 border-b border-white/8 gap-6"
                       >
 
-                        <p className="text-[10px] tracking-[2px] text-white/30 shrink-0">
+                        <p className="text-[12px] font-semibold tracking-[3px] text-white/30 shrink-0 uppercase">
                           {item.label}
                         </p>
 

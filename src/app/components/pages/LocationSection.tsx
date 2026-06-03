@@ -35,7 +35,7 @@ export function LocationSection() {
     return null;
 
   return (
-    <section className="relative py-32 bg-gradient-to-b from-[#f8fafc] to-[#eef2f6] overflow-hidden">
+    <section className="relative py-16 md:py-24 bg-gradient-to-b from-[#f8fafc] to-[#eef2f6] overflow-hidden">
 
       {/* BG GLOW */}
       <div className="absolute top-0 right-0 w-72 h-72 bg-cyan-400/10 blur-[120px] rounded-full" />
@@ -45,7 +45,7 @@ export function LocationSection() {
         {/* HEADER */}
         <div className="text-center mb-12 md:mb-16">
 
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0a0e27]">
+          <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] text-[#0a0e27]">
 
             Visit Our{" "}
 
@@ -57,7 +57,7 @@ export function LocationSection() {
 
           </h2>
 
-          <p className="text-gray-500 mt-4 max-w-2xl mx-auto">
+          <p className="text-gray-500 mt-5 max-w-2xl mx-auto text-[15px] md:text-[16px] font-normal leading-[1.7]">
 
             Explore our premium dive training centers across the UAE.
 
@@ -97,7 +97,7 @@ export function LocationSection() {
 
                     <div>
 
-                      <h3 className="text-xl font-bold text-[#0a0e27]">
+                      <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-[#0a0e27]">
 
                         {loc.title}
 

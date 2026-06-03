@@ -51,10 +51,10 @@ export function DivingCourses() {
   }
 
   return (
-    <section id="courses" className="py-20 px-4 bg-[#18476D] font-habara">
+    <section id="courses" className="py-16 md:py-24 px-4 bg-[#18476D] font-habara">
       <div className="max-w-[1600px] mx-auto">
 
-        <h2 className="text-center text-5xl font-bold text-white mb-14 uppercase">
+        <h2 className="text-center text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] text-white mb-8 md:mb-12 uppercase">
           CHOOSE YOUR <span className="text-cyan-300">PATH</span>
         </h2>
 
@@ -150,7 +150,7 @@ export function DivingCourses() {
                   {active !== index && (
                     <>
                       <div className="absolute bottom-6 left-5">
-                        <h3 className="text-white text-[22px] font-bold uppercase">
+                        <h3 className="text-white text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] uppercase">
                           {course.title}
                         </h3>
 
@@ -184,7 +184,7 @@ export function DivingCourses() {
                         {course.title}
                       </h3>
 
-                      <p className="text-white/80 text-sm uppercase">
+                      <p className="text-white/80 text-[14px] md:text-[15px] leading-relaxed uppercase">
                         {course.description}
                       </p>
                     </div>

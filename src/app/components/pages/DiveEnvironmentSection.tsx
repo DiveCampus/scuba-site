@@ -56,7 +56,7 @@ export function DiveEnvironmentSection() {
   return (
 
     <section
-      className="relative py-32 overflow-hidden bg-black"
+      className="relative py-16 md:py-24 overflow-hidden bg-black"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -71,7 +71,7 @@ export function DiveEnvironmentSection() {
         {/* HEADER */}
         <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
 
-          <h2 className="text-4xl md:text-6xl font-bold text-white leading-[1.05] tracking-[-2px] mb-5">
+          <h2 className="text-[36px] md:text-[52px] font-semibold text-white leading-[1.1] tracking-[1px] mb-5">
 
             {section?.title}{" "}
 
@@ -85,7 +85,7 @@ export function DiveEnvironmentSection() {
 
           </h2>
 
-          <p className="text-white/55 text-[16px] leading-relaxed max-w-4xl mx-auto">
+          <p className="text-white/55 text-[15px] md:text-[16px] font-normal leading-[1.7] max-w-4xl mx-auto">
 
             {section?.description}
 
@@ -110,21 +110,21 @@ export function DiveEnvironmentSection() {
             >
 
               {/* BADGE */}
-              <p className="text-[10px] tracking-[4px] text-cyan-400 mb-10">
+              <p className="text-[12px] font-semibold tracking-[3px] uppercase text-cyan-400 mb-3">
 
                 {item.badge}
 
               </p>
 
               {/* TITLE */}
-              <h3 className="text-[42px] font-bold text-white leading-[1.1] mb-10">
+              <h3 className="text-[20px] md:text-[24px] font-semibold text-white leading-[1.2] tracking-[0.5px] mt-3 mb-4">
 
                 {item.title}
 
               </h3>
 
               {/* DESCRIPTION */}
-              <p className="text-white/55 leading-relaxed text-[15px] mb-12 max-w-xl">
+              <p className="text-white/55 text-[14px] md:text-[15px] leading-relaxed mb-8 max-w-xl">
 
                 {item.description}
 

@@ -40,14 +40,14 @@ export function AdventureGallery() {
   return (
     <>
       <section
-        className="py-24 bg-[#f5f8fb]"
+        className="py-16 md:py-24 bg-[#f5f8fb]"
         style={{ fontFamily: "Harabara, sans-serif" }}
       >
 
         {/* HEADER */}
         <div className="text-center px-6">
 
-          <h2 className="text-[34px] md:text-[52px] leading-[1.05] tracking-[-1.5px] font-semibold text-[#0b1c2e]">
+          <h2 className="text-[36px] md:text-[52px] leading-[1.1] tracking-[1px] font-semibold text-[#0b1c2e]">
 
             BUILT ON PASSION. <br />
 
@@ -57,7 +57,7 @@ export function AdventureGallery() {
 
           </h2>
 
-          <p className="mt-5 max-w-2xl mx-auto text-[14px] leading-relaxed text-[#7f8b99]">
+          <p className="mt-5 max-w-2xl mx-auto text-[15px] md:text-[16px] font-normal leading-[1.7] text-[#7f8b99]">
 
             Join a global family of explorers. From weekend dives in Fujairah
             to international expeditions in the Maldives — we don’t just dive
@@ -68,7 +68,7 @@ export function AdventureGallery() {
         </div>
 
         {/* GALLERY */}
-        <div className="max-w-[1150px] mx-auto mt-14 px-6">
+        <div className="max-w-[1150px] mx-auto mt-8 md:mt-12 px-6">
 
           {/* ROW 1 */}
           <div className="grid grid-cols-5 gap-3 mb-3">

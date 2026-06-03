@@ -94,7 +94,7 @@ export function RescueFAQSection() {
   return (
 
     <section
-      className="relative py-28 bg-[#f4f7fb] overflow-hidden"
+      className="relative py-16 md:py-24 bg-[#f4f7fb] overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -118,7 +118,7 @@ export function RescueFAQSection() {
       <div className="relative text-center max-w-[760px] mx-auto px-4">
 
         {/* LABEL */}
-        <p className="text-[10px] tracking-[3px] uppercase text-cyan-500 mb-5">
+        <p className="text-[12px] font-semibold tracking-[3px] uppercase text-cyan-500 mb-3">
 
           {
             section.top_text
@@ -127,7 +127,7 @@ export function RescueFAQSection() {
         </p>
 
         {/* TITLE */}
-        <h2 className="text-3xl md:text-5xl font-semibold text-[#0a0e27] leading-[1.18] tracking-[1px]">
+        <h2 className="text-[36px] md:text-[52px] font-semibold text-[#0a0e27] leading-[1.1] tracking-[1px]">
 
           {
             section.title
@@ -144,7 +144,7 @@ export function RescueFAQSection() {
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="text-[15px] md:text-[16px] text-gray-500 mt-5 leading-relaxed tracking-[0.45px] max-w-[700px] mx-auto">
+        <p className="text-[15px] md:text-[16px] font-normal text-gray-500 mt-5 leading-[1.7] tracking-[0.45px] max-w-[700px] mx-auto">
 
           {
             section.description
@@ -155,7 +155,7 @@ export function RescueFAQSection() {
       </div>
 
       {/* MAIN GRID */}
-      <div className="relative max-w-[980px] mx-auto grid md:grid-cols-2 gap-12 mt-16 px-4">
+      <div className="relative max-w-[980px] mx-auto grid md:grid-cols-2 gap-12 mt-8 md:mt-12 px-4">
 
         {/* LEFT CARD */}
         <motion.div
@@ -179,7 +179,7 @@ export function RescueFAQSection() {
         >
 
           {/* TITLE */}
-          <h3 className="text-[22px] font-medium tracking-[0.7px] leading-[1.5] text-[#0a0e27]">
+          <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-[#0a0e27]">
 
             {
               section.review_title
@@ -188,7 +188,7 @@ export function RescueFAQSection() {
           </h3>
 
           {/* DESCRIPTION */}
-          <p className="text-[13px] text-gray-500 mt-5 leading-relaxed tracking-[0.35px] max-w-[340px] mx-auto">
+          <p className="text-[14px] md:text-[15px] text-gray-500 mt-5 leading-relaxed tracking-[0.35px] max-w-[340px] mx-auto">
 
             {
               section.review_subtitle
@@ -258,7 +258,7 @@ export function RescueFAQSection() {
         >
 
           {/* FAQ TITLE */}
-          <h3 className="text-[13px] font-semibold tracking-[2px] uppercase text-[#0a0e27] mb-6">
+          <h3 className="text-[12px] font-semibold tracking-[3px] uppercase text-[#0a0e27] mb-3">
 
             {
               section.faq_title
@@ -327,7 +327,7 @@ export function RescueFAQSection() {
                 {/* ANSWER */}
                 {active === i && (
 
-                  <p className="text-[13px] text-gray-500 mt-5 leading-relaxed tracking-[0.35px] pr-6">
+                  <p className="text-[14px] md:text-[15px] text-gray-500 mt-4 leading-relaxed tracking-[0.35px] pr-6">
 
                     {
                       item.answer

@@ -31,7 +31,7 @@ export function FirstDiveStepsSection() {
 
   return (
     <section
-      className="relative py-16 md:py-20 bg-[#f4f7fa] overflow-hidden"
+      className="relative py-16 md:py-24 bg-[#f4f7fa] overflow-hidden"
       style={{
         fontFamily: "Harabara, sans-serif",
       }}
@@ -46,21 +46,21 @@ export function FirstDiveStepsSection() {
 
           {/* SMALL LABEL */}
           <p
-            className="text-[8px] md:text-[9px] uppercase tracking-[4px] text-cyan-500/90 mb-4"
+            className="text-[12px] font-semibold uppercase tracking-[3px] text-cyan-500/90 mb-3"
           >
             HOW IT WORKS
           </p>
 
           {/* TITLE */}
           <h2
-            className="text-[26px] md:text-[44px] text-[#0b1b2b] font-semibold tracking-[1px] md:tracking-[2px] leading-[1.1] uppercase"
+            className="text-[36px] md:text-[52px] text-[#0b1b2b] font-semibold tracking-[1px] leading-[1.1] uppercase"
           >
             3 STEPS TO YOUR FIRST DIVE
           </h2>
 
           {/* DESCRIPTION */}
           <p
-            className="mt-4 text-[11px] md:text-[13px] text-[#7b8794] leading-[1.7] tracking-[0.3px] max-w-xl mx-auto"
+            className="mt-5 text-[15px] md:text-[16px] text-[#7b8794] leading-[1.7] font-normal tracking-[0.3px] max-w-xl mx-auto"
           >
             Safe, easy, and designed for complete beginners.
             No prior experience needed.
@@ -98,7 +98,7 @@ export function FirstDiveStepsSection() {
 
               {/* STEP BADGE */}
               <div
-                className="relative z-10 inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-[#f4f7fa] text-[#687280] text-[8px] tracking-[2px] uppercase mb-6"
+                className="relative z-10 inline-flex items-center justify-center px-3 py-1.5 rounded-full bg-[#f4f7fa] text-[#687280] text-[12px] font-semibold tracking-[3px] uppercase mb-6"
               >
                 {item.step}
               </div>
@@ -112,14 +112,14 @@ export function FirstDiveStepsSection() {
 
               {/* TITLE */}
               <h3
-                className="relative z-10 text-[15px] md:text-[17px] text-[#0b1b2b] font-semibold tracking-[1px] leading-[1.5] uppercase mb-3"
+                className="relative z-10 text-[20px] md:text-[24px] text-[#0b1b2b] font-semibold tracking-[0.5px] leading-[1.2] uppercase mb-3"
               >
                 {item.title}
               </h3>
 
               {/* DESCRIPTION */}
               <p
-                className="relative z-10 text-[11px] md:text-[12px] text-[#7b8794] leading-relaxed tracking-[0.3px] max-w-[240px] mx-auto"
+                className="relative z-10 text-[14px] md:text-[15px] text-[#7b8794] leading-relaxed tracking-[0.3px] max-w-[240px] mx-auto"
               >
                 {item.desc}
               </p>

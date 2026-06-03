@@ -63,13 +63,13 @@ export function CommunityFAQSection() {
       )}
 
       <section
-        className="py-32 bg-gradient-to-b from-[#f5f7fa] to-[#eef2f6]"
+        className="py-16 md:py-24 bg-gradient-to-b from-[#f5f7fa] to-[#eef2f6]"
         style={{ fontFamily: "Harabara, sans-serif" }}
       >
 
         {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto px-6 mb-12 md:mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#0a0e27] leading-tight">
+        <div className="text-center max-w-3xl mx-auto px-6 mb-8 md:mb-12">
+          <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] text-[#0a0e27]">
             {section.title}
             <br />
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
@@ -77,13 +77,13 @@ export function CommunityFAQSection() {
             </span>
           </h2>
 
-          <p className="text-gray-500 mt-4 text-sm md:text-base">
+          <p className="text-gray-500 mt-5 text-[15px] md:text-[16px] font-normal leading-[1.7]">
             {section.subtitle}
           </p>
         </div>
 
         {/* FAQ TITLE */}
-        <h3 className="text-center text-xl font-semibold text-[#0a0e27] mb-10 tracking-wide">
+        <h3 className="text-center text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-[#0a0e27] mb-8 md:mb-12">
           Frequently Asked Questions
         </h3>
 

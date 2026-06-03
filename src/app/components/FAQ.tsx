@@ -77,7 +77,7 @@ export function FAQ() {
   };
 
   return (
-    <section className="relative py-32 overflow-hidden">
+    <section className="relative py-16 md:py-24 overflow-hidden">
 
       {faqs.length > 0 && (
         <Helmet>
@@ -102,25 +102,25 @@ export function FAQ() {
 
         {/* HEADER */}
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-8 md:mb-12"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
           <div className="inline-block px-4 py-2 rounded-full bg-white/5 border border-[#00d4ff]/20 mb-6">
-            <span className="text-[#00d4ff] text-sm uppercase tracking-wider">
+            <span className="text-[#00d4ff] text-[12px] font-semibold uppercase tracking-[3px]">
               Questions & Answers
             </span>
           </div>
 
-          <h2 className="text-4xl lg:text-6xl font-bold text-white mb-6">
+          <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] text-white mb-5">
             Frequently Asked{" "}
             <span className="bg-gradient-to-r from-[#00d4ff] to-[#06b6d4] bg-clip-text text-transparent">
               Questions
             </span>
           </h2>
 
-          <p className="text-white/60 max-w-2xl mx-auto">
+          <p className="mt-5 text-white/60 text-[15px] md:text-[16px] font-normal leading-[1.7] max-w-2xl mx-auto">
             Everything you need to know about diving with us.
           </p>
         </motion.div>

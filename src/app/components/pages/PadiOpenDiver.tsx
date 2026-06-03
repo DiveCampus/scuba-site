@@ -93,7 +93,7 @@ export function PadiOpenDiver() {
               opacity: 1,
               y: 0,
             }}
-            className="px-6 py-2 rounded-full border border-cyan-400/30 text-cyan-300 text-xs tracking-[4px] uppercase mb-6 backdrop-blur-xl bg-white/5"
+            className="px-6 py-2 rounded-full border border-cyan-400/30 text-cyan-300 text-[12px] font-semibold tracking-[3px] uppercase mb-6 backdrop-blur-xl bg-white/5"
           >
 
             {data?.top_badge}
@@ -101,14 +101,14 @@ export function PadiOpenDiver() {
           </motion.div>
 
           {/* SUBTEXT */}
-          <p className="text-white/60 tracking-[4px] text-xs uppercase mb-4">
+          <p className="text-white/60 text-[12px] font-semibold tracking-[3px] uppercase mb-3">
 
             {data?.sub_text}
 
           </p>
 
           {/* TITLE */}
-          <h1 className="text-5xl md:text-7xl font-bold max-w-5xl leading-tight">
+          <h1 className="text-5xl md:text-7xl font-semibold max-w-5xl leading-[1.1] tracking-[1px]">
 
             {data?.title}{" "}
 
@@ -121,7 +121,7 @@ export function PadiOpenDiver() {
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="mt-6 text-white/70 max-w-2xl text-lg leading-relaxed">
+          <p className="mt-5 text-white/70 max-w-2xl text-[15px] md:text-[16px] font-normal leading-[1.7]">
 
             {data?.description}
 
@@ -174,7 +174,7 @@ export function PadiOpenDiver() {
           </div>
 
           {/* FEATURES */}
-          <div className="mt-14 grid md:grid-cols-4 gap-4 max-w-6xl w-full">
+          <div className="mt-12 md:mt-16 grid md:grid-cols-4 gap-4 max-w-6xl w-full">
 
             {[
               data?.feature_1,

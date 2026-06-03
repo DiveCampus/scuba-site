@@ -14,12 +14,12 @@ export function ExpertHands() {
   return (
     <>
       <section
-        className="py-24 bg-[#f5f8fb]"
+        className="py-16 md:py-24 bg-[#f5f8fb]"
         style={{ fontFamily: "Harabara, sans-serif" }}
       >
 
         {/* CONTAINER */}
-        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-14 items-center px-6">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 md:gap-14 items-center px-6">
 
           {/* IMAGE SIDE */}
           <motion.div
@@ -53,12 +53,12 @@ export function ExpertHands() {
           >
 
             {/* BADGE */}
-            <p className="text-[10px] tracking-[3px] uppercase text-cyan-500 mb-4">
-              THE NEMO STANDARD
+            <p className="text-[12px] font-semibold tracking-[3px] uppercase text-cyan-500 mb-3">
+              THE DIVECAMPUS STANDARD
             </p>
 
             {/* TITLE */}
-            <h2 className="text-[42px] leading-[1.05] tracking-[-1px] font-semibold text-[#0b1623]">
+            <h2 className="text-[36px] md:text-[52px] leading-[1.1] tracking-[1px] font-semibold text-[#0b1623]">
 
               EXPERT HANDS. ALWAYS.
 
@@ -95,7 +95,7 @@ export function ExpertHands() {
                   </div>
 
                   {/* TEXT */}
-                  <p className="text-[11px] tracking-[1px] leading-[1.6] font-semibold text-[#1b2735]">
+                  <p className="text-[12px] font-semibold tracking-[3px] leading-[1.6] text-[#1b2735] uppercase">
                     {item}
                   </p>
 

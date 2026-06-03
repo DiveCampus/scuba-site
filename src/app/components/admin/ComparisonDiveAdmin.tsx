@@ -218,7 +218,7 @@ export default function ComparisonDiveAdmin() {
             <div className="p-6 text-center text-cyan-400 tracking-[3px] text-[10px]">
 
               {
-                section.nemo_heading
+                section.diveCampus_heading
               }
 
             </div>
@@ -287,11 +287,11 @@ export default function ComparisonDiveAdmin() {
                 className="bg-transparent p-6 outline-none resize-none text-red-400 text-center"
               />
 
-              {/* NEMO */}
+              {/* DIVECAMPUS */}
               <textarea
                 rows={2}
                 value={
-                  row.nemo_text
+                  row.diveCampus_text
                 }
                 onChange={async (e) => {
 
@@ -300,7 +300,7 @@ export default function ComparisonDiveAdmin() {
 
                   updated[
                     i
-                  ].nemo_text =
+                  ].diveCampus_text =
                     e.target.value;
 
                   setRows(updated);

@@ -38,9 +38,9 @@ export function AOWAdvantageSection() {
 
   return (
 
-    <section className="py-32 bg-[#03121c] text-white">
+    <section className="py-16 md:py-24 bg-[#03121c] text-white">
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 px-6 items-center">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-16 px-6 items-center">
 
         {/* IMAGE */}
         <motion.div
@@ -65,11 +65,11 @@ export function AOWAdvantageSection() {
         {/* CONTENT */}
         <div>
 
-          <p className="text-[10px] tracking-[4px] text-cyan-400 mb-5">
+          <p className="text-[12px] font-semibold tracking-[3px] text-cyan-400 mb-3">
             {section.top_label}
           </p>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-5">
+          <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] mt-3 mb-5">
 
             {section.title}{" "}
 
@@ -81,7 +81,7 @@ export function AOWAdvantageSection() {
 
           </h2>
 
-          <p className="text-white/60 leading-relaxed mb-8">
+          <p className="mt-5 text-white/60 text-[15px] md:text-[16px] font-normal leading-[1.7] mb-8">
             {section.description}
           </p>
 
@@ -113,11 +113,11 @@ export function AOWAdvantageSection() {
 
                 <div>
 
-                  <h3 className="font-semibold text-white mb-2">
+                  <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-white mb-2">
                     {item.title}
                   </h3>
 
-                  <p className="text-sm text-white/60 leading-relaxed">
+                  <p className="text-[14px] md:text-[15px] text-white/60 leading-relaxed">
                     {item.description}
                   </p>
 

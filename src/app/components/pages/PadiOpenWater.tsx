@@ -6,7 +6,7 @@ import { EnrollmentSection } from "./EnrollmentSection";
 import { StepsSection } from "./StepsSection";
 import { ComparisonSection } from "./ComparisonSection";
 import { CommunityFAQSection } from "./CommunityFAQSection";
-import { WhyChooseNemoSection } from "./WhyChooseNemoSection";
+import { WhyChooseDiveCampusSection } from "./WhyChooseDiveCampusSection";
 import { GoldStandardSection } from "./GoldStandardSection";
 // import { CommunityGallerySection } from "./CommunityGallerySection";
 import { LocationSection } from "./LocationSection";
@@ -22,7 +22,7 @@ export function PadiOpenWater() {
       <StepsSection />
       <ComparisonSection />
       <CommunityFAQSection />
-      <WhyChooseNemoSection />
+      <WhyChooseDiveCampusSection />
       <GoldStandardSection />
       {/* <CommunityGallerySection /> */}
       <LocationSection />

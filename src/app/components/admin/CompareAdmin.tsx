@@ -311,7 +311,7 @@ export default function CompareAdmin() {
                     {isEditing ? (
                       <input
                         value={
-                          row.nemo
+                          row.diveCampus
                         }
                         onChange={(
                           e
@@ -323,7 +323,7 @@ export default function CompareAdmin() {
 
                           updated[
                             i
-                          ].nemo =
+                          ].diveCampus =
                             e.target.value;
 
                           setItems(
@@ -342,7 +342,7 @@ export default function CompareAdmin() {
                         />
 
                         {
-                          row.nemo
+                          row.diveCampus
                         }
 
                       </div>

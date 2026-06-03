@@ -164,7 +164,7 @@ export function LocationFooterSection() {
 
       <section
 
-        className="relative bg-gradient-to-r from-[#02131d] to-[#031e2d] text-white py-32 overflow-hidden"
+        className="relative bg-gradient-to-r from-[#02131d] to-[#031e2d] text-white py-16 md:py-24 overflow-hidden"
 
         style={{
           fontFamily:
@@ -178,13 +178,13 @@ export function LocationFooterSection() {
 
         <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
-        <div className="relative max-w-[1120px] mx-auto grid md:grid-cols-2 gap-20 px-6 items-center">
+        <div className="relative max-w-[1120px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 px-6 items-center">
 
           {/* LEFT */}
           <div>
 
             {/* LABEL */}
-            <p className="text-[10px] tracking-[4px] text-cyan-400 mb-6 uppercase">
+            <p className="text-[12px] font-semibold tracking-[3px] uppercase text-cyan-400 mb-3">
 
               {
                 section.label
@@ -193,7 +193,7 @@ export function LocationFooterSection() {
             </p>
 
             {/* TITLE */}
-            <h2 className="text-3xl md:text-5xl font-semibold leading-[1.12] tracking-[1.2px]">
+            <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px] mt-3">
 
               {
                 section.title
@@ -212,7 +212,7 @@ export function LocationFooterSection() {
             </h2>
 
             {/* DESCRIPTION */}
-            <p className="text-[15px] md:text-[16px] text-white/60 mt-5 max-w-[540px] leading-relaxed tracking-[0.45px] whitespace-pre-line">
+            <p className="text-[15px] md:text-[16px] font-normal text-white/60 mt-5 max-w-[540px] leading-[1.7] tracking-[0.45px] whitespace-pre-line">
 
               {
                 section.description
@@ -372,7 +372,7 @@ export function LocationFooterSection() {
                 }
               >
 
-                <p className="text-white/50 text-[10px] tracking-[4px] mb-7 uppercase">
+                <p className="text-white/50 text-[12px] font-semibold tracking-[3px] uppercase mb-3">
 
                   {
                     group.title
@@ -426,7 +426,7 @@ export function LocationFooterSection() {
         </div>
 
         {/* COPYRIGHT */}
-        <div className="text-center text-white/35 text-[11px] tracking-[1.2px] mt-20 leading-relaxed">
+        <div className="text-center text-white/35 text-[11px] tracking-[1.2px] mt-12 md:mt-16 leading-relaxed">
 
           {
             section.copyright_text

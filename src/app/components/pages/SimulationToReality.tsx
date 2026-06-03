@@ -79,7 +79,7 @@ export function SimulationToReality() {
 
     <>
       <section
-        className="py-32 bg-[#f4f7fb] relative overflow-hidden"
+        className="py-16 md:py-24 bg-[#f4f7fb] relative overflow-hidden"
         style={{
           fontFamily:
             "Harabara, sans-serif",
@@ -91,7 +91,7 @@ export function SimulationToReality() {
 
         <div className="absolute bottom-10 right-10 w-64 h-64 bg-blue-500/10 blur-[100px] rounded-full" />
 
-        <div className="max-w-[980px] mx-auto grid md:grid-cols-2 gap-16 items-center px-6 relative z-10">
+        <div className="max-w-[980px] mx-auto grid md:grid-cols-2 gap-12 md:gap-16 items-center px-6 relative z-10">
 
           {/* IMAGE */}
           <motion.div
@@ -154,7 +154,7 @@ export function SimulationToReality() {
           >
 
             {/* TOP LABEL */}
-            <p className="text-[10px] uppercase tracking-[3px] text-cyan-500 mb-5">
+            <p className="text-[12px] font-semibold uppercase tracking-[3px] text-cyan-500 mb-3">
 
               {
                 section.top_label
@@ -163,7 +163,7 @@ export function SimulationToReality() {
             </p>
 
             {/* TITLE */}
-            <h2 className="text-3xl md:text-4xl font-semibold leading-[1.18] tracking-[1px] text-[#0a0e27]">
+            <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px] text-[#0a0e27]">
 
               {
                 section.title
@@ -182,7 +182,7 @@ export function SimulationToReality() {
             </h2>
 
             {/* DESCRIPTION */}
-            <p className="mt-5 text-[15px] md:text-[16px] text-gray-500 leading-relaxed tracking-[0.45px] max-w-[500px]">
+            <p className="mt-5 text-[15px] md:text-[16px] font-normal text-gray-500 leading-[1.7] tracking-[0.45px] max-w-[500px]">
 
               {
                 section.description
@@ -191,7 +191,7 @@ export function SimulationToReality() {
             </p>
 
             {/* LIST */}
-            <div className="mt-12 space-y-7">
+            <div className="mt-8 md:mt-12 space-y-7">
 
               {features.map(
 
@@ -229,7 +229,7 @@ export function SimulationToReality() {
                       <div>
 
                         {/* FEATURE TITLE */}
-                        <h4 className="text-[#0a0e27] text-[15px] font-semibold tracking-[0.5px] leading-[1.7]">
+                        <h4 className="text-[#0a0e27] text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2]">
 
                           {
                             item.title

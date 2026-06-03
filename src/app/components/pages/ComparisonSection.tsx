@@ -33,12 +33,12 @@ export function ComparisonSection() {
   if (!section) return null;
 
   return (
-    <section className="relative py-32 bg-[#02131d] text-white overflow-hidden">
+    <section className="relative py-16 md:py-24 bg-[#02131d] text-white overflow-hidden">
 
       {/* HEADER */}
-      <div className="text-center mb-12 md:mb-16 px-6">
+      <div className="text-center mb-8 md:mb-12 px-6">
 
-        <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
+        <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] mb-5">
 
           {section.title}{" "}
 
@@ -50,7 +50,7 @@ export function ComparisonSection() {
 
         </h2>
 
-        <p className="text-white/60 max-w-2xl mx-auto">
+        <p className="text-white/60 max-w-2xl mx-auto text-[15px] md:text-[16px] font-normal leading-[1.7]">
           {
             section.subtitle
           }
@@ -64,7 +64,7 @@ export function ComparisonSection() {
         <div className="rounded-2xl border border-white/10 overflow-hidden backdrop-blur-xl bg-white/5">
 
           {/* HEAD */}
-          <div className="grid grid-cols-3 text-sm text-white/50 border-b border-white/10">
+          <div className="grid grid-cols-3 text-[12px] font-semibold tracking-[3px] text-white/50 border-b border-white/10">
 
             <div className="p-5">
               FEATURE
@@ -123,7 +123,7 @@ export function ComparisonSection() {
 
                     <Check size={16} />
 
-                    {row.nemo}
+                    {row.diveCampus}
 
                   </div>
 

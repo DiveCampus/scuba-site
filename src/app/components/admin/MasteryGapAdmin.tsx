@@ -320,7 +320,7 @@ export default function MasteryGapAdmin() {
 
               </div>
 
-              {/* NEMO */}
+              {/* DIVECAMPUS */}
               <div className="p-5 flex items-center gap-3">
 
                 <Check
@@ -330,7 +330,7 @@ export default function MasteryGapAdmin() {
 
                 <input
                   value={
-                    row.nemo_text
+                    row.diveCampus_text
                   }
                   onChange={(e) => {
 
@@ -339,7 +339,7 @@ export default function MasteryGapAdmin() {
 
                     updated[
                       i
-                    ].nemo_text =
+                    ].diveCampus_text =
                       e.target.value;
 
                     setRows(updated);

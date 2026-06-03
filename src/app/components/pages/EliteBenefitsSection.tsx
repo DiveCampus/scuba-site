@@ -66,14 +66,14 @@ export function EliteBenefitsSection() {
   return (
 
     <section
-      className="py-32 bg-[#03121c] text-white"
+      className="py-16 md:py-24 bg-[#03121c] text-white"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 px-6 items-center">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-16 px-6 items-center">
 
         {/* IMAGE */}
         <motion.div
@@ -108,14 +108,14 @@ export function EliteBenefitsSection() {
         <div>
 
           {/* LABEL */}
-          <p className="text-[10px] tracking-[4px] text-cyan-400 mb-5">
+          <p className="text-[12px] font-semibold tracking-[3px] uppercase text-cyan-400 mb-3">
 
             {section?.label}
 
           </p>
 
           {/* TITLE */}
-          <h2 className="text-3xl md:text-5xl font-bold leading-[1.2] tracking-[1px] mb-5">
+          <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px] mt-3 mb-5">
 
             {section?.title}{" "}
 
@@ -130,7 +130,7 @@ export function EliteBenefitsSection() {
           </h2>
 
           {/* DESC */}
-          <p className="text-white/60 max-w-xl text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px] mb-8">
+          <p className="text-white/60 max-w-xl text-[15px] md:text-[16px] font-normal leading-[1.7] tracking-[0.45px] mt-5 mb-8 md:mb-12">
 
             {section?.description}
 
@@ -171,13 +171,13 @@ export function EliteBenefitsSection() {
                 {/* TEXT */}
                 <div>
 
-                  <h3 className="text-[15px] font-semibold tracking-[0.7px] leading-[1.65] text-white mb-2.5">
+                  <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-white mb-4">
 
                     {item.title}
 
                   </h3>
 
-                  <p className="text-[13px] text-white/60 leading-relaxed tracking-[0.35px] max-w-lg">
+                  <p className="text-[14px] md:text-[15px] text-white/60 leading-relaxed tracking-[0.35px] max-w-lg">
 
                     {item.description}
 

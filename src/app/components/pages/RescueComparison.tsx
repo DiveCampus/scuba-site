@@ -76,7 +76,7 @@ export function RescueComparison() {
   return (
 
     <section
-      className="relative py-36 bg-[#02131d] text-white overflow-hidden"
+      className="relative py-16 md:py-24 bg-[#02131d] text-white overflow-hidden"
       style={{
         fontFamily:
           "Harabara, sans-serif",
@@ -92,7 +92,7 @@ export function RescueComparison() {
       <div className="relative text-center mb-12 md:mb-16 px-6 max-w-4xl mx-auto">
 
         {/* TITLE */}
-        <h2 className="text-3xl md:text-5xl font-bold leading-[1.18] tracking-[1px]">
+        <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px]">
 
           {section.title}{" "}
 
@@ -107,7 +107,7 @@ export function RescueComparison() {
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="mt-5 text-[15px] md:text-[16px] text-white/60 leading-relaxed tracking-[0.45px] max-w-3xl mx-auto">
+        <p className="mt-5 text-[15px] md:text-[16px] font-normal text-white/60 leading-[1.7] tracking-[0.45px] max-w-3xl mx-auto">
 
           {section.description}
 
@@ -199,7 +199,7 @@ export function RescueComparison() {
 
                 </div>
 
-                {/* NEMO */}
+                {/* DIVECAMPUS */}
                 <div className="flex items-center justify-center gap-3 text-[13px] tracking-[0.35px] leading-relaxed text-white">
 
                   <div className="w-6 h-6 rounded-full bg-cyan-400/10 flex items-center justify-center shrink-0">
@@ -211,7 +211,7 @@ export function RescueComparison() {
                   <span>
 
                     {
-                      row.nemo_text
+                      row.diveCampus_text
                     }
 
                   </span>

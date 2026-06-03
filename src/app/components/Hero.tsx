@@ -79,12 +79,12 @@ export function Hero() {
       <div className="relative z-10 text-center px-6 max-w-5xl">
 
         {/* 🔥 TOP TEXT (NOW DYNAMIC) */}
-        <p className="uppercase tracking-[6px] text-cyan-300 text-[12px] mb-5">
+        <p className="uppercase tracking-[3px] text-cyan-300 text-[12px] font-semibold mb-3">
           {hero?.top_text || "Dive Campus Diving Club"}
         </p>
 
         {/* 🔥 TITLE */}
-        <h1 className="text-white text-4xl md:text-6xl font-semibold leading-tight">
+        <h1 className="text-white text-4xl md:text-6xl font-semibold leading-[1.1]">
           {hero?.title}{" "}
           <span className="text-[#38BDF8]">
             {hero?.subtitle}
@@ -92,7 +92,7 @@ export function Hero() {
         </h1>
 
         {/* 🔥 DESCRIPTION */}
-        <p className="mt-6 text-white/85 max-w-3xl mx-auto">
+        <p className="mt-5 text-white/85 text-[15px] md:text-[16px] font-normal leading-[1.7] max-w-3xl mx-auto">
           {hero?.description}
         </p>
 

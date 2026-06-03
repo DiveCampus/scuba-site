@@ -57,27 +57,27 @@ export function AdvancedTrainingGoldEliteSection() {
   return (
 
     <section
-      className="py-36 bg-[#f4f7fb]"
+      className="py-16 md:py-24 bg-[#f4f7fb]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 items-center">
+      <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 md:gap-16 items-center">
 
         {/* ================= LEFT ================= */}
         <div>
 
           {/* BADGE */}
-          <div className="inline-flex items-center px-7 py-3 rounded-full border border-cyan-400/40 text-cyan-400 text-[10px] tracking-[4px] mb-10">
+          <div className="inline-flex items-center px-7 py-3 rounded-full border border-cyan-400/40 text-cyan-400 text-[12px] font-semibold tracking-[3px] uppercase mb-3">
 
             {data?.badge}
 
           </div>
 
           {/* TITLE */}
-          <h2 className="text-5xl md:text-6xl font-bold text-[#071133] leading-[1.08] tracking-[-2px] mb-5">
+          <h2 className="text-[36px] md:text-[52px] font-semibold text-[#071133] leading-[1.1] tracking-[1px] mt-3 mb-5">
 
             {data?.title}
 
@@ -94,7 +94,7 @@ export function AdvancedTrainingGoldEliteSection() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="text-[#5f6982] text-[17px] leading-relaxed max-w-2xl mb-16">
+          <p className="text-[#5f6982] text-[14px] md:text-[15px] leading-relaxed max-w-2xl mt-5 mb-8 md:mb-12">
 
             {data?.description}
 
@@ -122,14 +122,14 @@ export function AdvancedTrainingGoldEliteSection() {
             </div>
 
             {/* TITLE */}
-            <h3 className="text-[36px] font-bold text-[#071133] leading-[1.2] mb-8 mt-4">
+            <h3 className="text-[20px] md:text-[24px] font-semibold text-[#071133] leading-[1.2] tracking-[0.5px] mb-4 mt-4">
 
               {data?.card_title}
 
             </h3>
 
             {/* TEXT */}
-            <p className="text-[#667085] leading-relaxed text-[15px] mb-10">
+            <p className="text-[#667085] leading-relaxed text-[14px] md:text-[15px] mb-10">
 
               {
                 data?.card_description

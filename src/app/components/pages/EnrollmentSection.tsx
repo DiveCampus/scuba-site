@@ -39,18 +39,18 @@ export function EnrollmentSection() {
   return (
     <>
       <section
-        className="py-24 bg-[#f8fafc] relative"
+        className="py-16 md:py-24 bg-[#f8fafc] relative"
         style={{ fontFamily: "Harabara, sans-serif" }}
       >
 
         {/* HEADER */}
         <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16 px-6">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#0a0e27] tracking-tight">
+          <h2 className="text-[36px] md:text-[52px] font-semibold text-[#0a0e27] tracking-[1px] leading-[1.1]">
             Enroll Now &{" "}
             <span className="text-cyan-500">Complete within 1 YEAR</span>
           </h2>
 
-          <p className="text-gray-500 mt-4 max-w-xl mx-auto text-sm">
+          <p className="text-gray-500 mt-5 max-w-xl mx-auto text-[15px] md:text-[16px] font-normal leading-[1.7]">
             You aren't just buying a course; you are securing a lifetime credential.
           </p>
         </div>

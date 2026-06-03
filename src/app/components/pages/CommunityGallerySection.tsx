@@ -23,7 +23,7 @@ export function CommunityGallerySection() {
   return (
     <>
       <section
-        className="py-28 bg-[#06141f] text-white relative overflow-hidden"
+        className="py-16 md:py-24 bg-[#06141f] text-white relative overflow-hidden"
         style={{ fontFamily: "Harabara, sans-serif" }}
       >
 
@@ -32,15 +32,15 @@ export function CommunityGallerySection() {
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
         {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto px-6 mb-12 md:mb-16 relative z-10">
-          <h2 className="text-3xl md:text-5xl font-bold leading-tight">
+        <div className="text-center max-w-3xl mx-auto px-6 mb-8 md:mb-12 relative z-10">
+          <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1]">
             BUILT ON PASSION. <br />
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
               BOUND BY ADVENTURE.
             </span>
           </h2>
 
-          <p className="text-white/60 mt-4 text-sm md:text-base">
+          <p className="text-white/60 mt-5 text-[15px] md:text-[16px] font-normal leading-[1.7]">
             Join a global family of explorers. From weekend dives in Fujairah to
             international expeditions — we don’t just dive together, we travel,
             laugh, and create memories.

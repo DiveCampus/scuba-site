@@ -29,7 +29,7 @@ export default function Divetry() {
         </div>
 
         {/* HEADING LABEL */}
-        <p className="text-sm md:text-[15px] tracking-[5px] md:tracking-[7px] text-cyan-300 mb-4 leading-relaxed uppercase">
+        <p className="text-[12px] font-semibold tracking-[3px] text-cyan-300 mb-3 uppercase">
           FIRST-TIME SCUBA EXPERIENCE
         </p>
 
@@ -56,15 +56,15 @@ export default function Divetry() {
                 : "bg-white/5 border-white/20 hover:scale-105"
             }`}
           >
-            <p className="text-[11px] tracking-[3px] text-cyan-300 mb-3 leading-relaxed">
+            <p className="text-[12px] font-semibold tracking-[3px] text-cyan-300 mb-3 uppercase">
               BEACH TRY DIVE
             </p>
 
-            <h3 className="text-lg font-semibold tracking-[2px] leading-relaxed mb-4">
+            <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] mb-4">
               DUBAI
             </h3>
 
-            <p className="text-xs text-gray-300 leading-relaxed tracking-[1px] mb-6">
+            <p className="text-[14px] md:text-[15px] text-gray-300 leading-relaxed tracking-[1px] mb-6">
               Walk-in Beach Entry <br />
               Palm Jumeirah Beach <br />
               Quick & Convenient
@@ -95,15 +95,15 @@ export default function Divetry() {
                 : "bg-white/5 border-white/20 hover:scale-105"
             }`}
           >
-            <p className="text-[11px] tracking-[3px] text-cyan-300 mb-3 leading-relaxed">
+            <p className="text-[12px] font-semibold tracking-[3px] text-cyan-300 mb-3 uppercase">
               BOAT TRY DIVE
             </p>
 
-            <h3 className="text-lg font-semibold tracking-[2px] leading-relaxed mb-4">
+            <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] mb-4">
               FUJAIRAH REEFS
             </h3>
 
-            <p className="text-xs text-gray-300 leading-relaxed tracking-[1px] mb-6">
+            <p className="text-[14px] md:text-[15px] text-gray-300 leading-relaxed tracking-[1px] mb-6">
               Natural Corals <br />
               Scenic Boat Trip <br />
               Exotic Marine Life

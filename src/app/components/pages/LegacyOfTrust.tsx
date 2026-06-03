@@ -7,7 +7,7 @@ export function LegacyOfTrust() {
   return (
     <>
       <section
-        className="relative py-24 overflow-hidden bg-[#071c2d]"
+        className="relative py-16 md:py-24 overflow-hidden bg-[#071c2d]"
         style={{ fontFamily: "Harabara, sans-serif" }}
       >
 
@@ -54,14 +54,14 @@ export function LegacyOfTrust() {
             </div>
 
             {/* BADGE */}
-            <p className="text-center text-[10px] tracking-[4px] uppercase text-cyan-400 mt-2">
+            <p className="text-center text-[12px] font-semibold tracking-[3px] uppercase text-cyan-400 mt-2">
 
-              THE NEMO STANDARD
+              THE DIVECAMPUS STANDARD
 
             </p>
 
             {/* TITLE */}
-            <h2 className="mt-5 text-center text-[42px] leading-[1] tracking-[-1px] font-semibold text-white">
+            <h2 className="mt-3 text-center text-[36px] md:text-[52px] leading-[1.1] tracking-[1px] font-semibold text-white">
 
               LEGACY OF{" "}
               <span className="text-white font-bold">
@@ -71,7 +71,7 @@ export function LegacyOfTrust() {
             </h2>
 
             {/* DESC */}
-            <p className="mt-5 text-center text-[15px] leading-relaxed text-white/55">
+            <p className="mt-5 text-center text-[15px] md:text-[16px] font-normal leading-[1.7] text-white/55">
 
               <span className="text-yellow-400 font-semibold">
                 Since 2014,

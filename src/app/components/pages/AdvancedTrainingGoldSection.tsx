@@ -69,27 +69,27 @@ export function AdvancedTrainingGoldSection() {
   return (
 
     <section
-      className="py-36 bg-[#f5f7fa]"
+      className="py-16 md:py-24 bg-[#f5f7fa]"
       style={{
         fontFamily:
           "Harabara, sans-serif",
       }}
     >
 
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 px-6 items-center">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 md:gap-16 px-6 items-center">
 
         {/* ================= LEFT ================= */}
         <div>
 
           {/* BADGE */}
-          <div className="inline-block px-5 py-2.5 text-[10px] tracking-[3.5px] rounded-full border border-cyan-400/30 text-cyan-500 mb-8">
+          <div className="inline-block px-5 py-2.5 text-[12px] font-semibold tracking-[3px] uppercase rounded-full border border-cyan-400/30 text-cyan-500 mb-3">
 
             {section?.badge}
 
           </div>
 
           {/* TITLE */}
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0a0e27] leading-[1.2] tracking-[1px] mb-5">
+          <h2 className="text-[36px] md:text-[52px] font-semibold text-[#0a0e27] leading-[1.1] tracking-[1px] mt-3 mb-5">
 
             {section?.title}{" "}
 
@@ -102,7 +102,7 @@ export function AdvancedTrainingGoldSection() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="text-gray-500 text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px] max-w-xl mb-8">
+          <p className="text-gray-500 text-[14px] md:text-[15px] leading-relaxed tracking-[0.45px] max-w-xl mt-5 mb-8 md:mb-12">
 
             {section?.description}
 
@@ -127,14 +127,14 @@ export function AdvancedTrainingGoldSection() {
             </div>
 
             {/* TITLE */}
-            <h3 className="text-[20px] font-semibold tracking-[0.7px] leading-[1.5] text-[#0a0e27] mb-5 mt-3">
+            <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-[#0a0e27] mb-4 mt-3">
 
               {section?.card_title}
 
             </h3>
 
             {/* TEXT */}
-            <p className="text-[14px] text-gray-600 leading-relaxed tracking-[0.35px] mb-8">
+            <p className="text-[14px] md:text-[15px] text-gray-600 leading-relaxed tracking-[0.35px] mb-8">
 
               {section?.card_description}
 

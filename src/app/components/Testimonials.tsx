@@ -83,7 +83,7 @@ export function Testimonials() {
 
   // ================= UI =================
   return (
-    <section className="relative py-24 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45] overflow-hidden font-habara">
+    <section className="relative py-16 md:py-24 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45] overflow-hidden font-habara">
 
       {/* Glow Effects */}
       <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-400/20 blur-[120px] rounded-full" />
@@ -92,17 +92,17 @@ export function Testimonials() {
       <div className="relative max-w-[1500px] mx-auto px-6">
 
         {/* HEADING */}
-        <h2 className="text-center text-5xl font-semibold mb-8 text-white uppercase tracking-wide">
+        <h2 className="text-center text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] mb-5 text-white uppercase">
           TRAINING QUALITY <span className="text-cyan-300">RAISED.</span>
         </h2>
 
-        <p className="text-center text-lg text-white/70 max-w-5xl mx-auto mb-16 uppercase tracking-wide">
+        <p className="text-center text-[15px] md:text-[16px] font-normal leading-[1.7] text-white/70 max-w-5xl mx-auto mt-5 mb-8 md:mb-12 uppercase">
           DON’T FALL FOR SMALL CLASS SIZE AND UNLIMITED TRAINING CLAIMS.
           HERE’S HOW WE DELIVER EXCELLENCE THAT TRULY MATTERS.
         </p>
 
         {/* TABS */}
-        <div className="flex justify-center gap-12 mb-16 flex-wrap">
+        <div className="flex justify-center gap-12 mb-8 md:mb-12 flex-wrap">
           {[
             "training environment",
             "instructor quality",

@@ -15,7 +15,7 @@ export function ContactLocations() {
       title: "DUBAI CONTACT DETAILS",
       address:
         "Azure Residences, The Palm Jumeirah, Dubai, UAE",
-      email: "info@nemodivingcenter.com",
+      email: "info@divecampus.com",
       phone: "+971 56 704 4472",
       map: "/map1.webp",
     },
@@ -24,7 +24,7 @@ export function ContactLocations() {
       title: "FUJAIRAH CONTACT DETAILS",
       address:
         "Royal Beach, Dibba Fujairah, Al Fujairah",
-      email: "dive@nemodivingcenter.com",
+      email: "dive@divecampus.com",
       phone: "+971 58 504 4450",
       map: "/map2.webp",
     },
@@ -33,7 +33,7 @@ export function ContactLocations() {
   return (
     <>
       <section
-        className="py-24 bg-[#f5f8fb]"
+        className="py-16 md:py-24 bg-[#f5f8fb]"
         style={{ fontFamily: "Harabara, sans-serif" }}
       >
 
@@ -50,7 +50,7 @@ export function ContactLocations() {
             >
 
               {/* TITLE */}
-              <h3 className="text-center text-[12px] tracking-[2px] text-[#23364d] uppercase mb-10">
+              <h3 className="text-center text-[12px] font-semibold tracking-[3px] text-[#23364d] uppercase mb-10">
 
                 {item.title}
 
@@ -71,7 +71,7 @@ export function ContactLocations() {
 
                   </div>
 
-                  <p className="text-[13px] leading-[1.7] text-[#7b8794]">
+                  <p className="text-[14px] md:text-[15px] leading-relaxed text-[#7b8794]">
                     {item.address}
                   </p>
 
@@ -89,7 +89,7 @@ export function ContactLocations() {
 
                   </div>
 
-                  <p className="text-[13px] text-[#7b8794]">
+                  <p className="text-[14px] md:text-[15px] leading-relaxed text-[#7b8794]">
                     {item.email}
                   </p>
 
@@ -107,7 +107,7 @@ export function ContactLocations() {
 
                   </div>
 
-                  <p className="text-[13px] text-[#7b8794]">
+                  <p className="text-[14px] md:text-[15px] leading-relaxed text-[#7b8794]">
                     {item.phone}
                   </p>
 

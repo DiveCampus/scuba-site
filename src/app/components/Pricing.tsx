@@ -37,7 +37,7 @@ export function Pricing() {
   }
 
   return (
-    <section className="relative py-32 overflow-hidden font-habara">
+    <section className="relative py-16 md:py-24 overflow-hidden font-habara">
 
       {/* BACKGROUND */}
       <div className="absolute inset-0 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45]" />
@@ -45,8 +45,8 @@ export function Pricing() {
       <div className="relative max-w-[1400px] mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center mb-20">
-          <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
+        <div className="text-center mb-8 md:mb-12">
+          <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] text-white mb-5">
             Choose Your <span className="text-cyan-300">Adventure</span>
           </h2>
         </div>
@@ -82,12 +82,12 @@ export function Pricing() {
               <div className="rounded-2xl p-8 h-full flex flex-col bg-white/10 border border-white/20">
 
                 {/* NAME */}
-                <h3 className="text-xl font-semibold text-white mb-2">
+                <h3 className="text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] text-white mb-2">
                   {pkg.name}
                 </h3>
 
                 {/* DESCRIPTION */}
-                <p className="text-white/50 text-sm mb-6">
+                <p className="text-white/50 text-[14px] md:text-[15px] leading-relaxed mb-6">
                   {pkg.description}
                 </p>
 

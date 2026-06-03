@@ -87,7 +87,7 @@ export function ComparisonDive() {
 
     <>
       <section
-        className="relative py-36 bg-[#02131d] text-white overflow-hidden"
+        className="relative py-16 md:py-24 bg-[#02131d] text-white overflow-hidden"
         style={{
           fontFamily:
             "Harabara, sans-serif",
@@ -100,10 +100,10 @@ export function ComparisonDive() {
         <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
         {/* HEADER */}
-        <div className="relative text-center mb-12 md:mb-16 px-6 max-w-4xl mx-auto">
+        <div className="relative text-center mb-8 md:mb-12 px-6 max-w-4xl mx-auto">
 
           {/* TITLE */}
-          <h2 className="text-3xl md:text-5xl font-bold leading-[1.18] tracking-[1px] mb-7">
+          <h2 className="text-[36px] md:text-[52px] font-semibold leading-[1.1] tracking-[1px] mb-5">
 
             {section.title}{" "}
 
@@ -118,7 +118,7 @@ export function ComparisonDive() {
           </h2>
 
           {/* DESC */}
-          <p className="text-white/60 max-w-3xl mx-auto text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px]">
+          <p className="text-white/60 max-w-3xl mx-auto text-[15px] md:text-[16px] font-normal leading-[1.7] tracking-[0.45px]">
 
             {
               section.description
@@ -134,7 +134,7 @@ export function ComparisonDive() {
           <div className="rounded-3xl border border-white/10 overflow-hidden backdrop-blur-xl bg-white/5 shadow-[0_20px_80px_rgba(0,0,0,0.45)]">
 
             {/* HEAD */}
-            <div className="grid grid-cols-3 text-[10px] tracking-[3px] text-white/40 border-b border-white/10 bg-white/[0.03]">
+            <div className="grid grid-cols-3 text-[12px] font-semibold tracking-[3px] text-white/40 border-b border-white/10 bg-white/[0.03]">
 
               <div className="p-6">
 
@@ -153,7 +153,7 @@ export function ComparisonDive() {
               <div className="p-6 text-center text-cyan-400 font-semibold">
 
                 {
-                  section.nemo_heading
+                  section.diveCampus_heading
                 }
 
               </div>
@@ -204,7 +204,7 @@ export function ComparisonDive() {
 
                 </div>
 
-                {/* NEMO */}
+                {/* DIVECAMPUS */}
                 <div className="p-6 flex items-center justify-center">
 
                   <div className="flex items-center gap-3 px-6 py-3 rounded-xl border border-cyan-400/30 bg-cyan-400/5 text-cyan-300 text-[13px] tracking-[0.35px] leading-[1.7]">
@@ -217,7 +217,7 @@ export function ComparisonDive() {
                     <span>
 
                       {
-                        row.nemo_text
+                        row.diveCampus_text
                       }
 
                     </span>
