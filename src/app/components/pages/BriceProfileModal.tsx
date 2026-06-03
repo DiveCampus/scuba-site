@@ -137,7 +137,7 @@ export function BriceProfileModal({
                   initial={{ opacity: 0, y: 25 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="mt-7 space-y-4 text-white/70 text-[13px] leading-[1.8] tracking-[0.3px] max-w-[480px]"
+                  className="mt-7 space-y-4 text-white/70 text-[13px] leading-[1.7] tracking-[0.3px] max-w-[480px]"
                 >
 
                   <p>

@@ -118,7 +118,7 @@ export function MasterScubaCTA() {
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="text-[15px] md:text-[16px] text-white/60 mt-8 leading-[2] tracking-[0.45px] max-w-[620px] mx-auto">
+        <p className="text-[15px] md:text-[16px] text-white/60 mt-5 leading-relaxed tracking-[0.45px] max-w-[620px] mx-auto">
 
           {
             section.description

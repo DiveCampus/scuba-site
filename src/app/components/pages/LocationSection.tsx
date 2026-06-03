@@ -43,7 +43,7 @@ export function LocationSection() {
       <div className="max-w-6xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-16">
 
           <h2 className="text-4xl md:text-5xl font-bold text-[#0a0e27]">
 

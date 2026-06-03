@@ -137,7 +137,7 @@ export function KhushiProfileModal({
                                     initial={{ opacity: 0, y: 25 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ delay: 0.3 }}
-                                    className="mt-8 space-y-5 text-white/70 text-[14px] leading-[1.9] tracking-[0.35px] max-w-[520px]"
+                                    className="mt-8 space-y-5 text-white/70 text-[14px] leading-[1.7] tracking-[0.35px] max-w-[520px]"
                                 >
 
                                     <p>

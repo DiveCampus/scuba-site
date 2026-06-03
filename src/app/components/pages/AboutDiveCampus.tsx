@@ -137,7 +137,7 @@ export function AboutDiveCampus() {
 
               {/* ROLE */}
               <p
-                className="relative z-10 text-cyan-300 text-[8px] sm:text-[9px] md:text-[10px] tracking-[2px] md:tracking-[3px] uppercase mt-2 md:mt-3 text-center leading-[1.8] px-2"
+                className="relative z-10 text-cyan-300 text-[8px] sm:text-[9px] md:text-[10px] tracking-[2px] md:tracking-[3px] uppercase mt-2 md:mt-3 text-center leading-relaxed px-2"
               >
                 {member.role}
               </p>

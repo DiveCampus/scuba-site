@@ -119,7 +119,7 @@ export function RescueCapabilities() {
         <div className="absolute bottom-10 right-10 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
         {/* HEADER */}
-        <div className="text-center mb-20 px-6 relative z-10">
+        <div className="text-center mb-12 md:mb-16 px-6 relative z-10">
 
           {/* TITLE */}
           <h2 className="text-3xl md:text-5xl font-semibold leading-[1.18] tracking-[1px] text-[#0a0e27]">
@@ -137,7 +137,7 @@ export function RescueCapabilities() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="mt-8 max-w-3xl mx-auto text-[15px] md:text-[16px] text-gray-500 leading-[2] tracking-[0.45px]">
+          <p className="mt-5 max-w-3xl mx-auto text-[15px] md:text-[16px] text-gray-500 leading-relaxed tracking-[0.45px]">
 
             {section.description}
 
@@ -202,7 +202,7 @@ export function RescueCapabilities() {
                 </h3>
 
                 {/* DESC */}
-                <p className="text-[14px] text-gray-500 leading-[2] tracking-[0.35px]">
+                <p className="text-[14px] text-gray-500 leading-relaxed tracking-[0.35px]">
 
                   {item.description}
 
@@ -249,7 +249,7 @@ export function RescueCapabilities() {
               </h3>
 
               {/* DESC */}
-              <p className="text-white/60 text-[14px] mt-5 leading-[2] tracking-[0.35px]">
+              <p className="text-white/60 text-[14px] mt-5 leading-relaxed tracking-[0.35px]">
 
                 {
                   section.premium_description

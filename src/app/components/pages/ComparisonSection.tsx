@@ -36,7 +36,7 @@ export function ComparisonSection() {
     <section className="relative py-32 bg-[#02131d] text-white overflow-hidden">
 
       {/* HEADER */}
-      <div className="text-center mb-16 px-6">
+      <div className="text-center mb-12 md:mb-16 px-6">
 
         <h2 className="text-3xl md:text-5xl font-bold mb-4 tracking-tight">
 

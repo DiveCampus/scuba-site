@@ -91,7 +91,7 @@ export function OpenDiver() {
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="mt-7 max-w-2xl text-[15px] leading-[1.95] tracking-[0.5px] text-white/72 md:text-[16px]">
+          <p className="mt-5 max-w-2xl text-[15px] leading-relaxed tracking-[0.5px] text-white/72 md:text-[16px]">
             {course?.description}
           </p>
 
@@ -108,7 +108,7 @@ export function OpenDiver() {
               {course?.price}
             </h2>
 
-            <p className="mt-4 text-xs leading-[1.8] tracking-[1px] text-white/55">
+            <p className="mt-4 text-xs leading-relaxed tracking-[1px] text-white/55">
               {
                 course?.price_subtext
               }

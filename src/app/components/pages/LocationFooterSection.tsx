@@ -212,7 +212,7 @@ export function LocationFooterSection() {
             </h2>
 
             {/* DESCRIPTION */}
-            <p className="text-[15px] md:text-[16px] text-white/60 mt-9 max-w-[540px] leading-[2] tracking-[0.45px] whitespace-pre-line">
+            <p className="text-[15px] md:text-[16px] text-white/60 mt-5 max-w-[540px] leading-relaxed tracking-[0.45px] whitespace-pre-line">
 
               {
                 section.description
@@ -257,7 +257,7 @@ export function LocationFooterSection() {
 
                       }
 
-                      <span className="leading-[1.8]">
+                      <span className="leading-relaxed">
 
                         {
                           item.title
@@ -380,7 +380,7 @@ export function LocationFooterSection() {
 
                 </p>
 
-                <ul className="space-y-5 text-white/70 text-[13px] tracking-[0.4px] leading-[1.9]">
+                <ul className="space-y-5 text-white/70 text-[13px] tracking-[0.4px] leading-relaxed">
 
                   {getLinks(
                     group.id
@@ -426,7 +426,7 @@ export function LocationFooterSection() {
         </div>
 
         {/* COPYRIGHT */}
-        <div className="text-center text-white/35 text-[11px] tracking-[1.2px] mt-20 leading-[2.2]">
+        <div className="text-center text-white/35 text-[11px] tracking-[1.2px] mt-20 leading-relaxed">
 
           {
             section.copyright_text

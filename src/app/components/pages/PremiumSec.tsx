@@ -173,7 +173,7 @@ export function PremiumSec() {
 
               </h4>
 
-              <p className="text-[14px] tracking-[0.5px] text-cyan-400 mb-5 leading-[1.8]">
+              <p className="text-[14px] tracking-[0.5px] text-cyan-400 mb-5 leading-relaxed">
 
                 {section?.connect_text}
 
@@ -227,7 +227,7 @@ export function PremiumSec() {
 
                         <li
                           key={item.id}
-                          className="hover:text-white transition cursor-pointer leading-[1.8]"
+                          className="hover:text-white transition cursor-pointer leading-relaxed"
                         >
 
                           {item.link_text}
@@ -273,7 +273,7 @@ export function PremiumSec() {
             </div>
 
             {/* COPYRIGHT */}
-            <p className="text-[11px] text-gray-400 text-center tracking-[1px] leading-[1.9]">
+            <p className="text-[11px] text-gray-400 text-center tracking-[1px] leading-relaxed">
 
               {section?.copyright_text}
 

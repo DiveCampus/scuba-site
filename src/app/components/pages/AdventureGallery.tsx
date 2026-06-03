@@ -57,7 +57,7 @@ export function AdventureGallery() {
 
           </h2>
 
-          <p className="mt-5 max-w-2xl mx-auto text-[14px] leading-[1.8] text-[#7f8b99]">
+          <p className="mt-5 max-w-2xl mx-auto text-[14px] leading-relaxed text-[#7f8b99]">
 
             Join a global family of explorers. From weekend dives in Fujairah
             to international expeditions in the Maldives — we don’t just dive

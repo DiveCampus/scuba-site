@@ -100,7 +100,7 @@ export function ComparisonDive() {
         <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
         {/* HEADER */}
-        <div className="relative text-center mb-20 px-6 max-w-4xl mx-auto">
+        <div className="relative text-center mb-12 md:mb-16 px-6 max-w-4xl mx-auto">
 
           {/* TITLE */}
           <h2 className="text-3xl md:text-5xl font-bold leading-[1.18] tracking-[1px] mb-7">
@@ -118,7 +118,7 @@ export function ComparisonDive() {
           </h2>
 
           {/* DESC */}
-          <p className="text-white/60 max-w-3xl mx-auto text-[15px] md:text-[16px] leading-[1.95] tracking-[0.45px]">
+          <p className="text-white/60 max-w-3xl mx-auto text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px]">
 
             {
               section.description
@@ -180,14 +180,14 @@ export function ComparisonDive() {
               >
 
                 {/* FEATURE */}
-                <div className="p-6 text-white/82 text-[14px] tracking-[0.45px] leading-[1.8]">
+                <div className="p-6 text-white/82 text-[14px] tracking-[0.45px] leading-relaxed">
 
                   {row.feature}
 
                 </div>
 
                 {/* OTHERS */}
-                <div className="p-6 flex items-center justify-center gap-3 text-red-400 text-[13px] tracking-[0.35px] leading-[1.8]">
+                <div className="p-6 flex items-center justify-center gap-3 text-red-400 text-[13px] tracking-[0.35px] leading-relaxed">
 
                   <X
                     size={16}

@@ -87,7 +87,7 @@ export function ChooseDiveSite() {
               CHOOSE YOUR DIVE SITE
             </h2>
 
-            <p className="mt-5 text-white/45 text-sm leading-[1.8] max-w-2xl mx-auto">
+            <p className="mt-5 text-white/45 text-sm leading-relaxed max-w-2xl mx-auto">
               Select your perfect environment. Experience the convenience
               of Palm Jumeirah or the crystal clear waters of Fujairah.
             </p>

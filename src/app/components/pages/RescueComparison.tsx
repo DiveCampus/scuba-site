@@ -89,7 +89,7 @@ export function RescueComparison() {
       <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
       {/* HEADER */}
-      <div className="relative text-center mb-20 px-6 max-w-4xl mx-auto">
+      <div className="relative text-center mb-12 md:mb-16 px-6 max-w-4xl mx-auto">
 
         {/* TITLE */}
         <h2 className="text-3xl md:text-5xl font-bold leading-[1.18] tracking-[1px]">
@@ -107,7 +107,7 @@ export function RescueComparison() {
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="mt-8 text-[15px] md:text-[16px] text-white/60 leading-[2] tracking-[0.45px] max-w-3xl mx-auto">
+        <p className="mt-5 text-[15px] md:text-[16px] text-white/60 leading-relaxed tracking-[0.45px] max-w-3xl mx-auto">
 
           {section.description}
 
@@ -184,14 +184,14 @@ export function RescueComparison() {
               >
 
                 {/* LABEL */}
-                <div className="text-white/82 text-[14px] tracking-[0.45px] leading-[1.8]">
+                <div className="text-white/82 text-[14px] tracking-[0.45px] leading-relaxed">
 
                   {row.label}
 
                 </div>
 
                 {/* OTHER */}
-                <div className="text-white/40 text-[13px] tracking-[0.35px] leading-[1.9] text-center px-3">
+                <div className="text-white/40 text-[13px] tracking-[0.35px] leading-relaxed text-center px-3">
 
                   {
                     row.other_text
@@ -200,7 +200,7 @@ export function RescueComparison() {
                 </div>
 
                 {/* NEMO */}
-                <div className="flex items-center justify-center gap-3 text-[13px] tracking-[0.35px] leading-[1.8] text-white">
+                <div className="flex items-center justify-center gap-3 text-[13px] tracking-[0.35px] leading-relaxed text-white">
 
                   <div className="w-6 h-6 rounded-full bg-cyan-400/10 flex items-center justify-center shrink-0">
 

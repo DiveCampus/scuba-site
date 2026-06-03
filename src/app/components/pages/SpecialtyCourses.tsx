@@ -67,7 +67,7 @@ export function SpecialtyCourses() {
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="mt-7 text-white/72 max-w-2xl text-[15px] md:text-[16px] leading-[1.95] tracking-[0.5px]">
+          <p className="mt-5 text-white/72 max-w-2xl text-[15px] md:text-[16px] leading-relaxed tracking-[0.5px]">
 
             Choose from a variety of specialty diving
             courses like night diving, wreck diving,
@@ -103,7 +103,7 @@ export function SpecialtyCourses() {
 
             {/* SUBTEXT */}
             <p
-              className="text-xs text-white/55 mt-5 tracking-[1px] leading-[1.8]"
+              className="text-xs text-white/55 mt-5 tracking-[1px] leading-relaxed"
             >
               Flexible Courses · International
               Certification

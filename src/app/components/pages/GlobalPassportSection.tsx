@@ -99,7 +99,7 @@ export function GlobalPassportSection() {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* ================= HEADER ================= */}
-        <div className="text-center mb-24 max-w-4xl mx-auto">
+        <div className="text-center mb-12 md:mb-16 max-w-4xl mx-auto">
 
           {/* HEADING */}
           <h2 className="text-3xl md:text-5xl font-bold leading-[1.2] tracking-[1px] text-[#0a0e27]">
@@ -117,7 +117,7 @@ export function GlobalPassportSection() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="text-gray-500 mt-8 text-[15px] md:text-[16px] leading-[1.95] tracking-[0.45px] max-w-3xl mx-auto">
+          <p className="text-gray-500 mt-5 text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px] max-w-3xl mx-auto">
 
             {section?.description}
 
@@ -150,7 +150,7 @@ export function GlobalPassportSection() {
               </h3>
 
               {/* DESCRIPTION */}
-              <p className="text-gray-500 text-[14px] leading-[1.9] tracking-[0.35px] mt-5 max-w-md mx-auto">
+              <p className="text-gray-500 text-[14px] leading-relaxed tracking-[0.35px] mt-5 max-w-md mx-auto">
 
                 {section?.testimonial_description}
 
@@ -196,7 +196,7 @@ export function GlobalPassportSection() {
 
                     </p>
 
-                    <p className="text-[12px] leading-[1.9] tracking-[0.3px]">
+                    <p className="text-[12px] leading-relaxed tracking-[0.3px]">
 
                       {review.review_text}
 
@@ -290,7 +290,7 @@ export function GlobalPassportSection() {
                           transition={{
                             duration: 0.3,
                           }}
-                          className="px-6 pb-5 text-[13px] text-gray-500 leading-[1.95] tracking-[0.3px]"
+                          className="px-6 pb-5 text-[13px] text-gray-500 leading-relaxed tracking-[0.3px]"
                         >
 
                           {faq.answer}

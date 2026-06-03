@@ -53,7 +53,7 @@ export function AdvancedProtocolSection() {
     <section className="py-32 bg-[#f3f6f9]">
 
       {/* HEADER */}
-      <div className="text-center max-w-4xl mx-auto px-6 mb-20">
+      <div className="text-center max-w-4xl mx-auto px-6 mb-12 md:mb-16">
 
         <p className="text-[10px] tracking-[4px] text-cyan-500 mb-5">
           {section.top_label}
@@ -69,7 +69,7 @@ export function AdvancedProtocolSection() {
 
         </h2>
 
-        <p className="mt-7 text-gray-500 max-w-2xl mx-auto leading-[1.9]">
+        <p className="mt-5 text-gray-500 max-w-2xl mx-auto leading-relaxed">
           {section.description}
         </p>
 
@@ -110,7 +110,7 @@ export function AdvancedProtocolSection() {
               {card.title}
             </h3>
 
-            <p className="text-sm text-gray-500 leading-[1.9]">
+            <p className="text-sm text-gray-500 leading-relaxed">
               {card.description}
             </p>
 
@@ -130,7 +130,7 @@ export function AdvancedProtocolSection() {
             {section.cta_title}
           </h3>
 
-          <p className="text-sm text-gray-500 mb-6 leading-[1.8]">
+          <p className="text-sm text-gray-500 mb-6 leading-relaxed">
             {section.cta_description}
           </p>
 

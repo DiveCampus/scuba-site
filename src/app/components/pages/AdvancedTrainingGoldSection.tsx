@@ -89,7 +89,7 @@ export function AdvancedTrainingGoldSection() {
           </div>
 
           {/* TITLE */}
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0a0e27] leading-[1.2] tracking-[1px] mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold text-[#0a0e27] leading-[1.2] tracking-[1px] mb-5">
 
             {section?.title}{" "}
 
@@ -102,7 +102,7 @@ export function AdvancedTrainingGoldSection() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="text-gray-500 text-[15px] md:text-[16px] leading-[1.95] tracking-[0.45px] max-w-xl mb-14">
+          <p className="text-gray-500 text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px] max-w-xl mb-8">
 
             {section?.description}
 
@@ -134,7 +134,7 @@ export function AdvancedTrainingGoldSection() {
             </h3>
 
             {/* TEXT */}
-            <p className="text-[14px] text-gray-600 leading-[1.95] tracking-[0.35px] mb-8">
+            <p className="text-[14px] text-gray-600 leading-relaxed tracking-[0.35px] mb-8">
 
               {section?.card_description}
 

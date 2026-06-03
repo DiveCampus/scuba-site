@@ -131,7 +131,7 @@ export function CommandOceanSection() {
         </h2>
 
         {/* DESC */}
-        <p className="mt-7 text-[15px] md:text-[16px] leading-[1.95] tracking-[0.45px] text-gray-500 max-w-2xl mx-auto">
+        <p className="mt-5 text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px] text-gray-500 max-w-2xl mx-auto">
 
           {section.description}
 
@@ -186,7 +186,7 @@ export function CommandOceanSection() {
               </h3>
 
               {/* DESC */}
-              <p className="text-[13px] text-gray-500 mt-4 max-w-[240px] leading-[1.95] tracking-[0.35px]">
+              <p className="text-[13px] text-gray-500 mt-4 max-w-[240px] leading-relaxed tracking-[0.35px]">
 
                 {item.description}
 

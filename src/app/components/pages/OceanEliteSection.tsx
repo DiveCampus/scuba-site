@@ -86,9 +86,9 @@ export function OceanEliteSection() {
       <div className="max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center max-w-4xl mx-auto mb-24">
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
 
-          <h2 className="text-4xl md:text-6xl font-bold text-[#07142b] leading-[1.15] tracking-[-1px] mb-8">
+          <h2 className="text-4xl md:text-6xl font-bold text-[#07142b] leading-[1.15] tracking-[-1px] mb-5">
 
             {section?.title}
 
@@ -104,7 +104,7 @@ export function OceanEliteSection() {
 
           </h2>
 
-          <p className="text-[16px] leading-[2] text-gray-500 max-w-3xl mx-auto">
+          <p className="text-[16px] leading-relaxed text-gray-500 max-w-3xl mx-auto">
 
             {section?.description}
 
@@ -129,7 +129,7 @@ export function OceanEliteSection() {
 
               </h3>
 
-              <p className="text-center text-gray-500 leading-[2] max-w-md mx-auto mb-12">
+              <p className="text-center text-gray-500 leading-relaxed max-w-md mx-auto mb-12">
 
                 Real stories from divers
                 who pushed their limits
@@ -196,7 +196,7 @@ export function OceanEliteSection() {
 
                   </h4>
 
-                  <p className="text-gray-500 leading-[2] text-[14px]">
+                  <p className="text-gray-500 leading-relaxed text-[14px]">
 
                     {item.review_text}
 
@@ -258,7 +258,7 @@ export function OceanEliteSection() {
 
                     <div className="px-8 pb-7">
 
-                      <p className="text-gray-500 leading-[2]">
+                      <p className="text-gray-500 leading-relaxed">
 
                         {faq.answer}
 

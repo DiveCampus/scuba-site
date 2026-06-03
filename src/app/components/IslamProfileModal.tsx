@@ -136,7 +136,7 @@ export function IslamProfileModal({
                   initial={{ opacity: 0, y: 25 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.3 }}
-                  className="mt-10 space-y-7 text-white/70 text-[15px] leading-[2.1] tracking-[0.45px]"
+                  className="mt-10 space-y-7 text-white/70 text-[15px] leading-[1.7] tracking-[0.45px]"
                 >
 
                   <p>

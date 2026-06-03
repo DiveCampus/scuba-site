@@ -77,10 +77,10 @@ export function TrainingComparisonSection() {
       <div className="relative max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center max-w-5xl mx-auto mb-24">
+        <div className="text-center max-w-5xl mx-auto mb-12 md:mb-16">
 
           {/* TITLE */}
-          <h2 className="text-5xl md:text-6xl font-bold leading-[1.1] tracking-[-2px] mb-10">
+          <h2 className="text-5xl md:text-6xl font-bold leading-[1.1] tracking-[-2px] mb-5">
 
             {section?.title}{" "}
 
@@ -95,7 +95,7 @@ export function TrainingComparisonSection() {
           </h2>
 
           {/* DESC */}
-          <p className="text-white/55 text-[17px] leading-[2] max-w-4xl mx-auto">
+          <p className="text-white/55 text-[17px] leading-relaxed max-w-4xl mx-auto">
 
             {section?.description}
 
@@ -149,7 +149,7 @@ export function TrainingComparisonSection() {
             >
 
               {/* TITLE */}
-              <div className="p-8 text-white/85 text-[15px] leading-[1.8]">
+              <div className="p-8 text-white/85 text-[15px] leading-relaxed">
 
                 {row.title}
 

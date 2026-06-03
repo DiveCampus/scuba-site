@@ -39,7 +39,7 @@ export default function Divetry() {
         </h1>
 
         {/* SUBTEXT */}
-        <p className="text-cyan-300 text-sm md:text-[15px] tracking-[2px] leading-relaxed mt-5 mb-12">
+        <p className="text-cyan-300 text-sm md:text-[15px] tracking-[2px] leading-relaxed mt-5 mb-8">
           OPEN TO AGES 10 & ABOVE
         </p>
 
@@ -64,7 +64,7 @@ export default function Divetry() {
               DUBAI
             </h3>
 
-            <p className="text-xs text-gray-300 leading-[2] tracking-[1px] mb-6">
+            <p className="text-xs text-gray-300 leading-relaxed tracking-[1px] mb-6">
               Walk-in Beach Entry <br />
               Palm Jumeirah Beach <br />
               Quick & Convenient
@@ -103,7 +103,7 @@ export default function Divetry() {
               FUJAIRAH REEFS
             </h3>
 
-            <p className="text-xs text-gray-300 leading-[2] tracking-[1px] mb-6">
+            <p className="text-xs text-gray-300 leading-relaxed tracking-[1px] mb-6">
               Natural Corals <br />
               Scenic Boat Trip <br />
               Exotic Marine Life

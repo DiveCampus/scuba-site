@@ -105,7 +105,7 @@ export function ProfessionalStatusSection() {
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="mt-7 text-[15px] md:text-[16px] leading-[1.95] tracking-[0.45px] text-gray-500 max-w-2xl mx-auto">
+        <p className="mt-5 text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px] text-gray-500 max-w-2xl mx-auto">
 
           {section.description}
 
@@ -175,7 +175,7 @@ export function ProfessionalStatusSection() {
             </div>
 
             {/* LIST */}
-            <ul className="text-[13px] text-gray-500 space-y-3 leading-[1.9] tracking-[0.35px]">
+            <ul className="text-[13px] text-gray-500 space-y-3 leading-relaxed tracking-[0.35px]">
 
               {item.descriptions?.map(
                 (
@@ -210,7 +210,7 @@ export function ProfessionalStatusSection() {
             {/* HIGHLIGHT */}
             {item.highlight && (
 
-              <div className="mt-5 text-[11px] tracking-[0.6px] leading-[1.8] bg-cyan-50 text-cyan-600 px-4 py-3 rounded-xl border border-cyan-100">
+              <div className="mt-5 text-[11px] tracking-[0.6px] leading-relaxed bg-cyan-50 text-cyan-600 px-4 py-3 rounded-xl border border-cyan-100">
 
                 {item.highlight}
 

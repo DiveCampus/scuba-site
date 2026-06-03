@@ -80,7 +80,7 @@ export function DiveConfidenceFAQ() {
             </h2>
 
             {/* DESC */}
-            <p className="mt-7 text-[15px] leading-[1.9] text-[#7b8794]">
+            <p className="mt-5 text-[15px] leading-relaxed text-[#7b8794]">
               Safety is our absolute priority. Every session is led by our
               PADI Licensed Instructors to ensure you are comfortable,
               supported, and secure from your first breath to your final ascent.
@@ -186,7 +186,7 @@ export function DiveConfidenceFAQ() {
 
                         <div className="px-6 pb-6">
 
-                          <p className="text-[14px] leading-[1.9] text-[#7b8794] max-w-xl">
+                          <p className="text-[14px] leading-relaxed text-[#7b8794] max-w-xl">
                             {item.a}
                           </p>
 

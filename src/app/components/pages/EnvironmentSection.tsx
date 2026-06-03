@@ -147,7 +147,7 @@ export function EnvironmentSection() {
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="text-white/55 text-[15px] md:text-[16px] mt-9 max-w-[760px] mx-auto leading-[2] tracking-[0.5px]">
+        <p className="text-white/55 text-[15px] md:text-[16px] mt-5 max-w-[760px] mx-auto leading-relaxed tracking-[0.5px]">
 
           {section.description}
 
@@ -184,7 +184,7 @@ export function EnvironmentSection() {
               </h3>
 
               {/* DESC */}
-              <p className="text-white/60 text-[14px] mt-6 leading-[2] tracking-[0.4px]">
+              <p className="text-white/60 text-[14px] mt-6 leading-relaxed tracking-[0.4px]">
 
                 {card.description}
 
@@ -270,7 +270,7 @@ export function EnvironmentSection() {
         </div>
 
         {/* COPYRIGHT */}
-        <div className="text-center text-white/35 text-[11px] tracking-[1.2px] mt-20 leading-[2]">
+        <div className="text-center text-white/35 text-[11px] tracking-[1.2px] mt-20 leading-relaxed">
 
           {section.footer_text}
 

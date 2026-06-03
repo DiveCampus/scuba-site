@@ -44,7 +44,7 @@ export function EnrollmentSection() {
       >
 
         {/* HEADER */}
-        <div className="max-w-4xl mx-auto text-center mb-16 px-6">
+        <div className="max-w-4xl mx-auto text-center mb-12 md:mb-16 px-6">
           <h2 className="text-3xl md:text-5xl font-bold text-[#0a0e27] tracking-tight">
             Enroll Now &{" "}
             <span className="text-cyan-500">Complete within 1 YEAR</span>

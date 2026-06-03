@@ -119,7 +119,7 @@ export function FirstDiveStepsSection() {
 
               {/* DESCRIPTION */}
               <p
-                className="relative z-10 text-[11px] md:text-[12px] text-[#7b8794] leading-[1.8] tracking-[0.3px] max-w-[240px] mx-auto"
+                className="relative z-10 text-[11px] md:text-[12px] text-[#7b8794] leading-relaxed tracking-[0.3px] max-w-[240px] mx-auto"
               >
                 {item.desc}
               </p>

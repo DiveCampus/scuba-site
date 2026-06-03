@@ -32,7 +32,7 @@ export function CommunityGallerySection() {
         <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/10 blur-[120px] rounded-full" />
 
         {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto px-6 mb-16 relative z-10">
+        <div className="text-center max-w-3xl mx-auto px-6 mb-12 md:mb-16 relative z-10">
           <h2 className="text-3xl md:text-5xl font-bold leading-tight">
             BUILT ON PASSION. <br />
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">

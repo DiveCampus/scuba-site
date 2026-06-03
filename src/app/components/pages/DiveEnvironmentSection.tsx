@@ -69,9 +69,9 @@ export function DiveEnvironmentSection() {
       <div className="relative max-w-7xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center max-w-4xl mx-auto mb-24">
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16">
 
-          <h2 className="text-4xl md:text-6xl font-bold text-white leading-[1.05] tracking-[-2px] mb-8">
+          <h2 className="text-4xl md:text-6xl font-bold text-white leading-[1.05] tracking-[-2px] mb-5">
 
             {section?.title}{" "}
 
@@ -85,7 +85,7 @@ export function DiveEnvironmentSection() {
 
           </h2>
 
-          <p className="text-white/55 text-[16px] leading-[2] max-w-4xl mx-auto">
+          <p className="text-white/55 text-[16px] leading-relaxed max-w-4xl mx-auto">
 
             {section?.description}
 
@@ -124,7 +124,7 @@ export function DiveEnvironmentSection() {
               </h3>
 
               {/* DESCRIPTION */}
-              <p className="text-white/55 leading-[2] text-[15px] mb-12 max-w-xl">
+              <p className="text-white/55 leading-relaxed text-[15px] mb-12 max-w-xl">
 
                 {item.description}
 

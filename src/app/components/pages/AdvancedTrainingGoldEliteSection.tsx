@@ -77,7 +77,7 @@ export function AdvancedTrainingGoldEliteSection() {
           </div>
 
           {/* TITLE */}
-          <h2 className="text-5xl md:text-6xl font-bold text-[#071133] leading-[1.08] tracking-[-2px] mb-10">
+          <h2 className="text-5xl md:text-6xl font-bold text-[#071133] leading-[1.08] tracking-[-2px] mb-5">
 
             {data?.title}
 
@@ -94,7 +94,7 @@ export function AdvancedTrainingGoldEliteSection() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="text-[#5f6982] text-[17px] leading-[2] max-w-2xl mb-16">
+          <p className="text-[#5f6982] text-[17px] leading-relaxed max-w-2xl mb-16">
 
             {data?.description}
 
@@ -129,7 +129,7 @@ export function AdvancedTrainingGoldEliteSection() {
             </h3>
 
             {/* TEXT */}
-            <p className="text-[#667085] leading-[2] text-[15px] mb-10">
+            <p className="text-[#667085] leading-relaxed text-[15px] mb-10">
 
               {
                 data?.card_description

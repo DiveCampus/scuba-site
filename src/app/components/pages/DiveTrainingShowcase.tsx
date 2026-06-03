@@ -114,7 +114,7 @@ export function DiveTrainingShowcase() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="text-[15px] md:text-[16px] text-white/60 mt-8 max-w-[520px] leading-[2] tracking-[0.45px]">
+          <p className="text-[15px] md:text-[16px] text-white/60 mt-5 max-w-[520px] leading-relaxed tracking-[0.45px]">
 
             {
               section.description
@@ -137,7 +137,7 @@ export function DiveTrainingShowcase() {
             </h4>
 
             {/* CARD DESCRIPTION */}
-            <p className="text-[14px] text-white/60 mt-5 leading-[2] tracking-[0.35px] max-w-[500px]">
+            <p className="text-[14px] text-white/60 mt-5 leading-relaxed tracking-[0.35px] max-w-[500px]">
 
               {
                 section.card_description

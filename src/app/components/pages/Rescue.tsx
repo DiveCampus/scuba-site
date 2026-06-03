@@ -161,7 +161,7 @@ export function Rescue() {
           </h1>
 
           {/* DESCRIPTION */}
-          <p className="mt-7 text-white/70 max-w-2xl text-[15px] md:text-[16px] leading-[1.95] tracking-[0.6px]">
+          <p className="mt-5 text-white/70 max-w-2xl text-[15px] md:text-[16px] leading-relaxed tracking-[0.6px]">
 
             {section.description}
 

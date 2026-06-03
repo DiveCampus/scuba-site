@@ -144,7 +144,7 @@ export function RescueFAQSection() {
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="text-[15px] md:text-[16px] text-gray-500 mt-8 leading-[2] tracking-[0.45px] max-w-[700px] mx-auto">
+        <p className="text-[15px] md:text-[16px] text-gray-500 mt-5 leading-relaxed tracking-[0.45px] max-w-[700px] mx-auto">
 
           {
             section.description
@@ -188,7 +188,7 @@ export function RescueFAQSection() {
           </h3>
 
           {/* DESCRIPTION */}
-          <p className="text-[13px] text-gray-500 mt-5 leading-[1.95] tracking-[0.35px] max-w-[340px] mx-auto">
+          <p className="text-[13px] text-gray-500 mt-5 leading-relaxed tracking-[0.35px] max-w-[340px] mx-auto">
 
             {
               section.review_subtitle
@@ -221,7 +221,7 @@ export function RescueFAQSection() {
 
               <div
                 key={item.id}
-                className="bg-[#f9fbfd] p-4 rounded-2xl text-left text-[11px] text-gray-500 leading-[1.85] tracking-[0.3px]"
+                className="bg-[#f9fbfd] p-4 rounded-2xl text-left text-[11px] text-gray-500 leading-relaxed tracking-[0.3px]"
               >
 
                 "
@@ -304,7 +304,7 @@ export function RescueFAQSection() {
                 {/* QUESTION */}
                 <div className="flex justify-between items-center gap-4">
 
-                  <p className="text-[14px] font-medium tracking-[0.4px] leading-[1.8] text-[#0a0e27]">
+                  <p className="text-[14px] font-medium tracking-[0.4px] leading-relaxed text-[#0a0e27]">
 
                     {
                       item.question
@@ -327,7 +327,7 @@ export function RescueFAQSection() {
                 {/* ANSWER */}
                 {active === i && (
 
-                  <p className="text-[13px] text-gray-500 mt-5 leading-[2] tracking-[0.35px] pr-6">
+                  <p className="text-[13px] text-gray-500 mt-5 leading-relaxed tracking-[0.35px] pr-6">
 
                     {
                       item.answer

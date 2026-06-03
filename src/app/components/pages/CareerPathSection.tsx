@@ -135,7 +135,7 @@ export function CareerPathSection() {
         </h2>
 
         {/* DESCRIPTION */}
-        <p className="text-[15px] md:text-[16px] text-gray-500 mt-7 leading-[1.95] tracking-[0.45px] max-w-2xl mx-auto">
+        <p className="text-[15px] md:text-[16px] text-gray-500 mt-5 leading-relaxed tracking-[0.45px] max-w-2xl mx-auto">
 
           {
             section.description
@@ -183,7 +183,7 @@ export function CareerPathSection() {
                   </div>
 
                   {/* TITLE */}
-                  <p className="text-[14px] tracking-[0.45px] leading-[1.8] text-[#0a0e27] font-medium truncate">
+                  <p className="text-[14px] tracking-[0.45px] leading-relaxed text-[#0a0e27] font-medium truncate">
 
                     {item.title}
 
@@ -257,7 +257,7 @@ export function CareerPathSection() {
                   {/* QUESTION */}
                   <div className="flex justify-between items-center gap-4">
 
-                    <p className="text-[14px] font-medium tracking-[0.45px] leading-[1.8] text-[#0a0e27]">
+                    <p className="text-[14px] font-medium tracking-[0.45px] leading-relaxed text-[#0a0e27]">
 
                       {item.question}
 
@@ -278,7 +278,7 @@ export function CareerPathSection() {
                   {/* ANSWER */}
                   {active === i && (
 
-                    <p className="text-[13px] text-gray-500 mt-4 leading-[1.95] tracking-[0.35px] pr-5">
+                    <p className="text-[13px] text-gray-500 mt-4 leading-relaxed tracking-[0.35px] pr-5">
 
                       {item.answer}
 

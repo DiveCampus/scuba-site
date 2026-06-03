@@ -65,12 +65,12 @@ export function ExpertHands() {
             </h2>
 
             {/* DESC */}
-            <p className="mt-6 text-[14px] leading-[1.9] text-[#7a8795] max-w-md">
+            <p className="mt-6 text-[14px] leading-relaxed text-[#7a8795] max-w-md">
               Your safety is our Priority. We maintain a strict maximum ratio
               of 3 students per instructor, ensuring you never feel lost in a crowd.
             </p>
 
-            <p className="mt-6 text-[14px] leading-[1.9] text-[#7a8795] max-w-md">
+            <p className="mt-6 text-[14px] leading-relaxed text-[#7a8795] max-w-md">
               Want exclusive focus? You can upgrade to a dedicated 1-on-1
               Private Instructor during booking for total privacy and personalized attention.
             </p>

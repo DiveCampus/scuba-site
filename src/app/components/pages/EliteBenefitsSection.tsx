@@ -115,7 +115,7 @@ export function EliteBenefitsSection() {
           </p>
 
           {/* TITLE */}
-          <h2 className="text-3xl md:text-5xl font-bold leading-[1.2] tracking-[1px] mb-8">
+          <h2 className="text-3xl md:text-5xl font-bold leading-[1.2] tracking-[1px] mb-5">
 
             {section?.title}{" "}
 
@@ -130,7 +130,7 @@ export function EliteBenefitsSection() {
           </h2>
 
           {/* DESC */}
-          <p className="text-white/60 max-w-xl text-[15px] md:text-[16px] leading-[1.95] tracking-[0.45px] mb-14">
+          <p className="text-white/60 max-w-xl text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px] mb-8">
 
             {section?.description}
 
@@ -177,7 +177,7 @@ export function EliteBenefitsSection() {
 
                   </h3>
 
-                  <p className="text-[13px] text-white/60 leading-[1.95] tracking-[0.35px] max-w-lg">
+                  <p className="text-[13px] text-white/60 leading-relaxed tracking-[0.35px] max-w-lg">
 
                     {item.description}
 

@@ -68,7 +68,7 @@ export function CommunityFAQSection() {
       >
 
         {/* HEADER */}
-        <div className="text-center max-w-3xl mx-auto px-6 mb-16">
+        <div className="text-center max-w-3xl mx-auto px-6 mb-12 md:mb-16">
           <h2 className="text-3xl md:text-5xl font-bold text-[#0a0e27] leading-tight">
             {section.title}
             <br />

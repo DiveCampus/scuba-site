@@ -89,7 +89,7 @@ export function ChooseEnvironmentSection() {
       <div className="relative max-w-6xl mx-auto px-6">
 
         {/* ================= HEADER ================= */}
-        <div className="text-center mb-24 max-w-4xl mx-auto">
+        <div className="text-center mb-12 md:mb-16 max-w-4xl mx-auto">
 
           {/* TITLE */}
           <h2 className="text-3xl md:text-5xl font-bold leading-[1.2] tracking-[1px]">
@@ -105,7 +105,7 @@ export function ChooseEnvironmentSection() {
           </h2>
 
           {/* DESCRIPTION */}
-          <p className="text-white/55 mt-8 max-w-3xl mx-auto text-[15px] md:text-[16px] leading-[1.95] tracking-[0.45px]">
+          <p className="text-white/55 mt-5 max-w-3xl mx-auto text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px]">
 
             {section?.description}
 
@@ -145,7 +145,7 @@ export function ChooseEnvironmentSection() {
                 </h3>
 
                 {/* DESCRIPTION */}
-                <p className="text-white/60 text-[14px] leading-[1.95] tracking-[0.35px] mb-8">
+                <p className="text-white/60 text-[14px] leading-relaxed tracking-[0.35px] mb-8">
 
                   {card.description}
 

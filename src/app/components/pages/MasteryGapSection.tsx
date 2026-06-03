@@ -85,7 +85,7 @@ export function MasteryGapSection() {
       <div className="relative max-w-6xl mx-auto px-6">
 
         {/* HEADER */}
-        <div className="text-center mb-20 max-w-4xl mx-auto">
+        <div className="text-center mb-12 md:mb-16 max-w-4xl mx-auto">
 
           <h2 className="text-3xl md:text-5xl font-bold leading-[1.2] tracking-[1px]">
 
@@ -99,7 +99,7 @@ export function MasteryGapSection() {
 
           </h2>
 
-          <p className="text-white/60 mt-8 max-w-3xl mx-auto text-[15px] md:text-[16px] leading-[1.95] tracking-[0.45px]">
+          <p className="text-white/60 mt-5 max-w-3xl mx-auto text-[15px] md:text-[16px] leading-relaxed tracking-[0.45px]">
 
             {section?.description}
 
@@ -153,14 +153,14 @@ export function MasteryGapSection() {
             >
 
               {/* TITLE */}
-              <div className="p-6 text-white/82 text-[14px] tracking-[0.45px] leading-[1.8]">
+              <div className="p-6 text-white/82 text-[14px] tracking-[0.45px] leading-relaxed">
 
                 {row.title}
 
               </div>
 
               {/* STANDARD */}
-              <div className="p-6 flex items-center justify-center gap-3 text-red-400 text-[13px] tracking-[0.35px] leading-[1.8]">
+              <div className="p-6 flex items-center justify-center gap-3 text-red-400 text-[13px] tracking-[0.35px] leading-relaxed">
 
                 <X
                   size={16}

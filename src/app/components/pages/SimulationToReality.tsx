@@ -182,7 +182,7 @@ export function SimulationToReality() {
             </h2>
 
             {/* DESCRIPTION */}
-            <p className="mt-7 text-[15px] md:text-[16px] text-gray-500 leading-[2] tracking-[0.45px] max-w-[500px]">
+            <p className="mt-5 text-[15px] md:text-[16px] text-gray-500 leading-relaxed tracking-[0.45px] max-w-[500px]">
 
               {
                 section.description
@@ -238,7 +238,7 @@ export function SimulationToReality() {
                         </h4>
 
                         {/* FEATURE DESCRIPTION */}
-                        <p className="text-[14px] text-gray-500 mt-3 leading-[1.95] tracking-[0.35px] max-w-[420px]">
+                        <p className="text-[14px] text-gray-500 mt-3 leading-relaxed tracking-[0.35px] max-w-[420px]">
 
                           {
                             item.description

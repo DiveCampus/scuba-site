@@ -71,7 +71,7 @@ export function LegacyOfTrust() {
             </h2>
 
             {/* DESC */}
-            <p className="mt-8 text-center text-[15px] leading-[1.9] text-white/55">
+            <p className="mt-5 text-center text-[15px] leading-relaxed text-white/55">
 
               <span className="text-yellow-400 font-semibold">
                 Since 2014,
@@ -82,7 +82,7 @@ export function LegacyOfTrust() {
             </p>
 
             {/* PARAGRAPH */}
-            <p className="mt-8 text-center text-[14px] leading-[2] text-white/50 max-w-[460px] mx-auto">
+            <p className="mt-8 text-center text-[14px] leading-relaxed text-white/50 max-w-[460px] mx-auto">
 
               Every session takes place in our{" "}
               <span className="text-cyan-300">

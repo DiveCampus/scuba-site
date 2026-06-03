@@ -69,7 +69,7 @@ export function AOWAdvantageSection() {
             {section.top_label}
           </p>
 
-          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+          <h2 className="text-4xl md:text-5xl font-bold mb-5">
 
             {section.title}{" "}
 
@@ -81,7 +81,7 @@ export function AOWAdvantageSection() {
 
           </h2>
 
-          <p className="text-white/60 leading-[1.9] mb-14">
+          <p className="text-white/60 leading-relaxed mb-8">
             {section.description}
           </p>
 
@@ -117,7 +117,7 @@ export function AOWAdvantageSection() {
                     {item.title}
                   </h3>
 
-                  <p className="text-sm text-white/60 leading-[1.9]">
+                  <p className="text-sm text-white/60 leading-relaxed">
                     {item.description}
                   </p>
 

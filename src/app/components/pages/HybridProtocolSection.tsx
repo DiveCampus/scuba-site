@@ -110,7 +110,7 @@ export function HybridProtocolSection() {
     >
 
       {/* HEADER */}
-      <div className="text-center max-w-4xl mx-auto px-6 mb-20">
+      <div className="text-center max-w-4xl mx-auto px-6 mb-12 md:mb-16">
 
         <p className="text-[10px] tracking-[4px] text-cyan-500 mb-5">
 
@@ -130,7 +130,7 @@ export function HybridProtocolSection() {
 
         </h2>
 
-        <p className="mt-7 text-[15px] md:text-[16px] leading-[1.95] tracking-[0.5px] text-gray-500 max-w-2xl mx-auto">
+        <p className="mt-5 text-[15px] md:text-[16px] leading-relaxed tracking-[0.5px] text-gray-500 max-w-2xl mx-auto">
 
           {section?.description}
 
@@ -139,13 +139,13 @@ export function HybridProtocolSection() {
         {/* INFO BOX */}
         <div className="mt-10 bg-white border border-gray-200 rounded-3xl p-7 shadow-sm text-left">
 
-          <p className="text-gray-600 text-[14px] leading-[1.9] mb-4">
+          <p className="text-gray-600 text-[14px] leading-relaxed mb-4">
 
             • {section?.info_box_1}
 
           </p>
 
-          <p className="text-gray-600 text-[14px] leading-[1.9]">
+          <p className="text-gray-600 text-[14px] leading-relaxed">
 
             • {section?.info_box_2}
 
@@ -209,7 +209,7 @@ export function HybridProtocolSection() {
             </h3>
 
             {/* DESC */}
-            <p className="text-[13px] text-gray-500 leading-[1.95]">
+            <p className="text-[13px] text-gray-500 leading-relaxed">
 
               {card.description}
 
@@ -233,7 +233,7 @@ export function HybridProtocolSection() {
 
           </h3>
 
-          <p className="text-[13px] text-gray-500 leading-[1.9] mb-6">
+          <p className="text-[13px] text-gray-500 leading-relaxed mb-6">
 
             {section?.cta_description}
 

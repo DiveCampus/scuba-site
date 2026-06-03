@@ -46,7 +46,7 @@ export function StepsSection() {
       <section className="py-28 bg-[#f3f6f9]">
 
         {/* HEADER */}
-        <div className="text-center max-w-4xl mx-auto px-6 mb-20">
+        <div className="text-center max-w-4xl mx-auto px-6 mb-12 md:mb-16">
 
           <h2
             className="flex flex-col items-center text-4xl md:text-7xl font-bold text-[#0a0e27] leading-[1.05] tracking-[1px]"
