@@ -92,7 +92,7 @@ export function Footer() {
           {/* LEFT */}
           <div className="space-y-6">
 
-            <img src="https://yqgbxkahrupeawumsoiy.supabase.co/storage/v1/object/public/uploads/community/1780473596787-DiveCampus.webp" alt="DiveCampus - PADI Scuba Diving Dubai" className="w-32 h-auto object-contain" loading="lazy" decoding="async" />
+            <img src="https://yqgbxkahrupeawumsoiy.supabase.co/storage/v1/object/public/uploads/community/1780476047651-Screenshot%20from%202026-06-03%2014-10-34.webp" alt="DiveCampus - PADI Scuba Diving Dubai" className="w-32 h-auto object-contain" loading="lazy" decoding="async" />
 
             <p className="text-white/70 text-[14px] md:text-[15px] leading-relaxed max-w-md">
               {footer.description || "No description"}
