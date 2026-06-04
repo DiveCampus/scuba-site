@@ -86,7 +86,8 @@ export function Hero() {
         {/* 🔥 TITLE */}
         <h1 className="text-white text-4xl md:text-6xl font-semibold leading-[1.1]">
           {hero?.title}{" "}
-          <span className="text-[#38BDF8]">
+
+          <span className="text-[#38BDF8] inline whitespace-nowrap">
             {hero?.subtitle}
           </span>
         </h1>
