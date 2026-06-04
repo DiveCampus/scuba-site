@@ -3,14 +3,20 @@
 import { useEffect, useRef, useState } from "react";
 import { Upload, Trash2, ImageIcon, Loader2 } from "lucide-react";
 import {
-  uploadMedia,
+  uploadSingleMedia,
   getMediaBySection,
   deleteMedia,
   MediaItem,
 } from "@/services/mediaService";
 
-const MAX_BYTES = 10 * 1024 * 1024; // 10MB (after conversion)
-const WEBP_QUALITY = 0.9;
+const MAX_BYTES = 5 * 1024 * 1024; // 10MB hard ceiling (after conversion)
+const MAX_DIMENSION = 1920; // cap longest edge — keeps WEBP well under the storage bucket limit
+const TARGET_MAX_BYTES = 1 * 1024 * 1024; // aim for ≤ ~2MB per upload
+const WEBP_QUALITY = 0.85;
+const MIN_QUALITY = 0.35;
+
+// Per-file upload state, indexed by the file's position in `files`.
+type FileStatus = "pending" | "uploading" | "done" | "error";
 
 // Human-readable size: < 1MB → "450 KB", >= 1MB → "1.8 MB". null if unknown.
 function formatSize(bytes?: number | null): string | null {
@@ -30,7 +36,7 @@ function formatSize(bytes?: number | null): string | null {
 async function fileToImageSource(file: File): Promise<{
   width: number;
   height: number;
-  draw: (ctx: CanvasRenderingContext2D) => void;
+  draw: (ctx: CanvasRenderingContext2D, dw: number, dh: number) => void;
   cleanup: () => void;
 }> {
   try {
@@ -38,7 +44,7 @@ async function fileToImageSource(file: File): Promise<{
     return {
       width: bmp.width,
       height: bmp.height,
-      draw: (ctx) => ctx.drawImage(bmp, 0, 0),
+      draw: (ctx, dw, dh) => ctx.drawImage(bmp, 0, 0, dw, dh),
       cleanup: () => bmp.close(),
     };
   } catch {
@@ -53,7 +59,7 @@ async function fileToImageSource(file: File): Promise<{
       return {
         width: img.naturalWidth,
         height: img.naturalHeight,
-        draw: (ctx) => ctx.drawImage(img, 0, 0),
+        draw: (ctx, dw, dh) => ctx.drawImage(img, 0, 0, dw, dh),
         cleanup: () => URL.revokeObjectURL(url),
       };
     } catch (e) {
@@ -63,30 +69,58 @@ async function fileToImageSource(file: File): Promise<{
   }
 }
 
-// Convert ANY decodable image File to a real WEBP File, preserving aspect
-// ratio and transparency (WEBP supports an alpha channel). Renames to .webp.
+// Scale (w,h) down so the longest edge is ≤ max, preserving aspect ratio.
+// Never upscales.
+function fitWithin(w: number, h: number, max: number) {
+  if (w <= max && h <= max) return { width: w, height: h };
+  const scale = Math.min(max / w, max / h);
+  return {
+    width: Math.max(1, Math.round(w * scale)),
+    height: Math.max(1, Math.round(h * scale)),
+  };
+}
+
+function encodeWebp(canvas: HTMLCanvasElement, quality: number): Promise<Blob> {
+  return new Promise((resolve, reject) =>
+    canvas.toBlob(
+      (b) => (b ? resolve(b) : reject(new Error("Conversion failed"))),
+      "image/webp",
+      quality
+    )
+  );
+}
+
+// Convert ANY decodable image File to a real WEBP File. Downscales the longest
+// edge to MAX_DIMENSION and steps quality down until the encoded blob is under
+// TARGET_MAX_BYTES (or MIN_QUALITY is reached). This keeps every upload small
+// enough for the storage bucket limit — the root fix for the 413
+// "object exceeded the maximum allowed size". Aspect ratio + transparency
+// (WEBP alpha channel) are preserved.
 async function convertToWebp(
   file: File,
   quality = WEBP_QUALITY
 ): Promise<File> {
   const src = await fileToImageSource(file);
   try {
+    const { width, height } = fitWithin(src.width, src.height, MAX_DIMENSION);
+
     const canvas = document.createElement("canvas");
-    canvas.width = src.width;
-    canvas.height = src.height;
+    canvas.width = width;
+    canvas.height = height;
 
     const ctx = canvas.getContext("2d");
     if (!ctx) throw new Error("Canvas not supported");
 
-    src.draw(ctx);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = "high";
+    src.draw(ctx, width, height);
 
-    const blob: Blob = await new Promise((resolve, reject) =>
-      canvas.toBlob(
-        (b) => (b ? resolve(b) : reject(new Error("Conversion failed"))),
-        "image/webp",
-        quality
-      )
-    );
+    let q = quality;
+    let blob = await encodeWebp(canvas, q);
+    while (blob.size > TARGET_MAX_BYTES && q > MIN_QUALITY) {
+      q = Math.max(MIN_QUALITY, q - 0.12);
+      blob = await encodeWebp(canvas, q);
+    }
 
     const baseName = file.name.replace(/\.[^./\\]+$/, "") || "image";
     return new File([blob], `${baseName}.webp`, {
@@ -106,6 +140,10 @@ export function MediaManager() {
   const [dragOver, setDragOver] = useState(false);
   const [images, setImages] = useState<MediaItem[]>([]);
   const [section, setSection] = useState("community");
+
+  // Per-file upload status (index → status) + completed count, for progress UI.
+  const [statuses, setStatuses] = useState<Record<number, FileStatus>>({});
+  const [doneCount, setDoneCount] = useState(0);
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -229,30 +267,69 @@ export function MediaManager() {
   // ==========================================
   // UPLOAD
   // ==========================================
+  // Sequential queue: upload one file at a time (no giant payload), update
+  // per-file status as it goes, and keep going if one image fails. Successful
+  // previews are cleared; failed ones stay selected so the user can retry.
   const handleUpload = async () => {
     if (!files.length) {
       alert("Please select images");
       return;
     }
 
-    try {
-      setLoading(true);
+    setLoading(true);
+    setDoneCount(0);
+    setStatuses(() => {
+      const init: Record<number, FileStatus> = {};
+      files.forEach((_, i) => (init[i] = "pending"));
+      return init;
+    });
 
-      const response = await uploadMedia({ files, section });
+    const succeeded = new Set<number>();
+    const failures: string[] = [];
 
-      if (!response.success) {
-        alert(response.error);
-        return;
+    for (let i = 0; i < files.length; i++) {
+      setStatuses((s) => ({ ...s, [i]: "uploading" }));
+
+      const res = await uploadSingleMedia({ file: files[i], section });
+
+      if (res.success) {
+        succeeded.add(i);
+        setStatuses((s) => ({ ...s, [i]: "done" }));
+      } else {
+        failures.push(res.error || `${files[i].name} — upload failed`);
+        setStatuses((s) => ({ ...s, [i]: "error" }));
       }
 
-      alert(`✅ ${files.length} Images Uploaded Successfully`);
-      clearSelection();
-      loadImages();
-    } catch (error) {
-      console.error("❌ Upload Error:", error);
-      alert("Upload Failed");
-    } finally {
-      setLoading(false);
+      setDoneCount((d) => d + 1);
+    }
+
+    // Drop successful previews (revoking their object URLs); keep failures.
+    const keptFiles: File[] = [];
+    const keptPreviews: string[] = [];
+    files.forEach((f, i) => {
+      if (succeeded.has(i)) {
+        URL.revokeObjectURL(previews[i]);
+      } else {
+        keptFiles.push(f);
+        keptPreviews.push(previews[i]);
+      }
+    });
+    setFiles(keptFiles);
+    setPreviews(keptPreviews);
+    setStatuses({});
+    setDoneCount(0);
+    setLoading(false);
+
+    loadImages();
+
+    if (failures.length) {
+      alert(
+        `Uploaded ${succeeded.size}/${files.length}. ${failures.length} failed:\n\n${failures.join(
+          "\n"
+        )}`
+      );
+    } else {
+      alert(`✅ ${succeeded.size} Images Uploaded Successfully`);
     }
   };
 
@@ -348,7 +425,8 @@ export function MediaManager() {
               </p>
               <button
                 onClick={clearSelection}
-                className="text-xs text-white/50 hover:text-red-300 transition"
+                disabled={loading}
+                className="text-xs text-white/50 hover:text-red-300 transition disabled:opacity-40 disabled:hover:text-white/50"
               >
                 Clear all
               </button>
@@ -368,14 +446,53 @@ export function MediaManager() {
                     </span>
                   )}
 
-                  <button
-                    onClick={() => removePreview(index)}
-                    className="absolute top-2 right-2 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:scale-110"
-                  >
-                    ✕
-                  </button>
+                  {!loading && (
+                    <button
+                      onClick={() => removePreview(index)}
+                      className="absolute top-2 right-2 w-8 h-8 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition hover:scale-110"
+                    >
+                      ✕
+                    </button>
+                  )}
+
+                  {/* PER-FILE UPLOAD STATUS OVERLAY */}
+                  {statuses[index] && statuses[index] !== "pending" && (
+                    <div className="absolute inset-0 rounded-2xl flex items-center justify-center bg-black/45 backdrop-blur-[1px]">
+                      {statuses[index] === "uploading" && (
+                        <Loader2 className="w-6 h-6 animate-spin text-cyan-300" />
+                      )}
+                      {statuses[index] === "done" && (
+                        <span className="text-emerald-400 text-3xl font-bold">✓</span>
+                      )}
+                      {statuses[index] === "error" && (
+                        <span className="px-2 text-center text-xs font-semibold text-red-300">
+                          Failed — retry
+                        </span>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* PROGRESS BAR — shown while the queue runs */}
+        {loading && files.length > 0 && (
+          <div className="mt-8">
+            <div className="flex items-center justify-between mb-2 text-xs text-cyan-300/80">
+              <span>Uploading…</span>
+              <span>
+                {doneCount} / {files.length}
+              </span>
+            </div>
+            <div className="h-2 w-full rounded-full bg-white/10 overflow-hidden">
+              <div
+                className="h-full bg-gradient-to-r from-cyan-400 to-blue-500 transition-all duration-300"
+                style={{
+                  width: `${Math.round((doneCount / files.length) * 100)}%`,
+                }}
+              />
             </div>
           </div>
         )}
@@ -389,7 +506,7 @@ export function MediaManager() {
           {loading ? (
             <div className="flex items-center justify-center gap-2">
               <Loader2 className="animate-spin w-5 h-5" />
-              Uploading {files.length} Images...
+              Uploading {doneCount} / {files.length}…
             </div>
           ) : converting ? (
             <div className="flex items-center justify-center gap-2">
