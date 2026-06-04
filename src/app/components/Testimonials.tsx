@@ -4,6 +4,10 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { getTestimonials } from "@/services/testimonialService";
 
+const FALLBACK_TITLE = "TRAINING QUALITY RAISED.";
+const FALLBACK_SUBTITLE =
+  "DON’T FALL FOR SMALL CLASS SIZE AND UNLIMITED TRAINING CLAIMS. HERE’S HOW WE DELIVER EXCELLENCE THAT TRULY MATTERS.";
+
 export function Testimonials() {
   const [activeMainTab, setActiveMainTab] = useState("training environment");
   const [data, setData] = useState<any[]>([]);
@@ -81,6 +85,9 @@ export function Testimonials() {
     );
   };
 
+  // Shared section header — single source of truth from the first row
+  const sharedSection = data[0];
+
   // ================= UI =================
   return (
     <section className="relative py-16 md:py-24 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45] overflow-hidden font-habara">
@@ -93,12 +100,11 @@ export function Testimonials() {
 
         {/* HEADING */}
         <h2 className="text-center text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] mb-5 text-white uppercase">
-          TRAINING QUALITY <span className="text-cyan-300">RAISED.</span>
+          {sharedSection?.section_title || FALLBACK_TITLE}
         </h2>
 
         <p className="text-center text-[15px] md:text-[16px] font-normal leading-[1.7] text-white/70 max-w-5xl mx-auto mt-5 mb-8 md:mb-12 uppercase">
-          DON’T FALL FOR SMALL CLASS SIZE AND UNLIMITED TRAINING CLAIMS.
-          HERE’S HOW WE DELIVER EXCELLENCE THAT TRULY MATTERS.
+          {sharedSection?.section_subtitle || FALLBACK_SUBTITLE}
         </p>
 
         {/* TABS */}

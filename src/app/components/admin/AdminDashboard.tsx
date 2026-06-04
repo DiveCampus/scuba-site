@@ -18,7 +18,7 @@ const Gallery = lazy(() => import("./GalleryPage").then((m) => ({ default: m.Gal
 const PricingPage = lazy(() => import("./PricingPage").then((m) => ({ default: m.PricingPage })));
 const FaqAdmin = lazy(() => import("./FaqAdmin").then((m) => ({ default: m.FaqAdmin })));
 const FeaturedAdmin = lazy(() => import("./FeaturedAdmin").then((m) => ({ default: m.FeaturedAdmin })));
-const TestimonialsAdmin = lazy(() => import("./TestimonialsAdmin").then((m) => ({ default: m.TestimonialsAdmin })));
+const TrainingQuality = lazy(() => import("./TestimonialsAdmin").then((m) => ({ default: m.TrainingQuality })));
 const WhyAdmin = lazy(() => import("./WhyAdmin").then((m) => ({ default: m.WhyAdmin })));
 const FooterAdmin = lazy(() => import("./FooterAdmin").then((m) => ({ default: m.FooterAdmin })));
 const HeroSectionAdmin = lazy(() => import("./HeroSectionAdmin"));
@@ -88,7 +88,7 @@ const sections: AdminSection[] = [
   { slug: "featured", name: "Featured", Component: FeaturedAdmin },
   { slug: "gallery", name: "Gallery", Component: Gallery },
   { slug: "pricing", name: "Pricing", Component: PricingPage },
-  { slug: "testimonials", name: "Testimonials", Component: TestimonialsAdmin },
+  { slug: "TrainingQuality", name: "TrainingQuality", Component: TrainingQuality },
   { slug: "why", name: "Why", Component: WhyAdmin },
   { slug: "faq", name: "FAQ", Component: FaqAdmin },
   { slug: "footer", name: "Footer", Component: FooterAdmin },

@@ -7,38 +7,44 @@ import {
   updateTestimonial,
 } from "@/services/testimonialService";
 
-export function TestimonialsAdmin() {
+const FALLBACK_TITLE = "TRAINING QUALITY RAISED.";
+const FALLBACK_SUBTITLE =
+  "DON’T FALL FOR SMALL CLASS SIZE AND UNLIMITED TRAINING CLAIMS. HERE’S HOW WE DELIVER EXCELLENCE THAT TRULY MATTERS.";
+
+export function TrainingQuality() {
   const [data, setData] = useState<any[]>([]);
   const [activeMainTab, setActiveMainTab] = useState("training environment");
   const [editingId, setEditingId] = useState<string | null>(null);
 
+  // Shared section header (single source of truth across all rows)
+  const [sectionTitle, setSectionTitle] = useState("");
+  const [sectionSubtitle, setSectionSubtitle] = useState("");
+  const [savingSection, setSavingSection] = useState(false);
+
   // ================= LOAD =================
   useEffect(() => {
-    console.log("🚀 Component Mounted");
     load();
   }, []);
 
   const load = async () => {
-    console.log("📡 Fetching testimonials...");
-
     const response = await getTestimonials();
-
-    // console.log("📦 FULL RESPONSE:", response);
-    // console.log("📦 DATA:", response?.data);
-    console.log("❌ ERROR:", response?.error);
 
     if (response?.error) {
       console.error("🚨 FETCH ERROR:", response.error);
       return;
     }
 
-    setData(response.data || []);
+    const rows = response.data || [];
+    setData(rows);
+
+    // Prefill section fields from the first row (shared section)
+    const sharedSection = rows[0];
+    setSectionTitle(sharedSection?.section_title ?? "");
+    setSectionSubtitle(sharedSection?.section_subtitle ?? "");
   };
 
   // ================= CHANGE =================
   const handleChange = (id: string, field: string, value: string) => {
-    console.log(`✏️ Editing ${field}:`, value);
-
     setData((prev) =>
       prev.map((item) =>
         item.id === id ? { ...item, [field]: value } : item
@@ -46,34 +52,58 @@ export function TestimonialsAdmin() {
     );
   };
 
-  // ================= SAVE =================
+  // ================= SAVE ROW =================
   const handleSave = async (id: string) => {
     const row = data.find((item) => item.id === id);
-
-    console.log("💾 SAVING ROW:", row);
+    if (!row) return;
 
     const response = await updateTestimonial(id, row);
 
-    // console.log("📦 UPDATE RESPONSE:", response);
-    console.log("❌ UPDATE ERROR:", response?.error);
-
-    if (!response?.error) {
-      console.log("✅ UPDATE SUCCESS");
+    if (response?.error) {
+      console.error("❌ UPDATE ERROR:", response.error);
     }
 
     setEditingId(null);
   };
 
+  // ================= SAVE SECTION (ALL ROWS) =================
+  const handleSaveSection = async () => {
+    if (!data.length) return;
+
+    setSavingSection(true);
+
+    try {
+      await Promise.all(
+        data.map((row) =>
+          updateTestimonial(row.id, {
+            ...row,
+            section_title: sectionTitle,
+            section_subtitle: sectionSubtitle,
+          })
+        )
+      );
+
+      // Keep local state consistent so the values persist in the UI
+      setData((prev) =>
+        prev.map((row) => ({
+          ...row,
+          section_title: sectionTitle,
+          section_subtitle: sectionSubtitle,
+        }))
+      );
+    } catch (err) {
+      console.error("❌ SAVE SECTION ERROR:", err);
+    } finally {
+      setSavingSection(false);
+    }
+  };
+
   // ================= TABLE =================
   const renderTable = (category: string) => {
-    console.log("📊 FILTERING FOR:", category);
-
     const filtered = data.filter(
       (item) =>
         item.category?.toLowerCase() === category.toLowerCase()
     );
-
-    // console.log("📊 FILTERED DATA:", filtered);
 
     return (
       <div className="w-full overflow-x-auto flex justify-center font-habara">
@@ -202,20 +232,55 @@ export function TestimonialsAdmin() {
     );
   };
 
-  // ================= DEBUG =================
-  // console.log("🎯 CURRENT DATA:", data);
-  // console.log("🎯 ACTIVE TAB:", activeMainTab);
-
   // ================= UI =================
   return (
     <section className="relative py-24 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45] text-white">
 
       <div className="max-w-[1500px] mx-auto px-6">
 
-        {/* HEADING */}
+        {/* HEADING (live preview of editable title) */}
         <h2 className="text-center text-5xl font-semibold mb-8 uppercase">
-          TRAINING QUALITY <span className="text-cyan-300">RAISED.</span>
+          {sectionTitle || FALLBACK_TITLE}
         </h2>
+
+        {/* ===== SECTION EDITOR ===== */}
+        <div className="max-w-3xl mx-auto mb-16 rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md p-6 md:p-8 shadow-[0_0_40px_rgba(34,211,238,0.08)]">
+          <h3 className="text-cyan-300 text-xs font-semibold uppercase tracking-[3px] mb-6">
+            Section Header
+          </h3>
+
+          {/* SECTION TITLE */}
+          <label className="block text-xs uppercase tracking-[2px] text-white/50 mb-2">
+            Section Title
+          </label>
+          <input
+            value={sectionTitle}
+            onChange={(e) => setSectionTitle(e.target.value)}
+            placeholder={FALLBACK_TITLE}
+            className="w-full bg-black/40 border border-white/10 focus:border-cyan-400 rounded-xl px-4 py-3 outline-none transition mb-5"
+          />
+
+          {/* SECTION SUBTITLE */}
+          <label className="block text-xs uppercase tracking-[2px] text-white/50 mb-2">
+            Section Subtitle
+          </label>
+          <textarea
+            value={sectionSubtitle}
+            onChange={(e) => setSectionSubtitle(e.target.value)}
+            placeholder={FALLBACK_SUBTITLE}
+            rows={3}
+            className="w-full bg-black/40 border border-white/10 focus:border-cyan-400 rounded-xl px-4 py-3 outline-none transition resize-none leading-relaxed"
+          />
+
+          {/* SAVE */}
+          <button
+            onClick={handleSaveSection}
+            disabled={savingSection || !data.length}
+            className="mt-6 w-full md:w-auto bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-xl px-8 py-3 hover:scale-[1.01] transition disabled:opacity-50"
+          >
+            {savingSection ? "Saving…" : "Save Section Header"}
+          </button>
+        </div>
 
         {/* TABS */}
         <div className="flex justify-center gap-12 mb-16 flex-wrap">
@@ -226,10 +291,7 @@ export function TestimonialsAdmin() {
           ].map((item, i) => (
             <button
               key={i}
-              onMouseEnter={() => {
-                console.log("🖱️ TAB SWITCH:", item);
-                setActiveMainTab(item);
-              }}
+              onMouseEnter={() => setActiveMainTab(item)}
               className="relative uppercase text-white/80"
             >
               {item}

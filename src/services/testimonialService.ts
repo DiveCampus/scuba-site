@@ -9,13 +9,10 @@ export const getTestimonials = async () => {
 
   const response = await supabase
     .from("kadir_testimonials")
-    .select("*")
+    .select(
+      "id, category, feature, others, dive_campus, position, section_title, section_subtitle, created_at, updated_at"
+    )
     .order("position", { ascending: true });
-
-  // console.log(
-  //   "📦 [GET TESTIMONIALS RESULT]",
-  //   response
-  // );
 
   if (response.error) {
     console.error(
@@ -35,11 +32,6 @@ export const updateTestimonial = async (
   id: string,
   payload: any
 ) => {
-  // console.log("🚀 [UPDATE TESTIMONIAL]", {
-  //   id,
-  //   payload,
-  // });
-
   const response = await supabase
     .from("kadir_testimonials")
     .update({
@@ -47,16 +39,13 @@ export const updateTestimonial = async (
       feature: payload.feature,
       others: payload.others,
       dive_campus: payload.dive_campus,
+      section_title: payload.section_title,
+      section_subtitle: payload.section_subtitle,
       updated_at: new Date().toISOString(),
     })
     .eq("id", id)
     .select()
     .single();
-
-  // console.log(
-  //   "📦 [UPDATE TESTIMONIAL RESULT]",
-  //   response
-  // );
 
   if (response.error) {
     console.error(
