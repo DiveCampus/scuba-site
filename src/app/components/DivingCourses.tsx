@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { getCourses, updateCourse } from "@/services/courseService";
+import { courseCard } from "./courseCardStyles";
 
 export function DivingCourses() {
   const [active, setActive] = useState<number | null>(null);
@@ -68,7 +69,7 @@ export function DivingCourses() {
                 key={course.id}
                 onMouseEnter={() => setActive(index)}
                 onMouseLeave={() => setActive(null)}
-                className="w-[260px] h-[620px] rounded-[28px] overflow-hidden bg-[#0f2f4d] shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
+                className={courseCard.shell}
               >
 
                 {/* CLICK TO EDIT BUTTON */}
@@ -94,6 +95,11 @@ export function DivingCourses() {
                     alt={course.title ? `${course.title} - PADI Scuba Course Dubai` : "PADI Scuba Diving Course Dubai"}
                     loading="lazy"
                     decoding="async"
+                    style={{
+                      objectPosition: `${course.image_position_x ?? 50}% ${
+                        course.image_position_y ?? 50
+                      }%`,
+                    }}
                     className="w-full h-full object-cover"
                   />
 
@@ -109,7 +115,7 @@ export function DivingCourses() {
                     />
                   )}
 
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 to-transparent" />
+                  <div className={courseCard.gradient} />
 
                   {/* 🔥 AGE FIXED */}
                   {isEditing ? (
@@ -141,7 +147,7 @@ export function DivingCourses() {
                       />
                     </div>
                   ) : (
-                    <div className="absolute top-4 left-4 bg-white text-black text-xs px-3 py-1 rounded-full uppercase">
+                    <div className={`absolute top-4 left-4 ${courseCard.ageBadge}`}>
                       {course.age || "AGE"}
                     </div>
                   )}
@@ -149,16 +155,16 @@ export function DivingCourses() {
                   {/* COLLAPSED */}
                   {active !== index && (
                     <>
-                      <div className="absolute bottom-6 left-5">
-                        <h3 className="text-white text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2] uppercase">
+                      <div className={courseCard.bottomBlock}>
+                        <h3 className={courseCard.title}>
                           {course.title}
                         </h3>
 
-                        <p className="text-sm text-white/70 mt-2 uppercase">
+                        <p className={courseCard.fromLabel}>
                           FROM
                         </p>
 
-                        <p className="text-3xl font-bold text-cyan-300 uppercase">
+                        <p className={courseCard.price}>
                           AED {course.price}
                         </p>
                       </div>

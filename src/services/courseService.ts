@@ -88,25 +88,50 @@ export const updateCourse = async (
   //   payload,
   // });
 
-  const { data, error } = await supabase
+  // Core fields that have always existed on the table.
+  const base = {
+    title: payload.title,
+    description: payload.description,
+    price: payload.price,
+    old_price: payload.old_price,
+    image: payload.image,
+    age: payload.age,
+    updated_at: new Date().toISOString(),
+  };
+
+  // image_position_x / image_position_y are the focal-point columns (0–100,
+  // 50 = center). Include them, but degrade gracefully if the migration hasn't
+  // been applied yet so the existing save flow never breaks.
+  let { data, error } = await supabase
     .from("kadir_courses")
     .update({
-      title: payload.title,
-      description: payload.description,
-      price: payload.price,
-      old_price: payload.old_price,
-      image: payload.image,
-      age: payload.age,
-      updated_at: new Date().toISOString(),
+      ...base,
+      image_position_x: payload.image_position_x,
+      image_position_y: payload.image_position_y,
     })
     .eq("id", id)
     .select()
     .single();
 
-  // console.log("📦 [UPDATE COURSE RESULT]", {
-  //   data,
-  //   error,
-  // });
+  // PostgREST reports an unknown column as 42703 / PGRST204. Retry without the
+  // new fields so saves keep working until the focal columns exist.
+  const missingColumn =
+    error &&
+    (error.code === "42703" ||
+      error.code === "PGRST204" ||
+      /image_position/i.test(error.message || ""));
+
+  if (missingColumn) {
+    console.warn(
+      "⚠️ kadir_courses.image_position_x/y missing — saving without focal point. Run the ALTER TABLE migration to enable drag positioning."
+    );
+    ({ data, error } = await supabase
+      .from("kadir_courses")
+      .update(base)
+      .eq("id", id)
+      .select()
+      .single());
+  }
 
   if (error) {
     console.error("❌ UPDATE ERROR:", error);

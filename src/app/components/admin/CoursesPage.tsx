@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { GripVertical } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { GripVertical, ArrowRight, Crosshair } from "lucide-react";
 import {
   DndContext,
   DragOverlay,
@@ -26,6 +26,7 @@ import {
   updateCourse,
   reorderCourses,
 } from "@/services/courseService";
+import { courseCard } from "../courseCardStyles";
 
 // ────────────────────────────────────────────────────────────────
 // Presentational card. Reused both for the in-grid sortable item AND
@@ -58,131 +59,201 @@ function CourseCard({
   handleProps?: Record<string, any>;
   overlay?: boolean;
 }) {
+  // Focal point as percentages (0–100, 50 = center). `??` so a stored 0 is kept.
+  const fx = course.image_position_x ?? 50;
+  const fy = course.image_position_y ?? 50;
+
+  // Drag-to-position state. The overlay below maps the pointer to fx/fy.
+  const focusRef = useRef<HTMLDivElement>(null);
+  const [dragging, setDragging] = useState(false);
+
+  const applyFocus = (clientX: number, clientY: number) => {
+    const el = focusRef.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = Math.round(Math.max(0, Math.min(100, ((clientX - r.left) / r.width) * 100)));
+    const y = Math.round(Math.max(0, Math.min(100, ((clientY - r.top) / r.height) * 100)));
+    onChange(course.id, "image_position_x", x);
+    onChange(course.id, "image_position_y", y);
+  };
+
   return (
     <div
       ref={innerRef}
       style={style}
-      className={`w-[260px] rounded-2xl overflow-hidden relative select-none touch-none ${
+      className={`relative ${courseCard.shell} select-none touch-none ${
         isEditing ? "ring-2 ring-cyan-400" : ""
       } ${
-        overlay
-          ? "scale-105 shadow-[0_30px_80px_rgba(0,0,0,0.7)] rotate-[1deg]"
-          : "shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
+        overlay ? "scale-105 shadow-[0_30px_80px_rgba(0,0,0,0.7)] rotate-[1deg]" : ""
       }`}
     >
-      {/* DRAG HANDLE — click & hold to drag */}
+      {/* IMAGE — fills the card; objectPosition reflects the live focal point */}
+      <img
+        src={course.image || "/1.avif"}
+        style={{ objectPosition: `${fx}% ${fy}%` }}
+        className="w-full h-full object-cover"
+      />
+
+      {/* GRADIENT */}
+      <div className={courseCard.gradient} />
+
+      {/* FOCAL-POINT EDITOR — drag/click anywhere on the image to set focus.
+          Sits above the image (z-10) but below the panels (z-20), so the open
+          image area is draggable while the inputs/buttons stay interactive. */}
+      {isEditing && !overlay && (
+        <div
+          ref={focusRef}
+          onPointerDown={(e) => {
+            e.preventDefault();
+            (e.target as HTMLElement).setPointerCapture?.(e.pointerId);
+            setDragging(true);
+            applyFocus(e.clientX, e.clientY);
+          }}
+          onPointerMove={(e) => {
+            if (dragging) applyFocus(e.clientX, e.clientY);
+          }}
+          onPointerUp={(e) => {
+            setDragging(false);
+            try {
+              (e.target as HTMLElement).releasePointerCapture?.(e.pointerId);
+            } catch {}
+          }}
+          className="absolute inset-0 z-10 cursor-move touch-none"
+        >
+          {/* Crosshair focus indicator at the current focal point */}
+          <div
+            className="absolute w-9 h-9 -ml-[18px] -mt-[18px] rounded-full border-2 border-cyan-300 bg-cyan-300/20 shadow-[0_0_0_2px_rgba(0,0,0,0.45)] flex items-center justify-center pointer-events-none"
+            style={{ left: `${fx}%`, top: `${fy}%` }}
+          >
+            <Crosshair size={14} className="text-cyan-200" />
+          </div>
+        </div>
+      )}
+
+      {/* DRAG HANDLE — click & hold to reorder (top-right, beside Edit) */}
       <button
         {...(handleProps || {})}
         aria-label="Drag to reorder"
-        className={`absolute top-3 left-3 z-20 bg-white/20 text-white rounded p-1 touch-none ${
+        className={`absolute top-3 right-12 z-20 bg-white/20 text-white rounded p-1 touch-none ${
           overlay ? "cursor-grabbing" : "cursor-grab active:cursor-grabbing"
         }`}
       >
         <GripVertical size={16} />
       </button>
 
-      {/* IMAGE */}
-      <div className="relative">
-        <img
-          src={course.image || "/1.avif"}
-          className="w-full h-[350px] object-cover"
-        />
+      {/* EDIT / CLOSE BUTTON — same placement as the frontend card */}
+      {!overlay && (
+        <button
+          onClick={() => (isEditing ? onCancel() : onEdit(course.id))}
+          className="absolute z-20 top-3 right-3 bg-white text-black text-xs px-2 py-1 rounded"
+        >
+          {isEditing ? "Close" : "Edit"}
+        </button>
+      )}
 
-        {isEditing && (
-          <div className="absolute top-0 left-0 w-full p-3 pt-12">
-            <input
-              value={course.image || ""}
-              onChange={(e) => onChange(course.id, "image", e.target.value)}
-              className="w-full px-2 py-1 text-white text-xs bg-white/10 border border-white/20 rounded"
-            />
-          </div>
-        )}
-      </div>
-
-      {/* CONTENT */}
-      <div className="absolute inset-0 bg-black/50 p-4 flex flex-col justify-end pointer-events-none">
-        {/* EDIT BUTTON */}
-        {!isEditing && !overlay && (
-          <button
-            onClick={() => onEdit(course.id)}
-            className="absolute top-3 right-3 bg-white/20 px-2 py-1 text-xs rounded pointer-events-auto"
-          >
-            Edit
-          </button>
-        )}
-
-        {/* AGE */}
-        {isEditing ? (
-          <input
+      {/* AGE — badge (display) or editor, top-4 left-4 like the frontend */}
+      {isEditing ? (
+        <div className="absolute top-4 left-4 z-20 flex gap-1">
+          <select
             value={course.age || ""}
             onChange={(e) => onChange(course.id, "age", e.target.value)}
-            className="text-xs text-white bg-white/10 px-2 py-1 rounded mb-2 pointer-events-auto border border-white/20"
+            className="text-xs px-2 py-1 rounded bg-white text-black"
+          >
+            <option value="">Age</option>
+            <option value="8+">8+</option>
+            <option value="10+">10+</option>
+            <option value="12+">12+</option>
+            <option value="18+">18+</option>
+          </select>
+          <input
+            placeholder="Custom"
+            value={course.age || ""}
+            onChange={(e) => onChange(course.id, "age", e.target.value)}
+            className="text-xs px-2 py-1 rounded bg-white text-black w-[60px]"
           />
-        ) : (
-          <span className="text-xs bg-white text-black px-2 py-1 rounded mb-2 w-fit">
-            {course.age}
-          </span>
-        )}
+        </div>
+      ) : (
+        <div className={`absolute top-4 left-4 ${courseCard.ageBadge}`}>
+          {course.age || "AGE"}
+        </div>
+      )}
 
-        {/* TITLE */}
-        {isEditing ? (
+      {/* DRAG HINT (edit only) */}
+      {isEditing && !overlay && (
+        <div className="absolute top-14 left-1/2 -translate-x-1/2 z-20 px-3 py-1 rounded-full bg-black/70 text-cyan-200 text-[10px] uppercase tracking-[1px] pointer-events-none">
+          Drag image to set focus
+        </div>
+      )}
+
+      {/* BOTTOM CONTENT */}
+      {isEditing ? (
+        <div className="absolute bottom-0 left-0 right-0 z-20 p-3 space-y-2 bg-black/75 backdrop-blur-sm rounded-b-[28px]">
+          <input
+            value={course.image || ""}
+            onChange={(e) => onChange(course.id, "image", e.target.value)}
+            placeholder="Image URL"
+            className="w-full px-2 py-1 text-white text-xs bg-white/10 border border-white/20 rounded"
+          />
           <input
             value={course.title || ""}
             onChange={(e) => onChange(course.id, "title", e.target.value)}
-            className="text-lg font-bold text-white bg-white/10 px-2 rounded pointer-events-auto"
+            placeholder="Title"
+            className="w-full text-base font-bold text-white bg-white/10 px-2 py-1 rounded border border-white/20 uppercase"
           />
-        ) : (
-          <h2 className="text-lg font-bold">{course.title}</h2>
-        )}
-
-        {/* PRICE */}
-        {isEditing ? (
           <input
             type="number"
             value={course.price || 0}
-            onChange={(e) =>
-              onChange(course.id, "price", Number(e.target.value))
-            }
-            className="text-cyan-300 text-lg bg-white/10 px-2 rounded pointer-events-auto"
+            onChange={(e) => onChange(course.id, "price", Number(e.target.value))}
+            placeholder="Price"
+            className="w-full text-cyan-300 text-sm bg-white/10 px-2 py-1 rounded border border-white/20"
           />
-        ) : (
-          <p className="text-cyan-400 text-lg font-semibold">
-            AED {course.price}
-          </p>
-        )}
-
-        {/* DESCRIPTION */}
-        {isEditing ? (
           <textarea
             value={course.description || ""}
-            onChange={(e) =>
-              onChange(course.id, "description", e.target.value)
-            }
-            className="text-xs text-white bg-white/10 px-2 rounded pointer-events-auto"
+            onChange={(e) => onChange(course.id, "description", e.target.value)}
+            placeholder="Description"
+            rows={2}
+            className="w-full text-xs text-white bg-white/10 px-2 py-1 rounded border border-white/20 resize-none"
           />
-        ) : (
-          <p className="text-xs text-white/70">{course.description}</p>
-        )}
-
-        {/* ACTIONS */}
-        {isEditing && (
-          <div className="flex gap-2 mt-3 pointer-events-auto">
+          <div className="flex gap-2">
+            <button
+              onClick={() => {
+                onChange(course.id, "image_position_x", 50);
+                onChange(course.id, "image_position_y", 50);
+              }}
+              className="bg-white/15 text-white px-2 py-1 rounded text-xs"
+            >
+              Reset to Center
+            </button>
             <button
               onClick={() => onSave(course)}
               className="bg-green-400 text-black px-3 py-1 rounded text-sm"
             >
               {saving ? "Saving..." : "Save"}
             </button>
-
             <button
               onClick={onCancel}
-              className="bg-red-500 px-3 py-1 rounded text-sm"
+              className="bg-red-500 text-white px-3 py-1 rounded text-sm"
             >
               Cancel
             </button>
           </div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <>
+          <div className={courseCard.bottomBlock}>
+            <h3 className={courseCard.title}>{course.title}</h3>
+            <p className={courseCard.fromLabel}>FROM</p>
+            <p className={courseCard.price}>AED {course.price}</p>
+          </div>
+
+          {/* Decorative arrow — visual parity with the frontend card */}
+          <div className="absolute bottom-5 right-5">
+            <div className="w-14 h-14 rounded-full bg-[#18476D]/80 flex items-center justify-center">
+              <ArrowRight className="text-white" />
+            </div>
+          </div>
+        </>
+      )}
     </div>
   );
 }
@@ -326,7 +397,7 @@ export default function CoursesPage() {
           items={courses.map((c) => c.id)}
           strategy={rectSortingStrategy}
         >
-          <div className="flex justify-center gap-6 flex-wrap">
+          <div className="flex justify-center gap-5 flex-wrap">
             {courses.map((course) => (
               <SortableCourseCard
                 key={course.id}
