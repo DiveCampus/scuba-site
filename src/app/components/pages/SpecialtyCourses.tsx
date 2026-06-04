@@ -95,7 +95,10 @@ export function SpecialtyCourses() {
             </button>
 
             {/* SECONDARY BUTTON */}
-            <WhatsAppButton variant="outline">
+            <WhatsAppButton
+              message="Hi! I'd like to book a PADI Specialty course."
+              variant="outline"
+            >
               BOOK VIA WHATSAPP
             </WhatsAppButton>
 

@@ -69,12 +69,42 @@ export function EliteFooter() {
   const getLinksByGroup =
     (groupId: string) => {
 
-      return links.filter(
-        (item) =>
-          item.group_id === groupId
-      );
+      const seen = new Set<string>();
+
+      return links.filter((item) => {
+
+        if (item.group_id !== groupId) {
+          return false;
+        }
+
+        // Drop duplicate link rows (same text) so each
+        // app-store / link button renders only once.
+        if (seen.has(item.link_text)) {
+          return false;
+        }
+
+        seen.add(item.link_text);
+
+        return true;
+
+      });
 
     };
+
+  /* =========================================
+     DEDUPE GROUPS
+     Footer data may contain duplicate group rows
+     (e.g. two "DOWNLOAD APP" columns). Keep the
+     first of each title so each column renders once.
+  ========================================= */
+
+  const uniqueGroups =
+    groups.filter(
+      (group, index, all) =>
+        all.findIndex(
+          (g) => g.title === group.title
+        ) === index
+    );
 
   return (
 
@@ -103,7 +133,7 @@ export function EliteFooter() {
 
           {/* GROUPS */}
 
-          {groups.map((group) => (
+          {uniqueGroups.map((group) => (
 
             <div key={group.id}>
 
@@ -282,7 +312,7 @@ export function EliteFooter() {
             </button>
 
             <WhatsAppButton
-              href={section?.whatsapp_link}
+              message="Hi! I'd like to know more about your PADI diving courses."
               variant="floating"
               className="ml-3"
             />

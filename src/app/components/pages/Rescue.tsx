@@ -332,7 +332,7 @@ export function Rescue() {
         </button>
 
         <WhatsAppButton
-          href={section.whatsapp_link}
+          message="Hi! I'm interested in the PADI Rescue Diver course."
           variant="floating"
         />
 

@@ -131,7 +131,7 @@ export function EnrollmentSection() {
 
             {/* WHATSAPP */}
             <WhatsAppButton
-              href="https://wa.me/971XXXXXXXXX"
+              message="Hi! I'd like to enroll in the PADI Open Water Diver course."
               variant="floating"
               className="ml-2"
             />

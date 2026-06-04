@@ -136,7 +136,11 @@ export default function Divetry() {
         </button>
 
         {/* WHATSAPP */}
-        <WhatsAppButton variant="outline" className="mt-5">
+        <WhatsAppButton
+          message="Hi! I'd like to book a Try Dive."
+          variant="outline"
+          className="mt-5"
+        >
           QUICK BOOK VIA WHATSAPP
         </WhatsAppButton>
 

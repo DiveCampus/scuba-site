@@ -169,7 +169,7 @@ export function PadiDivemasterHero() {
             </button>
 
             <WhatsAppButton
-              href="https://wa.me/971000000000"
+              message="Hi! I'm interested in the PADI Divemaster course."
               variant="outline"
             >
               WhatsApp

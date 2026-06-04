@@ -40,6 +40,7 @@ import {
 } from "@/services/RescueCapabilitiesService";
 
 import { WhatsAppIcon } from "../WhatsAppButton";
+import { waLink } from "@/lib/whatsapp";
 
 /* =========================================
    ICON MAP
@@ -271,11 +272,13 @@ export function RescueCapabilities() {
             {/* BUTTON */}
             <a
 
-              href={
-                section.whatsapp_link
-              }
+              href={waLink(
+                "Hi! I'm interested in the PADI Rescue Diver course."
+              )}
 
               target="_blank"
+
+              rel="noopener noreferrer"
 
               className="mt-8 relative overflow-hidden rounded-2xl py-3.5 font-semibold tracking-[1px] group"
 

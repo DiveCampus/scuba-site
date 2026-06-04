@@ -51,6 +51,12 @@ export function OpenDiver() {
     course?.feature_4,
   ];
 
+  const waMessage = `Hi! I'm interested in the ${
+    bookingCourse === "advanced-open-water"
+      ? "PADI Advanced Open Water Diver"
+      : "PADI Open Water Diver"
+  } course.`;
+
   return (
     <>
       <Navbar />
@@ -123,7 +129,7 @@ export function OpenDiver() {
             </button>
 
             <WhatsAppButton
-              href={course?.whatsapp_link}
+              message={waMessage}
               variant="outline"
             >
               {course?.whatsapp_text}
@@ -162,7 +168,7 @@ export function OpenDiver() {
           </button>
 
           <WhatsAppButton
-            href={course?.whatsapp_link}
+            message={waMessage}
             variant="floating"
             className="ml-2"
           />

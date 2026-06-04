@@ -14,6 +14,7 @@
 
 import type { ReactNode } from "react";
 import { FaWhatsapp } from "react-icons/fa";
+import { waLink } from "@/lib/whatsapp";
 
 // Official WhatsApp brand green — used everywhere for instant recognition.
 // (Exported for inline-style use; Tailwind classes below use literal hexes.)
@@ -22,8 +23,14 @@ export const WHATSAPP_GREEN = "#25D366";
 type WhatsAppVariant = "floating" | "outline" | "solid";
 
 interface WhatsAppButtonProps {
-  /** WhatsApp link (wa.me / api.whatsapp). Omit to render a non-linked button. */
+  /**
+   * Explicit WhatsApp link. Normally omitted — when absent the button falls
+   * back to the single source of truth (waLink(message)), so it can NEVER be
+   * a dead button. Pass `message` for a page-specific prefilled chat.
+   */
   href?: string;
+  /** Page-specific prefilled WhatsApp message (used when `href` is not given). */
+  message?: string;
   /** Visual style. `floating` = circular icon FAB; `outline`/`solid` = pill with label. */
   variant?: WhatsAppVariant;
   /** Label text for `outline` / `solid` variants. */
@@ -32,7 +39,7 @@ interface WhatsAppButtonProps {
   ariaLabel?: string;
   /** Extra classes from the caller (e.g. margins / positioning). */
   className?: string;
-  /** Click handler for non-linked buttons. */
+  /** Optional extra click handler (analytics etc.). */
   onClick?: () => void;
 }
 
@@ -66,6 +73,7 @@ const ICON_SIZE: Record<WhatsAppVariant, string> = {
 
 export default function WhatsAppButton({
   href,
+  message,
   variant = "floating",
   children,
   ariaLabel,
@@ -75,33 +83,22 @@ export default function WhatsAppButton({
   const classes = `${VARIANTS[variant]} ${className}`.trim();
   const label = ariaLabel ?? (variant === "floating" ? "Chat with us on WhatsApp" : undefined);
 
-  const content = (
-    <>
-      <WhatsAppIcon className={ICON_SIZE[variant]} />
-      {children}
-    </>
-  );
-
-  // Render as a link when an href exists, otherwise a button (preserves the
-  // existing non-linked buttons without inventing a number).
-  if (href) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={label}
-        className={classes}
-        onClick={onClick}
-      >
-        {content}
-      </a>
-    );
-  }
+  // Single source of truth: an explicit href wins, otherwise build the link
+  // from the shared business number. There is always a real destination, so
+  // a WhatsApp button can never be dead.
+  const resolvedHref = href ?? waLink(message);
 
   return (
-    <button type="button" aria-label={label} className={classes} onClick={onClick}>
-      {content}
-    </button>
+    <a
+      href={resolvedHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className={classes}
+      onClick={onClick}
+    >
+      <WhatsAppIcon className={ICON_SIZE[variant]} />
+      {children}
+    </a>
   );
 }

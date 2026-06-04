@@ -148,7 +148,7 @@ export function MasterScubaCTA() {
 
           {/* WHATSAPP BUTTON */}
           <WhatsAppButton
-            href={section.whatsapp_link}
+            message="Hi! I'd like to become a Master Scuba Diver — please share the details."
             variant="outline"
           >
             {section.whatsapp_button_text}
