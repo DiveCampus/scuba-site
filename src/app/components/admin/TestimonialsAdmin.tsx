@@ -19,7 +19,22 @@ export function TrainingQuality() {
   // Shared section header (single source of truth across all rows)
   const [sectionTitle, setSectionTitle] = useState("");
   const [sectionSubtitle, setSectionSubtitle] = useState("");
+  // Per-category tab title (single source of truth per category), keyed by
+  // lowercase category.
+  const [tabTitles, setTabTitles] = useState<Record<string, string>>({});
   const [savingSection, setSavingSection] = useState(false);
+
+  // Unique categories in DB/position order (key = lowercase category).
+  const categories = data.reduce(
+    (acc: { key: string; category: string }[], item) => {
+      const key = item.category?.toLowerCase();
+      if (key && !acc.some((c) => c.key === key)) {
+        acc.push({ key, category: item.category });
+      }
+      return acc;
+    },
+    []
+  );
 
   // ================= LOAD =================
   useEffect(() => {
@@ -41,6 +56,14 @@ export function TrainingQuality() {
     const sharedSection = rows[0];
     setSectionTitle(sharedSection?.section_title ?? "");
     setSectionSubtitle(sharedSection?.section_subtitle ?? "");
+
+    // Prefill tab titles from the first row of each category.
+    const tt: Record<string, string> = {};
+    rows.forEach((r: any) => {
+      const key = r.category?.toLowerCase();
+      if (key && !(key in tt)) tt[key] = r.tab_title ?? "";
+    });
+    setTabTitles(tt);
   };
 
   // ================= CHANGE =================
@@ -73,12 +96,15 @@ export function TrainingQuality() {
     setSavingSection(true);
 
     try {
+      // section_title/section_subtitle are global; tab_title is applied to
+      // every row sharing that row's category (single source of truth).
       await Promise.all(
         data.map((row) =>
           updateTestimonial(row.id, {
             ...row,
             section_title: sectionTitle,
             section_subtitle: sectionSubtitle,
+            tab_title: tabTitles[row.category?.toLowerCase() ?? ""] ?? row.tab_title,
           })
         )
       );
@@ -89,6 +115,7 @@ export function TrainingQuality() {
           ...row,
           section_title: sectionTitle,
           section_subtitle: sectionSubtitle,
+          tab_title: tabTitles[row.category?.toLowerCase()] ?? row.tab_title,
         }))
       );
     } catch (err) {
@@ -272,31 +299,52 @@ export function TrainingQuality() {
             className="w-full bg-black/40 border border-white/10 focus:border-cyan-400 rounded-xl px-4 py-3 outline-none transition resize-none leading-relaxed"
           />
 
+          {/* TAB TITLES (one per category — applies to all rows in category) */}
+          <label className="block text-xs uppercase tracking-[2px] text-white/50 mt-6 mb-3">
+            Tab Titles
+          </label>
+          <div className="space-y-3">
+            {categories.map((c) => (
+              <div key={c.key}>
+                <span className="block text-[11px] uppercase tracking-[1px] text-white/40 mb-1">
+                  {c.category}
+                </span>
+                <input
+                  value={tabTitles[c.key] ?? ""}
+                  onChange={(e) =>
+                    setTabTitles((prev) => ({
+                      ...prev,
+                      [c.key]: e.target.value,
+                    }))
+                  }
+                  placeholder={c.category.toUpperCase()}
+                  className="w-full bg-black/40 border border-white/10 focus:border-cyan-400 rounded-xl px-4 py-3 outline-none transition"
+                />
+              </div>
+            ))}
+          </div>
+
           {/* SAVE */}
           <button
             onClick={handleSaveSection}
             disabled={savingSection || !data.length}
             className="mt-6 w-full md:w-auto bg-gradient-to-r from-cyan-400 to-blue-500 text-black font-semibold rounded-xl px-8 py-3 hover:scale-[1.01] transition disabled:opacity-50"
           >
-            {savingSection ? "Saving…" : "Save Section Header"}
+            {savingSection ? "Saving…" : "Save Section & Tabs"}
           </button>
         </div>
 
         {/* TABS */}
         <div className="flex justify-center gap-12 mb-16 flex-wrap">
-          {[
-            "training environment",
-            "instructor quality",
-            "inclusions",
-          ].map((item, i) => (
+          {categories.map((c) => (
             <button
-              key={i}
-              onMouseEnter={() => setActiveMainTab(item)}
+              key={c.key}
+              onMouseEnter={() => setActiveMainTab(c.key)}
               className="relative uppercase text-white/80"
             >
-              {item}
+              {tabTitles[c.key]?.trim() || c.category}
 
-              {activeMainTab === item && (
+              {activeMainTab === c.key && (
                 <motion.div
                   layoutId="underline"
                   className="absolute left-0 -bottom-2 w-full h-[3px] bg-cyan-300"

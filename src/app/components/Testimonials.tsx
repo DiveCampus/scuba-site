@@ -30,6 +30,32 @@ export function Testimonials() {
     setData(data || []);
   };
 
+  // Unique tabs derived from category (in DB/position order), labelled by
+  // tab_title with an uppercase-category fallback. Key stays the lowercase
+  // category so active-tab + table filtering behaviour is unchanged.
+  const tabs = data.reduce(
+    (acc: { key: string; category: string; tab_title?: string }[], item) => {
+      const key = item.category?.toLowerCase();
+      if (key && !acc.some((t) => t.key === key)) {
+        acc.push({
+          key,
+          category: item.category,
+          tab_title: item.tab_title,
+        });
+      }
+      return acc;
+    },
+    []
+  );
+
+  // Ensure the active tab is always a real category once data has loaded.
+  useEffect(() => {
+    if (!tabs.length) return;
+    if (!tabs.some((t) => t.key === activeMainTab)) {
+      setActiveMainTab(tabs[0].key);
+    }
+  }, [data]);
+
   // ================= TABLE =================
   const renderTable = (category: string) => {
     const filtered = data.filter(
@@ -109,19 +135,15 @@ export function Testimonials() {
 
         {/* TABS */}
         <div className="flex justify-center gap-12 mb-8 md:mb-12 flex-wrap">
-          {[
-            "training environment",
-            "instructor quality",
-            "inclusions",
-          ].map((item, i) => (
+          {tabs.map((tab) => (
             <button
-              key={i}
-              onMouseEnter={() => setActiveMainTab(item)}
+              key={tab.key}
+              onMouseEnter={() => setActiveMainTab(tab.key)}
               className="relative text-sm font-semibold uppercase tracking-[3px] text-white/80 hover:text-white transition"
             >
-              {item.toUpperCase()}
+              {tab.tab_title?.trim() || tab.category.toUpperCase()}
 
-              {activeMainTab === item && (
+              {activeMainTab === tab.key && (
                 <motion.div
                   layoutId="underline"
                   className="absolute left-0 -bottom-2 w-full h-[3px] bg-cyan-300"

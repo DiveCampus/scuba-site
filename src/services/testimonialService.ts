@@ -10,7 +10,7 @@ export const getTestimonials = async () => {
   const response = await supabase
     .from("kadir_testimonials")
     .select(
-      "id, category, feature, others, dive_campus, position, section_title, section_subtitle, created_at, updated_at"
+      "id, category, feature, others, dive_campus, position, section_title, section_subtitle, tab_title, created_at, updated_at"
     )
     .order("position", { ascending: true });
 
@@ -41,6 +41,7 @@ export const updateTestimonial = async (
       dive_campus: payload.dive_campus,
       section_title: payload.section_title,
       section_subtitle: payload.section_subtitle,
+      tab_title: payload.tab_title,
       updated_at: new Date().toISOString(),
     })
     .eq("id", id)
