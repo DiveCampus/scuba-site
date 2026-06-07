@@ -1,33 +1,68 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   Settings2,
   Waves,
   LifeBuoy,
 } from "lucide-react";
+import { getFirstDiveSteps } from "@/services/FirstDiveStepsService";
+
+// Maps a DB icon name -> lucide element. Falls back to Settings2.
+const iconMap: any = {
+  Settings2: <Settings2 className="w-5 h-5" />,
+  Waves: <Waves className="w-5 h-5" />,
+  LifeBuoy: <LifeBuoy className="w-5 h-5" />,
+};
+
+// Fallback content — keeps the section pixel-identical when the DB is empty.
+const DEFAULT_SECTION = {
+  label: "HOW IT WORKS",
+  title: "3 STEPS TO YOUR FIRST DIVE",
+  description:
+    "Safe, easy, and designed for complete beginners. No prior experience needed.",
+};
+
+const DEFAULT_STEPS = [
+  {
+    step: "STEP 01",
+    icon: "Settings2",
+    title: "BRIEFING & GEAR UP",
+    description:
+      "Learn the basic hand signals and safety rules on land. We'll help you get suited up in premium, sanitized gear.",
+  },
+  {
+    step: "STEP 02",
+    icon: "Waves",
+    title: "SHALLOW WATER PRACTICE",
+    description:
+      "Start in shallow water where you can stand. You'll practice breathing underwater until you feel 100% comfortable.",
+  },
+  {
+    step: "STEP 03",
+    icon: "LifeBuoy",
+    title: "THE OCEAN DIVE",
+    description:
+      "Once you're ready, we gently swim out to the reef. Enjoy a 45-minute guided tour surrounded by colorful marine life.",
+  },
+];
 
 export function FirstDiveStepsSection() {
-  const steps = [
-    {
-      step: "STEP 01",
-      icon: <Settings2 className="w-5 h-5" />,
-      title: "BRIEFING & GEAR UP",
-      desc: "Learn the basic hand signals and safety rules on land. We'll help you get suited up in premium, sanitized gear.",
-    },
-    {
-      step: "STEP 02",
-      icon: <Waves className="w-5 h-5" />,
-      title: "SHALLOW WATER PRACTICE",
-      desc: "Start in shallow water where you can stand. You'll practice breathing underwater until you feel 100% comfortable.",
-    },
-    {
-      step: "STEP 03",
-      icon: <LifeBuoy className="w-5 h-5" />,
-      title: "THE OCEAN DIVE",
-      desc: "Once you're ready, we gently swim out to the reef. Enjoy a 45-minute guided tour surrounded by colorful marine life.",
-    },
-  ];
+  const [section, setSection] = useState<any>(DEFAULT_SECTION);
+  const [steps, setSteps] = useState<any[]>(DEFAULT_STEPS);
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  const load = async () => {
+    const { section, cards } = await getFirstDiveSteps();
+
+    if (section) setSection(section);
+
+    if (cards && cards.length) setSteps(cards);
+  };
 
   return (
     <section
@@ -48,22 +83,21 @@ export function FirstDiveStepsSection() {
           <p
             className="text-[12px] font-semibold uppercase tracking-[3px] text-cyan-500/90 mb-3"
           >
-            HOW IT WORKS
+            {section.label}
           </p>
 
           {/* TITLE */}
           <h2
             className="text-[36px] md:text-[52px] text-[#0b1b2b] font-semibold tracking-[1px] leading-[1.1] uppercase"
           >
-            3 STEPS TO YOUR FIRST DIVE
+            {section.title}
           </h2>
 
           {/* DESCRIPTION */}
           <p
             className="mt-5 text-[15px] md:text-[16px] text-[#7b8794] leading-[1.7] font-normal tracking-[0.3px] max-w-xl mx-auto"
           >
-            Safe, easy, and designed for complete beginners.
-            No prior experience needed.
+            {section.description}
           </p>
         </div>
 
@@ -73,7 +107,7 @@ export function FirstDiveStepsSection() {
         >
           {steps.map((item, i) => (
             <motion.div
-              key={i}
+              key={item.id ?? i}
               initial={{
                 opacity: 0,
                 y: 30,
@@ -107,7 +141,7 @@ export function FirstDiveStepsSection() {
               <div
                 className="relative z-10 mx-auto w-14 h-14 rounded-full bg-cyan-50 flex items-center justify-center text-cyan-500 mb-6 group-hover:scale-105 transition duration-500"
               >
-                {item.icon}
+                {iconMap[item.icon] ?? iconMap.Settings2}
               </div>
 
               {/* TITLE */}
@@ -121,7 +155,7 @@ export function FirstDiveStepsSection() {
               <p
                 className="relative z-10 text-[14px] md:text-[15px] text-[#7b8794] leading-relaxed tracking-[0.3px] max-w-[240px] mx-auto"
               >
-                {item.desc}
+                {item.description ?? item.desc}
               </p>
             </motion.div>
           ))}

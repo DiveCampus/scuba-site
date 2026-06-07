@@ -182,6 +182,22 @@ export default function DivetryAdmin() {
         className="min-h-screen flex flex-col items-center justify-center px-6 text-center"
       >
 
+        {/* BACKGROUND IMAGE */}
+        <input
+          value={
+            section.background_image || ""
+          }
+          onChange={e =>
+            setSection({
+              ...section,
+              background_image:
+                e.target.value,
+            })
+          }
+          placeholder="Background Image URL"
+          className="bg-white/10 border border-white/20 px-5 py-2 rounded-full text-center text-xs w-full max-w-[700px] mb-3 backdrop-blur outline-none"
+        />
+
         {/* TOP TAG */}
         <input
           value={
@@ -366,6 +382,25 @@ export default function DivetryAdmin() {
                     )
                   }
                   className="bg-transparent text-center text-2xl font-bold outline-none w-full"
+                />
+
+                {/* BUTTON TEXT */}
+                <input
+                  value={
+                    card.button_text || ""
+                  }
+                  onChange={e =>
+                    updateCard(
+
+                      card.id,
+
+                      "button_text",
+
+                      e.target.value
+                    )
+                  }
+                  placeholder="Button Text"
+                  className="mt-4 bg-white/10 border border-white/20 rounded-md text-center text-xs px-3 py-2 outline-none w-full"
                 />
 
               </div>

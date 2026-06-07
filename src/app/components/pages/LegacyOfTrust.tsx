@@ -1,9 +1,40 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
+import { getLegacyOfTrust } from "@/services/LegacyOfTrustService";
+
+// Maps a DB icon name -> lucide element. Falls back to ShieldCheck.
+const iconMap: any = {
+  ShieldCheck: <ShieldCheck size={22} className="text-cyan-400" />,
+};
+
+// Fallback content — keeps the section pixel-identical when the DB is empty.
+const DEFAULT_SECTION = {
+  badge: "THE DIVECAMPUS STANDARD",
+  title: "LEGACY OF",
+  highlight_word: "TRUST",
+  description:
+    "Since 2014, we have set the benchmark for Scuba Diving in the UAE, training over 25,000 divers to belong in the water.",
+  paragraph:
+    "Every session takes place in our Private Resort Environment, ensuring calm waters and zero stress. For the ultimate personal experience, you can upgrade to a Private 1-on-1 Instructor. This ensures absolute focused attention, allowing you to dive comfortably at your own rhythm.",
+  icon_name: "ShieldCheck",
+};
 
 export function LegacyOfTrust() {
+  const [section, setSection] = useState<any>(DEFAULT_SECTION);
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  const load = async () => {
+    const { section } = await getLegacyOfTrust();
+
+    if (section) setSection(section);
+  };
+
   return (
     <>
       <section
@@ -35,10 +66,7 @@ export function LegacyOfTrust() {
 
               <div className="w-12 h-12 rounded-2xl border border-cyan-400/40 bg-[#071c2d] flex items-center justify-center shadow-lg">
 
-                <ShieldCheck
-                  size={22}
-                  className="text-cyan-400"
-                />
+                {iconMap[section.icon_name] ?? iconMap.ShieldCheck}
 
               </div>
 
@@ -56,16 +84,16 @@ export function LegacyOfTrust() {
             {/* BADGE */}
             <p className="text-center text-[12px] font-semibold tracking-[3px] uppercase text-cyan-400 mt-2">
 
-              THE DIVECAMPUS STANDARD
+              {section.badge}
 
             </p>
 
             {/* TITLE */}
             <h2 className="mt-3 text-center text-[36px] md:text-[52px] leading-[1.1] tracking-[1px] font-semibold text-white">
 
-              LEGACY OF{" "}
+              {section.title}{" "}
               <span className="text-white font-bold">
-                TRUST
+                {section.highlight_word}
               </span>
 
             </h2>
@@ -73,31 +101,14 @@ export function LegacyOfTrust() {
             {/* DESC */}
             <p className="mt-5 text-center text-[15px] md:text-[16px] font-normal leading-[1.7] text-white/55">
 
-              <span className="text-yellow-400 font-semibold">
-                Since 2014,
-              </span>{" "}
-              we have set the benchmark for Scuba Diving in the UAE,
-              training over 25,000 divers to belong in the water.
+              {section.description}
 
             </p>
 
             {/* PARAGRAPH */}
             <p className="mt-8 text-center text-[14px] leading-relaxed text-white/50 max-w-[460px] mx-auto">
 
-              Every session takes place in our{" "}
-              <span className="text-cyan-300">
-                Private Resort Environment,
-              </span>{" "}
-              ensuring calm waters and zero stress.
-              For the ultimate personal experience, you can upgrade
-              to a{" "}
-              <span className="text-white">
-                Private 1-on-1 Instructor.
-              </span>
-
-              <br />
-              This ensures absolute focused attention, allowing you
-              to dive comfortably at your own rhythm.
+              {section.paragraph}
 
             </p>
 

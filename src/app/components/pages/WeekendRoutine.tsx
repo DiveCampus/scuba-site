@@ -1,34 +1,70 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { getWeekendRoutine } from "@/services/WeekendRoutineService";
+
+// Fallback content — keeps the section pixel-identical when the DB is empty.
+const DEFAULT_SECTION = {
+  title: "YOUR NEW FAVORITE",
+  highlighted_title: "WEEKEND ROUTINE",
+  description:
+    "Trade the mall for the ocean. Grab a friend, hop on the boat, and let's make some memories. Sun, sea, and a whole lot of laughs.",
+  cta_button: "BOOK YOUR EXPERIENCE",
+};
+
+const DEFAULT_IMAGES = [
+  "/A59I0374.webp",
+  "/A59I0450.webp",
+  "/A59I0656.webp",
+  "/A59I9512.webp",
+  "/A59I9544.webp",
+  "/A59I9590.webp",
+  "/A59I9631.webp",
+  "/dubai.webp",
+  "/Khorfakkan.webp",
+  "/img1.webp",
+  "/img2.webp",
+  "/img3.webp",
+  "/img4.webp",
+  "/img5.webp",
+  "/Brice.webp",
+  "/Islam.webp",
+  "/Justin.webp",
+  "/Khushi.webp",
+  "/Sneha.webp",
+  "/Surie.webp",
+  "/Aye.webp",
+  "/Abdullah.webp",
+  "/img2.webp",
+].map((image_url) => ({ image_url, image_alt: "Dive Experience" }));
+
+const DEFAULT_GIFT = {
+  emoji: "🎁",
+  title: "THE PERFECT GIFT FOR BIRTHDAYS & ANNIVERSARIES",
+  description:
+    "Want to surprise someone? A scuba diving experience is a gift they will never forget. We will plan an underwater surprise.",
+  notice: "⚠ MUST BOOK 7 DAYS IN ADVANCE FOR SPECIAL OCCASIONS",
+};
 
 export function WeekendRoutine() {
-    const images = [
-        "/A59I0374.webp",
-        "/A59I0450.webp",
-        "/A59I0656.webp",
-        "/A59I9512.webp",
-        "/A59I9544.webp",
-        "/A59I9590.webp",
-        "/A59I9631.webp",
-        "/dubai.webp",
-        "/Khorfakkan.webp",
-        "/img1.webp",
-        "/img2.webp",
-        "/img3.webp",
-        "/img4.webp",
-        "/img5.webp",
-        "/Brice.webp",
-        "/Islam.webp",
-        "/Justin.webp",
-        "/Khushi.webp",
-        "/Sneha.webp",
-        "/Surie.webp",
-        "/Aye.webp",
-        "/Abdullah.webp",
-        "/img2.webp",
+    const [section, setSection] = useState<any>(DEFAULT_SECTION);
+    const [images, setImages] = useState<any[]>(DEFAULT_IMAGES);
+    const [giftCard, setGiftCard] = useState<any>(DEFAULT_GIFT);
 
-    ];
+    useEffect(() => {
+        load();
+    }, []);
+
+    const load = async () => {
+        const { section, images, giftCard } = await getWeekendRoutine();
+
+        if (section) setSection(section);
+
+        if (images && images.length) setImages(images);
+
+        if (giftCard) setGiftCard(giftCard);
+    };
 
     return (
         <>
@@ -49,15 +85,14 @@ export function WeekendRoutine() {
                     <div className="text-center px-6">
 
                         <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] text-white leading-[1.1]">
-                            YOUR NEW FAVORITE{" "}
+                            {section.title}{" "}
                             <span className="text-cyan-400">
-                                WEEKEND ROUTINE
+                                {section.highlighted_title}
                             </span>
                         </h2>
 
                         <p className="mt-5 text-white/45 text-[15px] md:text-[16px] font-normal max-w-2xl mx-auto leading-[1.7]">
-                            Trade the mall for the ocean. Grab a friend, hop on the boat,
-                            and let's make some memories. Sun, sea, and a whole lot of laughs.
+                            {section.description}
                         </p>
 
                     </div>
@@ -97,8 +132,8 @@ export function WeekendRoutine() {
                                     <div className="w-[215px] h-[270px] rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-sm shadow-[0_10px_40px_rgba(0,0,0,0.35)]">
 
                                         <img
-                                            src={img}
-                                            alt="Dive Experience"
+                                            src={img.image_url}
+                                            alt={img.image_alt || "Dive Experience"}
                                             className="w-full h-full object-cover hover:scale-110 transition duration-700"
                                         />
 
@@ -126,24 +161,23 @@ export function WeekendRoutine() {
 
                             {/* ICON */}
                             <div className="text-3xl mb-5">
-                                🎁
+                                {giftCard.emoji}
                             </div>
 
                             {/* TITLE */}
                             <h3 className="text-white text-[20px] md:text-[24px] font-semibold tracking-[0.5px] leading-[1.2]">
-                                THE PERFECT GIFT FOR BIRTHDAYS & ANNIVERSARIES
+                                {giftCard.title}
                             </h3>
 
                             {/* DESC */}
                             <p className="mt-4 text-white/50 text-[14px] md:text-[15px] leading-relaxed max-w-md mx-auto">
-                                Want to surprise someone? A scuba diving experience is a gift
-                                they will never forget. We will plan an underwater surprise.
+                                {giftCard.description}
                             </p>
 
                             {/* NOTICE */}
                             <div className="mt-7 inline-flex items-center gap-2 px-5 py-3 rounded-full border border-lime-400/30 bg-lime-400/10 text-lime-300 text-[11px] tracking-[1px] font-semibold">
 
-                                ⚠ MUST BOOK 7 DAYS IN ADVANCE FOR SPECIAL OCCASIONS
+                                {giftCard.notice}
 
                             </div>
 
@@ -162,7 +196,7 @@ export function WeekendRoutine() {
                             {/* BUTTON */}
                             <div className="relative z-10 px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-[#02131d] font-semibold tracking-[1px] text-sm shadow-[0_10px_40px_rgba(0,200,255,0.35)]">
 
-                                BOOK YOUR EXPERIENCE
+                                {section.cta_button}
 
                             </div>
 

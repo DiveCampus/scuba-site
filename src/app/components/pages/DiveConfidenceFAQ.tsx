@@ -1,43 +1,100 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Plus, X } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { getDiveConfidenceFAQ } from "@/services/DiveConfidenceFAQService";
+
+// Fallback content — keeps the section pixel-identical when the DB is empty.
+const DEFAULT_SECTION = {
+  title: "Dive with",
+  highlighted_title: "Absolute Confidence.",
+  description:
+    "Safety is our absolute priority. Every session is led by our PADI Licensed Instructors to ensure you are comfortable, supported, and secure from your first breath to your final ascent.",
+};
+
+const DEFAULT_REVIEWS = [
+  {
+    platform: "Google",
+    rating: "4.9 ★★★★★",
+    review_count: "1,054+ REVIEWS",
+    icon_url:
+      "https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg",
+    color: "cyan",
+  },
+  {
+    platform: "Trustpilot",
+    rating: "5.0 ★★★★★",
+    review_count: "654 REVIEWS",
+    icon_url: "",
+    color: "green",
+  },
+];
+
+const DEFAULT_FAQS = [
+  {
+    question: "What if I run out of air?",
+    answer:
+      "We eliminate this risk completely. Your instructor acts as your personal safety monitor, checking your air levels every few minutes. You don't need to worry about the numbers; just breathe and enjoy the underwater world.",
+  },
+  {
+    question: "Will my ears hurt?",
+    answer:
+      "Not at all. Your instructor teaches simple equalization techniques before descending slowly and comfortably.",
+  },
+  {
+    question: "Do I need to be a strong swimmer?",
+    answer:
+      "No professional swimming skills are required. You only need basic comfort in water and confidence to float.",
+  },
+  {
+    question: "Can I wear contact lenses?",
+    answer:
+      "Yes. Most divers comfortably wear soft contact lenses during scuba sessions without issues.",
+  },
+  {
+    question: "What is the minimum age?",
+    answer:
+      "Kids from 10 years old can start diving programs under instructor supervision.",
+  },
+  {
+    question: "Can I get a female instructor?",
+    answer:
+      "Absolutely. Female instructors are available upon request for a more comfortable experience.",
+  },
+  {
+    question: "Are photos included?",
+    answer:
+      "Yes. Underwater photos and videos are included in selected packages.",
+  },
+];
+
+// Maps a DB color name -> static dot class (kept static so Tailwind keeps them).
+const dotColorMap: any = {
+  green: "bg-green-500",
+  cyan: "bg-cyan-500",
+};
 
 export function DiveConfidenceFAQ() {
   const [active, setActive] = useState(0);
+  const [section, setSection] = useState<any>(DEFAULT_SECTION);
+  const [reviews, setReviews] = useState<any[]>(DEFAULT_REVIEWS);
+  const [faqs, setFaqs] = useState<any[]>(DEFAULT_FAQS);
 
-  const faqs = [
-    {
-      q: "What if I run out of air?",
-      a: "We eliminate this risk completely. Your instructor acts as your personal safety monitor, checking your air levels every few minutes. You don't need to worry about the numbers; just breathe and enjoy the underwater world.",
-    },
-    {
-      q: "Will my ears hurt?",
-      a: "Not at all. Your instructor teaches simple equalization techniques before descending slowly and comfortably.",
-    },
-    {
-      q: "Do I need to be a strong swimmer?",
-      a: "No professional swimming skills are required. You only need basic comfort in water and confidence to float.",
-    },
-    {
-      q: "Can I wear contact lenses?",
-      a: "Yes. Most divers comfortably wear soft contact lenses during scuba sessions without issues.",
-    },
-    {
-      q: "What is the minimum age?",
-      a: "Kids from 10 years old can start diving programs under instructor supervision.",
-    },
-    {
-      q: "Can I get a female instructor?",
-      a: "Absolutely. Female instructors are available upon request for a more comfortable experience.",
-    },
-    {
-      q: "Are photos included?",
-      a: "Yes. Underwater photos and videos are included in selected packages.",
-    },
-  ];
+  useEffect(() => {
+    load();
+  }, []);
+
+  const load = async () => {
+    const { section, reviews, faqs } = await getDiveConfidenceFAQ();
+
+    if (section) setSection(section);
+
+    if (reviews && reviews.length) setReviews(reviews);
+
+    if (faqs && faqs.length) setFaqs(faqs);
+  };
 
   // FAQ schema for Google rich results — no UI change.
   const faqSchema = {
@@ -45,8 +102,8 @@ export function DiveConfidenceFAQ() {
     "@type": "FAQPage",
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+      name: f.question,
+      acceptedAnswer: { "@type": "Answer", text: f.answer },
     })),
   };
 
@@ -71,63 +128,56 @@ export function DiveConfidenceFAQ() {
             {/* TITLE */}
             <h2 className="text-[36px] md:text-[52px] leading-[1.1] tracking-[1px] font-semibold text-[#0a0e27]">
 
-              Dive with <br />
+              {section.title} <br />
 
               <span className="text-cyan-500">
-                Absolute Confidence.
+                {section.highlighted_title}
               </span>
 
             </h2>
 
             {/* DESC */}
             <p className="mt-5 text-[15px] leading-relaxed text-[#7b8794]">
-              Safety is our absolute priority. Every session is led by our
-              PADI Licensed Instructors to ensure you are comfortable,
-              supported, and secure from your first breath to your final ascent.
+              {section.description}
             </p>
 
             {/* REVIEWS */}
             <div className="mt-10 space-y-4">
 
-              {/* GOOGLE */}
-              <div className="w-fit flex items-center gap-4 px-5 py-3 rounded-full border border-[#d7e1ea] bg-white shadow-sm">
+              {reviews.map((review, i) => (
+                <div
+                  key={review.id ?? i}
+                  className="w-fit flex items-center gap-4 px-5 py-3 rounded-full border border-[#d7e1ea] bg-white shadow-sm"
+                >
 
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg"
-                  alt="Google reviews"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-12 object-contain"
-                />
+                  {review.icon_url ? (
+                    <img
+                      src={review.icon_url}
+                      alt={`${review.platform} reviews`}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-12 object-contain"
+                    />
+                  ) : (
+                    <div
+                      className={`w-3 h-3 rounded-full ${
+                        dotColorMap[review.color] ?? "bg-green-500"
+                      }`}
+                    />
+                  )}
 
-                <div>
-                  <p className="text-sm font-semibold text-[#0a0e27]">
-                    4.9 ★★★★★
-                  </p>
+                  <div>
+                    <p className="text-sm font-semibold text-[#0a0e27]">
+                      {review.rating}
+                    </p>
 
-                  <p className="text-[10px] tracking-[1px] text-cyan-500">
-                    1,054+ REVIEWS
-                  </p>
+                    <p className="text-[10px] tracking-[1px] text-cyan-500">
+                      {review.review_count}
+                    </p>
+                  </div>
+
                 </div>
-
-              </div>
-
-              {/* TRUSTPILOT */}
-              <div className="w-fit flex items-center gap-4 px-5 py-3 rounded-full border border-[#d7e1ea] bg-white shadow-sm">
-
-                <div className="w-3 h-3 rounded-full bg-green-500" />
-
-                <div>
-                  <p className="text-sm font-semibold text-[#0a0e27]">
-                    5.0 ★★★★★
-                  </p>
-
-                  <p className="text-[10px] tracking-[1px] text-cyan-500">
-                    654 REVIEWS
-                  </p>
-                </div>
-
-              </div>
+              ))}
 
             </div>
 
@@ -141,7 +191,7 @@ export function DiveConfidenceFAQ() {
 
               return (
                 <motion.div
-                  key={i}
+                  key={item.id ?? i}
                   layout
                   className={`rounded-2xl border transition overflow-hidden
                   ${
@@ -158,7 +208,7 @@ export function DiveConfidenceFAQ() {
                   >
 
                     <h3 className="text-[15px] md:text-[16px] text-[#243447] font-semibold tracking-[0.5px]">
-                      {item.q}
+                      {item.question}
                     </h3>
 
                     <div className="text-cyan-500">
@@ -187,7 +237,7 @@ export function DiveConfidenceFAQ() {
                         <div className="px-6 pb-6">
 
                           <p className="text-[14px] leading-relaxed text-[#7b8794] max-w-xl">
-                            {item.a}
+                            {item.answer}
                           </p>
 
                         </div>

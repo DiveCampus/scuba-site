@@ -403,6 +403,44 @@ DiveConfidenceFAQAdmin() {
                       className="text-[10px] tracking-[1px] text-cyan-500 bg-transparent outline-none"
                     />
 
+                    <input
+                      value={
+                        review.icon_url || ""
+                      }
+                      onChange={e =>
+                        updateReview(
+
+                          review.id,
+
+                          "icon_url",
+
+                          e.target
+                            .value
+                        )
+                      }
+                      placeholder="Icon URL (blank = colored dot)"
+                      className="block text-[10px] text-[#7b8794] bg-[#f1f5f9] rounded px-2 py-1 outline-none w-[220px]"
+                    />
+
+                    <input
+                      value={
+                        review.color || ""
+                      }
+                      onChange={e =>
+                        updateReview(
+
+                          review.id,
+
+                          "color",
+
+                          e.target
+                            .value
+                        )
+                      }
+                      placeholder="Dot color (cyan / green)"
+                      className="block text-[10px] text-[#7b8794] bg-[#f1f5f9] rounded px-2 py-1 outline-none w-[220px]"
+                    />
+
                   </div>
 
                 </div>

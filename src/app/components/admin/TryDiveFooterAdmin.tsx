@@ -574,35 +574,58 @@ TryDiveFooterAdmin() {
                         key={
                           item.id
                         }
-                        className="flex items-center gap-2"
+                        className="space-y-1"
                       >
+
+                        <div className="flex items-center gap-2">
+
+                          <input
+                            value={
+                              item.title
+                            }
+                            onChange={e =>
+                              updateLink(
+
+                                item.id,
+
+                                "title",
+
+                                e.target
+                                  .value
+                              )
+                            }
+                            className="flex-1 bg-transparent text-sm text-white/50 outline-none"
+                          />
+
+                          <Trash2
+                            size={15}
+                            onClick={() =>
+                              removeLink(
+                                item.id
+                              )
+                            }
+                            className="text-red-400 cursor-pointer"
+                          />
+
+                        </div>
 
                         <input
                           value={
-                            item.title
+                            item.url || ""
                           }
                           onChange={e =>
                             updateLink(
 
                               item.id,
 
-                              "title",
+                              "url",
 
                               e.target
                                 .value
                             )
                           }
-                          className="flex-1 bg-transparent text-sm text-white/50 outline-none"
-                        />
-
-                        <Trash2
-                          size={15}
-                          onClick={() =>
-                            removeLink(
-                              item.id
-                            )
-                          }
-                          className="text-red-400 cursor-pointer"
+                          placeholder="/url"
+                          className="w-full bg-white/5 border border-white/10 rounded px-2 py-1 text-xs text-white/40 outline-none"
                         />
 
                       </div>
@@ -642,35 +665,58 @@ TryDiveFooterAdmin() {
                         key={
                           item.id
                         }
-                        className="flex items-center gap-2"
+                        className="space-y-1"
                       >
+
+                        <div className="flex items-center gap-2">
+
+                          <input
+                            value={
+                              item.title
+                            }
+                            onChange={e =>
+                              updateLink(
+
+                                item.id,
+
+                                "title",
+
+                                e.target
+                                  .value
+                              )
+                            }
+                            className="flex-1 bg-transparent text-sm text-white/50 outline-none"
+                          />
+
+                          <Trash2
+                            size={15}
+                            onClick={() =>
+                              removeLink(
+                                item.id
+                              )
+                            }
+                            className="text-red-400 cursor-pointer"
+                          />
+
+                        </div>
 
                         <input
                           value={
-                            item.title
+                            item.url || ""
                           }
                           onChange={e =>
                             updateLink(
 
                               item.id,
 
-                              "title",
+                              "url",
 
                               e.target
                                 .value
                             )
                           }
-                          className="flex-1 bg-transparent text-sm text-white/50 outline-none"
-                        />
-
-                        <Trash2
-                          size={15}
-                          onClick={() =>
-                            removeLink(
-                              item.id
-                            )
-                          }
-                          className="text-red-400 cursor-pointer"
+                          placeholder="/url"
+                          className="w-full bg-white/5 border border-white/10 rounded px-2 py-1 text-xs text-white/40 outline-none"
                         />
 
                       </div>
@@ -710,35 +756,58 @@ TryDiveFooterAdmin() {
                         key={
                           item.id
                         }
-                        className="flex items-center gap-2"
+                        className="space-y-1"
                       >
+
+                        <div className="flex items-center gap-2">
+
+                          <input
+                            value={
+                              item.title
+                            }
+                            onChange={e =>
+                              updateLink(
+
+                                item.id,
+
+                                "title",
+
+                                e.target
+                                  .value
+                              )
+                            }
+                            className="flex-1 bg-transparent text-sm text-white/50 outline-none"
+                          />
+
+                          <Trash2
+                            size={15}
+                            onClick={() =>
+                              removeLink(
+                                item.id
+                              )
+                            }
+                            className="text-red-400 cursor-pointer"
+                          />
+
+                        </div>
 
                         <input
                           value={
-                            item.title
+                            item.url || ""
                           }
                           onChange={e =>
                             updateLink(
 
                               item.id,
 
-                              "title",
+                              "url",
 
                               e.target
                                 .value
                             )
                           }
-                          className="flex-1 bg-transparent text-sm text-white/50 outline-none"
-                        />
-
-                        <Trash2
-                          size={15}
-                          onClick={() =>
-                            removeLink(
-                              item.id
-                            )
-                          }
-                          className="text-red-400 cursor-pointer"
+                          placeholder="/url"
+                          className="w-full bg-white/5 border border-white/10 rounded px-2 py-1 text-xs text-white/40 outline-none"
                         />
 
                       </div>

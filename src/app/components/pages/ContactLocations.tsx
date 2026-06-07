@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import {
   MapPin,
   Mail,
@@ -8,27 +9,40 @@ import {
 } from "lucide-react";
 
 import { motion } from "framer-motion";
+import { getContactLocations } from "@/services/ContactLocationsService";
+
+// Fallback content — keeps the section pixel-identical when the DB is empty.
+const DEFAULT_LOCATIONS = [
+  {
+    title: "DUBAI CONTACT DETAILS",
+    address: "Azure Residences, The Palm Jumeirah, Dubai, UAE",
+    email: "info@divecampus.com",
+    phone: "+971 56 704 4472",
+    map_image: "/map1.webp",
+    map_url: "",
+  },
+  {
+    title: "FUJAIRAH CONTACT DETAILS",
+    address: "Royal Beach, Dibba Fujairah, Al Fujairah",
+    email: "dive@divecampus.com",
+    phone: "+971 58 504 4450",
+    map_image: "/map2.webp",
+    map_url: "",
+  },
+];
 
 export function ContactLocations() {
-  const locations = [
-    {
-      title: "DUBAI CONTACT DETAILS",
-      address:
-        "Azure Residences, The Palm Jumeirah, Dubai, UAE",
-      email: "info@divecampus.com",
-      phone: "+971 56 704 4472",
-      map: "/map1.webp",
-    },
+  const [locations, setLocations] = useState<any[]>(DEFAULT_LOCATIONS);
 
-    {
-      title: "FUJAIRAH CONTACT DETAILS",
-      address:
-        "Royal Beach, Dibba Fujairah, Al Fujairah",
-      email: "dive@divecampus.com",
-      phone: "+971 58 504 4450",
-      map: "/map2.webp",
-    },
-  ];
+  useEffect(() => {
+    load();
+  }, []);
+
+  const load = async () => {
+    const { locations } = await getContactLocations();
+
+    if (locations && locations.length) setLocations(locations);
+  };
 
   return (
     <>
@@ -41,7 +55,7 @@ export function ContactLocations() {
 
           {locations.map((item, i) => (
             <motion.div
-              key={i}
+              key={item.id ?? i}
               whileHover={{
                 y: -4,
               }}
@@ -120,13 +134,19 @@ export function ContactLocations() {
 
                 {/* MAP IMAGE */}
                 <img
-                  src={item.map}
+                  src={item.map_image ?? item.map}
                   alt="map"
                   className="w-full h-[145px] object-cover"
                 />
 
                 {/* MAP BUTTON */}
-                <button className="absolute top-3 left-3 flex items-center gap-1 px-3 py-2 rounded-md bg-white text-[11px] font-medium text-cyan-600 shadow-md border border-[#d9e2ec]">
+                <button
+                  onClick={() =>
+                    item.map_url &&
+                    window.open(item.map_url, "_blank", "noopener,noreferrer")
+                  }
+                  className="absolute top-3 left-3 flex items-center gap-1 px-3 py-2 rounded-md bg-white text-[11px] font-medium text-cyan-600 shadow-md border border-[#d9e2ec]"
+                >
 
                   Open in Maps
 

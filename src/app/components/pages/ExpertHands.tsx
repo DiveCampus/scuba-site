@@ -1,15 +1,43 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { Check } from "lucide-react";
 import { motion } from "framer-motion";
+import { getExpertHands } from "@/services/ExpertHandsService";
+
+// Fallback content — keeps the section pixel-identical when the DB is empty.
+const DEFAULT_SECTION = {
+  badge: "THE DIVECAMPUS STANDARD",
+  title: "EXPERT HANDS. ALWAYS.",
+  description_1:
+    "Your safety is our Priority. We maintain a strict maximum ratio of 3 students per instructor, ensuring you never feel lost in a crowd.",
+  description_2:
+    "Want exclusive focus? You can upgrade to a dedicated 1-on-1 Private Instructor during booking for total privacy and personalized attention.",
+  image_url: "/1.avif",
+};
+
+const DEFAULT_FEATURES = [
+  { feature: "MAX 3 STUDENTS PER INSTRUCTOR" },
+  { feature: "PRIVATE INSTRUCTORS ON REQUEST" },
+  { feature: "FREE PHOTOS & VIDEOS" },
+  { feature: "PREMIUM GEARS" },
+];
 
 export function ExpertHands() {
-  const features = [
-    "MAX 3 STUDENTS PER INSTRUCTOR",
-    "PRIVATE INSTRUCTORS ON REQUEST",
-    "FREE PHOTOS & VIDEOS",
-    "PREMIUM GEARS",
-  ];
+  const [section, setSection] = useState<any>(DEFAULT_SECTION);
+  const [features, setFeatures] = useState<any[]>(DEFAULT_FEATURES);
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  const load = async () => {
+    const { section, features } = await getExpertHands();
+
+    if (section) setSection(section);
+
+    if (features && features.length) setFeatures(features);
+  };
 
   return (
     <>
@@ -36,7 +64,7 @@ export function ExpertHands() {
             <div className="w-[320px] h-[205px] rounded-md overflow-hidden shadow-lg">
 
               <img
-                src="/1.avif"
+                src={section.image_url}
                 alt="Diver"
                 className="w-full h-full object-cover"
               />
@@ -54,25 +82,23 @@ export function ExpertHands() {
 
             {/* BADGE */}
             <p className="text-[12px] font-semibold tracking-[3px] uppercase text-cyan-500 mb-3">
-              THE DIVECAMPUS STANDARD
+              {section.badge}
             </p>
 
             {/* TITLE */}
             <h2 className="text-[36px] md:text-[52px] leading-[1.1] tracking-[1px] font-semibold text-[#0b1623]">
 
-              EXPERT HANDS. ALWAYS.
+              {section.title}
 
             </h2>
 
             {/* DESC */}
             <p className="mt-6 text-[14px] leading-relaxed text-[#7a8795] max-w-md">
-              Your safety is our Priority. We maintain a strict maximum ratio
-              of 3 students per instructor, ensuring you never feel lost in a crowd.
+              {section.description_1}
             </p>
 
             <p className="mt-6 text-[14px] leading-relaxed text-[#7a8795] max-w-md">
-              Want exclusive focus? You can upgrade to a dedicated 1-on-1
-              Private Instructor during booking for total privacy and personalized attention.
+              {section.description_2}
             </p>
 
             {/* FEATURES */}
@@ -80,7 +106,7 @@ export function ExpertHands() {
 
               {features.map((item, i) => (
                 <div
-                  key={i}
+                  key={item.id ?? i}
                   className="flex items-start gap-3"
                 >
 
@@ -96,7 +122,7 @@ export function ExpertHands() {
 
                   {/* TEXT */}
                   <p className="text-[12px] font-semibold tracking-[3px] leading-[1.6] text-[#1b2735] uppercase">
-                    {item}
+                    {item.feature ?? item}
                   </p>
 
                 </div>

@@ -1,0 +1,250 @@
+================================================================================
+ FRONTEND STATIC vs DYNAMIC AUDIT — SCUBA SITE
+ Generated: 2026-06-05
+ Repo: /home/kadir70/Downloads/scuba-site  (branch: main)
+ Stack: React + Vite + Supabase
+ Method: Read actual source (298 TS/TSX files). Classified by whether the
+         RENDERED PUBLIC COMPONENT pulls content from Supabase — NOT merely
+         whether a service/table exists. (This distinction is decisive here.)
+ NOTE: No code was modified. Analysis only.
+================================================================================
+
+LEGEND
+  [DYNAMIC]  = content from Supabase DB, wired into the live component, admin-editable
+  [PARTIAL]  = some fields from DB, others hardcoded
+  [STATIC]   = hardcoded literals in the .tsx
+  [GHOST]    = service + DB table + admin panel ALL EXIST, but the public
+               component imports NO service and renders hardcoded content.
+               (Admin can "edit" it, but nothing changes on the live site.)
+
+
+================================================================================
+ ⭐ CRITICAL FINDING FIRST — "GHOST-DYNAMIC" SECTIONS (BROKEN WIRING)
+================================================================================
+10 sections each have a service + DB table + admin panel — but the public .tsx
+does NOT import the service and renders hardcoded arrays. The admin UI edits a
+table nobody reads.
+
+  Section                       Public imports service?   Ignored backend
+  ---------------------------   -----------------------   ----------------------------------
+  ExpertHands.tsx               NO (0 imports)            ExpertHandsService -> expert_hands_*      + ExpertHandsAdmin
+  ContactLocations.tsx          NO (0 imports)            ContactLocationsService -> contact_locations + ContactLocationsAdmin
+  WeekendRoutine.tsx            NO (0 imports)            WeekendRoutineService -> weekend_routine_*   + WeekendRoutineAdmin
+  DiveConfidenceFAQ.tsx         NO (0 imports)            DiveConfidenceFAQService -> dive_confidence_* + Admin
+  AdventureGallery.tsx          NO (0 imports)            AdventureGalleryService -> adventure_gallery_* + Admin
+  FirstDiveStepsSection.tsx     NO (0 imports)            FirstDiveStepsService -> first_dive_steps_*  + Admin
+  ChooseDiveSite.tsx            NO (0 imports)            ChooseDiveSiteService -> choose_dive_site_*  + Admin
+  Divetry.tsx                   NO (0 imports)            DivetryService -> divetry_*                  + DivetryAdmin
+  LegacyOfTrust.tsx             NO (0 imports)            LegacyOfTrustService -> legacy_of_trust_section + Admin
+  TryDiveFooter.tsx             NO (0 imports)            TryDiveFooterService -> try_dive_footer_*    + Admin
+
+CONSEQUENCE: The ENTIRE /try-dive page is hardcoded. TryDive.tsx composes
+exactly these sections (Divetry, FirstDiveSteps, WeekendRoutine, DiveConfidenceFAQ,
+ChooseDiveSite, ExpertHands, LegacyOfTrust, ContactLocations, AdventureGallery,
+TryDiveFooter). All backend-ready, none wired.
+
+=> The "92% admin coverage" implied by the service layer is MISLEADING.
+   True LIVE coverage is ~59% (see Final Summary).
+
+
+================================================================================
+ 1. GLOBAL / SHARED COMPONENTS
+================================================================================
+Navbar  (Navbar.tsx)                         [STATIC]
+  Powered by: none (WhatsApp # from env only)
+  Hardcoded: full nav tree + routeMap (L39-94); toll-free "800 72822" /
+             tel:80072822 (L265-284, 415-433); location labels "Dubai"/"Khor Fakkan"
+
+Footer  (Footer.tsx)                         [DYNAMIC]
+  Powered by: footerService -> kadir_footer_content / _socials / _locations
+  Hardcoded: logo /logo.webp, copyright fallback string
+
+WhatsApp  (WhatsAppButton.tsx + lib/whatsapp.ts)   [PARTIAL]
+  Powered by: VITE_WHATSAPP_NUMBER env var
+  Hardcoded: fallback 971507703483; brand color; per-page messages hardcoded
+             individually in each section
+
+SEO / META  (seoConfig.ts, index.html, scripts/prerender.mjs)   [STATIC]
+  Powered by: none — NO admin panel
+  Hardcoded: 19 route titles+descriptions (seoConfig L49-303); root OG/Twitter
+             tags (index.html L15-25); full JSON-LD business schema incl.
+             phone/email/address/geo/hours (index.html L60-143);
+             prerender.mjs duplicates ALL of it (2nd source of truth)
+
+Chatbot  (chatbot/chatService.ts, ChatWidget.tsx)   [STATIC]
+  Powered by: none — file comment says "UI-ONLY, NO REAL AI"
+  Hardcoded: all quick-actions + scripted replies + fallback (L30-61).
+             Not connected to any AI / RAG / DB.
+
+Login  (Login.tsx)                           [STATIC]
+  Hardcoded: credentials kadir70 / 12345678 (L10) — homepage gate, currently
+             disabled.  *** SECURITY NOTE: credentials in source. ***
+
+NotFound (NotFound.tsx)                       [STATIC]  — 404 copy hardcoded
+
+
+================================================================================
+ 2. HOME PAGE SECTIONS
+================================================================================
+  Section                         Class       Table / Notes
+  -----------------------------   ---------   ------------------------------------------
+  Hero (Hero.tsx)                 DYNAMIC     kadir_main_hero (video/poster/labels hardcoded)
+  Course Cards (DivingCourses)    DYNAMIC     kadir_courses ("CHOOSE YOUR PATH",
+                                              age presets ["8+","10+","12+","18+"] hardcoded)
+  Featured (FeaturedExperiences)  PARTIAL     kadir_featured_content — only title/subtitle
+                                              dynamic; video + popup hardcoded/placeholder
+  Testimonials (Testimonials)     DYNAMIC     kadir_testimonials (tabs + comparison editable)
+  WhyChooseUs (WhyChooseUs)       DYNAMIC     kadir_why_choose_us (header copy hardcoded)
+  Gallery (Gallery)               DYNAMIC     kadir_gallery
+  Pricing (Pricing)               DYNAMIC     kadir_pricing  (BUG: renders "$" not AED;
+                                              "Get Started" hardcoded)
+  FAQ (FAQ)                       DYNAMIC     kadir_faq
+  BookingForm (BookingForm)       STATIC      none — submit is console.log only.
+                                              Phone +971 50 123 4567, email
+                                              info@aquadive.com, hours, course <option>s
+                                              all hardcoded (L74-227)
+
+
+================================================================================
+ 3. COURSE / LANDING-PAGE SECTIONS
+================================================================================
+[DYNAMIC] Fully dynamic (40 sections) — wired service + admin, content from DB:
+  AdvancedProtocol, AdvancedTrainingGold, AdvancedTrainingGoldElite, AOWAdvantage,
+  CareerPath, ChooseEnvironment, CommandOcean, CommunityFAQ, ComparisonDive,
+  ComparisonSection, DiveEnvironment, DiveTrainingShowcase, EliteBenefits, EliteFooter,
+  EnvironmentSection, GlobalPassport, GoldStandard, GoldStandardDive, HeroSection(open),
+  HeroOpen, HybridProtocol, LocationFooter, LocationSection, MasterScubaCTA, MasteryGap,
+  OceanElite, OpenDiver, PadIDivemasterHero, PadiOpenDiver, PremiumFooter, PremiumSec,
+  ProfessionalStatus, RescueCapabilities, RescueComparison, RescueFAQ, Rescue(hero),
+  SimulationToReality, StepsSection, TrainingComparison, WhyChooseDiveCampus.
+  (Minor hardcoded remnants in many: per-page WhatsApp messages,
+   "Excellent"/star-rating badges, a few section labels.)
+
+[GHOST] Static but backend exists (the 10 listed in Critical Finding) —
+  includes the whole /try-dive page.
+
+[STATIC] Static, NO backend at all:
+  Community.tsx, CommunityGallerySection.tsx (duplicate hardcoded galleries),
+  OpenWater.tsx (placeholder), SpecialtyCourses.tsx (hero hardcoded incl. price "799"),
+  AboutDiveCampus.tsx (team names + photos hardcoded L15-120).
+
+[WRAPPERS] Inherit children, no own content:
+  AdvancedOpenWater, AdvancedPadiOpenDiver, PadiOpenWater, PadiRescueDiver,
+  PadIDivemaster, AboutDive, TryDive.
+
+
+================================================================================
+ 4. INSTRUCTOR PROFILE MODALS — ALL 8 STATIC
+================================================================================
+Files: AbdullahProfileModal, IslamProfileModal, JustinProfileModal,
+       KhushiProfileModal, SnehaProfileModal, SurieProfileModal,
+       AyeProfileModal, BriceProfileModal  (all [STATIC])
+
+Every name, role, 300-500 word bio, credential tags, and /X.webp photo is a JSX
+literal (each ~L85-192). NO instructor service, table, or admin anywhere in the app.
+
+
+================================================================================
+ 5. BOOKING / PAYMENT / REVIEWS
+================================================================================
+  Item                                  Class      Notes
+  -----------------------------------   --------   ------------------------------------
+  BookingPage / PaymentSuccess/Cancel   DYNAMIC    Course read from URL slug
+  paymentService.ts / lib/stripe.ts     DYNAMIC    Stripe key from env; checkout via
+                                                   Supabase function
+  src/data/courseData.ts                STATIC     7 courses + prices hardcoded
+                                                   (AED 350-2200, L24-116) — DUPLICATES
+                                                   the kadir_courses DB table
+  BookingModal / OpenDiverBooking       PARTIAL    Add-on upsells hardcoded TWICE
+                                                   (Private Instructor +250, AOW +1300,
+                                                   Fujairah +400); 5% tax hardcoded
+  ReviewsPage.tsx                       STATIC     6 fake reviews w/ pravatar.cc avatars (L5-36)
+  ExperiencesPage.tsx                   PARTIAL    Location bios + Google Maps URLs hardcoded
+
+
+================================================================================
+ FINAL SUMMARY
+================================================================================
+Denominator: ~81 distinct public content sections/components
+             (excludes pure-layout helpers & wrappers).
+
+  Bucket                                              Count    %
+  -------------------------------------------------   -----   -----
+  [DYNAMIC]  Fully dynamic (live, admin-driven)         48    ~59%
+  [PARTIAL]  Partially dynamic                            7    ~9%
+  [GHOST]    Static — backend exists but unwired         10    ~12%
+  [STATIC]   Static — no backend at all                ~16    ~20%
+
+  * True LIVE dynamic coverage: ~59%.
+  * Service-layer coverage LOOKS like ~92%, but ~12% of it is DEAD
+    (admin edits don't reach the site).
+  * Wiring the 10 ghost sections (a few lines each) raises coverage to ~71%
+    with near-zero new backend work — the single biggest, cheapest win.
+
+Service-layer raw stats (from cross-check):
+  Total services: 67 | DB-driven: 64 | hardcoded: 3
+  Services WITH admin panel: 59 | WITHOUT: 5
+  Unique Supabase tables touched: ~126 | Registered admin dashboard sections: 59
+
+
+================================================================================
+ BIGGEST HARDCODED BOTTLENECKS
+================================================================================
+ 1. The 10 ghost-dynamic sections — entire /try-dive page + Legacy / ExpertHands /
+    ContactLocations. Backend 100% built, just not imported.
+ 2. 8 instructor profiles — zero backend; every change = code edit + redeploy.
+ 3. SEO/meta layer — 19 page titles/descriptions + JSON-LD locked in
+    seoConfig.ts / index.html, duplicated in prerender.mjs. No admin.
+ 4. Contact details — scattered & hardcoded across Navbar, index.html,
+    ContactLocations, BookingForm.
+ 5. BookingForm — collects leads but only console.log()s them (no DB/email).
+ 6. Chatbot — pure stub, no real responses.
+
+
+================================================================================
+ QUICK WINS (ordered by effort : impact)
+================================================================================
+ 1. Wire the 10 ghost sections — add the useEffect + service import that all 40
+    working sections already use. Copy-paste pattern. -> +12% coverage, unblocks
+    /try-dive entirely.
+ 2. Delete or wire 5 truly orphaned services (no admin):
+    EliteTrainingService, RescueComparisonService, courseTableService,
+    heroService, hero_Level1Service.
+ 3. One `instructors` table + admin -> replace all 8 modals + AboutDiveCampus team array.
+ 4. Fix BookingForm -> insert lead to Supabase; pull course <option>s from kadir_courses.
+ 5. Move add-on upsells + 5% tax to DB (one table, dedupes BookingModal/OpenDiverBooking).
+
+
+================================================================================
+ DUPLICATIONS & INCONSISTENCIES
+================================================================================
+ - 3 conflicting email domains live simultaneously:
+     info@uaedive.com (index.html), info@divecampus.com (ContactLocations),
+     info@aquadive.com (BookingForm).
+ - Phone numbers don't match across:
+     Navbar (+971507703483 / 800 72822), index.html JSON-LD (+971507703483,
+     +971585044450), ContactLocations (+971 56 704 4472),
+     BookingForm (+971 50 123 4567 — placeholder).
+ - Business hours mismatch: index.html 08:00-20:00 vs BookingForm 07:00-20:00.
+ - Courses defined twice: hardcoded courseData.ts AND DB kadir_courses.
+ - Identical hardcoded gallery ("BUILT ON PASSION. BOUND BY ADVENTURE." + same
+   image array) copy-pasted across Community.tsx, CommunityGallerySection.tsx,
+   AdventureGallery.tsx.
+ - Add-on upsell list duplicated in BookingModal + OpenDiverBooking.
+ - seoConfig.ts manually mirrored into prerender.mjs (two sources of truth; flagged in-code).
+ - 6+ separate footer systems (Footer, EliteFooter, PremiumFooter, PremiumSec,
+   LocationFooter, TryDiveFooter, EnvironmentSection footer) across different tables.
+
+
+================================================================================
+ ORPHANED SERVICES (DB table exists, but NO admin UI to edit them)
+================================================================================
+   EliteTrainingService.ts      -> elite_training_cards, elite_training_section
+   RescueComparisonService.ts   -> rescue_comparison_rows, rescue_comparison_section
+   courseTableService.ts        -> coursestable  (appears unused)
+   heroService.ts               -> kadir_hero_content
+   hero_Level1Service.ts        -> hero_section
+
+================================================================================
+ END OF REPORT
+================================================================================

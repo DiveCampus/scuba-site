@@ -111,6 +111,32 @@ AdventureGalleryAdmin() {
 
     };
 
+  const updateImageField =
+    (
+      id: string,
+      field: string,
+      value: string
+    ) => {
+
+      setImages(
+        prev =>
+          prev.map(
+            item =>
+              item.id === id
+                ? {
+
+                    ...item,
+
+                    [field]:
+                      value,
+
+                  }
+                : item
+          )
+      );
+
+    };
+
   /* =====================================
      ADD IMAGE
   ===================================== */
@@ -325,6 +351,25 @@ AdventureGalleryAdmin() {
                       )
                     }
                     className="w-full border rounded-lg px-3 py-2 text-sm outline-none"
+                  />
+
+                  <input
+                    value={
+                      item.image_alt || ""
+                    }
+                    onChange={e =>
+                      updateImageField(
+
+                        item.id,
+
+                        "image_alt",
+
+                        e.target
+                          .value
+                      )
+                    }
+                    placeholder="Alt text (SEO)"
+                    className="mt-2 w-full border rounded-lg px-3 py-2 text-xs text-[#7b8794] outline-none"
                   />
 
                 </div>

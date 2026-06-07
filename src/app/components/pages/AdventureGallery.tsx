@@ -1,41 +1,48 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { getAdventureGallery } from "@/services/AdventureGalleryService";
+
+// Fallback content — keeps the section pixel-identical when the DB is empty.
+const DEFAULT_SECTION = {
+  title: "BUILT ON PASSION.",
+  highlight_title: "BOUND BY ADVENTURE.",
+  description:
+    "Join a global family of explorers. From weekend dives in Fujairah to international expeditions in the Maldives — we don’t just dive together, we travel, laugh, and discover the world together.",
+};
+
+const DEFAULT_IMAGES = [
+  { image_url: "/A59I9631.webp", image_alt: "PADI divemaster guiding a scuba diving expedition with UAE Dive" },
+  { image_url: "/dubai.webp", image_alt: "Scuba diving in Dubai with UAE Dive divers" },
+  { image_url: "/Khorfakkan.webp", image_alt: "Reef scuba diving at Khor Fakkan on the UAE East Coast" },
+  { image_url: "/img1.webp", image_alt: "Scuba divers exploring the Arabian Gulf with UAE Dive" },
+  { image_url: "/img2.webp", image_alt: "Underwater scuba diving experience in the UAE" },
+  { image_url: "/img3.webp", image_alt: "Discover Scuba Diving try dive session in Dubai" },
+  { image_url: "/img4.webp", image_alt: "PADI course divers training underwater in Dubai" },
+  { image_url: "/img5.webp", image_alt: "Marine life encounter during a UAE Dive scuba trip" },
+  { image_url: "/Brice.webp", image_alt: "UAE Dive scuba instructor leading a guided dive" },
+  { image_url: "/Islam.webp", image_alt: "UAE Dive community member on a Fujairah dive trip" },
+];
 
 export function AdventureGallery() {
-  const images = [
-  "/A59I9631.webp",
-  "/dubai.webp",
-  "/Khorfakkan.webp",
-  "/img1.webp",
-  "/img2.webp",
-  "/img3.webp",
-  "/img4.webp",
-  "/img5.webp",
-  "/Brice.webp",
-  "/Islam.webp",
-  // "/Justin.webp",
-  // "/Khushi.webp",
-  // "/Sneha.webp",
-  // "/Surie.webp",
-  // "/Aye.webp",
-  // "/Abdullah.webp",
+  const [section, setSection] = useState<any>(DEFAULT_SECTION);
+  const [images, setImages] = useState<any[]>(DEFAULT_IMAGES);
 
-  ];
+  useEffect(() => {
+    load();
+  }, []);
 
-  // Descriptive alt text for crawlable image SEO — no UI change.
-  const alts = [
-    "PADI divemaster guiding a scuba diving expedition with UAE Dive",
-    "Scuba diving in Dubai with UAE Dive divers",
-    "Reef scuba diving at Khor Fakkan on the UAE East Coast",
-    "Scuba divers exploring the Arabian Gulf with UAE Dive",
-    "Underwater scuba diving experience in the UAE",
-    "Discover Scuba Diving try dive session in Dubai",
-    "PADI course divers training underwater in Dubai",
-    "Marine life encounter during a UAE Dive scuba trip",
-    "UAE Dive scuba instructor leading a guided dive",
-    "UAE Dive community member on a Fujairah dive trip",
-  ];
+  const load = async () => {
+    const { section, images } = await getAdventureGallery();
+
+    if (section) setSection(section);
+
+    if (images && images.length) setImages(images);
+  };
+
+  // Per-slot guard so the fixed 2x5 grid never renders a broken image.
+  const img = (i: number) => images[i] ?? DEFAULT_IMAGES[i];
 
   return (
     <>
@@ -49,19 +56,17 @@ export function AdventureGallery() {
 
           <h2 className="text-[36px] md:text-[52px] leading-[1.1] tracking-[1px] font-semibold text-[#0b1c2e]">
 
-            BUILT ON PASSION. <br />
+            {section.title} <br />
 
             <span className="text-cyan-500">
-              BOUND BY ADVENTURE.
+              {section.highlight_title}
             </span>
 
           </h2>
 
           <p className="mt-5 max-w-2xl mx-auto text-[15px] md:text-[16px] font-normal leading-[1.7] text-[#7f8b99]">
 
-            Join a global family of explorers. From weekend dives in Fujairah
-            to international expeditions in the Maldives — we don’t just dive
-            together, we travel, laugh, and discover the world together.
+            {section.description}
 
           </p>
 
@@ -78,8 +83,8 @@ export function AdventureGallery() {
               className="col-span-1 overflow-hidden rounded-[4px]"
             >
               <img
-                src={images[0]}
-                alt={alts[0]}
+                src={img(0).image_url}
+                alt={img(0).image_alt}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -89,8 +94,8 @@ export function AdventureGallery() {
               className="col-span-1 overflow-hidden rounded-[4px]"
             >
               <img
-                src={images[1]}
-                alt={alts[1]}
+                src={img(1).image_url}
+                alt={img(1).image_alt}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -100,8 +105,8 @@ export function AdventureGallery() {
               className="col-span-1 overflow-hidden rounded-[4px]"
             >
               <img
-                src={images[2]}
-                alt={alts[2]}
+                src={img(2).image_url}
+                alt={img(2).image_alt}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -111,8 +116,8 @@ export function AdventureGallery() {
               className="col-span-1 overflow-hidden rounded-[4px]"
             >
               <img
-                src={images[3]}
-                alt={alts[3]}
+                src={img(3).image_url}
+                alt={img(3).image_alt}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -122,8 +127,8 @@ export function AdventureGallery() {
               className="col-span-1 overflow-hidden rounded-[4px]"
             >
               <img
-                src={images[4]}
-                alt={alts[4]}
+                src={img(4).image_url}
+                alt={img(4).image_alt}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -138,8 +143,8 @@ export function AdventureGallery() {
               className="overflow-hidden rounded-[4px]"
             >
               <img
-                src={images[5]}
-                alt={alts[5]}
+                src={img(5).image_url}
+                alt={img(5).image_alt}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -149,8 +154,8 @@ export function AdventureGallery() {
               className="overflow-hidden rounded-[4px]"
             >
               <img
-                src={images[6]}
-                alt={alts[6]}
+                src={img(6).image_url}
+                alt={img(6).image_alt}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -160,8 +165,8 @@ export function AdventureGallery() {
               className="col-span-1 overflow-hidden rounded-[4px]"
             >
               <img
-                src={images[7]}
-                alt={alts[7]}
+                src={img(7).image_url}
+                alt={img(7).image_alt}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -171,8 +176,8 @@ export function AdventureGallery() {
               className="overflow-hidden rounded-[4px]"
             >
               <img
-                src={images[8]}
-                alt={alts[8]}
+                src={img(8).image_url}
+                alt={img(8).image_alt}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>
@@ -182,8 +187,8 @@ export function AdventureGallery() {
               className="overflow-hidden rounded-[4px]"
             >
               <img
-                src={images[9]}
-                alt={alts[9]}
+                src={img(9).image_url}
+                alt={img(9).image_alt}
                 className="w-full h-[200px] object-cover"
               />
             </motion.div>

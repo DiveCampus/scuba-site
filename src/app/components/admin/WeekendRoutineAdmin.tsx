@@ -114,6 +114,33 @@ WeekendRoutineAdmin() {
 
     };
 
+  const updateImageField =
+    (
+      id: string,
+      field: string,
+      value: string
+    ) => {
+
+      setImages(
+        prev =>
+          prev.map(
+            img =>
+              img.id ===
+              id
+                ? {
+
+                    ...img,
+
+                    [field]:
+                      value,
+
+                  }
+                : img
+          )
+      );
+
+    };
+
   /* =========================
      SAVE
   ========================= */
@@ -275,6 +302,26 @@ WeekendRoutineAdmin() {
             className="mt-5 bg-transparent text-white/50 text-center resize-none outline-none w-full max-w-3xl mx-auto block"
           />
 
+          {/* CTA BUTTON TEXT */}
+          <input
+            value={
+              section.cta_button || ""
+            }
+            onChange={e =>
+              setSection({
+
+                ...section,
+
+                cta_button:
+                  e.target
+                    .value,
+
+              })
+            }
+            placeholder="CTA Button Text"
+            className="mt-6 bg-white/10 border border-white/10 rounded-full text-cyan-300 text-center px-6 py-3 outline-none w-full max-w-xs mx-auto block"
+          />
+
         </div>
 
         {/* ======================
@@ -317,6 +364,25 @@ WeekendRoutineAdmin() {
                     )
                   }
                   className="w-full bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-sm text-white outline-none"
+                />
+
+                <input
+                  value={
+                    image.image_alt || ""
+                  }
+                  onChange={e =>
+                    updateImageField(
+
+                      image.id,
+
+                      "image_alt",
+
+                      e.target
+                        .value
+                    )
+                  }
+                  placeholder="Alt text (SEO)"
+                  className="mt-2 w-full bg-white/10 border border-white/10 rounded-xl px-4 py-2 text-xs text-white/70 outline-none"
                 />
 
               </motion.div>

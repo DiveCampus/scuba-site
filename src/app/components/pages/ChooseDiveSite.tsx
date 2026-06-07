@@ -1,66 +1,65 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { getChooseDiveSite } from "@/services/ChooseDiveSiteService";
+
+// Fallback content — keeps the section pixel-identical when the DB is empty.
+const DEFAULT_SECTION = {
+  title: "CHOOSE YOUR DIVE SITE",
+  description:
+    "Select your perfect environment. Experience the convenience of Palm Jumeirah or the crystal clear waters of Fujairah.",
+};
+
+const DEFAULT_SITES = [
+  {
+    badge: "MOST POPULAR CHOICE",
+    title: "Fujairah Boat Dive",
+    highlight: true,
+    items: [
+      { label: "DIVE SETTING", value: "Open Sea Boat Dive" },
+      { label: "THE ECOSYSTEM", value: "100% Natural Coral" },
+      { label: "WHAT YOU'LL SEE", value: "Turtles, Sharks, Seahorses & More" },
+      { label: "WATER CLARITY", value: "High Visibility" },
+      { label: "TRANSPORT OPTION", value: "Self-Arrival / Pick up From Dubai" },
+    ],
+    footer: "RECOMMENDED FOR BEGINNERS",
+  },
+  {
+    badge: "CITY CONVENIENCE",
+    title: "Dubai (Palm Jumeirah)",
+    highlight: false,
+    items: [
+      { label: "DIVE SETTING", value: "Walk-in Shore Dive" },
+      { label: "THE ECOSYSTEM", value: "Artificial Reefs" },
+      { label: "WHAT YOU'LL SEE", value: "Local Reef Species" },
+      { label: "WATER CLARITY", value: "Standard Visibility" },
+      { label: "TRANSPORT OPTION", value: "Self-Arrival" },
+    ],
+  },
+];
 
 export function ChooseDiveSite() {
-  const diveSites = [
-    {
-      badge: "MOST POPULAR CHOICE",
-      title: "Fujairah Boat Dive",
-      highlight: true,
-      items: [
-        {
-          label: "DIVE SETTING",
-          value: "Open Sea Boat Dive",
-        },
-        {
-          label: "THE ECOSYSTEM",
-          value: "100% Natural Coral",
-        },
-        {
-          label: "WHAT YOU'LL SEE",
-          value: "Turtles, Sharks, Seahorses & More",
-        },
-        {
-          label: "WATER CLARITY",
-          value: "High Visibility",
-        },
-        {
-          label: "TRANSPORT OPTION",
-          value: "Self-Arrival / Pick up From Dubai",
-        },
-      ],
-      footer: "RECOMMENDED FOR BEGINNERS",
-    },
+  const [section, setSection] = useState<any>(DEFAULT_SECTION);
+  const [sites, setSites] = useState<any[]>(DEFAULT_SITES);
 
-    {
-      badge: "CITY CONVENIENCE",
-      title: "Dubai (Palm Jumeirah)",
-      highlight: false,
-      items: [
-        {
-          label: "DIVE SETTING",
-          value: "Walk-in Shore Dive",
-        },
-        {
-          label: "THE ECOSYSTEM",
-          value: "Artificial Reefs",
-        },
-        {
-          label: "WHAT YOU'LL SEE",
-          value: "Local Reef Species",
-        },
-        {
-          label: "WATER CLARITY",
-          value: "Standard Visibility",
-        },
-        {
-          label: "TRANSPORT OPTION",
-          value: "Self-Arrival",
-        },
-      ],
-    },
-  ];
+  useEffect(() => {
+    load();
+  }, []);
+
+  const load = async () => {
+    const { section, cards, items } = await getChooseDiveSite();
+
+    if (section) setSection(section);
+
+    if (cards && cards.length) {
+      const merged = cards.map((card: any) => ({
+        ...card,
+        items: (items || []).filter((it: any) => it.card_id === card.id),
+      }));
+      setSites(merged);
+    }
+  };
 
   return (
     <>
@@ -84,12 +83,11 @@ export function ChooseDiveSite() {
           <div className="text-center">
 
             <h2 className="text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] text-white">
-              CHOOSE YOUR DIVE SITE
+              {section.title}
             </h2>
 
             <p className="mt-5 text-white/45 text-[15px] md:text-[16px] font-normal leading-[1.7] max-w-2xl mx-auto">
-              Select your perfect environment. Experience the convenience
-              of Palm Jumeirah or the crystal clear waters of Fujairah.
+              {section.description}
             </p>
 
           </div>
@@ -97,9 +95,9 @@ export function ChooseDiveSite() {
           {/* CARDS */}
           <div className="mt-8 md:mt-12 grid lg:grid-cols-2 gap-8">
 
-            {diveSites.map((site, i) => (
+            {sites.map((site, i) => (
               <motion.div
-                key={i}
+                key={site.id ?? i}
                 whileHover={{
                   y: -6,
                   scale: 1.01,
@@ -136,9 +134,9 @@ export function ChooseDiveSite() {
                   {/* ITEMS */}
                   <div className="mt-4">
 
-                    {site.items.map((item, idx) => (
+                    {(site.items || []).map((item: any, idx: number) => (
                       <div
-                        key={idx}
+                        key={item.id ?? idx}
                         className="flex items-center justify-between py-6 border-b border-white/8 gap-6"
                       >
 
