@@ -11,6 +11,7 @@ const DEFAULT_SECTION = {
   description:
     "Trade the mall for the ocean. Grab a friend, hop on the boat, and let's make some memories. Sun, sea, and a whole lot of laughs.",
   cta_button: "BOOK YOUR EXPERIENCE",
+  cta_link: "",
 };
 
 const DEFAULT_IMAGES = [
@@ -45,6 +46,8 @@ const DEFAULT_GIFT = {
   description:
     "Want to surprise someone? A scuba diving experience is a gift they will never forget. We will plan an underwater surprise.",
   notice: "⚠ MUST BOOK 7 DAYS IN ADVANCE FOR SPECIAL OCCASIONS",
+  button_text: "",
+  button_link: "",
 };
 
 export function WeekendRoutine() {
@@ -61,7 +64,13 @@ export function WeekendRoutine() {
 
         if (section) setSection(section);
 
-        if (images && images.length) setImages(images);
+        // Only render active images with a real URL. `is_active !== false`
+        // keeps things working even if the column is absent (undefined).
+        const visible = (images || []).filter(
+            (img: any) => img.is_active !== false && img.image_url
+        );
+
+        if (visible.length) setImages(visible);
 
         if (giftCard) setGiftCard(giftCard);
     };
@@ -181,6 +190,19 @@ export function WeekendRoutine() {
 
                             </div>
 
+                            {/* OPTIONAL GIFT BUTTON — only renders when configured,
+                                so the existing card stays visually identical when empty. */}
+                            {giftCard.button_text ? (
+                                <div className="mt-7">
+                                    <a
+                                        href={giftCard.button_link || "#"}
+                                        className="inline-block px-7 py-3 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-[#02131d] font-semibold tracking-[1px] text-sm shadow-[0_10px_40px_rgba(0,200,255,0.35)] hover:opacity-90 transition"
+                                    >
+                                        {giftCard.button_text}
+                                    </a>
+                                </div>
+                            ) : null}
+
                         </div>
 
                     </motion.div>
@@ -188,19 +210,38 @@ export function WeekendRoutine() {
                     {/* CTA */}
                     <div className="flex justify-center mt-10 md:mt-12">
 
-                        <button className="group relative overflow-hidden rounded-xl">
+                        {section.cta_link ? (
+                            <a
+                                href={section.cta_link}
+                                className="group relative overflow-hidden rounded-xl"
+                            >
 
-                            {/* GLOW */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 blur-2xl opacity-60 group-hover:opacity-100 transition duration-300" />
+                                {/* GLOW */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 blur-2xl opacity-60 group-hover:opacity-100 transition duration-300" />
 
-                            {/* BUTTON */}
-                            <div className="relative z-10 px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-[#02131d] font-semibold tracking-[1px] text-sm shadow-[0_10px_40px_rgba(0,200,255,0.35)]">
+                                {/* BUTTON */}
+                                <div className="relative z-10 px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-[#02131d] font-semibold tracking-[1px] text-sm shadow-[0_10px_40px_rgba(0,200,255,0.35)]">
 
-                                {section.cta_button}
+                                    {section.cta_button}
 
-                            </div>
+                                </div>
 
-                        </button>
+                            </a>
+                        ) : (
+                            <button className="group relative overflow-hidden rounded-xl">
+
+                                {/* GLOW */}
+                                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 to-blue-500 blur-2xl opacity-60 group-hover:opacity-100 transition duration-300" />
+
+                                {/* BUTTON */}
+                                <div className="relative z-10 px-10 py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 text-[#02131d] font-semibold tracking-[1px] text-sm shadow-[0_10px_40px_rgba(0,200,255,0.35)]">
+
+                                    {section.cta_button}
+
+                                </div>
+
+                            </button>
+                        )}
 
                     </div>
 
