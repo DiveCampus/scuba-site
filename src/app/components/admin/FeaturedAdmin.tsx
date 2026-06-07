@@ -2,118 +2,165 @@
 
 import { getFeatured, updateFeatured } from "@/services/FeatureService";
 import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+
+type FeaturedForm = {
+  title: string;
+  subtitle: string;
+};
+
+const EMPTY: FeaturedForm = { title: "", subtitle: "" };
 
 export function FeaturedAdmin() {
-  const [data, setData] = useState<any>(null);
-  const [editing, setEditing] = useState<string | null>(null);
+  const [id, setId] = useState<string | null>(null);
+  const [form, setForm] = useState<FeaturedForm>(EMPTY);
+  const [original, setOriginal] = useState<FeaturedForm>(EMPTY);
+
+  const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [status, setStatus] = useState<null | "saved" | "error">(null);
 
   useEffect(() => {
-    console.log("🚀 Component Mounted");
     load();
   }, []);
 
   const load = async () => {
-    console.log("📡 Fetching featured data...");
+    setLoading(true);
+    setStatus(null);
 
-    const response = await getFeatured();
+    const { data, error } = await getFeatured();
 
-    console.log("📦 FULL RESPONSE:", response);
-
-    if (response.error) {
-      console.error("❌ ERROR:", response.error);
+    if (error) {
+      console.error("❌ FEATURED LOAD ERROR:", error);
+      setStatus("error");
+      setLoading(false);
       return;
     }
 
-    setData(response.data);
+    const next: FeaturedForm = {
+      title: data?.title ?? "",
+      subtitle: data?.subtitle ?? "",
+    };
+
+    setId(data?.id ?? null);
+    setForm(next);
+    setOriginal(next);
+    setLoading(false);
   };
 
-  const handleChange = (field: string, value: string) => {
-    setData((prev: any) => ({
-      ...prev,
-      [field]: value,
-    }));
+  const handleChange = (field: keyof FeaturedForm, value: string) => {
+    setStatus(null);
+    setForm((prev) => ({ ...prev, [field]: value }));
+  };
+
+  const handleReset = () => {
+    setStatus(null);
+    setForm(original);
   };
 
   const handleSave = async () => {
-    console.log("💾 Saving:", data);
+    if (!id) return;
 
-    const { error } = await updateFeatured(data.id, data);
+    setSaving(true);
+    setStatus(null);
+
+    // Send only the editable fields. Textarea values preserve "\n",
+    // so multiline content persists to the DB unchanged.
+    const { error } = await updateFeatured(id, {
+      title: form.title,
+      subtitle: form.subtitle,
+    });
 
     if (error) {
-      console.error("❌ UPDATE ERROR:", error);
+      console.error("❌ FEATURED UPDATE ERROR:", error);
+      setStatus("error");
     } else {
-      console.log("✅ SAVED");
+      setOriginal(form);
+      setStatus("saved");
     }
 
-    setEditing(null);
+    setSaving(false);
   };
 
-  if (!data) {
+  const isDirty =
+    form.title !== original.title || form.subtitle !== original.subtitle;
+
+  if (loading) {
     return (
-      <div className="text-white text-center py-20">
-        Loading...
-      </div>
+      <div className="text-white/60 text-center py-16">Loading…</div>
     );
   }
 
   return (
-    <section className="py-32 bg-gradient-to-br from-[#18476D] via-[#123a5a] to-[#0b2c45] text-center px-6">
+    <div className="w-full max-w-2xl mx-auto rounded-2xl border border-white/10 bg-white/5 p-6 md:p-8 space-y-6">
+
+      {/* HEADER */}
+      <div className="space-y-1">
+        <h3 className="text-lg font-semibold text-white">Featured Section</h3>
+        <p className="text-sm text-white/50">
+          Press <span className="text-white/70">Enter</span> to add a new line.
+          Line breaks are saved and rendered on the site.
+        </p>
+      </div>
+
+      {/* TITLE */}
+      <div className="space-y-2">
+        <label className="block text-sm font-medium text-white/70">
+          Title
+        </label>
+        <textarea
+          value={form.title}
+          onChange={(e) => handleChange("title", e.target.value)}
+          rows={2}
+          placeholder={"LET’S MAKE YOUR EVENT\nOR PROJECT EXTRAORDINARY"}
+          className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-white/30 outline-none focus:border-cyan-400/60 whitespace-pre-line resize-y"
+        />
+      </div>
 
       {/* SUBTITLE */}
-      {editing === "subtitle" ? (
-        <div className="flex flex-col items-center gap-3">
-          <textarea
-            value={data.subtitle || ""}
-            onChange={(e) =>
-              handleChange("subtitle", e.target.value)
-            }
-            rows={2}
-            className="bg-white/10 text-white p-2 rounded text-center whitespace-pre-line"
-          />
+      <div className="space-y-2">
+        <label className="block text-sm font-medium text-white/70">
+          Subtitle
+        </label>
+        <textarea
+          value={form.subtitle}
+          onChange={(e) => handleChange("subtitle", e.target.value)}
+          rows={2}
+          placeholder={"SPECIAL PROJECTS"}
+          className="w-full rounded-xl bg-white/5 border border-white/10 px-4 py-3 text-white placeholder:text-white/30 outline-none focus:border-cyan-400/60 whitespace-pre-line resize-y"
+        />
+      </div>
 
-          <button
-            onClick={handleSave}
-            className="bg-green-400 text-black px-4 py-1 rounded"
-          >
-            Save
-          </button>
-        </div>
-      ) : (
-        <p
-          onClick={() => setEditing("subtitle")}
-          className="text-white/80 text-lg mb-4 uppercase cursor-pointer whitespace-pre-line"
-        >
-          {data.subtitle}
+      {/* STATUS */}
+      {status === "saved" && (
+        <p className="text-sm text-emerald-400">✓ Saved</p>
+      )}
+      {status === "error" && (
+        <p className="text-sm text-red-400">
+          Something went wrong. Please try again.
         </p>
       )}
 
-      {/* TITLE */}
-      {editing === "title" ? (
-        <div className="flex flex-col items-center gap-3">
-          <textarea
-            value={data.title || ""}
-            onChange={(e) =>
-              handleChange("title", e.target.value)
-            }
-            className="bg-white/10 text-white p-3 rounded text-center w-full max-w-3xl"
-          />
-
-          <button
-            onClick={handleSave}
-            className="bg-green-400 text-black px-5 py-2 rounded"
-          >
-            Save
-          </button>
-        </div>
-      ) : (
-        <h2
-          onClick={() => setEditing("title")}
-          className="text-white text-3xl md:text-5xl font-bold uppercase cursor-pointer whitespace-pre-line"
+      {/* ACTIONS */}
+      <div className="flex items-center gap-3 pt-2">
+        <motion.button
+          whileTap={{ scale: 0.96 }}
+          onClick={handleSave}
+          disabled={saving || !isDirty || !id}
+          className="h-[44px] px-6 rounded-2xl bg-cyan-400 text-black text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed"
         >
-          {data.title}
-        </h2>
-      )}
+          {saving ? "Saving…" : "Save"}
+        </motion.button>
 
-    </section>
+        <motion.button
+          whileTap={{ scale: 0.96 }}
+          onClick={handleReset}
+          disabled={saving || !isDirty}
+          className="h-[44px] px-6 rounded-2xl bg-white/5 text-white border border-white/10 text-sm font-medium disabled:opacity-40 disabled:cursor-not-allowed hover:bg-white/10"
+        >
+          Cancel
+        </motion.button>
+      </div>
+    </div>
   );
 }

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getFeatured } from "@/services/FeatureService";
+import { normalizeMultiline } from "@/lib/utils";
 
 export function FeaturedExperiences() {
   const [activePopup, setActivePopup] = useState<null | "dubai" | "khor">(null);
@@ -48,11 +49,11 @@ export function FeaturedExperiences() {
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
         
         <p className="text-white/80 text-[12px] font-semibold tracking-[3px] uppercase mb-3 whitespace-pre-line">
-          {data?.subtitle || "SPECIAL PROJECTS"}
+          {normalizeMultiline(data?.subtitle) || "SPECIAL PROJECTS"}
         </p>
 
         <h2 className="text-white text-[36px] md:text-[52px] font-semibold tracking-[1px] leading-[1.1] max-w-5xl uppercase mt-3 whitespace-pre-line">
-          {data?.title || "LET’S MAKE YOUR EVENT OR PROJECT EXTRAORDINARY"}
+          {normalizeMultiline(data?.title) || "LET’S MAKE YOUR EVENT OR PROJECT EXTRAORDINARY"}
         </h2>
 
       </div>
