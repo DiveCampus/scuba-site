@@ -62,12 +62,13 @@ export function FeaturedAdmin() {
       {/* SUBTITLE */}
       {editing === "subtitle" ? (
         <div className="flex flex-col items-center gap-3">
-          <input
+          <textarea
             value={data.subtitle || ""}
             onChange={(e) =>
               handleChange("subtitle", e.target.value)
             }
-            className="bg-white/10 text-white p-2 rounded text-center"
+            rows={2}
+            className="bg-white/10 text-white p-2 rounded text-center whitespace-pre-line"
           />
 
           <button
@@ -80,7 +81,7 @@ export function FeaturedAdmin() {
       ) : (
         <p
           onClick={() => setEditing("subtitle")}
-          className="text-white/80 text-lg mb-4 uppercase cursor-pointer"
+          className="text-white/80 text-lg mb-4 uppercase cursor-pointer whitespace-pre-line"
         >
           {data.subtitle}
         </p>
@@ -107,7 +108,7 @@ export function FeaturedAdmin() {
       ) : (
         <h2
           onClick={() => setEditing("title")}
-          className="text-white text-3xl md:text-5xl font-bold uppercase cursor-pointer"
+          className="text-white text-3xl md:text-5xl font-bold uppercase cursor-pointer whitespace-pre-line"
         >
           {data.title}
         </h2>
